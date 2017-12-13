@@ -2,6 +2,7 @@
 
 * [Предисловие](predislov.md)
 * [Алгоритмы](algo.md)
+* [Структуры данных](algo.md)
 * [Архитектура](architecture.md)
 * [Базы данных(теория)](db.md )
 * [MySQL](mysql.md)
