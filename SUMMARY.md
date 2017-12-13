@@ -1,6 +1,5 @@
 # Оглавление
 
-* [Предисловие](predislov.md)
 * [Алгоритмы](algo.md)
 * [Структуры данных](datastructures.md)
 * [Архитектура](architecture.md)
