@@ -10,7 +10,7 @@
 * [Основы сетей](network.md)
 * [Операционые системы](os.md)
 * [Linux](linux.md)
-* [Highload](network.md)
+* [Highload](highload.md)
 * [Тестирование](test.md)
 * [Методологии разработки](devmethods.md)
 * [Блиц](blitz.md)
