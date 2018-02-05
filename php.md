@@ -34,7 +34,7 @@
 
 1. возвращаемый тип void
 2. псевдотип iterable
-3.  null в типизированных и возвращаемых параметрах
+3. null в типизированных и возвращаемых параметрах
 4. возможность использовать отрицательное значение для смещения в строках
 5. разрешено использовать строковые ключи в конструкци
 6. конвертация callable выражений в замыкание
@@ -64,8 +64,6 @@
 19. Добавлены опции JSON_INVALID_UTF8_IGNORE и JSON_INVALID_UTF8_SUBSTITUTE
 
 ## Магические методы PHP
-
-[__construct()](http://php.net/manual/ru/language.oop5.decon.php#object.construct), [__destruct()](http://php.net/manual/ru/language.oop5.decon.php#object.destruct), [__call()](http://php.net/manual/ru/language.oop5.overloading.php#object.call), [__callStatic()](http://php.net/manual/ru/language.oop5.overloading.php#object.callstatic), [__get()](http://php.net/manual/ru/language.oop5.overloading.php#object.get), [__set()](http://php.net/manual/ru/language.oop5.overloading.php#object.set), [__isset()](http://php.net/manual/ru/language.oop5.overloading.php#object.isset), [__unset()](http://php.net/manual/ru/language.oop5.overloading.php#object.unset), [__sleep()](http://php.net/manual/ru/language.oop5.magic.php#object.sleep),[__wakeup()](http://php.net/manual/ru/language.oop5.magic.php#object.wakeup), [__toString()](http://php.net/manual/ru/language.oop5.magic.php#object.tostring), [__invoke()](http://php.net/manual/ru/language.oop5.magic.php#object.invoke), [__set_state()](http://php.net/manual/ru/language.oop5.magic.php#object.set-state), [__clone()](http://php.net/manual/ru/language.oop5.cloning.php#object.clone) и [__debugInfo()](http://php.net/manual/ru/language.oop5.magic.php#object.debuginfo) 
 
 - **__construct()** — метод конструктор, если он объявлен в классе то он будет вызываться при каждом создании объекта. Может принимать одно или несколько свойств.
 - **__destruct()** — деструктор вызывается при освобождении всех ссылок на объект в котором он находится или по завершению работы скрипта. Не может принимать свойства.
