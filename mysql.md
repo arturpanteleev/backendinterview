@@ -29,6 +29,6 @@
 
 ##  JOIN
 
-## ![](media/image6.jpeg){width="4.583333333333333in" height="3.6145833333333335in"}
+## ![](media/image6.jpeg)
 
 # 
