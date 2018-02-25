@@ -2,6 +2,37 @@
 
 ## Нововведения разных версий PHP
 
+### 5.5
+
+- Генераторы и корутины 
+
+- Ключевое слово `finally`
+
+- Password Hashing API — правильный способ хешировать пароли из коробки
+
+- array/string dereferencing, например, можно получить элемент массива сразу момент его объявления `echo [1, 2, 3][0];`, аналогично со строками `echo 'PHP'[0];`
+
+- Теперь можно получить имя класса используя ключевое слово ::class
+
+- `empty()` можно применять к результатам функций или выражений без необходимости сохранять этот результат в отдельную переменную
+
+- `foreach` теперь может работать с ключами не скалярного типа. В обычных PHP массивах таких ключей быть не может, но если вы используете `foreach` для обхода по собственно написанному итератору, то теперь вы можете возвращать любой тип в `Iterator::key()`
+
+  Zend Optimiser+ был включён в состав дистрибутива как расширение [OPcache extension](http://php.net/manual/en/book.opcache.php). Впрочем, это расширение было доступно и раньше для PHP 5.2, 5.3 и 5.4 для ручной установки.
+
+- Обновлена библиотека GD, в частности появилась поддержа WebP
+
+### 5.6
+
+- [Скалярные выражения в константах](http://php.net/migration56.new-features#migration56.new-features.const-scalar-exprs)
+- [Функции с переменным числом аргументов](http://php.net/functions.arguments.php#functions.variable-arg-list) при помощи оператора `...`
+- [Оператор возведения в степень](http://php.net/language.operators.arithmetic) `**`
+- [Импорт функций и констант](http://php.net/migration56.new-features#migration56.new-features.use) при помощи [ключевого слова use](http://php.net/language.namespaces.importing.php)
+- В ядро включен интерактивный отладчик [phpdbg](http://phpdbg.com/docs).
+- Разрешено повторное использование[ php://input](http://php.net/wrappers.php.php#wrappers.php.input), а $HTTP_RAW_POST_DATA объявлена устаревшей
+- [GMP](http://php.net/book.gmp)-объекты теперь поддерживают перегрузку операторов
+- Поддержка загрузки файлов больше 2 Гб
+
 
 ### [7.0](http://www.php.net/ChangeLog-7.php#7.1.14)
 

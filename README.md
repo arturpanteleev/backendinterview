@@ -12,5 +12,7 @@
 
 *https://telegram.me/arturpanteleev*
 
+P.S Первый кирпич в создание данного пособия, заложил(увековечив здесь своё имя) https://telegram.me/pronin86
+
 <img src="media/image1.jpeg" height="350px" />
 

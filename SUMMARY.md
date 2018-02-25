@@ -11,6 +11,7 @@
 * [Операционые системы](os.md)
 * [Linux](linux.md)
 * [Highload](highload.md)
+* [Информационная безопасность](ib.md)
 * [Тестирование](test.md)
 * [Методологии разработки](devmethods.md)
 * [Блиц](blitz.md)
