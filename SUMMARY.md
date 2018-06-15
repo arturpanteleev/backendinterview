@@ -5,6 +5,7 @@
 * [Архитектура](architecture.md)
 * [Базы данных(теория)](db.md )
 * [MySQL](mysql.md)
+* [NoSQL базы данных](mysql.md)
 * [PHP](php.md)
 * [Git](git.md)
 * [Основы сетей](network.md)
