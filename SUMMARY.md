@@ -7,16 +7,13 @@
 * [MySQL](mysql.md)
 * [NoSQL](mysql.md)
 * [PHP](php.md)
+* [Информационная безопасность](ib.md)
 * [Git](git.md)
 * [Основы сетей](network.md)
 * [Операционые системы](os.md)
 * [Linux](linux.md)
-* [Информационная безопасность](ib.md)
 * [Тестирование](test.md)
 * [Методологии разработки](devmethods.md)
 * [Блиц](blitz.md)
-* [Вместо заключения](conclusion.md)
 * [Книжки](books.md )
-* [Unsorted](unsorted.md)
-
 
