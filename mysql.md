@@ -241,3 +241,4 @@ TIMESTAMP4 байта
 * https://itif.ru/otlichiya-myisam-innodb/
 * https://valera.ws/2009.09.17~time-formats-in-mysql/
 * https://habr.com/company/mailru/blog/266811/
+

@@ -31,3 +31,7 @@ typedef union _zvalue_value {
 http://www.phpinternalsbook.com/
 
 https://romka.gitbooks.io/php-internals-book-ru/
+
+https://habr.com/company/mailru/blog/310054/
+
+https://habr.com/company/mailru/blog/311068/

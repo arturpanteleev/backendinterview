@@ -9,4 +9,6 @@
 
 * [PHPUnit Getting Started](https://phpunit.de/getting-started/phpunit-7.html) 
 * [ProTesting](http://www.protesting.ru)
+* [PHPUnit для начинающих](https://phpprofi.ru/series/show/1)
+
 
