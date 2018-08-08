@@ -8,7 +8,7 @@
 
 ![reset workflow](https://git-scm.com/book/en/v2/images/reset-workflow.png)
 
-## reset(--sogt –hard –mixed) vs checkout
+## reset(--soft –hard –mixed) vs checkout
 
 ![reset checkout](https://git-scm.com/book/en/v2/images/reset-checkout.png)
 
@@ -50,3 +50,15 @@ $ git rebase --onto master server client
 ## reflog
 
 Во время вашей работы Git записывает все изменения HEAD. Каждый раз при переключении веток и коммите, добавляется запись в **reflog** Таким образом reflog поможет найти нам проебавшиеся комиты, однако он не вечен, так как есть сборщик мусора и данные хранятся там не вечно.
+
+## Дополнительно
+
+https://githowto.com/ru
+
+https://git-scm.com/book/ru/v2
+
+https://habr.com/company/intel/blog/344962/
+
+https://eax.me/git-commands/
+
+https://github.com/nicothin/web-development/tree/master/git
