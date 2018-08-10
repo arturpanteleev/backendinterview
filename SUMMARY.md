@@ -3,7 +3,7 @@
 * [Алгоритмы](algo.md)
 * [Структуры данных](datastructures.md)
 * [Архитектура](architecture.md)
-* [Базы данных(теория)](db.md )
+* [Базы данных(теория)](db.md)
 * [MySQL](mysql.md)
 * [NoSQL](nosql.md)
 * [PHP](php.md)
@@ -16,5 +16,5 @@
 * [Тестирование](test.md)
 * [Методологии разработки](devmethods.md)
 * [Блиц](blitz.md)
-* [Книжки](books.md )
+* [Книжки](books.md)
 
