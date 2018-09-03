@@ -1,16 +1,23 @@
-# Оглавление
+#  Оглавление
 
 * [Алгоритмы](algo.md)
 * [Структуры данных](datastructures.md)
-* [Архитектура](architecture.md)
+* [Архитектура](architecture/README.md)
+  * [ООП](architecture/oopBase.md)
+  * [Паттерны GoF(Банда 4)](architecture/gof.md)
+  * [Принципы хорошей архитектуры](architecture/principles.md)
+  * [Архитектурные стили(паттерны проектирования систем)](architecture/styles.md)
+  * [DDD](architecture/ddd.md)
 * [Теория БД](db/README.md)
   * [Транзакции](db/transactions.md)
   * [Нормальные формы](db/normalForms.md)
   * [Распределенные БД](db/distrubedDb.md)
 * [MySQL](mysql.md)
 * [NoSQL](nosql.md)
-* [PHP](php.md)
-* [PHP Internals](phpinternals.md)
+* [PHP](php/README.md.md)
+  * [Фичи новых версий](php/innovations.md)
+  * [PHP Internals](php/internals.md)
+  * [Разное](php/various.md)  
 * [Информационная безопасность](ib.md)
 * [Git](git.md)
 * [Основы сетей](network/README.md)
@@ -23,4 +30,3 @@
 * [Методологии разработки](devmethods.md)
 * [Блиц](blitz.md)
 * [Книжки](books.md)
-
