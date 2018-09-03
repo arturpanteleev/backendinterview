@@ -13,7 +13,7 @@
   * [Нормальные формы](db/normalForms.md)
   * [Распределенные БД](db/distrubedDb.md)
 * [MySQL](mysql.md)
-* [NoSQL](nosql.md)
+* [NoSQL](noSql.md)
 * [PHP](php/README.md)
   * [Фичи новых версий](php/innovations.md)
   * [PHP Internals](php/internals.md)
