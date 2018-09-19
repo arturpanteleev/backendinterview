@@ -194,7 +194,7 @@ TIMESTAMP4 байта
 
 ##  Joins
 
-![](..//../media/joins.png)
+![](../../../media/joins.png)
 
 
 ## Полезные ресурсы:
