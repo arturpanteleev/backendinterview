@@ -1,3 +1,5 @@
+# Разное о PHP
+
 ## Магические методы PHP
 
 - [**__construct()**](http://php.net/manual/ru/language.oop5.decon.php#object.construct) — метод конструктор, если он объявлен в классе то он будет вызываться при каждом создании объекта. Может принимать одно или несколько свойств.
@@ -16,7 +18,23 @@
 - [**__set_state()**](http://php.net/manual/ru/language.oop5.magic.php#object.set-state) — этот статический метод вызывается для тех классов, которые экспортируются функцией var_export()
 - [**__debugInfo()**](http://php.net/manual/ru/language.oop5.magic.php#object.debuginfo) — метод вызывается функцией [var_dump()](http://php.net/manual/ru/function.var-dump.php), когда необходимо вывести список свойств объекта. Если этот метод не определен, тогда будут выведены все свойства объекта c модификаторами public, protected и private.
 
+## PSR-0 vs PSR-4
 
+Here are the major differences,
+
+**1.** For example if you define that the `Acme\Foo\` namespace is anchored in `src/`,
+
+- with PSR-0 it means it will look for `Acme\Foo\Bar` in `src/Acme/Foo/Bar.php`
+- while in PSR-4 it will look for `Acme\Foo\Bar` in `src/Bar.php(where Bar class is)`.
+
+**2.** PSR-4 does not convert underscores to directory separators
+
+**3.** You would prefer using PSR-4 with namespaces
+
+**4.** PSR-0 will not work even if the class name is different from file name, like considering above example:
+
+- `Acme\Foo\Bar` ---> `src/Acme/Foo/Bar.php` (for Bar class) will work
+- `Acme\Foo\Bar` ---> `src/Acme/Foo/Bar2.php` (for Bar class) will not work
 
 
 ## Замыкания и лямда функции
@@ -30,16 +48,41 @@
 ```php
 $message = 'привет';
 
-
 $example = function () use ($message) {
     var_dump($message);
 };
 $example();
 ```
 
+## Composer
 
+### composer.json vs composer.lock
 
+`composer.json` - содержит допустимые "диапазоны" версий для пакетов
 
+`composer.lock` - точные версии установленных пакетов, с которыми работает данная версия приложения
+
+### install vs update vs require
+
+`composer install` делает следующее:
+
+- Проверяет существует ли `composer.lock`
+- если нет, резолвит зависимости и создаёт его
+- если `composer.lock` существует, устанавливает версии, указанные в нём
+
+`composer update`:
+
+- Проверяет `composer.json`
+- Определяет последние версии на основе указанных в этом файле
+- Устанавливает последние версии
+- Обновляет `composer.lock` в соответствии с установленными
+
+`composer require somePackage`:
+
+For example if we want to add a dependency with the command line we will simply execute 
+
+- composer.json file will be modified automatically and the new dependency will be added
+- the dependency will be downloaded to the project
 
 ## SPL
 
@@ -67,9 +110,28 @@ SPL предоставляет ряд стандартных структур д
 
 Говоря проще self - обращается непосредственно к классу, в котором описана ф-ция с его исопльзованием, а static - к классу к которому идет обращение из кода.
 
+## Можем ли мы  гарантировать выполнения деструктора?
+
+Деструктор не выполнится если:
+
+1. Exit вызван в другом деструкторе.
+2. Если другой деструктор бросает исключение.
+3. Если мы пытаемся обработать исключение в деструкторе.
+4. При получении SIGTERM в случае запуска через CLI.
+5. Fatal Error
+
 ## Сессии
 
-Как хранятся, как переопределить место хранения,  в какой момент и соклько раз обращаемся
+По умолчанию хранятся в файлах. Но можно переопределить:
+
+```ini
+session.save_handler = memcached 
+session.save_path = «tcp://192.1680.10:11211, tcp://192.168.0.20:11211»
+```
+
+Основная функция **session_start()**  - создает сессию, либо возобновляет существующую, основываясь на идентификаторе сессии, переданном через GET- или POST-запрос, либо переданный через cookie.
+
+Когда вызвана функция **session_start()** или когда сессия создается автоматически, PHP вызовет открытие и чтение обработчиков записи сессии. Это могут быть как встроенные обработчики, так и предоставляемые расширениями (например, SQLite или Memcached); или вообще определенный пользователем обработчик, заданный функцией [session_set_save_handler()](http://php.net/manual/ru/function.session-set-save-handler.php). Callback-функция чтения извлечет все существующие данные сессии (сохраненные в специальном сериализованном виде), десериализует их и занесет в суперглобальный массив $_SESSION, после чего вернет сохраненные данные обработчику сессий PH
 
 ## Как выполнить код после exit?
 
@@ -79,8 +141,16 @@ You can use [register_shutdown_function()](http://www.php.net/register_shutdown_
 
 ## Анализаторы кода
 
+- [php-sat](http://www.program-transformation.org/PHP/PhpSat) - Requires <http://strategoxt.org/>
+- [PHP_Depend](http://pdepend.org/)
+- [PHP_CodeSniffer](http://pear.php.net/package/PHP_CodeSniffer)
+- [PHP Mess Detector](http://phpmd.org/)
+- [PHPStan](https://github.com/phpstan/phpstan)
+- [PHP-CS-Fixer](https://github.com/FriendsOfPHP/PHP-CS-Fixer)
+- [phan](https://github.com/phan/phan)
+
 ## Сегфолт в пхп фпм, как поймать, как отловить трейс
 
-## Где посмотреть список модулей пхп
+## Cписок модулей пхп
 
-## В каких случаях, не выполнится деструктор
+`php -m`
