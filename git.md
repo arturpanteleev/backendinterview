@@ -385,11 +385,8 @@ git archive -o ./project.zip HEAD # создать архив с файлово�
 ***Дополнительное чтение:***
 
 https://githowto.com/ru
-
 https://git-scm.com/book/ru/v2
-
 https://habr.com/company/intel/blog/344962/
-
 https://eax.me/git-commands/
-
 https://github.com/nicothin/web-development/tree/master/git
+https://github.com/k88hudson/git-flight-rules
