@@ -84,23 +84,7 @@ For example if we want to add a dependency with the command line we will simply 
 - composer.json file will be modified automatically and the new dependency will be added
 - the dependency will be downloaded to the project
 
-## SPL
-
-Стандартная библиотека PHP (SPL) - это набор интерфейсов и классов, предназначенных для решения стандартных задач.
-
-Не требуется никаких внешних библиотек для сборки этого расширения, и оно доступно по умолчанию в PHP 5.0.0 и выше.
-
-SPL предоставляет ряд стандартных структур данных, итераторов для оббегания объектов, интерфейсов, стандартных исключений, некоторое количество классов для работы с файлами и предоставляет ряд функций, например [spl_autoload_register()](http://php.net/manual/ru/function.spl-autoload-register.php). 
-
-Еще примеры:
-
-- [Countable](http://php.net/manual/ru/class.countable.php)
-- [OuterIterator](http://php.net/manual/ru/class.outeriterator.php)
-- [RecursiveIterator](http://php.net/manual/ru/class.recursiveiterator.php)
-- [SeekableIterator](http://php.net/manual/ru/class.seekableiterator.php)
-- [ArrayObject](http://php.net/manual/ru/class.arrayobject.php)
-- [SplObserver](http://php.net/manual/ru/class.splobserver.php)
-- [SplSubject](http://php.net/manual/ru/class.splsubject.php)
+- http://php.net/manual/ru/class.splsubject.php)
 
 ## Self vs  Static
 
@@ -151,6 +135,30 @@ You can use [register_shutdown_function()](http://www.php.net/register_shutdown_
 
 ## Сегфолт в пхп фпм, как поймать, как отловить трейс
 
+**Ошибка сегментации** ([англ.](https://ru.wikipedia.org/wiki/%D0%90%D0%BD%D0%B3%D0%BB%D0%B8%D0%B9%D1%81%D0%BA%D0%B8%D0%B9_%D1%8F%D0%B7%D1%8B%D0%BA) Segmentation fault, сокр. segfault, жарг. *сегфолт*) — ошибка, возникающая при попытке обращения к недоступным для записи участкам [памяти](https://ru.wikipedia.org/wiki/%D0%92%D0%B8%D1%80%D1%82%D1%83%D0%B0%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F_%D0%BF%D0%B0%D0%BC%D1%8F%D1%82%D1%8C) либо при попытке изменить память запрещённым способом
+
 ## Cписок модулей пхп
 
 `php -m`
+
+## SPL
+
+Стандартная библиотека PHP (SPL) - это набор интерфейсов и классов, предназначенных для решения стандартных задач. Не требуется никаких внешних библиотек для сборки этого расширения, и оно доступно по умолчанию в PHP 5.0.0 и выше.
+
+SPL предоставляет ряд стандартных структур данных, итераторов для оббегания объектов, интерфейсов, стандартных исключений, некоторое количество классов для работы с файлами и предоставляет ряд функций, например [spl_autoload_register()](http://php.net/manual/ru/function.spl-autoload-register.php). 
+
+Еще примеры:
+
+- [Countable](http://php.net/manual/ru/class.countable.php)
+
+- [OuterIterator](http://php.net/manual/ru/class.outeriterator.php)
+
+- [RecursiveIterator](http://php.net/manual/ru/class.recursiveiterator.php)
+
+- [SeekableIterator](http://php.net/manual/ru/class.seekableiterator.php)
+
+- [ArrayObject](http://php.net/manual/ru/class.arrayobject.php)
+
+- [SplObserver](http://php.net/manual/ru/class.splobserver.php)
+
+
