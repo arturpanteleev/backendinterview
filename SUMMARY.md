@@ -15,7 +15,7 @@
   * [DDD](architecture/ddd.md)
   * [Разное](architecture/uncategorized.md)
 * [Базы Данных](db/README.md)
-  * [Теория Баз Данных](db/theory/dBTheory/README.md)
+  * [Теория Баз Данных](db/dBTheory/README.md)
     * [Транзакции](db/dBTheory/transactions.md)
     * [Нормальные формы](db/dBTheory/normalForms.md)
     * [Распределенные БД](db/dBTheory/distrubedDb.md)
