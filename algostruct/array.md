@@ -11,31 +11,32 @@ Cтруктура данных, хранящая набор значений (э
 ```php
 <?php
 
-function bubbleSort($array)
-{
-    $length =  count($array);
-    for ($i = $length - 1; $i > 0; $i--) {        
+
+/**
+ * Worst O(n^2)
+ * Average O(n^2)
+ * Best O(n)
+ */
+function bubbleSort($array) {
+    $length = count($array);
+    for ($i = $length - 1; $i > 0; $i--) {
         $changes = false;
         for ($j = 0; $j < $i; $j++) {
-            if ($array[$j] > $array[$j+1]) {
-                [$array[$j], $array[$j+1]] = [$array[$j+1], $array[$j]];
+            if ($array[$j] > $array[$j + 1]) {
+                [$array[$j], $array[$j + 1]] = [$array[$j + 1], $array[$j]];
                 $changes = true;
             }
         }
         if (!$changes) {
-             return $array;
+            return $array;
         }
     }
-    
+
     return $array;
 }
-
 $array = [5, 25, 10, 7, 6, 20, 21, 1, 2, 13];
 print_r(bubbleSort($array));
-
 ```
-
-*Лучший: O(n),  Средний: O(n^2),  Худший: O(n^2)*
 
 ### Шейкерная сортировка / Shaker sort
 
@@ -44,44 +45,45 @@ print_r(bubbleSort($array));
 ```php
 <?php
 
-function shakerSort($array)
-	{
-	$length = count($array);
-	$begin = 0;
-	$end = $length - 1;
-	do {
-		$changes = false;
-		for ($j = $begin; $j < $end; $j++) {
-			if ($array[$j] > $array[$j + 1]) {
-				[$array[$j], $array[$j + 1]] = [$array[$j + 1], $array[$j]];
-				$changes = true;
-		    }
-		}
-		$end--;
+/**
+ * Worst O(n^2)
+ * Average O(n^2)
+ * Best O(n)
+ */ 
+function shakerSort($array) {
+    $length = count($array);
+    $begin = 0;
+    $end = $length - 1;
+    do {
+        $changes = false;
+        for ($j = $begin; $j < $end; $j++) {
+            if ($array[$j] > $array[$j + 1]) {
+                [$array[$j], $array[$j + 1]] = [$array[$j + 1], $array[$j]];
+                $changes = true;
+            }
+        }
+        $end--;
 
-		if (!$changes) {
-			return $array;
-		}
+        if (!$changes) {
+            return $array;
+        }
 
-		for ($k = $end; $k > $begin; $k--) {
-			if ($array[$k] < $array[$k - 1]) {
-				[$array[$k], $array[$k - 1]] = [$array[$k - 1], $array[$k]];
-				$changes = true;
-			}
-		}
-		
-		$begin++;
-	
-		} while ($changes);
-	    
-	    return $array;
-	}
+        for ($k = $end; $k > $begin; $k--) {
+            if ($array[$k] < $array[$k - 1]) {
+                [$array[$k], $array[$k - 1]] = [$array[$k - 1], $array[$k]];
+                $changes = true;
+            }
+        }
+
+        $begin++;
+    } while ($changes);
+
+    return $array;
+}
 
 $array = [5, 25, 10, 7, 6, 20, 21, 1, 2, 13];
 print_r(shakerSort($array));
 ```
-
-*Лучший: O(n),  Средний: O(n^2),  Худший: O(n^2)*
 
 ### Сортировка расческой / Comb sort
 
