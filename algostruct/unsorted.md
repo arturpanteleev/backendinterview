@@ -19,3 +19,33 @@
 2. Если ключ меньше значения середины, то поиск осуществляется в первой половине элементов, иначе — во второй.
 3. Поиск сводится к тому, что вновь определяется значение серединного элемента в выбранной половине и сравнивается с ключом.
 4. Процесс продолжается до тех пор, пока не будет найден элемент со значением ключа или не станет пустым интервал для поиска.
+
+```php
+<?php
+
+function binarySearch( array $arr, int $needle): ?int
+{
+    $min = 0;
+    $max = count($arr) - 1;
+
+    while ($min < $max) {
+        
+        $middleKey =  floor($min + ($max - $min) / 2);
+        $middleVal = $arr[$middleKey];
+
+        if ($needle < $middleVal) {
+            $max = $middleKey - 1;
+        } elseif ($needle > $middleVal) {
+            $min = $middleKey + 1;
+        } else {
+            return $middleKey;
+        }
+    }
+
+    return null;
+}
+
+$arr = [0,11,22,33,44,55,66,77,88,99];
+print_r(binarySearch($arr, 44));
+```
+
