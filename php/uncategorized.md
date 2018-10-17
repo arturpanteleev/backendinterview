@@ -162,3 +162,9 @@ SPL предоставляет ряд стандартных структур д
 - [SplObserver](http://php.net/manual/ru/class.splobserver.php)
 
 
+
+## declare(strict_types=1);
+
+By default, PHP will cast values of the wrong type into the expected scalar type if possible. For example, a function that is given an integer for a parameter that expects a string will get a variable of type string.
+
+В случае включенного строгого режима будут фаталы при несовпадении типов. Строгий режим действует ТОЛЬКО внутри того файла, где он был объявлен.
