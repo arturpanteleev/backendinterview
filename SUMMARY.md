@@ -26,6 +26,7 @@
       * [Типы данных](db/specific/mysql/dataTypes.md)
       * [Индексы](db/specific/mysql/indexes.md)
       * [Оптимизация запросов](db/specific/mysql/queryOptimization.md)
+      * [Основы SQL](db/specific/mysql/sql.md)
       * [Разное](db/specific/mysql/unsorted.md)
     * [NoSql](db/specific/noSql.md)
 * [PHP](php/README.md)
