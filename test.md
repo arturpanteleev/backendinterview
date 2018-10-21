@@ -61,6 +61,54 @@ PHP Unit - самый популярный фреймворк для модул�
 
 PHPUnit is based on the idea that developers should be able to find mistakes in their newly committed code quickly and assert that no [code regression](https://en.wikipedia.org/wiki/Regression_testing) has occurred in other parts of the code base. Much like other [unit testing](https://en.wikipedia.org/wiki/Unit_testing) frameworks, PHPUnit uses [assertions](https://en.wikipedia.org/wiki/XUnit#Assertions) to verify that the behavior of the specific component - or *"unit"* - being tested behaves as expected.
 
+**Data Provider**
+
+Метод, являющийся *data provider*-ом, должен возвращать массив массивов или объект, реализующий интерфейс `Iterator`. Метод, являющийся тестом, будет вызван несколько раз - с каждым массивом и в качестве аргументов будет передано содержимое массива.
+
+Некоторые ключевые моменты при использовании *data provider*-а:
+
+- Метод *data provider*-а должен быть публичным (`public`).
+- Метод *data provider*-а должен возвращать массив собранных данных.
+- Метод теста должен использовать аннотацию `@dataProvider` чтобы указать какой метод использовать в качестве *data provider*-а.
+
+**Mock vs Stub**
+
+The `createMock` method is used to create three mostly known test doubles. It's how you configure the object makes it a dummy, a stub, or a mock.
+
+You can also create test stubs with the mock builder (`getMockBuilder` returns the mock builder). It's just another way of doing the same thing that lets you to tweak some additional mock options with a fluent interface (see [the documentation](https://phpunit.de/manual/current/en/test-doubles.html#test-doubles.mock-objects) for more).
+
+Dummy is passed around, but never actually called, or if it's called it responds with a default answer (mostly `null`). It mainly exists to satisfy a list of arguments.
+
+```php
+$dummy = $this->createMock(SomeClass::class);
+
+// SUT - System Under Test
+$sut->action($dummy);
+```
+
+Stubs are used with query like methods - methods that return things, but it's not important if they're actually called.
+
+```php
+$stub = $this->createMock(SomeClass::class);
+$stub->method('getSomething')
+    ->willReturn('foo');
+
+$sut->action($stub);
+```
+
+Mocks are used with command like methods - it's important that they're called, and we don't care much about their return value (command methods don't usually return any value).
+
+```php
+$mock = $this->createMock(SomeClass::class);
+$mock->expects($this->once())
+    ->method('doSomething')
+    ->with('bar');
+
+$sut->action($mock);
+```
+
+Expectations will be verified automatically after your test method finished executing. In the example above, the test will fail if the method `doSomething` wasn't called on `SomeClass`, or it was called with arguments different to the ones you configured.
+
 
 ### Codeception
 
