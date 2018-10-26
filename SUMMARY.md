@@ -32,6 +32,7 @@
 * [PHP](php/README.md)
   * [Фичи новых версий](php/innovations.md)
   * [PHP Internals](php/internals.md)
+  * [Стандартные функции](php/functions.md) 
   * [Разное](php/uncategorized.md) 
 * [Информационная безопасность](ib.md)
 * [Git](git.md)
