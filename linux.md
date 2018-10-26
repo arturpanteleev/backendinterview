@@ -20,9 +20,7 @@ scp -r /path/from/destination username@hostname:/path/to/destination
 
 Ищем с каких среверов демон получает запросы
 
-## Команды
-
-## Управление файлами
+## Команды Управление файлами
 
 **ls**
 
