@@ -38,6 +38,7 @@
 * [Основы сетей](network/README.md)
   * [Взаимодействие приложения с веб-сервером](network/serverIteractions.md)
   * [HTTP](network/http.md)
+  * [DNS](network/dns.md)
   * [Сетевые модели](network/networkModels.md)
   * [realTime взаимодействие с сервером](network/realTime.md)
 * [Операционые системы](os.md)
