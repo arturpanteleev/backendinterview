@@ -16,36 +16,24 @@ SQL (structured query language — «язык структурированных
 
 ## Операторы
 
-Согласно общепринятому [стилю программирования](https://ru.wikipedia.org/wiki/%D0%A1%D1%82%D0%B8%D0%BB%D1%8C_%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F), операторы (и другие зарезервированные слова) в SQL обычно рекомендуется писать [прописными буквами](https://ru.wikipedia.org/wiki/%D0%97%D0%B0%D0%B3%D0%BB%D0%B0%D0%B2%D0%BD%D1%8B%D0%B5_%D0%B1%D1%83%D0%BA%D0%B2%D1%8B).[[7\]](https://ru.wikipedia.org/wiki/SQL#cite_note-7)
-
 Операторы SQL делятся на:
 
-- операторы определения данных (Definition Language, DDL):
-
-  - [CREATE](https://ru.wikipedia.org/wiki/Create_(SQL)) создаёт объект БД (саму базу, таблицу, [представление](https://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%B5%D0%B4%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5_(%D0%B1%D0%B0%D0%B7%D1%8B_%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85)), пользователя и т. д.),
-  - [ALTER](https://ru.wikipedia.org/w/index.php?title=Alter_(SQL)&action=edit&redlink=1) изменяет объект,
-  - [DROP](https://ru.wikipedia.org/w/index.php?title=Drop_(SQL)&action=edit&redlink=1) удаляет объект;
-
+- операторы определения данных (Data Definition Language, DDL):
+  - CREATE создаёт объект БД (саму базу, таблицу, представление, пользователя и т. д.),
+  - ALTER изменяет объект,
+  - DROP удаляет объект;
 - операторы манипуляции данными (Data Manipulation Language, DML):
-
-  - [SELECT](https://ru.wikipedia.org/wiki/Select_(SQL)) выбирает данные, удовлетворяющие заданным условиям,
-  - [INSERT](https://ru.wikipedia.org/wiki/Insert_(SQL)) добавляет новые данные,
-  - [UPDATE](https://ru.wikipedia.org/wiki/Update_(SQL)) изменяет существующие данные,
-  - [DELETE](https://ru.wikipedia.org/wiki/Delete_(SQL)) удаляет данные;
-
+  - SELECT выбирает данные, удовлетворяющие заданным условиям,
+  - INSERT добавляет новые данные,
+  - UPDATE изменяет существующие данные,
+  - DELETE удаляет данные;
 - операторы определения доступа к данным (Data Control Language, DCL):
-
-  - [GRANT](https://ru.wikipedia.org/w/index.php?title=Grant_(SQL)&action=edit&redlink=1) предоставляет пользователю (группе) разрешения на определённые операции с объектом,
-  - [REVOKE](https://ru.wikipedia.org/w/index.php?title=Revoke_(SQL)&action=edit&redlink=1) отзывает ранее выданные разрешения,
-  - [DENY](https://ru.wikipedia.org/w/index.php?title=Deny_(SQL)&action=edit&redlink=1) задаёт запрет, имеющий приоритет над разрешением;
-
-- операторы управления транзакциями (Transaction Control Language, TCL):
-
-  - [COMMIT](https://ru.wikipedia.org/wiki/Commit_(SQL)) применяет транзакцию,
-  - [ROLLBACK](https://ru.wikipedia.org/wiki/Rollback_(SQL)) откатывает все изменения, сделанные в контексте текущей транзакции,
-  - [SAVEPOINT](https://ru.wikipedia.org/wiki/Savepoint_(SQL)) делит транзакцию на более мелкие участки.
-
-
-## Joins
+  - GRANT предоставляет пользователю (группе) разрешения на определённые операции с объектом,
+  - REVOKE отзывает ранее выданные разрешения,
+  - DENY задаёт запрет, имеющий приоритет над разрешением;
+  - операторы управления транзакциями (Transaction Control Language, TCL):
+  - COMMIT применяет транзакцию,
+  - ROLLBACK откатывает все изменения, сделанные в контексте текущей транзакции,
+  - SAVEPOINT делит транзакцию на более мелкие участки.
 
 ![](../../../media/joins.png)
