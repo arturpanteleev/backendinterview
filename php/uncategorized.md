@@ -67,9 +67,8 @@ $example();
 
 ### composer.json vs composer.lock
 
-`composer.json` - содержит допустимые "диапазоны" версий для пакетов
-
-`composer.lock` - точные версии установленных пакетов, с которыми работает данная версия приложения
+- `composer.json` - содержит допустимые "диапазоны" версий для пакетов
+- `composer.lock` - точные версии установленных пакетов, с которыми работает данная версия(коммит) приложения. Так же в отличии от `composer.json` в `lock` файл пишутся ВСЕ зависимости которые нужны проекту - например вы зависите от пакета Б а он зависит от пакета В определенной версии. Пакет В в этом случае попадет в ваш lock файл, и так до конца цепочки зависимостей.
 
 ### install vs update vs require
 
@@ -92,8 +91,30 @@ For example if we want to add a dependency with the command line we will simply 
 
 - composer.json file will be modified automatically and the new dependency will be added
 - the dependency will be downloaded to the project
+- http://php.net/manual/ru/class.splsubject.php
 
-- http://php.net/manual/ru/class.splsubject.php)
+### Варианты ограничений версий для composer.json
+
+```json
+"require": {
+    "vendor/package": "1.3.2", // exactly 1.3.2
+
+    // >, <, >=, <= | specify upper / lower bounds
+    "vendor/package": ">=1.3.2", // anything above or equal to 1.3.2
+    "vendor/package": "<1.3.2", // anything below 1.3.2
+
+    // * | wildcard
+    "vendor/package": "1.3.*", // >=1.3.0 <1.4.0
+
+    // ~ | allows last digit specified to go up
+    "vendor/package": "~1.3.2", // >=1.3.2 <1.4.0
+    "vendor/package": "~1.3", // >=1.3.0 <2.0.0
+
+    // ^ | doesn't allow breaking changes (major version fixed - following semver)
+    "vendor/package": "^1.3.2", // >=1.3.2 <2.0.0
+    "vendor/package": "^0.3.2", // >=0.3.2 <0.4.0 // except if major version is 0
+}
+```
 
 ## Self vs  Static
 
