@@ -54,6 +54,15 @@ $example = function () use ($message) {
 $example();
 ```
 
+### Как передать функцию как callable?
+
+- Анонимная функция
+- Имя функции как строку
+- Переменную, содержащую функцию
+- Массив вида `[(className || objectName), method name]`
+- Замыкание в котором дернуть метод объекта
+- Объект с реализованным методом `__invoke()`
+
 ## Composer
 
 ### composer.json vs composer.lock
