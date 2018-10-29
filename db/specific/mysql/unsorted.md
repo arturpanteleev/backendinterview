@@ -191,6 +191,10 @@ TIMESTAMP хранит значение равное количеству сек
 DATETIME 8 байт
 TIMESTAMP4 байта
 
+## Является ли триггер частью транзакции?
+
+For transactional tables, failure of a statement should cause rollback of all changes performed by the statement. Failure of a trigger causes the statement to fail, so trigger failure also causes rollback. For nontransactional tables, such rollback cannot be done, so although the statement fails, any changes performed prior to the point of the error remain in effect.
+
 
 ## Полезные ресурсы:
 * https://ruhighload.com/%D0%92%D1%8B%D0%B1%D0%BE%D1%80+%D1%82%D0%B8%D0%BF%D0%BE%D0%B2+%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85+%D0%B2+mysql
