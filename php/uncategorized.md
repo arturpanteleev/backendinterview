@@ -297,3 +297,40 @@ received signal 15
 Для фоновых скриптов удобно использовать обработчики сигналов, чтобы обеспечить их правильную остановку и перезапуск. Сигналы SIGTERM и SIGNINT используются для прекращения работы скрипта, SIGHUP используется для перезапуска. В PHP обработка сигналов происходит с помощью функции [pcntl_signal](https://ruhighload.com/doc/php/function.pcntl-signal).
 
 Функция **pcntl_fork()** создает дочерний процесс, который отличается от родительского процесса только его PID и PPID. Пожалуйста обратитесь к вашему системному руководству (man) fork(2) для ознакомления со спецификой работы fork на вашей системе. В случае успеха, PID дочернего процесса будет возвращен в родительском потоке (thread) запуска и 0 будет возвращен в дочернем потоке запуска. В случае сбоя, в родительский контекст будет возвращено -1, дочерний процесс создан не будет и PHP сгенерирует соответствующую ошибку.
+
+## Получить тело HTTP запроса в PHP
+
+To access the entity body of a POST or PUT request (or any other HTTP method):
+
+```php
+$entityBody = file_get_contents('php://input');
+```
+
+Also, the `STDIN` constant is an already-open stream to `php://input`, so you can alternatively do:
+
+```php
+$entityBody = stream_get_contents(STDIN);
+```
+
+From the [PHP manual entry on I/O streams*docs*](http://php.net/manual/en/wrappers.php.php):
+
+> *php://input* is a read-only stream that allows you to read raw data from the request body. In the case of POST requests, it is preferable to use *php://input* instead of `$HTTP_RAW_POST_DATA` as it does not depend on special php.ini directives. Moreover, for those cases where`$HTTP_RAW_POST_DATA` is not populated by default, it is a potentially less memory intensive alternative to activating always_populate_raw_post_data. *php://input* is not available with enctype="multipart/form-data".
+
+Specifically you'll want to note that the `php://input` stream, regardless of how you access it in a web SAPI, *is not seekable*. This means that it can only be read once. If you're working in an environment where large HTTP entity bodies are routinely uploaded you may wish to maintain the input in its stream form (rather than buffering it like the first example above).
+
+To maintain the stream resource something like this can be helpful:
+
+```php
+<?php
+
+function detectRequestBody() {
+    $rawInput = fopen('php://input', 'r');
+    $tempStream = fopen('php://temp', 'r+');
+    stream_copy_to_stream($rawInput, $tempStream);
+    rewind($tempStream);
+
+    return $tempStream;
+}
+```
+
+`php://temp` allows you to manage memory consumption because it will transparently switch to filesystem storage after a certain amount of data is stored (2M by default). This size can be manipulated in the php.ini file or by appending `/maxmemory:NN`, where `NN` is the maximum amount of data to keep in memory before using a temporary file, in bytes.
