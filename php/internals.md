@@ -165,11 +165,3 @@ https://romka.gitbooks.io/php-internals-book-ru/
 [Обзор расширения OPCache для PHP](https://habr.com/company/mailru/blog/310054/)
 
 [Трамплин вызова магических функций в PHP 7](https://habr.com/company/mailru/blog/311068/)
-
-
-
-https://habr.com/company/mailru/blog/318008/
-
-
-
-https://habr.com/company/mailru/blog/308240/
