@@ -27,6 +27,7 @@
       * [Индексы](db/specific/mysql/indexes.md)
       * [Оптимизация запросов](db/specific/mysql/queryOptimization.md)
       * [Основы SQL](db/specific/mysql/sql.md)
+      * [Explain](db/specific/mysql/explain.md)
       * [Разное](db/specific/mysql/unsorted.md)
     * [NoSql](db/specific/noSql.md)
 * [PHP](php/README.md)
