@@ -159,6 +159,36 @@ TIMESTAMP4 байта
 
 For transactional tables, failure of a statement should cause rollback of all changes performed by the statement. Failure of a trigger causes the statement to fail, so trigger failure also causes rollback. For nontransactional tables, such rollback cannot be done, so although the statement fails, any changes performed prior to the point of the error remain in effect.
 
+## NULL
+
+К `NULL`-значениям нужно привыкнуть. По идее, `NULL` обозначает отсутствующее или неизвестное значение и обрабатывается отличным от других значений образом. Проверить значение на равенство `NULL` с помощью обычных арифметических операторов сравнения (=, < или <>) нельзя. Это отлично иллюстрирует следующий запрос:
+
+```sql
+mysql> SELECT 1 = NULL, 1 <> NULL, 1 < NULL, 1 > NULL;
++----------+-----------+----------+----------+
+| 1 = NULL | 1 <> NULL | 1 < NULL | 1 > NULL |
++----------+-----------+----------+----------+
+|     NULL |      NULL |     NULL |     NULL |
++----------+-----------+----------+----------+
+```
+
+Очевидно, что от таких сравнений значащих результатов ожидать нечего. Вместо этого нужно пользоваться операторами `IS NULL` и `IS NOT NULL`:
+
+```sql
+mysql> SELECT 1 IS NULL, 1 IS NOT NULL;
++-----------+---------------+
+| 1 IS NULL | 1 IS NOT NULL |
++-----------+---------------+
+|         0 |             1 |
++-----------+---------------+
+```
+
+Отметим, что два значения `NULL` считаются равными при выполнении команды `GROUP BY`.
+
+В MySQL 0 или `NULL` приравнивается к логическому false, а все остальное - к true. По умолчанию значение "истина" для булевого оператора равно 1.
+
+При выполнении команды `ORDER BY` значения `NULL` всегда располагаются в самом начале списка результатов, даже при использовании параметра `DESC`.
+
 
 ## Полезные ресурсы:
 * https://ruhighload.com/%D0%92%D1%8B%D0%B1%D0%BE%D1%80+%D1%82%D0%B8%D0%BF%D0%BE%D0%B2+%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85+%D0%B2+mysql
