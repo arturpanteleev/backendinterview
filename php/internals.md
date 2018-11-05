@@ -48,6 +48,18 @@ typedef union _zvalue_value {
 
 ### Zval’ы в PHP 7
 
+In PHP 7 a zval can be reference counted or not. There is a flag in the zval structure which determined this.
+
+There are some types which are never refcounted. These types are null, bool, int and double.
+
+There are other types which are always refcounted. These are objects, resources and references.
+
+And then there are types, which are *sometimes* refcounted. Those are strings and arrays.
+
+For strings the not-refcounted variant is called an "interned string". If you're using an NTS (not thread-safe) PHP 7 build, which you typically are, all string literals in your code will be interned. These interned strings are deduplicated (i.e. there is only one interned string with a certain content) and are guaranteed to exist for the full duration of the request, so there is no need to use reference counting for them. If you use opcache, these strings will live in shared memory, in which case you *can't* use reference counting for them (as our refcounting mechanism is non-atomic). Interned strings have a dummy refcount of 1, which is what you're seeing here.
+
+For arrays the not-refcounted variant is called an "immutable array". If you use opcache, then constant array literals in your code will be converted into immutable arrays. Once again, these live in shared memory and as such must not use refcounting. Immutable arrays have a dummy refcount of 2, as it allows us to optimize certain separation paths.
+
 В седьмой версии языка мы получили новую реализацию zval. Одним из главных нововведений стало то, что zval больше не нужно отдельно размещать в куче. Также refcount теперь хранится не в самом zval, а в любом из комплексных значений, на которые он указывает — в строках, массивах или объектах. Это даёт следующие преимущества:
 
 - **Простые значения не требуют размещения в куче и не используют подсчёт ссылок. А хранятся или в стеке, или в составе комплексных структур.**
