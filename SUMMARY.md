@@ -44,6 +44,8 @@
   * [PHP Internals](php/internals.md)
   * [Стандартные функции](php/functions.md) 
   * [Разное](php/uncategorized.md) 
+* [Разное](unsorted/README.MD)
+  * [Другие языки программирования](languages.md)  
 * [Информационная безопасность](ib.md)
 * [Git](git.md)
 * [Основы сетей](network/README.md)
