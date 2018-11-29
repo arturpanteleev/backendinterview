@@ -148,8 +148,9 @@ BDD - behaviour-driven development - это разработка, основан
 
 *Дополнительно:*
 
-* https://dou.ua/forums/topic/13389/ - самый лучший
+* [Тестирование. Фундаментальная теория](https://dou.ua/forums/topic/13389/) - самый лучший
 * [PHPUnit Getting Started](https://phpunit.de/getting-started/phpunit-7.html) 
+* [Unit Testing Tutorial Part I: Introduction to PHPUnit](https://jtreminio.com/blog/unit-testing-tutorial-part-i-introduction-to-phpunit/)
 * [ProTesting](http://www.protesting.ru)
 * [PHPUnit для начинающих](https://phpprofi.ru/series/show/1)
 * https://codeception.com/05-06-2013/specification-testing-coparison.html
