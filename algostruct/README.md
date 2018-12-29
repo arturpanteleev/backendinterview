@@ -7,5 +7,5 @@
 - [Граф](graph.md)
 - [Хэш-Таблица](hashTable.md)
 - [Дерево](tree.md)
-- [Разные алгоритмы](algoBasics.md)
+- [Разные алгоритмы](unsorted.md)
 
