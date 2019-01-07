@@ -46,7 +46,7 @@
   * [Разное](php/uncategorized.md) 
 * [Разное](unsorted/README.md)
   * [Другие языки программирования](unsorted/languages.md)  
-  * [Побитовые операции](bits.md)
+  * [Побитовые операции](unsorted/bits.md)
 * [Информационная безопасность](ib.md)
 * [Git](git.md)
 * [Основы сетей](network/README.md)
