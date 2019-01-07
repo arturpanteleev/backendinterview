@@ -325,8 +325,6 @@ print_r(mergeSort($array));
 
 ***Дополнительно:***
 
-[Пузырьковая сортировка и все-все-все](https://habr.com/post/204600/)
-
-[Алгоритмы сортировки](http://algolist.manual.ru/sort/)
-
-https://m.habr.com/post/335920/
+- [Пузырьковая сортировка и все-все-все](https://habr.com/post/204600/)
+- [Алгоритмы сортировки](http://algolist.manual.ru/sort/)
+- https://m.habr.com/post/335920/
