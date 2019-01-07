@@ -10,6 +10,8 @@
 
 - Паттерны проектирования  - Эрик Фримен, Элизабет 
 - Шаблоны корпоративных приложений - Мартин Фаулер
+- Domain-Driven Design: Tackling Complexity in the Heart of Software 1st Edition - Eric Evans
+- Implementing Domain-Driven Design - Vaughn Vernon
 
 ## Устрйоства ПК и ОС
 
