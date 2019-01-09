@@ -2,7 +2,7 @@
 
 ## Zval
 
-Структура данных **zval**(Zend value) используется для представления любых значений PHP. Zval хранит некоторое значение и тип этого значения. Это необходимо потому что PHP — это язык с динамической типизацией и поэтому тип переменных известен только во время выполнения программы (run-time), а не во время компиляции (compile-time). Кроме того, тип переменной может быть изменен в течение жизни zval, то есть zval ранее хранимый как целое число (integer) позднее может содержать строку (string).
+Структура данных **zval**(Zend value) используется для представления любых значений PHP. Zval хранит в себе само значение и тип этого значения. Это необходимо потому что PHP — это язык с динамической типизацией и поэтому тип переменных известен только во время выполнения программы (run-time), а не во время компиляции (compile-time). Кроме того, тип переменной может быть изменен в течение жизни zval, то есть zval ранее хранимый как целое число (integer) позднее может содержать строку (string).
 
 Структура zval в PHP5 выглядит так:
 
@@ -313,28 +313,28 @@ struct _zend_object {
 
 
 
-***Дополнительно:***
+*Дополнительно:*
 
-http://www.phpinternalsbook.com/
+- http://www.phpinternalsbook.com/
 
-https://romka.gitbooks.io/php-internals-book-ru/
+- https://romka.gitbooks.io/php-internals-book-ru/
 
-[Как устроены переменные в PHP](https://habr.com/post/162713/)
+- [Как устроены переменные в PHP](https://habr.com/post/162713/)
 
-[Как устроены массивы в PHP](https://habr.com/post/162685/)
+- [Как устроены массивы в PHP](https://habr.com/post/162685/)
 
-[Внутреннее представление значений в PHP7 (часть 1)](https://habr.com/company/mailru/blog/257999/)
+- [Внутреннее представление значений в PHP7 (часть 1)](https://habr.com/company/mailru/blog/257999/)
 
-[Внутреннее представление значений в PHP 7 (часть 2)](https://habr.com/company/mailru/blog/261131/)
+- [Внутреннее представление значений в PHP 7 (часть 2)](https://habr.com/company/mailru/blog/261131/)
 
-[Массивы в РНР 7: хэш-таблицы](https://habr.com/company/mailru/blog/308240/)
+- [Массивы в РНР 7: хэш-таблицы](https://habr.com/company/mailru/blog/308240/)
 
-[Подробно об объектах и классах в PHP](https://habr.com/company/mailru/blog/255237/)
+- [Подробно об объектах и классах в PHP](https://habr.com/company/mailru/blog/255237/)
 
-[Объекты в PHP 7](https://habr.com/company/mailru/blog/275497/)
+- [Объекты в PHP 7](https://habr.com/company/mailru/blog/275497/)
 
-[Улучшение производительности PHP 7](https://habr.com/company/mailru/blog/318008/)
+- [Улучшение производительности PHP 7](https://habr.com/company/mailru/blog/318008/)
 
-[Обзор расширения OPCache для PHP](https://habr.com/company/mailru/blog/310054/)
+- [Обзор расширения OPCache для PHP](https://habr.com/company/mailru/blog/310054/)
 
-[Трамплин вызова магических функций в PHP 7](https://habr.com/company/mailru/blog/311068/)
+- [Трамплин вызова магических функций в PHP 7](https://habr.com/company/mailru/blog/311068/)
