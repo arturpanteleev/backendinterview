@@ -27,6 +27,21 @@ HTTP запрос состоит из трех основных частей, к
 
 **Тело сообщения**  — это сами данные, которые передаются в запросе.  Тело сообщения – это необязательный параметр и может отсутствовать. 
 
+```http
+POST /cgi-bin/process.cgi HTTP/1.1
+User-Agent: Mozilla/4.0 (compatible; MSIE5.01; Windows NT)
+Host: www.example.com
+Content-Type: application/x-www-form-urlencoded
+Content-Length: length
+Accept-Language: ru-ru
+Accept-Encoding: gzip, deflate
+Connection: Keep-Alive
+
+licenseID=string&content=string&/paramsXML=string
+```
+
+
+
 ## Структура HTTP ответа
 
 `HTTP/Версия Код состояния Пояснение`
