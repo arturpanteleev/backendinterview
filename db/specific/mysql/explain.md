@@ -67,14 +67,12 @@ EXPLAIN SELECT * FROM student ;
 
 Кроме того  появился json формат вывода EXPLAIN - он менее удобен для чтения, но чуть более информативен.
 
-
-
 *Дополнительно:*
 
-https://habr.com/post/211022/
+- https://habr.com/post/211022/
 
-http://www.mysql.ru/docs/man/EXPLAIN.html
+- http://www.mysql.ru/docs/man/EXPLAIN.html
 
-https://habr.com/post/31129/
+- https://habr.com/post/31129/
 
-https://devionity.com/ru/courses/mysql-pro/explain
+- https://devionity.com/ru/courses/mysql-pro/explain
