@@ -58,6 +58,7 @@
 * [Операционые системы](os.md)
 * [Системное администрирование](linux.md)
   * [Linux](sysadmin/README.md)
+  * [Виртуализация](sysadmin/virtualization.md)
 * [Тестирование](test.md)
 * [Методологии разработки](devmethods.md)
 * [Задачи](tasks.md)
