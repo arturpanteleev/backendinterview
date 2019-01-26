@@ -13,6 +13,7 @@
   * [Принципы хорошей архитектуры](architecture/principles.md)
   * [Архитектурные паттерны](architecture/architecturesPatterns.md)
   * [DDD](architecture/ddd.md)
+  * [Api и Микросервисы](architecture/api.md)
   * [Разное](architecture/uncategorized.md)
 * [Базы Данных](db/README.md)
   * [Теория Баз Данных](db/dBTheory/README.md)
