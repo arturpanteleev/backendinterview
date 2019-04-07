@@ -59,6 +59,7 @@
   * [DNS](network/dns.md)
   * [Сетевые модели](network/networkModels.md)
   * [realTime взаимодействие с сервером](network/realTime.md)
+  * [Что происходит при нажатии на g](network/whatHappenWhen.md)
 * [Операционые системы](os.md)
 * [Системное администрирование](sysadmin/README.md)
   * [Linux](sysadmin/linux.md)
