@@ -10,9 +10,9 @@
 
     
 
-- [Основы ООП](architecture/oopBase.md)
-- [Паттерны GoF(Банда 4)](architecture/gof.md)
-- [Принципы хорошей архитектуры](architecture/principles.md)
-- [Архитектурные паттерны](architecture/architecturesPatterns.md)
-- [DDD](architecture/ddd.md)
-- [Разное](architecture/uncategorized.md)
+- [Основы ООП](oopBase.md)
+- [Паттерны GoF(Банда 4)](gof.md)
+- [Принципы хорошей архитектуры](principles.md)
+- [Архитектурные паттерны](architecturesPatterns.md)
+- [DDD](ddd.md)
+- [Разное](uncategorized.md)
