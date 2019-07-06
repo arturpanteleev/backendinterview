@@ -68,6 +68,8 @@
   * [Docker](sysadmin/README.md)
     * [Теория виртуализации](sysadmin/docker/virtualization.md)
 * [Тестирование](test.md)
+* [Менеджмент и тимлидство](manage/README.MD)
+  * [Методологии разработки](manage/devmethods.md)
 * [Методологии разработки](devmethods.md)
 * [Задачи](tasks.md)
 * [Книжки](books.md)
