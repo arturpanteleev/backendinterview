@@ -63,12 +63,10 @@
 * [Операционые системы](os.md)
 * [Системное администрирование](sysadmin/README.md)
   * [Linux](sysadmin/linux.md)
-  * [Docker](sysadmin/README.md)
+  * [Docker](sysadmin/docker/README.md)
     * [Теория виртуализации](sysadmin/docker/virtualization.md)
 * [Тестирование](test.md)
 * [Менеджмент и тимлидство](manage/README.md)
-
   * [Методологии разработки](manage/devmethods.md)
-
-  [Задачи](tasks.md)
+* [Задачи](tasks.md)
 * [Книжки](books.md)
