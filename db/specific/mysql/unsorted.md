@@ -196,7 +196,9 @@ mysql> SELECT 1 IS NULL, 1 IS NOT NULL;
 При выполнении команды `ORDER BY` значения `NULL` всегда располагаются в самом начале списка результатов, даже при использовании параметра `DESC`.
 
 
-## Полезные ресурсы:
+
+***Дополнительно:***
+
 * https://ruhighload.com/%D0%92%D1%8B%D0%B1%D0%BE%D1%80+%D1%82%D0%B8%D0%BF%D0%BE%D0%B2+%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85+%D0%B2+mysql
 * https://itif.ru/otlichiya-myisam-innodb/
 * https://valera.ws/2009.09.17~time-formats-in-mysql/
