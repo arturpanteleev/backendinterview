@@ -1,7 +1,3 @@
-.book-summary {
-    width: 310px;
-}
-
 .book .book-summary ul.summary li a, .book .book-summary ul.summary li span {
     padding: 2px 5px;
     font-size: 0.85em;
