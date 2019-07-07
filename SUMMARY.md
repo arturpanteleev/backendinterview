@@ -54,7 +54,7 @@
 * [Информационная безопасность](ib.md)
 * [Git](git.md)
 * [Основы сетей](network/README.md)
-  * [Взаимодействие приложения с веб-сервером](network/serverIteractions.md)
+  * [Взаимодействие с веб-сервером](network/serverIteractions.md)
   * [HTTP](network/http.md)
   * [DNS](network/dns.md)
   * [Сетевые модели](network/networkModels.md)
