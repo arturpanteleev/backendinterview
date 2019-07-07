@@ -45,6 +45,7 @@ https://solace.com/blog/products-tech/experience-awesomeness-event-driven-micros
 
 ***Дополнительно:***
 
+-  [Просто о микросервисах](https://habr.com/ru/company/raiffeisenbank/blog/346380/)
 - [Смерть микросервисного безумия в 2018 году](https://habr.com/ru/company/flant/blog/347518/)
 - [Переход от монолита к микросервисам: история и практика](https://habr.com/ru/company/raiffeisenbank/blog/458404/)
 - [Микросервисы — за и против](http://devopsru.com/news/2016-05-10-microservice-trade-offs.html)
