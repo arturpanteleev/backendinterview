@@ -45,7 +45,7 @@
   * [Стандартные функции](php/functions.md) 
   * [Фреймворки](php/frameworks/README.md) 
     * [Laravel](php/frameworks/laravel.md) 
-    * [Фреймворки](php/frameworks/symfony.md) 
+    * [Symfony](php/frameworks/symfony.md) 
   * [Разное](php/uncategorized.md) 
 * [GoLang](goLang//README.md)
 * [Разное](unsorted/README.md)
