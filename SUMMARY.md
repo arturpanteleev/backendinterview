@@ -69,4 +69,5 @@
 * [Менеджмент и тимлидство](manage/README.md)
   * [Методологии разработки](manage/devmethods.md)
 * [Задачи](tasks.md)
+* [ЧекЛист](checkList.md)
 * [Книжки](books.md)
