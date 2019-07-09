@@ -151,9 +151,11 @@
   * Побитовые операции
 
 * Информационная безопасность
+  * SQL injection
+  * XSS
+  * CSRF
 
 * Git
-
   * Rebase vs Merge
   * Checkout vs reset vs revert
 
@@ -173,7 +175,7 @@
     * Load Average
   * Docker
     * Теория виртуализации
-
+* Тестирование
   * Юнит тесты
   * Интеграционные тесты
   * Приемочные тесты
@@ -186,5 +188,3 @@
     * Scrum
     * Kanban
     * Scrumban
-
-
