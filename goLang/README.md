@@ -86,7 +86,7 @@ Go пытается взять лучшее из обоих миров с пом
 
 Допустим, у нас есть следующий код:
 
-```
+```go
 package main
 
 func main() {
@@ -114,7 +114,7 @@ Go не выделяет буфер для синхронных каналов, 
 
 Рассмотрим следующий пример:
 
-```
+```go
 package main
 
 func main() {
@@ -149,18 +149,18 @@ func main() {
 
 Но постойте, Go же ещё поддерживает select с дефолтным поведением, и если канал заблокирован, как горутина сможет обработать default? Хороший вопрос, давайте быстро посмотрим на приватное API каналов. Когда вы запускаете следующий кусок кода:
 
-```
-    select {
+```go
+select {
     case <-ch:
-        foo()
+    foo()
     default:
-        bar()
-    }
+    bar()
+}
 ```
 
 Go запускает функцию со следующей сигнатурой:
 
-```
+```go
 func chanrecv(t *chantype, c *hchan, ep unsafe.Pointer, block bool)
 ```
 
@@ -174,6 +174,8 @@ func chanrecv(t *chantype, c *hchan, ep unsafe.Pointer, block bool)
 
 Закрытие канала это простая операция. Go проходит по всем ожидающим на чтение или запись горутинам и разблокирует их. Все получатели получают дефолтные значение переменных того типа данных канала, а все отправители паникуют.
 
+
+
 ## *Дополнительно:*
 
 - [Исходный код](https://golang.org/src/runtime/chan.go)
@@ -181,3 +183,9 @@ func chanrecv(t *chantype, c *hchan, ep unsafe.Pointer, block bool)
 - [Каналы Go на стероидах](https://docs.google.com/document/d/1yIAYmbvL3JxOKOjuCyon7JhW4cSv1wy5hC0ApeGMV9s/pub)
 - [Планировщик Go](https://habr.com/ru/company/ua-hosting/blog/269271/)
 - [Work-stealing планировщик в Go](https://habr.com/ru/post/333654/)
+- [Как не наступать на грабли в Go](https://habr.com/ru/post/325468)
+- [Go Traps](https://go-traps.appspot.com/)
+- [Хэш таблицы в Go. Детали реализации](https://habr.com/ru/post/457728)
+- [Algorithms to Go](https://yourbasic.org/)
+- [Практичный Go: советы по написанию поддерживаемых программ в реальном мире](https://habr.com/ru/post/441842/)
+- [50 оттенков Go: ловушки, подводные камни и распространённые ошибки новичков](https://habr.com/ru/company/mailru/blog/314804/)
