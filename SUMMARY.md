@@ -55,7 +55,7 @@
   * [Другие языки программирования](unsorted/languages.md)
   * [Побитовые операции](unsorted/bits.md)
   * [Типизация](unsorted/bits.md)
-  * [[Юникод](unsorted/bits.md)
+  * [Юникод](unsorted/unicode.md)
 * [Информационная безопасность](ib.md)
 * [Git](git.md)
 * [Основы сетей](network/README.md)
