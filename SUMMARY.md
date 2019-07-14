@@ -48,7 +48,7 @@
   * [Разное](php/uncategorized.md) 
 * [GoLang](goLang//README.md)
   * [Типы данных](goLang/types.md)
-  * [Сoncurrency.md](goLang/concurrency.md.md)
+  * [Сoncurrency](goLang/concurrency/README.md)
   * [Планировщик](goLang/scheduler.md)
   * [Экосистема](goLang/types.md)
 * [Разное](unsorted/README.md)
