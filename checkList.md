@@ -151,6 +151,18 @@
 
 ## GoLang
 
+- shceduler
+  - 3 сущности - горутина, поток, контекст привязанный к потоку
+  - m : n (m задач на n потоках)
+  - work stealing
+- указатели(передача по ссылке/значению)
+- arrays & sliices
+- channels(небуферизированные/буферизированные) неблокирующее чтение
+- sync(mutex(r/w), atomic, once, pool, map)
+- рефлексия
+- unsafe
+- Error(), panic, deffer, recover
+
 ## Информационная безопасность
 
 * SQL injection
