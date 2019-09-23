@@ -57,7 +57,6 @@
   * [Управление памятью](goLang/memory.md)
   * [Экосистема](goLang/ecosystem.md)
 * [Разное](unsorted/README.md)
-  * [Другие языки программирования](unsorted/languages.md)
   * [Побитовые операции](unsorted/bits.md)
   * [Типизация](unsorted/bits.md)
   * [Юникод](unsorted/unicode.md)

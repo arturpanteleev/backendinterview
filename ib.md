@@ -75,29 +75,14 @@ SQL-инъекция — это атака, направленная на веб
 - [CSRF-уязвимости все еще актуальны](https://habr.com/company/oleg-bunin/blog/412855/)
 - [Методы защиты от CSRF-атаки](https://habr.com/post/318748/)
 
-## Расширенный список атак
-* sql injection
-* cross-site scripting
-* command execution
-* clickjacking
-* cross-site request forgery
-* directory traversal
-* reflected xss
-* dom-based xss
-* file upload vulnerabilities
-* broken access control
-* open redirects
-* unencrypted communication
-* user enumeration
-* information leakage
-* password mismanagement
-* privilege escalation
-* session fixation
-* weak session ids
-* xml bombs
-* xml external entities
-* denial of service attacks
-* email spoofing
-* malvertising
-* lax security settings
-* toxic dependencies
+## OWSAP
+1. Инъекции, они же “Внедрение кода”.
+2. Некорректная аутентификация
+3. Раскрытие чувствительной информации
+4. Внедрение внешних XML-сущностей (XXE)
+5. Нарушенный контроль доступа
+6. Security Misconfiguration – Ошибки в конфигурировании
+7. Межсайтовый скриптинг (XSS)
+8. Небезопасная десериализация
+9. Использование компонентов с известными уязвимостями
+10. Недостаточное логирование и мониторинг
