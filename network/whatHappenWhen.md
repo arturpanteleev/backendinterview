@@ -1,160 +1,97 @@
 ## What happens when...
 
-This repository is an attempt to answer the age old interview question "What happens when you type google.com into your browser's address box and press enter?"
+## 1. Нажата клавиша «g»
 
-Except instead of the usual story, we're going to try to answer this question in as much detail as possible. No skipping out on anything.
+Далее в статье содержится информация о работе физической клавиатуры и прерывания операционной системы. Но много чего происходит и помимо этого — когда вы нажимаете клавишу «g», браузер получает событие и запускается механизм автоподстановки. В зависимости от алгоритма браузера и его режима (включена ли функция «инкогнито») в выпадающем окне под строкой URL пользователю будет предложено определённое количество вариантов для автоподстановки.
 
-This is a collaborative process, so dig in and try to help out! There are tons of details missing, just waiting for you to add them! So send us a pull request, please!
+Большинство алгоритмов автоподстановки ранжируют рекомендации в зависимости от истории поиска и оставленных закладках. Некоторые браузеры (например, Rockmelt) даже предлагают профили друзей на Facebook. Когда пользователь планирует напечатать в адресной строке «google.com», ничего из вышеперечисленного не играет роли, но тем не менее выполнится большое количество кода, а рекомендации будут обновляться с каждой новой напечатанной буквой. Возможно, браузер предложит перейти на google.com, до того, как пользователь вобьёт адрес целиком.  
 
-This is all licensed under the terms of the [Creative Commons Zero](https://creativecommons.org/publicdomain/zero/1.0/) license.
+## 2. Клавиша «enter» нажата до конца
 
-Read this in [简体中文](https://github.com/skyline75489/what-happens-when-zh_CN) (simplified Chinese), [日本語](https://github.com/tettttsuo/what-happens-when-JA) (Japanese) and [한국어](https://github.com/SantonyChoi/what-happens-when-KR) (Korean). NOTE: these have not been reviewed by the alex/what-happens-when maintainers.
+В качестве некой нулевой точки можно выбрать момент, когда клавиша Enter на клавиатуре нажата до конца и находится в нижнем положении. В этой точке замыкается электрическая цепь этой клавиши и небольшое количество тока отправляется по электросхеме клавиатуры, которая сканирует состояние каждого переключателя клавиши и конвертирует сигнал в целочисленный код клавиши (в данном случае — 13). Затем контроллер клавиатуры конвертирует код клавиши для передачи его компьютеру. Как правило, сейчас передача происходит через USB или Bluetooth, а раньше клавиатура подключалась к компьютеру с помощью коннекторов PS/2 или ADB.
 
-## Table of Contents
+*В случае USB-клавиатуры:*
 
-- The "g" key is pressed
-- The "enter" key bottoms out
-- Interrupt fires [NOT for USB keyboards]
-- (On Windows) A WM_KEYDOWN message is sent to the app
-- (On OS X) A KeyDown NSEvent is sent to the app
-- (On GNU/Linux) the Xorg server listens for keycodes
-- Parse URL
-- Is it a URL or a search term?
-- Convert non-ASCII Unicode characters in hostname
-- Check HSTS list
-- DNS lookup
-- ARP process
-- Opening of a socket
-- TLS handshake
-- HTTP protocol
-- HTTP Server Request Handle
-- Behind the scenes of the Browser
-- Browser
-- HTML parsing
-- CSS interpretation
-- Page Rendering
-- GPU Rendering
-- Window Server
-- Post-rendering and user-induced execution
+- Для работы USB-контуру клавиатуры требуется 5 вольт питания, которые поступают через USB-контроллер на компьютере.
+- Сгенерированный код клавиши хранится в регистре внутренней памяти клавиатуры, который называется «конечной точкой» (endpoint).
+- USB-контроллер компьютера опрашивает эту конечную точку каждые 10 микросекунд и получает хранящийся там код клавиши.
+- Затем это значение поступает в USB SIE (Serial Interface Engine) для конвертации в один или более USB-пакетов, которые формируются по низкоуровневому протоколу USB.
+- Эти пакеты затем пересылаются с помощью различных электрических сигналов через D+ и D- контакты с максимальной скоростью 1,5 Мб/сек — поскольку HID-устройства (Human Interface Device) всегда были «низкоскоростными».
+- Этот последовательный сигнал далее декодируется в USB-контроллере компьютера и интерпретируется универсальным драйвером HID-устройства (клавиатуры). Затем значение кода клавиши передаётся на «железный» уровень абстракции операционной системы.
 
+*В случае виртуальной клавиатуры (тачскрин):*
 
+- Когда пользователь прикладывает палец к современному ёмкостному тач-экрану, небольшое количество тока передаётся к пальцу. Это замыкает цепь через электростатическое поле проводящего слоя и создаёт падение напряжения в этой точке экрана. Экранный контроллер затем инициирует прерывание, сообщающее координату «клика».
+- Затем мобильная ОС оповещает текущее открытое приложение о событии клика в одном из GUI-элементов (в этом случае — кнопках виртуальной клавиатуры).
+- Виртуальная клавиатура вызывает программное прерывание для отправки сообщения «клавиша нажата» обратно в ОС.
+- Это прерывание оповещает текущее открытое приложение о возникновении события «нажатия клавиши».
 
-### The "g" key is pressed
+#### 2.1 Возникло прерывание [не для USB-клавиатур]
 
-The following sections explain the physical keyboard actions and the OS interrupts. When you press the key "g" the browser receives the event and the auto-complete functions kick in. Depending on your browser's algorithm and if you are in private/incognito mode or not various suggestions will be presented to you in the dropbox below the URL bar. Most of these algorithms sort and prioritize results based on search history, bookmarks, cookies, and popular searches from the internet as a whole. As you are typing "google.com" many blocks of code run and the suggestions will be refined with each key press. It may even suggest "google.com" before you finish typing it.
 
+Клавиатура отправляет сигналы в свою «линию запросов прерываний» (IRQ), которая затем сопоставляется с «вектором прерывания» (целое число) контроллером прерываний. Процессор использует «таблицу дескрипторов прерываний» (IDT) для сопоставления векторов прерываний с функциями («обработчики прерываний») ядра. Когда появляется прерывание, процессор (CPU) обновляет IDT вектором прерывания и запускает соответствующий обработчик. Таким образом, в дело вступает ядро.
 
+#### 2.2 (На Windows) Сообщение `WM_KEYDOWN` отправлено приложению
 
-### The "enter" key bottoms out
+HID передаёт событие нажатой клавиши драйверу `KBDHID.sys`, который конвертирует его в [скан-код](https://ru.wikipedia.org/wiki/Скан-код) (scancode). В данном конкретном случае скан-код — `VK_RETURN` (`0x0D`). Драйвер `KDBHID.sys` связывается с драйвером `KBDCLASS.sys` (драйвер классов клавиатуры). Он отвечает за безопасную обработку всего ввода с клавиатуры. В дальнейшем этот драйвер вызывает `Win32K.sys` (после возможной передачи сообщения через установленные сторонние клавиатурные фильтры). Все это происходит в режиме ядра.
 
-To pick a zero point, let's choose the Enter key on the keyboard hitting the bottom of its range. At this point, an electrical circuit specific to the enter key is closed (either directly or capacitively). This allows a small amount of current to flow into the logic circuitry of the keyboard, which scans the state of each key switch, debounces the electrical noise of the rapid intermittent closure of the switch, and converts it to a keycode integer, in this case 13. The keyboard controller then encodes the keycode for transport to the computer. This is now almost universally over a Universal Serial Bus (USB) or Bluetooth connection, but historically has been over PS/2 or ADB connections.
+Win32K.sys определяет, какое окно активно в данный момент, с помощью функции `GetForegroundWindow()`. Этот API обеспечивает обработку окна адресной строки в браузере. Затем главный «насос сообщений» Windows вызывает `SendMessage(hWnd, WM_KEYDOWN, VK_RETURN, lParam)`. `lParam` — это битовая маска, которая указывает на дальнейшую информацию о нажатии клавиши: счётчик повторов (в этом случае 0), актуальный скан-код (может зависеть от OEM, но `VK_RETURN` обычно не зависит от этого), информацию о том, были ли нажаты дополнительные клавиши (например, Alt, Shift, Ctrl — в нашем случае не были) и некоторые другие данные.
 
-*In the case of the USB keyboard:*
+В API Windows есть функция `SendMessage`, которая помещает сообщение в очередь для конкретного обработчика окон (`hWnd`). После этого для обработки всех сообщений очереди вызывается главная функция обработки сообщений (`WindowProc`), присвоенная обработчику `hWnd`.
 
-- The USB circuitry of the keyboard is powered by the 5V supply provided over pin 1 from the computer's USB host controller.
-- The keycode generated is stored by internal keyboard circuitry memory in a register called "endpoint".
-- The host USB controller polls that "endpoint" every ~10ms (minimum value declared by the keyboard), so it gets the keycode value stored on it.
-- This value goes to the USB SIE (Serial Interface Engine) to be converted in one or more USB packets that follow the low level USB protocol.
-- Those packets are sent by a differential electrical signal over D+ and D- pins (the middle 2) at a maximum speed of 1.5 Mb/s, as an HID (Human Interface Device) device is always declared to be a "low speed device" (USB 2.0 compliance).
-- This serial signal is then decoded at the computer's host USB controller, and interpreted by the computer's Human Interface Device (HID) universal keyboard device driver. The value of the key is then passed into the operating system's hardware abstraction layer.
+Окно (`hWnd`), активное в данный момент, представляет из себя контрол обработки и в этом случае у WindowsProc есть обработчик для сообщений `WM_KEYDOWN`. Этот код изучает третий параметр, который поступил в `SendMessage (wParam)` и, поскольку это `VK_RETURN`, понимает, что пользователь нажал клавишу ENTER.  
 
-*In the case of Virtual Keyboard (as in touch screen devices):*
+#### 2.3 (В OS X) Событие `NSEVent KeyDown` отправлено приложению
 
-- When the user puts their finger on a modern capacitive touch screen, a tiny amount of current gets transferred to the finger. This completes the circuit through the electrostatic field of the conductive layer and creates a voltage drop at that point on the screen. The `screen controller` then raises an interrupt reporting the coordinate of the key press.
-- Then the mobile OS notifies the current focused application of a press event in one of its GUI elements (which now is the virtual keyboard application buttons).
-- The virtual keyboard can now raise a software interrupt for sending a 'key pressed' message back to the OS.
-- This interrupt notifies the current focused application of a 'key pressed' event.
+Сигнал прерывания активирует событие прерывания в драйвере I/O Kit клавиатуры. Драйвер переводит сигнал в код клавиатуры, который затем передаётся процессу OS X под названием . В результате,  передаёт событие любому подходящему (активному или «слушающему») приложению через Mach-порт, в котором событие помещается в очередь. Затем события могут быть прочитаны из этой очереди потоками с достаточными привилегиями, чтобы вызывать функцию . Чаще всего это происходит и обрабатывается с помощью основного цикла  через  через `NSEvent` в `NSEventype KeyDown`.
 
+#### 2.4 (В GNU/Linux) Сервер Xorg слушает клавиатурные коды
 
+В случае графического X server, для получения нажатия клавиши будет использован общий драйвер событий . Переназначение клавиатурных кодов скан-кодам осуществляется с помощью специальных правил и карт X Server. Когда  скан-кода нажатой клавиши завершён, X server посылает символ в window manager (DWM, metacity, i3), который затем отправляет его в активное окно. Графический API окна, получившего символ, печатает соответствующий символ шрифта в нужном поле.
 
-### Interrupt fires [NOT for USB keyboards]
+## 3. Парсинг URL
 
-The keyboard sends signals on its interrupt request line (IRQ), which is mapped to an `interrupt vector` (integer) by the interrupt controller. The CPU uses the `Interrupt Descriptor Table` (IDT) to map the interrupt vectors to functions (`interrupt handlers`) which are supplied by the kernel. When an interrupt arrives, the CPU indexes the IDT with the interrupt vector and runs the appropriate handler. Thus, the kernel is entered.
+Теперь у браузера есть следующая информация об URL:
 
+```
+Protocol «HTTP» - Использовать «Hyper Text Transfer Protocol»
+Resource «/» - Показать главную (индексную) страницу
+```
 
+#### 3.1 Это URL или поисковый запрос?
 
-### (On Windows) A `WM_KEYDOWN` message is sent to the app
+Когда пользователь не вводит протокол или доменное имя, то браузер «скармливает» то, что человек напечатал, поисковой машине, установленной по умолчанию. Часто к URL добавляется специальный текст, который позволяет поисковой машине понять, что информация передана из URL-строки определённого браузера.
 
-The HID transport passes the key down event to the `KBDHID.sys` driver which converts the HID usage into a scancode. In this case the scan code is `VK_RETURN` (`0x0D`). The `KBDHID.sys` driver interfaces with the `KBDCLASS.sys` (keyboard class driver). This driver is responsible for handling all keyboard and keypad input in a secure manner. It then calls into `Win32K.sys` (after potentially passing the message through 3rd party keyboard filters that are installed). This all happens in kernel mode.
+#### 3.2 Список проверки HSTS
 
-`Win32K.sys` figures out what window is the active window through the `GetForegroundWindow()` API. This API provides the window handle of the browser's address box. The main Windows "message pump" then calls `SendMessage(hWnd, WM_KEYDOWN, VK_RETURN, lParam)`. `lParam` is a bitmask that indicates further information about the keypress: repeat count (0 in this case), the actual scan code (can be OEM dependent, but generally wouldn't be for `VK_RETURN`), whether extended keys (e.g. alt, shift, ctrl) were also pressed (they weren't), and some other state.
+- Браузер проверяет список «предзагруженных HSTS (HTTP Strict Transport Security)». Это список сайтов, которые требуют, чтобы к ним обращались только по HTTPS.
+- Если нужный сайт есть в этом списке, то браузер отправляет ему запрос через HTTPS вместо HTTP. В противном случае, начальный запрос посылается по HTTP. (При этом сайт может использовать политику HSTS, но не находиться в списке HSTS — в таком случае на первый запрос по HTTP будет отправлен ответ о том, что необходимо отправлять запросы по HTTPS. Однако это может сделать пользователя уязвимым к [downgrade-атакам](https://en.wikipedia.org/wiki/Moxie_Marlinspike#Notable_research) — чтобы этого избежать, в браузеры и включают список HSTS).
 
-The Windows `SendMessage` API is a straightforward function that adds the message to a queue for the particular window handle (`hWnd`). Later, the main message processing function (called a `WindowProc`) assigned to the `hWnd` is called in order to process each message in the queue.
+#### 3.3 Конвертация не-ASCII Unicode символов в название хоста
 
-The window (`hWnd`) that is active is actually an edit control and the `WindowProc` in this case has a message handler for `WM_KEYDOWN` messages. This code looks within the 3rd parameter that was passed to `SendMessage` (`wParam`) and, because it is `VK_RETURN` knows the user has hit the ENTER key.
+- Браузер проверяет имя хоста на наличие символов, отличных от `a-z`, `A-Z`, `0-9`, `-`, или `.`.
+- В случае доменного имени google.com никаких проблем не будет, но если бы домен содержал не-ASCII символы, то браузер бы применил кодировку [Punycode](https://en.wikipedia.org/wiki/Punycode) для этой части URL.
 
+## 4. Определение DNS
 
+- Браузер проверяет наличие домена в своём кэше.
+- Если домена там нет, то браузер вызывает библиотечную функцию `gethostbyname` (отличается в разных ОС) для поиска нужного адреса.
+- Прежде, чем искать домен по DNS `gethostbyname` пытается найти нужный адрес в файле `hosts` (его расположение отличается в разных ОС).
+- Если домен нигде не закэширован и отсутствует в файле `hosts`, `gethostbyname` отправляет запрос к сетевому DNS-серверу. Как правило, это локальный роутер или DNS-сервер интернет-провайдера.
+- Если DNS-сервер находится в той же подсети, то [ARP-запрос](https://ru.wikipedia.org/wiki/ARP) отправляется этому серверу.
+- Если DNS-сервер находится в другой подсети, то ARP-запрос отправляется на IP-адрес шлюза по умолчанию (default gateway).
 
-### (On OS X) A `KeyDown` NSEvent is sent to the app
+#### 4.1 Процесс отправки ARP-запроса
 
-The interrupt signal triggers an interrupt event in the I/O Kit kext keyboard driver. The driver translates the signal into a key code which is passed to the OS X `WindowServer` process. Resultantly, the `WindowServer` dispatches an event to any appropriate (e.g. active or listening) applications through their Mach port where it is placed into an event queue. Events can then be read from this queue by threads with sufficient privileges calling the `mach_ipc_dispatch` function. This most commonly occurs through, and is handled by, an `NSApplication` main event loop, via an `NSEvent` of `NSEventType` `KeyDown`.
+Для того, чтобы отправить широковещательный ARP-запрос необходимо отыскать целевой IP-адрес, а также знать MAC-адрес интерфейса, который будет использоваться для отправки ARP-запроса.
+`Target IP = MAC`
+Если же записи в кэше нет:
 
+- Проверяется таблица маршрутизации — это делается для того, чтобы узнать, есть ли искомый IP-адрес в какой-либо из подсетей локальной таблицы. Если он там, то запрос посылается с помощью интерфейса, связанного с этой подсетью. Если адрес в таблице не обнаружен, то используется интерфейс подсети шлюза по умолчанию.
+- Определяется MAC-адрес выбранного сетевого интерфейса.
+- Отправляется ARP-запрос (второй уровень стека):
 
-
-### (On GNU/Linux) the Xorg server listens for keycodes
-
-When a graphical `X server` is used, `X` will use the generic event driver `evdev` to acquire the keypress. A re-mapping of keycodes to scancodes is made with `X server` specific keymaps and rules. When the scancode mapping of the key pressed is complete, the `X server` sends the character to the `window manager` (DWM, metacity, i3, etc), so the `window manager` in turn sends the character to the focused window. The graphical API of the window that receives the character prints the appropriate font symbol in the appropriate focused field.
-
-
-
-### Parse URL
-
-- The browser now has the following information contained in the URL (Uniform Resource Locator):
-
-  > - - `Protocol` "http"
-  >
-  >     Use 'Hyper Text Transfer Protocol'
-  >
-  > - - `Resource` "/"
-  >
-  >     Retrieve main (index) page
-
-
-
-### Is it a URL or a search term?
-
-When no protocol or valid domain name is given the browser proceeds to feed the text given in the address box to the browser's default web search engine. In many cases the URL has a special piece of text appended to it to tell the search engine that it came from a particular browser's URL bar.
-
-
-
-### Convert non-ASCII Unicode characters in hostname
-
-- The browser checks the hostname for characters that are not in `a-z`, `A-Z`, `0-9`, `-`, or `.`.
-- Since the hostname is `google.com` there won't be any, but if there were the browser would apply [Punycode](https://en.wikipedia.org/wiki/Punycode) encoding to the hostname portion of the URL.
-
-
-
-### Check HSTS list
-
-- The browser checks its "preloaded HSTS (HTTP Strict Transport Security)" list. This is a list of websites that have requested to be contacted via HTTPS only.
-- If the website is in the list, the browser sends its request via HTTPS instead of HTTP. Otherwise, the initial request is sent via HTTP. (Note that a website can still use the HSTS policy *without* being in the HSTS list. The first HTTP request to the website by a user will receive a response requesting that the user only send HTTPS requests. However, this single HTTP request could potentially leave the user vulnerable to a [downgrade attack](http://en.wikipedia.org/wiki/SSL_stripping), which is why the HSTS list is included in modern web browsers.)
-
-
-
-### DNS lookup
-
-- Browser checks if the domain is in its cache. (to see the DNS Cache in Chrome, go to chrome://net-internals/#dns).
-- If not found, the browser calls `gethostbyname` library function (varies by OS) to do the lookup.
-- `gethostbyname` checks if the hostname can be resolved by reference in the local `hosts` file (whose location [varies by OS](https://en.wikipedia.org/wiki/Hosts_%28file%29#Location_in_the_file_system)) before trying to resolve the hostname through DNS.
-- If `gethostbyname` does not have it cached nor can find it in the `hosts` file then it makes a request to the DNS server configured in the network stack. This is typically the local router or the ISP's caching DNS server.
-- If the DNS server is on the same subnet the network library follows the `ARP process` below for the DNS server.
-- If the DNS server is on a different subnet, the network library follows the `ARP process` below for the default gateway IP.
-
-
-
-### ARP process
-
-In order to send an ARP (Address Resolution Protocol) broadcast the network stack library needs the target IP address to look up. It also needs to know the MAC address of the interface it will use to send out the ARP broadcast.
-
-The ARP cache is first checked for an ARP entry for our target IP. If it is in the cache, the library function returns the result: Target IP = MAC.
-
-If the entry is not in the ARP cache:
-
-- The route table is looked up, to see if the Target IP address is on any of the subnets on the local route table. If it is, the library uses the interface associated with that subnet. If it is not, the library uses the interface that has the subnet of our default gateway.
-- The MAC address of the selected network interface is looked up.
-- The network library sends a Layer 2 (data link layer of the [OSI model](https://en.wikipedia.org/wiki/OSI_model)) ARP request:
-
-`ARP Request`:
+ARP-запрос:
 
 ```
 Sender MAC: interface:mac:address:here
@@ -163,23 +100,22 @@ Target MAC: FF:FF:FF:FF:FF:FF (Broadcast)
 Target IP: target.ip.goes.here
 ```
 
-Depending on what type of hardware is between the computer and the router:
+В зависимости от того, какое «железо» расположено между компьютером и роутером (маршрутизатором):
+Прямое соединение:
 
-Directly connected:
+- Если компьютер подключён к сетевому концентратору, то этот хаб отправляет широковещательный ARP-запрос со всех своих портов. Если роутер подключён по тому же «проводу», то отправит ARP-ответ.
 
-- If the computer is directly connected to the router the router responds with an `ARP Reply` (see below)
+Между ними концентратор (Хаб):
 
-Hub:
+- Если компьютер подключён к сетевому концентратору, то этот хаб отправляет широковещательный ARP-запрос со всех своих портов. Если роутер подключён по тому же «проводу», то отправит ARP-ответ.
 
-- If the computer is connected to a hub, the hub will broadcast the ARP request out all other ports. If the router is connected on the same "wire", it will respond with an `ARP Reply` (see below).
+Между ними коммутатор (свитч):
 
-Switch:
+- Если компьютер соединён с сетевым коммутатором, то этот свитч проверит локальную CAM/MAC-таблицу, чтобы узнать, какой порт в ней имеет нужный MAC-адрес. Если нужного адреса в таблице нет, то он заново отправит широковещательный ARP-запрос по всем портам.
+- Если в таблице есть нужная запись, то свитч отправит ARP-запрос на порт с искомым MAC-адресом.
+- Если роутер «на одной линии» со свитчем, то он ответит (ARP Reply).
 
-- If the computer is connected to a switch, the switch will check its local CAM/MAC table to see which port has the MAC address we are looking for. If the switch has no entry for the MAC address it will rebroadcast the ARP request to all other ports.
-- If the switch has an entry in the MAC/CAM table it will send the ARP request to the port that has the MAC address we are looking for.
-- If the router is on the same "wire", it will respond with an `ARP Reply` (see below)
-
-`ARP Reply`:
+ARP-ответ:
 
 ```
 Sender MAC: target:mac:address:here
@@ -188,241 +124,224 @@ Target MAC: interface:mac:address:here
 Target IP: interface.ip.goes.here
 ```
 
-Now that the network library has the IP address of either our DNS server or the default gateway it can resume its DNS process:
+Теперь у сетевой библиотеки есть IP-адрес либо DNS-сервера либо шлюза по умолчанию, который можно использовать для разрешения доменного имени:
 
-- Port 53 is opened to send a UDP request to DNS server (if the response size is too large, TCP will be used instead).
-- If the local/ISP DNS server does not have it, then a recursive search is requested and that flows up the list of DNS servers until the SOA is reached, and if found an answer is returned.
+- Порт 53 открывается для отправки UDP-запроса к DNS-серверу (если размер ответа слишком велик, будет использован TCP).
+- Если локальный или на стороне провайдера DNS-сервер «не знает» нужный адрес, то запрашивается рекурсивный поиск, который проходит по списку вышестоящих DNS-серверов, пока не будет найдена SOA-запись, а затем возвращается результат.
 
+## 5. Открытие сокета
 
+Когда браузер получает IP-адрес конечного сервера, то он берёт эту информацию и данные об используемом порте из URL (80 порт для HTTP, 443 для HTTPS) и осуществляет вызов функции `socket` системной библиотеки и запрашивает поток TCP сокета — `AF_INET` и `SOCK_STREAM`.
 
-### Opening of a socket
+- Этот запрос сначала проходит через транспортный уровень, где собирается TCP-сегмент. В заголовок добавляется порт назначения, исходный порт выбирается из динамического пула ядра (`ip_local_port_range` в Linux).
+- Получившийся сегмент отправляется на сетевой уровень, на котором добавляется дополнительный IP-заголовок. Также включаются IP-адрес сервера назначения и адрес текущей машины — после этого пакет сформирован.
+- Пакет передаётся на канальный уровень. Добавляется заголовок кадра, включающий MAC-адрес сетевой карты (NIC) компьютера, а также MAC-адрес шлюза (локального роутера). Как и на предыдущих этапах, если ядру ничего не известно о MAC-адресе шлюза, то для его нахождения отправляется широковещательный ARP-запрос.
 
-Once the browser receives the IP address of the destination server, it takes that and the given port number from the URL (the HTTP protocol defaults to port 80, and HTTPS to port 443), and makes a call to the system library function named `socket`and requests a TCP socket stream - `AF_INET/AF_INET6` and `SOCK_STREAM`.
-
-- This request is first passed to the Transport Layer where a TCP segment is crafted. The destination port is added to the header, and a source port is chosen from within the kernel's dynamic port range (ip_local_port_range in Linux).
-- This segment is sent to the Network Layer, which wraps an additional IP header. The IP address of the destination server as well as that of the current machine is inserted to form a packet.
-- The packet next arrives at the Link Layer. A frame header is added that includes the MAC address of the machine's NIC as well as the MAC address of the gateway (local router). As before, if the kernel does not know the MAC address of the gateway, it must broadcast an ARP query to find it.
-
-At this point the packet is ready to be transmitted through either:
+На этой точке пакет готов к передаче через:
 
 - [Ethernet](http://en.wikipedia.org/wiki/IEEE_802.3)
 - [WiFi](https://en.wikipedia.org/wiki/IEEE_802.11)
-- [Cellular data network](https://en.wikipedia.org/wiki/Cellular_data_communication_protocol)
+- [По сотовой связи](https://en.wikipedia.org/wiki/Cellular_data_communication_protocol)
 
-For most home or small business Internet connections the packet will pass from your computer, possibly through a local network, and then through a modem (MOdulator/DEModulator) which converts digital 1's and 0's into an analog signal suitable for transmission over telephone, cable, or wireless telephony connections. On the other end of the connection is another modem which converts the analog signal back into digital data to be processed by the next [network node](https://en.wikipedia.org/wiki/Computer_network#Network_nodes) where the from and to addresses would be analyzed further.
 
-Most larger businesses and some newer residential connections will have fiber or direct Ethernet connections in which case the data remains digital and is passed directly to the next [network node](https://en.wikipedia.org/wiki/Computer_network#Network_nodes) for processing.
+В случае интернет-соединения большинства частных пользователей или небольших компаний пакет будет отправлен с компьютера, через локальную сеть, а затем через модем (), который транслирует цифровые единицы и нули в аналоговый сигнал, подходящий для передачи по телефонной линии, кабелю или беспроводным телефонным соединениям. На другой стороне соединения расположен другой модем, который конвертирует аналоговый сигнал в цифровые данные и передаёт их следующему , где происходит дальнейший анализ данных об отправителе и получателе.
 
-Eventually, the packet will reach the router managing the local subnet. From there, it will continue to travel to the autonomous system's (AS) border routers, other ASes, and finally to the destination server. Each router along the way extracts the destination address from the IP header and routes it to the appropriate next hop. The time to live (TTL) field in the IP header is decremented by one for each router that passes. The packet will be dropped if the TTL field reaches zero or if the current router has no space in its queue (perhaps due to network congestion).
+В конечном итоге пакет доберётся до маршрутизатора, управляющего локальной подсетью. Затем он продолжит путешествовать от одного роутера к другому, пока не доберётся до сервера назначения. Каждый маршрутизатор на пути будет извлекать адрес назначения из IP-заголовка и отправлять пакет на следующий хоп. Значение поля TTL (time to live) в IP-заголовке будет каждый раз уменьшаться после прохождения каждого роутера. Если значение поля TTL достигнет нуля, пакет будет отброшен (это произойдёт также если у маршрутизатора не будет места в текущей очереди — например, из-за перегрузки сети).
 
-This send and receive happens multiple times following the TCP connection flow:
-
-- Client chooses an initial sequence number (ISN) and sends the packet to the server with the SYN bit set to indicate it is setting the ISN
-
-- - Server receives SYN and if it's in an agreeable mood:
-
-    Server chooses its own initial sequence numberServer sets SYN to indicate it is choosing its ISNServer copies the (client ISN +1) to its ACK field and adds the ACK flag to indicate it is acknowledging receipt of the first packet
-
-- - Client acknowledges the connection by sending a packet:
-
-    Increases its own sequence numberIncreases the receiver acknowledgment numberSets ACK field
-
-- - Data is transferred as follows:
-
-    As one side sends N data bytes, it increases its SEQ by that numberWhen the other side acknowledges receipt of that packet (or a string of packets), it sends an ACK packet with the ACK value equal to the last received sequence from the other
-
-- - To close the connection:
-
-    The closer sends a FIN packetThe other sides ACKs the FIN packet and sends its own FINThe closer acknowledges the other side's FIN with an ACK
+Во время TCP-соединения происходит множество подобных запросов и ответов.  
 
 
 
-### TLS handshake
+#### 5.1 Жизненный цикл TCP-соединения
 
-- The client computer sends a `ClientHello` message to the server with its Transport Layer Security (TLS) version, list of cipher algorithms and compression methods available.
-- The server replies with a `ServerHello` message to the client with the TLS version, selected cipher, selected compression methods and the server's public certificate signed by a CA (Certificate Authority). The certificate contains a public key that will be used by the client to encrypt the rest of the handshake until a symmetric key can be agreed upon.
-- The client verifies the server digital certificate against its list of trusted CAs. If trust can be established based on the CA, the client generates a string of pseudo-random bytes and encrypts this with the server's public key. These random bytes can be used to determine the symmetric key.
-- The server decrypts the random bytes using its private key and uses these bytes to generate its own copy of the symmetric master key.
-- The client sends a `Finished` message to the server, encrypting a hash of the transmission up to this point with the symmetric key.
-- The server generates its own hash, and then decrypts the client-sent hash to verify that it matches. If it does, it sends its own `Finished` message to the client, also encrypted with the symmetric key.
-- From now on the TLS session transmits the application (HTTP) data encrypted with the agreed symmetric key.
+**a. Клиент выбирает номер начальной последовательности (ISN) и отправляет пакет серверу с установленным битом SYN для открытия соединения.**
 
 
+**b. Сервер получает пакет с битом SYN и, если готов к установлению соединения, то:**
 
-### HTTP protocol
+- Увеличивает номер своей начальной последовательности;
+- Увеличивает номер подтверждения получения;
+- Устанавливает поле ACK.
 
-If the web browser used was written by Google, instead of sending an HTTP request to retrieve the page, it will send a request to try and negotiate with the server an "upgrade" from HTTP to the SPDY protocol.
+**c. Клиент подтверждает соединение путём отправки пакета:**
 
-If the client is using the HTTP protocol and does not support SPDY, it sends a request to the server of the form:
+- Увеличивает номер своей начальной последовательности;
+- Увеличивает номер подтверждения получения;
+- Устанавливает поле ACK.
+
+**d. Данные передаются следующим образом:**
+
+- Сторона, которая хочет закрыть соединение, отправляет пакет FIN;
+- Другая сторона подтверждает FIN (с помощью ACK) и отправляет собственный FIN-пакет;
+- Инициатор прекращения соединения подтверждает получение FIN отправкой собственного ACK.
+
+**e. Закрытие соединения:**
+
+- Сторона, которая хочет закрыть соединение, отправляет пакет FIN;
+- Другая сторона подтверждает FIN (с помощью ACK) и отправляет собственный FIN-пакет;
+- Инициатор прекращения соединения подтверждает получение FIN отправкой собственного ACK.
+
+## 6. TLS handshake
+
+- Клиентский компьютер отправляет сообщение `ClientHello` серверу со своей версией протокола [TLS](https://ru.wikipedia.org/wiki/TLS), списком поддерживаемых алгоритмов шифрования и методов компрессии данных.
+- Сервер отвечает клиенту сообщением `ServerHello`, содержащим версию TLS, выбранный метод шифрования, выбранные методы компрессии и публичный сертификат сервиса, подписанный центром сертификации. Сертификат содержит публичный ключ, который будет использоваться клиентом для шифрования оставшейся части процедуры «рукопожатия» (`handshake`), пока не будет согласован симметричный ключ.
+- Клиент подтверждает сертификат сервера с помощью своего списка центров сертификации. Если сертификат подписан центром из списка, то серверу можно доверять, и клиент генерирует строку псевдослучайных байтов и шифрует её с помощью публичного ключа сервера. Эти случайные байты могут быть использованы для определения симметричного ключа.
+- Сервер расшифровывает случайные байты с помощью своего секретного ключа и использует эти байты для генерации своей копии симметричного мастер-ключа.
+- Клиент отправляет серверу сообщение `Finished`, шифруя хеш передачи с помощью симметричного ключа.
+- Сервер генерирует собственный хеш, а затем расшифровывает полученный от клиента хеш, чтобы проверить, совпадёт ли он с собственным. Если совпадение обнаружено, сервер отправляет клиенту собственный ответ `Finished`, также зашифрованный симметричным ключом.
+- После этого TLS-сессия передаёт данные приложения (HTTP), зашифрованные с помощью подтверждённого симметричного ключа.
+
+
+
+## 7. Протокол HTTP
+
+Если используемый браузер был создан Google, то вместо отправки HTTP-запроса для получения страницы, он отправит запрос, чтобы попытаться «договориться» с сервером об «апгрейде» протокола с HTTP до [SPDY](https://ru.wikipedia.org/wiki/SPDY) («спиди»).
+
+Если клиент использует HTTP-протокол и не поддерживает SPDY, то отправляет серверу запрос следующей формы:
 
 ```
 GET / HTTP/1.1
 Host: google.com
 Connection: close
-[other headers]
+[другие заголовки]
 ```
 
-where `[other headers]` refers to a series of colon-separated key-value pairs formatted as per the HTTP specification and separated by single new lines. (This assumes the web browser being used doesn't have any bugs violating the HTTP spec. This also assumes that the web browser is using `HTTP/1.1`, otherwise it may not include the `Host` header in the request and the version specified in the `GET` request will either be `HTTP/1.0` or `HTTP/0.9`.)
+ где `[другие заголовки]` — это серия пар «ключ: значение», разбитых переносом строки. (Здесь предполагается, что в использованном браузере нет никаких ошибок, нарушающих спецификацию HTTP. Также предполагается, что браузер использует `HTTP/1.1`, в противном случае он может не включать заголовок `Host` в запрос и версия, отданная в ответ на GET-запрос может быть `HTTP/1.0` или `HTTP/0.9`).
 
-HTTP/1.1 defines the "close" connection option for the sender to signal that the connection will be closed after completion of the response. For example,
+`HTTP/1.1` определяет опцию закрытия соединения («close») для отправителя — с её помощью происходит уведомление о закрытии соединения после завершения ответа. К примеру: 
 
-> Connection: close
+ `Connection: close`
 
-HTTP/1.1 applications that do not support persistent connections MUST include the "close" connection option in every message.
+Приложения `HTTP/1.1`, которые не поддерживают постоянные соединения, обязаны включать опцию «close» в каждое сообщение.
 
-After sending the request and headers, the web browser sends a single blank newline to the server indicating that the content of the request is done.
+После отправки запроса и заголовков, браузер отправляет серверу единичную пустую строку, сигнализируя о том, что содержимое сообщения закончилось.
 
-The server responds with a response code denoting the status of the request and responds with a response of the form:
+Сервер отвечает специальным кодом, который обозначает статус запроса и включает ответ следующей формы:  
 
 ```
 200 OK
-[response headers]
+[заголовки ответа]
 ```
 
-Followed by a single newline, and then sends a payload of the HTML content of `www.google.com`. The server may then either close the connection, or if headers sent by the client requested it, keep the connection open to be reused for further requests.
 
-If the HTTP headers sent by the web browser included sufficient information for the web server to determine if the version of the file cached by the web browser has been unmodified since the last retrieval (ie. if the web browser included an `ETag`header), it may instead respond with a request of the form:
+После этого посылается пустая строка, а затем оставшийся контент HTML-страницы . Сервер может затем закрыть соединение, или, если того требуют отправленные клиентом заголовки, сохранять соединение открытым для его использования следующими запросами.
 
 ```
-304 Not Modified
-[response headers]
+304 Not Modified``[заголовки ответа]
 ```
 
-and no payload, and the web browser instead retrieves the HTML from its cache.
+и, соответственно, клиенту не посылается никакого контента, вместо этого браузер «достаёт» HTML из кэша.
 
-After parsing the HTML, the web browser (and server) repeats this process for every resource (image, CSS, favicon.ico, etc) referenced by the HTML page, except instead of `GET / HTTP/1.1` the request will be `GET /$(URL relative to www.google.com) HTTP/1.1`.
+После разбора HTML, браузер (и сервер) повторяет процесс загрузки для каждого ресурса (изображения, стили, скрипты, favicon.ico и так далее), на который ссылается HTML-страница, но при этом изменяется адрес каждого запроса c `GET / HTTP/1.1` на `GET /$(относительный URL ресурса www.google.com) HTTP/1.1`.
 
-If the HTML referenced a resource on a different domain than `www.google.com`, the web browser goes back to the steps involved in resolving the other domain, and follows all steps up to this point for that domain. The `Host` header in the request will be set to the appropriate server name instead of `google.com`.
+Если HTML ссылается на ресурс, размещённый на домене, отличном от google.com, то браузер возвращается к шагам, включающим разрешение доменного имени, а затем заново проходит процесс до текущего состояния, но уже для другого домена. Заголовок `Host` в запросе вместо google.com будет установлен на нужное доменное имя.  
 
+#### 7.1 Обработка HTTP-запросов на сервере
 
+`HTTPD` (HTTP Daemon) является одним из инструментов обработки запросов/ответов на стороне сервера. Наиболее популярные HTTPD-серверы это Apache или Nginx для Linux и IIS для Windows.
 
-### HTTP Server Request Handle
+— HTTPD (HTTP Daemon) получает запрос.
 
-The HTTPD (HTTP Daemon) server is the one handling the requests/responses on the server side. The most common HTTPD servers are Apache or nginx for Linux and IIS for Windows.
-
-- The HTTPD (HTTP Daemon) receives the request.
-
-- - The server breaks down the request to the following parameters:
-
-    HTTP Request Method (either `GET`, `HEAD`, `POST`, `PUT`, `DELETE`, `CONNECT`, `OPTIONS`, or `TRACE`). In the case of a URL entered directly into the address bar, this will be `GET`.Domain, in this case - google.com.Requested path/page, in this case - / (as no specific path/page was requested, / is the default path).
-
-- The server verifies that there is a Virtual Host configured on the server that corresponds with google.com.
-
-- The server verifies that google.com can accept GET requests.
-
-- The server verifies that the client is allowed to use this method (by IP, authentication, etc.).
-
-- If the server has a rewrite module installed (like mod_rewrite for Apache or URL Rewrite for IIS), it tries to match the request against one of the configured rules. If a matching rule is found, the server uses that rule to rewrite the request.
-
-- The server goes to pull the content that corresponds with the request, in our case it will fall back to the index file, as "/" is the main file (some cases can override this, but this is the most common method).
-
-- The server parses the file according to the handler. If Google is running on PHP, the server uses PHP to interpret the index file, and streams the output to the client.
+— Сервер разбирает запрос по следующим параметрам:  
 
 
 
-### Behind the scenes of the Browser
+- Метод HTTP-запроса (`GET`, `POST`, `HEAD`, `PUT` или `DELETE`). В случае URL-адреса, который пользователь напечатал в строке браузера, мы имеем дело с GET-запросом.
+- Домен. В нашем случае — google.com.
+- Запрашиваемые пути/страницы, в нашем случае — `/` (нет запрошенных путей, `/` — это путь по умолчанию).
 
-Once the server supplies the resources (HTML, CSS, JS, images, etc.) to the browser it undergoes the below process:
+-  Сервер проверяет существование виртуального хоста, который соответствует google.com.
+- Сервер проверяет, что google.com может принимать GET-запросы.
+- Сервер проверяет, имеет ли клиент право использовать этот метод (на основе IP-адреса, аутентификации и прочее).
+-  Если на сервере установлен модуль перезаписи (`mod_rewrite` для Apache или `URL Rewrite` для IIS), то он сопоставляет запрос с одним из сконфигурированных правил. Если находится совпадающее правило, то сервер использует его, чтобы переписать запрос.
+-  Сервер находит контент, который соответствует запросу, в нашем случае он изучит индексный файл.
+- Далее сервер разбирает («парсит») файл с помощью обработчика. Если Google работает на PHP, то сервер использует PHP для интерпретации индексного файла и направляет результат клиенту.  
 
-- Parsing - HTML, CSS, JS
-- Rendering - Construct DOM Tree → Render Tree → Layout of Render Tree → Painting the render tree
+## 8. За кулисами браузера
 
+Задача браузера заключается в том, чтобы показывать пользователю выбранные им веб-ресурсы, запрашивая их с сервера и отображая в окне просмотра. Как правило такими ресурсами являются HTML-документы, но это может быть и PDF, изображения или контент другого типа. Расположение ресурсов определяется с помощью URL.
 
+Способ, который браузер использует для интерпретации и отображения HTML-файлов описан в спецификациях HTML и CSS. Эти документы разработаны и поддерживаются консорциумом W3C (World Wide Web Consortium), которая занимается стандартизацией веба.
 
-### Browser
+Интерфейсы браузеров сильно похожи между собой. У них есть большое количество одинаковых элементов:
 
-The browser's functionality is to present the web resource you choose, by requesting it from the server and displaying it in the browser window. The resource is usually an HTML document, but may also be a PDF, image, or some other type of content. The location of the resource is specified by the user using a URI (Uniform Resource Identifier).
+- Адресная строка, куда вставляются URL-адреса;
+- Кнопки возврата на предыдущую и следующую страницу;
+- Возможность создания закладок;
+- Кнопки обновления страницы (рефреш) и остановки загрузки текущих документов;
+- Кнопка «домой», возвращающая пользователя на домашнюю страницу.
 
-The way the browser interprets and displays HTML files is specified in the HTML and CSS specifications. These specifications are maintained by the W3C (World Wide Web Consortium) organization, which is the standards organization for the web.
+#### Высокоуровневая структура браузера
 
-Browser user interfaces have a lot in common with each other. Among the common user interface elements are:
+Браузер включает следующие компоненты:
 
-- An address bar for inserting a URI
-- Back and forward buttons
-- Bookmarking options
-- Refresh and stop buttons for refreshing or stopping the loading of current documents
-- Home button that takes you to your home page
+- **Пользовательский интерфейс**: В него входит адресная строка, кнопки продвижения вперёд/назад, меню закладок и так далее. Сюда относятся все элементы, кроме окна, в котором собственно отображается веб-страница.
+- **«Движок» браузера**: Распределяет действия между движком рендеринга и интерфейсом пользователя.
+- **«Движок» рендеринга**: Отвечает за отображение запрашиваемого контента. К примеру, если запрашивается HTML, то «движок» разбирает код HTML и CSS, а затем отображает полученный контент на экране.
+- **Сетевая часть**: с помощью сетевых функций браузер обрабатывает вызовы, вроде HTTP-запросов, с применением различных реализаций для разных платформ.
+- **Бэкенд интерфейса (UI)**: Используется для отрисовки базовых виджетов, вроде комбо-боксов и окон.
+- **Интерпретатор JavaScript**: Используется для парсинга и выполнения JavaScript-кода.
+- **Хранилище данных**: Браузеру может понадобиться локально хранить некоторые данные (например, cookie). Кроме того, браузеры поддерживают различные механизмы хранения, такие как `localStorage`, `IndexedDB`, `WebSQL` и `FileSystem`.
 
-**Browser High Level Structure**
+## 9. Парсинг HTML
 
-The components of the browsers are:
+ Движок рендеринга начинает получать содержимое запрашиваемого документа от сетевого механизма браузера. Как правило, контент поступает кусками по 8Кб. Главной задачей HTML-парсера является разбор разметки в специальное дерево.
 
-- **User interface:** The user interface includes the address bar, back/forward button, bookmarking menu, etc. Every part of the browser display except the window where you see the requested page.
-- **Browser engine:** The browser engine marshals actions between the UI and the rendering engine.
-- **Rendering engine:** The rendering engine is responsible for displaying requested content. For example if the requested content is HTML, the rendering engine parses HTML and CSS, and displays the parsed content on the screen.
-- **Networking:** The networking handles network calls such as HTTP requests, using different implementations for different platforms behind a platform-independent interface.
-- **UI backend:** The UI backend is used for drawing basic widgets like combo boxes and windows. This backend exposes a generic interface that is not platform specific. Underneath it uses operating system user interface methods.
-- **JavaScript engine:** The JavaScript engine is used to parse and execute JavaScript code.
-- **Data storage:** The data storage is a persistence layer. The browser may need to save all sorts of data locally, such as cookies. Browsers also support storage mechanisms such as localStorage, IndexedDB, WebSQL and FileSystem.
+Получающееся на выходе дерево («parse tree») — это дерево DOM-элементов и узлов атрибутов. DOM — сокращение от `Document Object Model`. Это модель объектного представления HTML-документа и интерфейс для взаимодействия HTML-элементов с «внешним миром» (например, JavaScript-кодом). Корнем дерева является объект «Документ».  
 
+#### Алгоритм разбора
 
+HTML-нельзя «распарсить» с помощью обычных анализаторов (нисходящих или восходящих). Тому есть несколько причин:
 
-### HTML parsing
+- Прощающая почти что угодно природа языка;
+- Тот факт, что браузеры обладают известной толерантностью к ошибкам и поддерживают популярные ошибки в HTML.
+- Процесс парсинга может заходить в тупик. В других языках код, который требуется разобрать, не меняется в процессе анализа, в то время как в HTML с помощью динамического кода (например, скриптовые элементы, содержащие вызовы `document.write()`) могут добавляться дополнительные токены, в результате чего сам процесс парсинга модифицирует вывод.
 
-The rendering engine starts getting the contents of the requested document from the networking layer. This will usually be done in 8kB chunks.
+Невозможность использования привычных технологий парсинга приводит к тому, что разработчики браузеров реализуют собственные механизмы разбора HTML. Алгоритм парсинга подробно описан в [спецификации HTML5](http://www.w3.org/TR/html5/).
 
-The primary job of HTML parser is to parse the HTML markup into a parse tree.
+Алгоритм состоит из двух этапов: токенизации и создания дерева.  
 
-The output tree (the "parse tree") is a tree of DOM element and attribute nodes. DOM is short for Document Object Model. It is the object presentation of the HTML document and the interface of HTML elements to the outside world like JavaScript. The root of the tree is the "Document" object. Prior of any manipulation via scripting, the DOM has an almost one-to-one relation to the markup.
+#### Действия после завершения парсинга
 
-**The parsing algorithm**
+После этого браузер начинает подгружать внешние ресурсы, связанные со страницей (стили, изображения, скрипты и так далее).
 
-HTML cannot be parsed using the regular top-down or bottom-up parsers.
+На этом этапе браузер помечает документ, как интерактивный и начинает разбирать скрипты, находящиеся в «отложенном» состоянии: то есть те из них, что должны быть исполнены после парсинга. После этого статус документа устанавливается в состояние «`complete`» и инициируется событие загрузки («`load`»).  
 
-The reasons are:
+Важный момент: ошибки `«Invalid Syntax»` при разборе не может быть, поскольку браузеры исправляют любой «невалидный» контент и продолжают работу.
 
-- The forgiving nature of the language.
-- The fact that browsers have traditional error tolerance to support well known cases of invalid HTML.
-- The parsing process is reentrant. For other languages, the source doesn't change during parsing, but in HTML, dynamic code (such as script elements containing document.write() calls) can add extra tokens, so the parsing process actually modifies the input.
+## 10. Интерпретация CSS
 
-Unable to use the regular parsing techniques, the browser utilizes a custom parser for parsing HTML. The parsing algorithm is described in detail by the HTML5 specification.
+- Во время разбора браузер парсит CSS-файлы, содержимое тегов `<style>` и атрибутов «style» c помощью «[лексической и синтаксической грамматики CSS](http://www.w3.org/TR/CSS2/grammar.html)».
+- Каждый CSS-файл разбирается в объект `StyleSheet`, каждый из таких объектов содержит правила CSS с селекторами и объектами в соответствии с грамматикой CSS.
+- Парсер CSS может быть как восходящим, так и нисходящим.
 
-The algorithm consists of two stages: tokenization and tree construction.
+## 11. Рендеринг страниц
 
-**Actions when the parsing is finished**
+- Путём перебора DOM-узлов и вычисления для каждого узла значений CSS-стилей создаётся «Дерево рендера» (Render Tree или Frame Tree).
+- Вычисляется предпочтительная ширина каждого узла в нижней части дерева — для этого суммируются значения предпочтительной ширины дочерних узлов, а также горизонтальные поля, границы и отступы узлов.
+- Вычисляется реальная ширина каждого узла сверху-вниз (доступная ширина каждого узла выделяется его потомкам).
+- Вычисляется высота каждого узла снизу-вверх — для этого применяется перенос текста и суммируются значения полей, высоты, отступов и границ потомков.
+- Вычисляются координаты каждого узла (с использованием ранее полученной информации).
+- Если элементы плавающие или спозиционированы абсолютно или относительно, предпринимаются более сложные действия. Более подробно они описаны [здесь](http://dev.w3.org/csswg/css2/) и [здесь](http://www.w3.org/Style/CSS/current-work).
+- Создаются слои для описания того, какие части страницы можно анимировать без необходимости повторного растрирования. Каждый объект (фрейма или рендера) присваивается слою.
+- Для каждого слоя на странице выделяются текстуры.
+- Объекты (рендеры/фреймы) каждого слоя перебираются и для соответствующих слоёв выполняются команды отрисовки. Растрирование может осуществляться процессором или возможна отрисовка на графическом процессоре (GPU) через D2D/SkiaGL.
+- Все вышеперечисленные шаги могут требовать повторного использования значений, сохранённых с последнего рендеринга страницы, такая инкрементальная работа требует меньше затрат.
+- Слои страницы отправляются процессу-компоновщику, где они комбинируются со слоями для другого видимого контента (интерфейс браузера, iframe-элементы, addon-панели).
+- Вычисляются финальные позиции слоёв и через Direct3D/OpenGL отдаются композитные команды. Командные буферы GPU освобождаются для асинхронного рендеринга и фрейм отправляется для отображения на экран.
 
-The browser begins fetching external resources linked to the page (CSS, images, JavaScript files, etc.).
+## 12. Рендеринг GPU
 
-At this stage the browser marks the document as interactive and starts parsing scripts that are in "deferred" mode: those that should be executed after the document is parsed. The document state is set to "complete" and a "load" event is fired.
+- Во время процесса рендеринга уровни графических вычислений могут использовать процессор компьютера или графический процессор (GPU).
+- Во втором случае уровни графического программного обеспечения делят задачу на множество частей, что позволяет использовать параллелизм GPU для вычисления плавающей точки, которое требуется для процесса рендеринга.
 
-Note there is never an "Invalid Syntax" error on an HTML page. Browsers fix any invalid content and go on.
+## 13. Вызванное пользователем и пост-рендеринговое исполнение
 
-
-
-### CSS interpretation
-
-- Parse CSS files, `<style>` tag contents, and `style` attribute values using ["CSS lexical and syntax grammar"](http://www.w3.org/TR/CSS2/grammar.html)
-- Each CSS file is parsed into a `StyleSheet object`, where each object contains CSS rules with selectors and objects corresponding CSS grammar.
-- A CSS parser can be top-down or bottom-up when a specific parser generator is used.
-
-
-
-### Page Rendering
-
-- Create a 'Frame Tree' or 'Render Tree' by traversing the DOM nodes, and calculating the CSS style values for each node.
-- Calculate the preferred width of each node in the 'Frame Tree' bottom up by summing the preferred width of the child nodes and the node's horizontal margins, borders, and padding.
-- Calculate the actual width of each node top-down by allocating each node's available width to its children.
-- Calculate the height of each node bottom-up by applying text wrapping and summing the child node heights and the node's margins, borders, and padding.
-- Calculate the coordinates of each node using the information calculated above.
-- More complicated steps are taken when elements are `floated`, positioned `absolutely` or `relatively`, or other complex features are used. See <http://dev.w3.org/csswg/css2/> and <http://www.w3.org/Style/CSS/current-work> for more details.
-- Create layers to describe which parts of the page can be animated as a group without being re-rasterized. Each frame/render object is assigned to a layer.
-- Textures are allocated for each layer of the page.
-- The frame/render objects for each layer are traversed and drawing commands are executed for their respective layer. This may be rasterized by the CPU or drawn on the GPU directly using D2D/SkiaGL.
-- All of the above steps may reuse calculated values from the last time the webpage was rendered, so that incremental changes require less work.
-- The page layers are sent to the compositing process where they are combined with layers for other visible content like the browser chrome, iframes and addon panels.
-- Final layer positions are computed and the composite commands are issued via Direct3D/OpenGL. The GPU command buffer(s) are flushed to the GPU for asynchronous rendering and the frame is sent to the window server.
-
-
-
-### GPU Rendering
-
-- During the rendering process the graphical computing layers can use general purpose `CPU` or the graphical processor `GPU` as well.
-- When using `GPU` for graphical rendering computations the graphical software layers split the task into multiple pieces, so it can take advantage of `GPU` massive parallelism for float point calculations required for the rendering process.
+После завершения рендеринга, браузер исполняет JavaScript-код в результате срабатывания некоего часового механизма (так работают дудлы на странице Google) или в результате действий пользователя (ввод поискового запроса в строку и получение рекомендаций в ответ). Также могут срабатывать плагины вроде Flash или Java (но не в рассматриваемом примере с домашней страницей Google). Скрипты могут потребовать обработки дополнительных сетевых запросов, изменять страницу или её шаблон, что приведёт к следующему этапу рендеринга и отрисовки.
 
 
 
-### Window Server
+*Дополнительно:*
 
-### Post-rendering and user-induced execution
-
-After rendering has completed, the browser executes JavaScript code as a result of some timing mechanism (such as a Google Doodle animation) or user interaction (typing a query into the search box and receiving suggestions). Plugins such as Flash or Java may execute as well, although not at this time on the Google homepage. Scripts can cause additional network requests to be performed, as well as modify the page or its layout, causing another round of page rendering and painting.
+- [Что на самом деле происходит, когда пользователь вбивает в браузер адрес google.com](https://habr.com/ru/company/htmlacademy/blog/254825/)
+- [What happens when](https://github.com/alex/what-happens-when)
