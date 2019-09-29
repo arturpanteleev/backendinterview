@@ -58,7 +58,7 @@
   * [Экосистема](goLang/ecosystem.md)
 * [Разное](unsorted/README.md)
   * [Побитовые операции](unsorted/bits.md)
-  * [Типизация](unsorted/bits.md)
+  * [Типизация](unsorted/types.md)
   * [Юникод](unsorted/unicode.md)
 * [Информационная безопасность](ib.md)
 * [Git](git.md)
