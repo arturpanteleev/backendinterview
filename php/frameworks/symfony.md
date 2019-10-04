@@ -24,3 +24,4 @@ merge, beforeOptimization, optimization, beforeRemoving, removing, afterRemoving
     }
     $definition->setMethodCalls(array_merge($definition->getMethodCalls(), $calls));
 ```
+

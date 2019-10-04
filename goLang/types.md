@@ -324,7 +324,5 @@ type имя_интерфейса interface {определения_функци�
 
 ###  ![image](https://habrastorage.org/files/ac9/905/1fb/ac99051fbb924e6d8912f479915b7a78.png)
 
-###  
 
-### 
 

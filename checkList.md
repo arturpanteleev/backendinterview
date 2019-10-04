@@ -155,10 +155,11 @@
 * указатели(передача по ссылке/значению)
 * arrays & slices
 * channels(небуферизированные/буферизированные) неблокирующее чтение
-* sync(mutex(r/w), atomic, once, pool, map)
+* sync(mutex(r/w), atomic, once, pool, map, waitgrop)
 * рефлексия
 * unsafe
 * Error(), panic, deffer, recover
+* context.Context
 
 ## Информационная безопасность
 * SQL injection

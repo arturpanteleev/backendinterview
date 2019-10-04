@@ -244,7 +244,25 @@ func chanrecv(t *chantype, c *hchan, ep unsafe.Pointer, block bool)
 
 ### Закрытие канала
 
-Закрытие канала это простая операция. Go проходит по всем ожидающим на чтение или запись горутинам и разблокирует их. Все получатели получают дефолтные значение переменных того типа данных канала, а все отправители паникуют.
+Закрытие канала это простая операция. Go проходит по всем ожидающим на чтение или запись горутинам и разблокирует их. Все получатели получают дефолтные значение переменных того типа данных канала, а все отправители паникуют. Запись в закрытый канал приводит к панике. 
+
+При чтении можно проверить закрыт канал или нет двумя способами :
+
+```go
+val, ok :=<- someChan:
+if !ok  {}// канал закрыт
+```
+
+```go
+for val := range someChan {
+    // получено сообщение
+}
+// канал закрыт
+```
+
+При записи, нужно во первых обернуть в recover. Во вторых рекомендуется сначала "убить", писателей, а потом уже закрываать канал. Также One general principle of using Go channels is **don't close a channel from the receiver side and don't close a channel if the channel has multiple concurrent senders**. In other words, we should only close a channel in a sender goroutine if the sender is the only sender of the channel.
+
+
 
 ## Пакет sync
 
@@ -407,6 +425,29 @@ An appropriate use of a Pool is to manage a group of temporary items silently sh
 An example of good use of a Pool is in the fmt package, which maintains a dynamically-sized store of temporary output buffers. The store scales under load (when many goroutines are actively printing) and shrinks when quiescent.
 
 On the other hand, a free list maintained as part of a short-lived object is not a suitable use for a Pool, since the overhead does not amortize well in that scenario. It is more efficient to have such objects implement their own free list.
+
+### sync.WaitGroup
+
+Этот тип позволяет определить группу горутин, которые должны выполняться вместе как одна группа. И можно установить блокировку, которая приостановит выполнение функции, пока не завершит выполнение вся группа горутин. 
+
+```go
+func main() { 
+    var wg sync.WaitGroup 
+    wg.Add(2)       // в группе две горутины
+    counter := 5
+    doubleCounter := func() { 
+        defer wg.Done() 
+        counter = counter * 2
+   } 
+  
+   // вызываем горутины
+   go doubleCounter() 
+   go doubleCounter() 
+  
+   wg.Wait()        // ожидаем завершения обоих горутин
+   fmt.Println("Counter:", counter) 
+}
+```
 
 ## Concurrency patterns
 
