@@ -82,9 +82,24 @@ hdel users:goku age
 
 Как вы видите, хеши дают чуть больше контроля, чем строки. Вместо того, чтобы хранить данные о пользователе в виде одного сериализованного значения, мы можем использовать хеш для более точного представления. Преимуществом будет возможность извлечения, изменения и удаления отдельных частей данных без необходимости читать и записывать все значение целиком. Однако, имейте в виду, что небольшие хэши в Redis кодируются очень эффективно, и вы можете использовать атомарные операции GET, SET или атомарно инкрементировать отдельное поле с большой скоростью.
 
+### Bitmaps
+
+Bitmaps are not an actual data type, but a set of bit-oriented operations defined on the String type. Since strings are binary safe blobs and their maximum length is 512 MB, they are suitable to set up to 232 different bits. Bit operations are divided into two groups: constant-time single bit operations, like setting a bit to 1 or 0, or getting its value, and operations on groups of bits, for example counting the number of set bits in a given range of bits (e.g., population counting).
+
+One of the biggest advantages of bitmaps is that they often provide extreme space savings when storing information. For example in a system where different users are represented by incremental user IDs, it is possible to remember a single bit information (for example, knowing whether a user wants to receive a newsletter) of 4 billion of users using just 512 MB of memory.
+
 ### HyperLogLog
 
 Redis имеет специальное хранилище **HyperLogLog**. Оно позволяет сохранять туда ключи, а затем получать количество уникальных ключей в этом хранилище. Ограничение в том, что список сохраненных ключей достать невозможно. Преимущество в том, что одно такое хранилище занимает всего 12 Кб, способно сохранять 264 элементов и возвращает результат с погрешностью всего *0.8%*.
+
+### Streams
+
+Redis Stream — новый абстрактный тип данных, представленный в Redis с выходом версии 5.0
+Концептуально Redis Stream — это List, в который вы можете добавлять записи. Каждая запись имеет уникальный идентификатор. По умолчанию идентификатор генерируется автоматически и включает в себя временную метку. Поэтому вы можете запрашивать диапазоны записей по времени или получать новые данные по мере их поступления в поток, как Unix команда «tail -f» читает лог-файл и замирает в ожидании новых данных. Обратите внимание, что поток могут слушать одновременно несколько клиентов, как многие «tail -f» процессы могут одновременно читать файл, не конфликтуя друг с другом. 
+
+- Сообщение доставляется одному клиенту. Первый заблокированный чтением клиент получит данные первым.
+- Клинт должен сам инициировать операцию чтения каждого сообщения. List ничего не знает о клиентах.
+- Сообщения хранятся до тех пор, пока их кто-то не считает или не удалит явно. Если вы настроили Redis сервер, чтобы он сбрасывал данные на диск, то надёжность системы резко возрастает.
 
 ![ ](../../../media/redisTypes.jpg)
 
