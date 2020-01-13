@@ -308,10 +308,12 @@ In HTTP/2, multiple asset requests can reuse a single TCP connection. Unlike HTT
 
 *Дополнительно:*
 
-- https://habr.com/post/215117/
-- https://ruseller.com/lessons.php?rub=28&id=1777
-- https://ruhighload.com/%D0%9E%D0%BF%D1%82%D0%B8%D0%BC%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F+%D0%B2+http%2F2
-- https://habr.com/company/nixsolutions/blog/304518/
+- [Простым языком об HTTP](https://habr.com/post/215117/)
+- [HTTP: протокол, который каждый разработчик должен знать (часть 2)](https://ruseller.com/lessons.php?rub=28&id=1777)
+- [Оптимизация в HTTP/2](https://ruhighload.com/%D0%9E%D0%BF%D1%82%D0%B8%D0%BC%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F+%D0%B2+http%2F2)
+- [Как HTTP/2 сделает веб быстрее](https://habr.com/company/nixsolutions/blog/304518/)
 - http://portscan.ru/article-protocol-http.html
-- https://ru.wikipedia.org/wiki/TLS
-- https://www.opennet.ru/docs/RUS/ldap_apacheds/tech/ssl.html
+- [TLS — Википедия](https://ru.wikipedia.org/wiki/TLS)
+- [Что такое TSL](https://habr.com/ru/post/258285/)
+- [Ключи, шифры, сообщения: как работает TLS](https://tls.dxdt.ru/tls.html)
+- [Руководство по выживанию — TLS/SSL и сертификаты SSL](https://www.opennet.ru/docs/RUS/ldap_apacheds/tech/ssl.html)
