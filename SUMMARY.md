@@ -61,6 +61,7 @@
   * [Планировщик](goLang/scheduler.md)
   * [Управление памятью](goLang/memory.md)
   * [Экосистема](goLang/ecosystem.md)
+* [JavaScript](javascript.md)
 * [Разное](unsorted/README.md)
   * [Побитовые операции](unsorted/bits.md)
   * [Типизация](unsorted/types.md)
