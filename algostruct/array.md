@@ -16,7 +16,8 @@
  * Average O(n^2)
  * Best O(n)
  */
-function bubbleSort($array) {
+function bubbleSort(array $array): array
+{
     $length = count($array);
     for ($i = $length - 1; $i > 0; $i--) {
         $changes = false;
@@ -33,6 +34,7 @@ function bubbleSort($array) {
 
     return $array;
 }
+
 $array = [5, 25, 10, 7, 6, 20, 21, 1, 2, 13];
 print_r(bubbleSort($array));
 ```
@@ -43,12 +45,14 @@ print_r(bubbleSort($array));
 
 ```php
 <?php
+
 /**
  * Worst O(n^2)
  * Average O(n^2)
  * Best O(n)
  */ 
-function insertSort(array $arr) {
+function insertSort(array $arr): array 
+{
     $count = count($arr);
   
     for ($i = 1; $i < $count; $i++) {
@@ -70,12 +74,15 @@ print_r(insertSort($array));
 На очередной итерации будем находить минимум в массиве после текущего элемента и менять его с ним, если надо. Таким образом, после i-ой итерации первые i элементов будут стоять на своих местах. Нужно отметить, что эту сортировку можно реализовать двумя способами – сохраняя минимум и его индекс или просто переставляя текущий элемент с рассматриваемым, если они стоят в неправильном порядке. 
 
 ```php
+<?php
+
 /**
  * Worst O(n^2)
  * Average O(n^2)
  * Best O(n^2)
  */
-function selectionSort(array $arr) {
+function selectionSort(array $arr): array 
+{
     $count = count($arr);
     
     for ($i = 0; $i < $count - 1; $i++) {
@@ -104,12 +111,15 @@ print_r(selectionSort($array));
 Выберем некоторый опорный элемент(пивот). После этого перекинем все элементы, меньшие его, налево, а большие – направо. Рекурсивно вызовемся от каждой из частей. В итоге получим отсортированный массив, так как каждый элемент меньше опорного стоял раньше каждого большего опорного. Асимптотика: **O(n logn)** в среднем и лучшем случае, **O(n^2)**. Наихудшая оценка достигается при неудачном выборе опорного элемента. Идем одновременно слева и справа, находим пару элементов, таких, что левый элемент больше опорного, а правый меньше, и меняем их местами. 
 
 ```php
+<?php
+
 /**
  * Worst O(n^2)
  * Average O(n logn)
  * Best  O(n logn)
  */
-function quickSort(&$array, $low, $high) {
+function quickSort(array &$array, int $low, int $high): void 
+{
     if ($low < $high) {
         $pivot = partition($array, $low, $high);
 
@@ -118,7 +128,8 @@ function quickSort(&$array, $low, $high) {
     }
 }
 
-function partition(&$array, $low, $high) {
+function partition(array &$array, int $low, int $high): int
+{
     $pivot = $array[$high];
     $wall = $low;
 
@@ -140,29 +151,29 @@ print_r($array);
 ```
 
  ```php
-function simple_quick_sort($arr)
+<?php
+
+function simpleQuickSort(array $array): array
 {
-    if(count($arr) <= 1){
-        return $arr;
-    }
-    else{
-        $pivot = $arr[0];
-        $left = array();
-        $right = array();
-        for($i = 1; $i < count($arr); $i++)
-        {
-            if($arr[$i] < $pivot){
-                $left[] = $arr[$i];
-            }
-            else{
-                $right[] = $arr[$i];
+    if (count($array) <= 1) {
+        return $array;
+    } else {
+        $pivot = $array[0];
+        $left = [];
+        $right = [];
+        for ($i = 1; $i < count($array); $i++) {
+            if ($array[$i] < $pivot) {
+                $left[] = $array[$i];
+            } else {
+                $right[] = $array[$i];
             }
         }
-        return array_merge(simple_quick_sort($left), array($pivot), simple_quick_sort($right));
+        return array_merge(simpleQuickSort($left), [$pivot], simpleQuickSort($right));
     }
 }
-$array = [3,4,1,2,5,9,6,7,8];
-print_r(simple_quick_sort($array));
+
+$array = [3, 4, 1, 2, 5, 9, 6, 7, 8];
+print_r(simpleQuickSort($array));
  ```
 
 #### Сортировка слиянием / Merge sort
@@ -171,41 +182,44 @@ print_r(simple_quick_sort($array));
 
 ```php
 <?php
+
  /**
  * Worst O(n log n)
  * Average O(n log n)
  * Best O(n log n)	
  */ 
-function mergeSort($array) {
-    
-    [$half1, $half2]  = array_chunk($array,count($array) / 2);
-    
+function mergeSort(array $array): array
+{
+    [$half1, $half2] = array_chunk($array, count($array) / 2);
+
     if (count($half1) > 1) {
         $half1 = mergeSort($half1);
-    } 
-    
+    }
+
     if (count($half2) > 1) {
         $half2 = mergeSort($half2);
-    } 
-    
+    }
+
     return merge($half1, $half2);
 }
 
-function merge($arr1, $arr2) {
+function merge(array $arr1, array $arr2): array
+{
     $resArray = [];
-    $i = 0; $j =0;
-    
+    $i = 0;
+    $j = 0;
+
     while (true) {
         if (!isset($arr1[$i])) {
             $resArray = array_merge($resArray, array_slice($arr2, $j));
             break;
         }
-        
+
         if (!isset($arr2[$j])) {
             $resArray = array_merge($resArray, array_slice($arr1, $i));
             break;
         }
-        
+
         if ($arr1[$i] < $arr2[$j]) {
             $resArray[] = $arr1[$i];
             $i++;
@@ -214,12 +228,11 @@ function merge($arr1, $arr2) {
             $j++;
         }
     }
-    
+
     return $resArray;
 }
 
-
-$array = [3,4,1,2,5,9,6,7,8];
+$array = [3, 4, 1, 2, 5, 9, 6, 7, 8];
 print_r(mergeSort($array));
 ```
 
