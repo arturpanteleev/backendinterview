@@ -91,4 +91,4 @@ InnoDB реализует MVCC путем сохранения с каждой �
 
 *Дополнительно:*
 
-https://dev.mysql.com/doc/refman/8.0/en/innodb-multi-versioning.html
+- https://dev.mysql.com/doc/refman/8.0/en/innodb-multi-versioning.html
