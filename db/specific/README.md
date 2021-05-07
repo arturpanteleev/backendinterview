@@ -2,8 +2,8 @@
 
 В данном разделе содержится информация относящаяся к конкретным реализациям различных СУБД.
 
-* [MySql](mysql/README.MD)
-* [PostgreSql](postgreSql/README.MD)
+* [MySql](mysql/README.md)
+* [PostgreSql](postgreSql/README.md)
 * [NoSql](noSql/README.md)
 * [Колоночные](column.md)
 * [Очереди](messages/README.md)
