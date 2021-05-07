@@ -8,5 +8,6 @@
 - [Дерево](tree.md)
 - [Граф](graph.md)
 - [Криптография](crypto.md)
+- [Вероятностные](probability.md)
 - [Разные алгоритмы](unsorted.md)
 
