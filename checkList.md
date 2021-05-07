@@ -29,45 +29,6 @@
   * Жадные алгоритмы
   * Побитовые операции
 
-## Архитектураa
-* Основы ООП
-  * Инкапсуляция
-  * Полиморфзим
-  * Наследование
-  * Композиция/агрегация
-* Паттерны GoFБанда 4
-  * Создающие
-  * Поведенческие
-  * Структурные
-* Принципы хорошей архитектуры
-  * SOLID
-  * GRASP
-  * DRY
-  * KISS
-* Архитектурные паттерны
-  * Layer architecture
-  * Onion architecutre
-  * Hexogonal architecture
-  * CQRS
-  * ES
-  * Saga
-* DDD
-  * Стратегические
-    * Bounded context
-    * Ubiquitous language
-    *  Subdomain
-  * Тактические
-    * Agregate root
-    * Entity
-    * Value object
-* Api и Микросервисы
-  * Rest
-  * Rpc
-  * JsonApi
-  * GraphQL
-  * gRpc
-  * protobuf
-
 ## Базы Данных
 * Теория Баз Данных
   * Транзакции
@@ -133,7 +94,46 @@
     * Tarantool
     * Rabbit
     * Kafka
-    * Mongo
+    * Mongo  
+
+## Архитектураa
+* Основы ООП
+  * Инкапсуляция
+  * Полиморфзим
+  * Наследование
+  * Композиция/агрегация
+* Паттерны GoFБанда 4
+  * Создающие
+  * Поведенческие
+  * Структурные
+* Принципы хорошей архитектуры
+  * SOLID
+  * GRASP
+  * DRY
+  * KISS
+* Архитектурные паттерны
+  * Layer architecture
+  * Onion architecutre
+  * Hexogonal architecture
+  * CQRS
+  * ES
+  * Saga
+* DDD
+  * Стратегические
+    * Bounded context
+    * Ubiquitous language
+    *  Subdomain
+  * Тактические
+    * Agregate root
+    * Entity
+    * Value object
+* Api и Микросервисы
+  * Rest
+  * Rpc
+  * JsonApi
+  * GraphQL
+  * gRpc
+  * protobuf
 
 ## PHP
 * Фичи новых версий
