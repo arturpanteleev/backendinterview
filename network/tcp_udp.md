@@ -13,3 +13,7 @@
 
 ![img](..\media\network\tcp_udp_format.jpeg)
 
+
+
+*Дополнительно*:
+
