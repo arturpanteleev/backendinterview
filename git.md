@@ -53,21 +53,21 @@ Git является распределенным, то есть не завис
 
 ![](media/gitMergeRebase.jpeg)
 
-**rebase -i **- интеркативын ребайз, позволяет сквошить(скливать) комммиты, менять их местами, выкидывать нужные, менять описания.
+**rebase -i** - интеркативын ребайз, позволяет сквошить(скливать) комммиты, менять их местами, выкидывать нужные, менять описания.
 
 **rebase onto** 
 
-Вы можете взять изменения из ветки `client`, которых нет в `server` (C8 и C9), и применить их на ветке `master` при помощи опции `--onto` команды `git rebase`:
+Вы можете взять изменения из ветки `client`, которых нет в `server` (C8 и C9), и применить их на ветке `master` при помощи опции `--onto` команды `git rebas`:
 
 ```
 $ git rebase --onto master server client
 ```
 
-По сути, это указание “переключиться на ветку `client`, взять изменения от общего предка веток `client` и `server` и повторить их на `master`”. Это немного сложно; но результат, показанный на рисунке 3-32, довольно классный.
+По сути, это указание “переключиться на ветку `client`, взять изменения от общего предка веток `client` и `server` и повторить их на `master`”. 
 
 ![](media/gitRebaseOnto.png)
 
-**cherry-pick** - просто пытается вставить выбарнный коммит в нужную ветку
+**cherry-pick** - просто пытается вставить выбранный коммит в нужную ветку
 
 ## pull
 
@@ -83,20 +83,20 @@ git pull [options] [<repository> [<refspec>…]]
 
 ## reflog
 
-Во время вашей работы Git записывает все изменения HEAD. Каждый раз при переключении веток и коммите, добавляется запись в **reflog** Таким образом reflog поможет найти нам проебавшиеся комиты, однако он не вечен, так как есть сборщик мусора и данные хранятся там не вечно.
+Во время вашей работы Git записывает все изменения HEAD. Каждый раз при переключении веток и коммите, добавляется запись в **reflog** Таким образом reflog поможет найти нам потерянные комиты, однако он не вечен, так как есть сборщик мусора и данные хранятся там не вечно.
 
 
 
 *Дополнительно*:
 
-- https://githowto.com/ru
+- [https://githowto.com/ru](https://github.com/k88hudson/git-flight-rules)
 
-- https://git-scm.com/book/ru/v2
+- [https://git-scm.com/book/ru/v2](https://github.com/k88hudson/git-flight-rules)
 
-- https://habr.com/company/intel/blog/344962/
+- [https://habr.com/company/intel/blog/344962/](https://github.com/k88hudson/git-flight-rules)
 
-- https://eax.me/git-commands/
+- [https://eax.me/git-commands/](https://github.com/k88hudson/git-flight-rules)
 
-- https://github.com/nicothin/web-development/tree/master/git
+- [https://github.com/nicothin/web-development/tree/master/git](https://github.com/k88hudson/git-flight-rules)
 
-- https://github.com/k88hudson/git-flight-rules
+- [https://github.com/k88hudson/git-flight-rules](https://github.com/k88hudson/git-flight-rules)
