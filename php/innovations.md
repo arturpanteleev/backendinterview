@@ -1,6 +1,6 @@
 ## Основные нововведения php 
 
-## [7.0](http://www.php.net/ChangeLog-7.php#7.0.0)
+### [7.0](http://www.php.net/ChangeLog-7.php#7.0.0)
 
 1. возможность обработки исключения, вместо фатальной ошибки
 2. новые операторы сравнения ( <=>, ?? и другие)
@@ -53,7 +53,7 @@
 18. Расширенные типы строк для PDO
 19. Добавлены опции JSON_INVALID_UTF8_IGNORE и JSON_INVALID_UTF8_SUBSTITUTE
 
-## [7.3](http://www.php.net/ChangeLog-7.php#7.3.0)
+### [7.3](http://www.php.net/ChangeLog-7.php#7.3.0)
 
 1. Смягчение требований к синтаксису Heredoc и Nowdoc
 2. Поддержка конечных запятых в вызовах функций и методов
@@ -65,7 +65,7 @@
 8. Добавление функции `is_countable()`
 9. Добавление функций `array_key_first()` и `array_key_last()`
 
-## 7.4
+### 7.4
 
 - Типизированные свойства классов
 - Предзагрузка для улучшения производительности
@@ -75,7 +75,7 @@
 - Интерфейс внешних функций, открывающий новые возможности для разработки расширений на PHP
 - Оператор распаковки в массивах
 
-## [8](https://www.php.net/releases/8.0)
+### [8](https://www.php.net/releases/8.0)
 
 1. Именованные аргументы
 2. Атрибуты
@@ -85,3 +85,31 @@
 6. Оператор Nullsafe
 7. Улучшенное сравнение строк и чисел
 8. Ошибки согласованности типов для встроенных функций
+
+### 8.1
+
+- [Intersection Types](https://php.watch/versions/8.1/intersection-types)
+- [Enums](https://php.watch/versions/8.1/enums)
+- [`never` return type](https://php.watch/versions/8.1/never-return-type)
+- [Readonly Properties](https://php.watch/versions/8.1/readonly)
+- [Fibers](https://php.watch/versions/8.1/fibers)
+- [`final` class constants](https://php.watch/versions/8.1/final-class-const)
+- [New `fsync` and `fdatasync` functions](https://php.watch/versions/8.1/fsync-fdatasync)
+- [New `array_is_list` function](https://php.watch/versions/8.1/array_is_list)
+- [New Sodium `XChaCha20` functions](https://php.watch/versions/8.1/Sodium-XChaCha20-functions)
+- [`$_FILES`: New `full_path` value for directory-uploads](https://php.watch/versions/8.1/$_FILES-full-path)
+- [Intl: New `IntlDatePatternGenerator` class](https://php.watch/versions/8.1/IntlDatePatternGenerator)
+- [First-class Callable Syntax](https://php.watch/versions/8.1/first-class-callable-syntax)
+- [GD: AVIF image support](https://php.watch/versions/8.1/gd-avif)
+- [Phar: Added OpenSSL-256 and OpenSSL-512 signature algorithms](https://php.watch/versions/8.1/phar-openssl-256-openssl-512)
+- [GD: Lossless WebP encoding support](https://php.watch/versions/8.1/gd-webp-lossless)
+- [New `#[ReturnTypeWillChange\]` attribute](https://php.watch/versions/8.1/ReturnTypeWillChange)
+- [Array unpacking support for string-keyed arrays](https://php.watch/versions/8.1/spread-operator-string-array-keys)
+- [Explicit Octal numeral notation](https://php.watch/versions/8.1/explicit-octal-notation)
+- [Hash functions accept algorithm-specific `$options`](https://php.watch/versions/8.1/hash-options)
+- [MurmurHash3 hash algorithm support](https://php.watch/versions/8.1/MurmurHash3)
+- [xxHash hash algorithms support](https://php.watch/versions/8.1/xxHash)
+- [FPM: Configurable child-process spawn rate](https://php.watch/versions/8.1/fpm-pm-max_spawn_rate)
+- [Curl: DNS-over-HTTPS support](https://php.watch/versions/8.1/Curl-CURLOPT_DOH_URL)
+- [Curl: File uploads from strings with `CURLStringFile`](https://php.watch/versions/8.1/CURLStringFile)
+- [MySQLi: New `MYSQLI_REFRESH_REPLICA` constant](https://php.watch/versions/8.1/MYSQLI_REFRESH_REPLICA)
