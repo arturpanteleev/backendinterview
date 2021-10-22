@@ -6,6 +6,7 @@
   * [Хэш-Таблица](algostruct/hashTable.md)
   * [Дерево](algostruct/tree.md)
   * [Граф](algostruct/graph.md)
+  * [Вероятностные](algostruct/probability.md)
   * [Криптография](algostruct/crypto.md)
   * [Разное](algostruct/unsorted.md)
 * [Базы Данных](db/README.md)
