@@ -52,7 +52,7 @@ OLAP-структура, созданная из рабочих данных, н
 
 - [Что нужно знать об архитектуре ClickHouse, чтобы его эффективно использовать](https://habr.com/ru/post/509540/)
 
-- https://ruhighload.com/%D0%9A%D0%BE%D0%BB%D0%BE%D0%BD%D0%BE%D1%87%D0%BD%D1%8B%D0%B5+%D0%B1%D0%B0%D0%B7%D1%8B+%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85
+- [Колоночные БД](https://highload.today/kolonochnye-bazy-dannykh/)
 
 - https://habr.com/post/95181/
 
