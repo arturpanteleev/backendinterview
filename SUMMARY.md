@@ -34,7 +34,7 @@
       * [Redis](db/specific/noSql/redis.md) 
       * [Tarantool](db/specific/noSql/tarantool.md)
       * [Mongo](db/specific/noSql/mongo.md) 
-    * [ClickHouse](db/clickhouse.md) 
+    * [ClickHouse](db/specific/clickhouse.md) 
     * [Брокеры сообщений](db/specific/messages/README.md)
       * [Rabbit](db/specific/messages/rabbit.md) 
       * [Kafka](db/specific/messages/kafka.md) 
