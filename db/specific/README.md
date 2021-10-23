@@ -3,12 +3,12 @@
 В данном разделе содержится информация относящаяся к конкретным реализациям различных СУБД.
 
 * [MySql](specific/mysql/README.MD)
-      * [Архитектура MySql](specific/mysql/architecture.md)
-          * [Конкурентный доступ](specific/mysql/concurency.md)
-          * [Индексы](specific/mysql/indexes.md)
-          * [Основы SQL](specific/mysql/sql.md)
-          * [Explain](specific/mysql/explain.md)
-          * [Разное](specific/mysql/unsorted.md)       
+    * [Архитектура MySql](specific/mysql/architecture.md)
+    * [Конкурентный доступ](specific/mysql/concurency.md)
+    * [Индексы](specific/mysql/indexes.md)
+    * [Основы SQL](specific/mysql/sql.md)
+      * [Explain](specific/mysql/explain.md)
+      * [Разное](specific/mysql/unsorted.md)       
     * [PostgreSql](specific/postgreSql/README.md)
     * [NoSql](specific/noSql/README.md)       
       * [Memcaced](specific/noSql/memcached.md) 
