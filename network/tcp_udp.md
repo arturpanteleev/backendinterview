@@ -13,11 +13,11 @@
 
 
 
-![TC{/IP vs UDP/IP}](..\media\network\tcp_udp_stack.jpeg)
+![TC{/IP vs UDP/IP}](../media/network/tcp_udp_stack.jpeg)
 
 На схеме представлены TCP/IP и UDP/IP стек. Внизу есть Ethernet-пакеты, IP-пакеты, и дальше на уровне ОС есть TCP и UDP. TCP и UDP в этом стеке не сильно друг от друга отличаются. Они инкапсулируются в IP-пакеты, и приложения могут ими пользоваться. Чтобы увидеть отличия, нужно посмотреть внутрь TCP- и UDP-пакета.
 
-![TCP vs UDP Formats](..\media\network\tcp_udp_format.jpeg)
+![TCP vs UDP Formats](../media/network/tcp_udp_format.jpeg)
 
 И там, и там есть порты. Но **в UDP есть только контрольная сумма** — длина пакета, этот протокол максимально простой. А в TCP — очень много данных, которые явно указывают окно, acknowledgement, sequence, пакеты и так далее. Очевидно, **TCP более сложный**. Если говорить очень грубо, то TCP — это протокол надежной доставки, а UDP — ненадежной.
 
