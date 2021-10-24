@@ -23,5 +23,6 @@
 
 *Дополнительно*:
 
+- [Протокол TCP](https://networkguru.ru/protokol-transportnogo-urovnia-tcp-chto-nuzhno-znat/)
 - [TCP против UDP](https://habr.com/ru/company/oleg-bunin/blog/461829/)
 
