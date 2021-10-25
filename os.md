@@ -67,7 +67,7 @@
 
 
 
-Дополнительно:
+*Дополнительно:*
 
 - [Процессы, задачи, потоки и нити](http://citforum.ru/operating_systems/articles/process.shtml)
 
