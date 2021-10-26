@@ -17,7 +17,7 @@
       * [Репликация](db/dBTheory/distrubedDb/replication.md)
       * [Шардинг](db/dBTheory/distrubedDb/sharding.md)
       * [Разное](db/dBTheory/distrubedDb/unsorted.md)
-  * [Конкретные реализации СУБД](db/specific/README.md)
+  * [Конкретные БД](db/specific/README.md)
     * [MySql](db/specific/mysql/README.MD)
       * [Архитектура MySql](db/specific/mysql/architecture.md)
       * [Конкурентный доступ](db/specific/mysql/concurency.md)
