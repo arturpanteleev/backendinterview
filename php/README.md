@@ -4,5 +4,5 @@
 
 - [Фичи новых версий](php/innovations.md)
 - [PHP Internals](php/internals.md)
-- [Стандартные функции](php/functions.md) 
+- [Фреймворки](php/frameworks/)
 - [Разное](php/uncategorized.md) 
