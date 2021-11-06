@@ -117,66 +117,34 @@ print_r(selectionSort($array));
  * Worst O(n^2)
  * Average O(n logn)
  * Best  O(n logn)
- */
-function quickSort(array &$array, int $low, int $high): void 
-{
-    if ($low < $high) {
-        $pivot = partition($array, $low, $high);
-
-        quickSort($array, $low, $pivot - 1);
-        quickSort($array, $pivot + 1, $high);
-    }
-}
-
-function partition(array &$array, int $low, int $high): int
-{
-    $pivot = $array[$high];
-    $wall = $low;
-
-    for ($i = $low; $i < $high; $i++) {
-        if ($array[$i] < $pivot) {
-            [$array[$i], $array[$wall]] = [$array[$wall], $array[$i]];
-            $wall++;
+ */ 
+function quick(array $arr) : array {
+    if (count($arr) < 2) {
+        return $arr;
+    } 
+    
+    $pivot = (int)(count($arr) / 2); // самый тупой выбор опорника 
+    
+    $less_arr = [];
+    $more_arr = [];
+    
+    for ($i = 0; $i <count($arr); $i++) {
+        if ($i == $pivot) {
+            continue;
+        }
+        if ($arr[$i] < $arr[$pivot]) {
+            $less_arr[] = $arr[$i];
+        } else {
+            $more_arr[] = $arr[$i];
         }
     }
-
-    [$array[$wall], $array[$i]] = [$array[$i], $array[$wall]];
-
-    return $wall;
+     
+    return array_merge(quick($less_arr), [$arr[$pivot]], quick($more_arr));
 }
 
-$array = [3, 4, 1, 2, 5, 9, 6, 7, 8];
-quickSort($array, 0, count($array) - 1);
-print_r($array);
+
+print_r(quick([3, 4, 1, 2, 5, 9, 6, 7, 8]));
 ```
-
- ```php
-<?php
-/**
- * Worst O(n^2) Average O(n logn) Best  O(n logn)
- */
-function simpleQuickSort(array $array): array
-{
-    if (count($array) <= 1) {
-        return $array;
-    } else {
-        $pivot = $array[0];
-        $left = [];
-        $right = [];
-        for ($i = 1; $i < count($array); $i++) {
-            if ($array[$i] < $pivot) {
-                $left[] = $array[$i];
-            } else {
-                $right[] = $array[$i];
-            }
-        }
-        return array_merge(simpleQuickSort($left), [$pivot], simpleQuickSort($right));
-    }
-}
-
-$array = [3, 4, 1, 2, 5, 9, 6, 7, 8];
-print_r(simpleQuickSort($array));
- ```
 
 ### Сортировка слиянием / Merge sort
 
