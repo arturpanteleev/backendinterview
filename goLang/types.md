@@ -341,4 +341,4 @@ type имя_интерфейса interface {определения_функци�
 
 ### Nill interface vs nil pointer interface
 
-<img src="https://habrastorage.org/files/ac9/905/1fb/ac99051fbb924e6d8912f479915b7a78.png" width="100%">
+<img src="../media/go/nilIface.png" width="100%">
