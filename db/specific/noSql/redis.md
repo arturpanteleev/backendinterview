@@ -233,3 +233,4 @@ Redis поддерживает репликацию, которая означа
 - [Memcached vs Redis](https://stackoverflow.com/questions/10558465/memcached-vs-redis)
 - [Сравниваем Tarantool с Redis и Memcached](https://habr.com/company/mailru/blog/352760/)
 - [Redis Cluster](https://zinvapel.github.io/it/tools/2018/03/25/redis-cluster/)
+- [Redis Persistence](https://redis.io/topics/persistence)
