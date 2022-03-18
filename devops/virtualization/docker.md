@@ -60,6 +60,10 @@ RUN mkdir -p /var/www/test
 CMD ["php", "-S", "0.0.0.0:9095", "-t", "public", "public/index.php"]
 ```
 
+1. Use RUN instructions to build your image by adding layers on top of initial image.
+2. Prefer ENTRYPOINT to CMD when building executable Docker image and you need a command always to be executed. Additionally use CMD if you need to provide extra default arguments that could be overwritten from command line when docker container runs.
+3. Choose CMD if you need to provide a default command and/or arguments that can be overwritten from command line when docker container runs.
+
 
 
 ## Docker-compose
