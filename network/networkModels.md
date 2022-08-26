@@ -75,7 +75,7 @@
 
 **TCP/IP** — сетевая модель выведенная из практического использования(в отличии от OSI).
 
-![tcp-vs-udp-01](..\media\network\tcp-vs-udp.png)
+![tcp-vs-udp-01](../media/network/tcp-vs-udp.png)
 
 ### 4 — Прикладной уровень
 
