@@ -117,7 +117,7 @@ select {
 
 3. Происходит последовательная попытка взаимодействия (запись или чтение) с каналами, перечисленными внутри оператора *select*. При наличии секции *default*, чтение и запись происходят в *неблокирующем* режиме(об этом далее).
 
-4. В случае, если ни один из каналов недоступен для взаимодействия, и секция *default* отсутствует, то текущая горутина переходит в состояние *waiting* до тех пор, пока какой то из каналов не станет доступен.
+4. В случае, если ни один из каналов недоступен для взаимодействия, и секция *default* отсутствует, то текущая горутина переходит в состояние *waiting* до тех пор, пока какой-то из каналов не станет доступен.
 
 5. С каналов снимается блокировка мьютексом.
 
@@ -155,7 +155,7 @@ for val := range someChan {
 // канал закрыт
 ```
 
-При записи, нужно во первых обернуть в recover. Во вторых рекомендуется сначала "убить", писателей, а потом уже закрываать канал. Также One general principle of using Go channels is **don't close a channel from the receiver side and don't close a channel if the channel has multiple concurrent senders**. In other words, we should only close a channel in a sender goroutine if the sender is the only sender of the channel.
+При записи, нужно во первых обернуть в recover. Во вторых рекомендуется сначала "убить", писателей, а потом уже закрывать канал. Также One general principle of using Go channels is **don't close a channel from the receiver side and don't close a channel if the channel has multiple concurrent senders**. In other words, we should only close a channel in a sender goroutine if the sender is the only sender of the channel.
 
 **It is worth collecting the channel axioms in one post:**
 
