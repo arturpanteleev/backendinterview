@@ -65,7 +65,7 @@ $ git rebase --onto master server client
 
 По сути, это указание “переключиться на ветку `client`, взять изменения от общего предка веток `client` и `server` и повторить их на `master`”. 
 
-![](media/gitRebaseOnto.png)
+![](media/gitRebaseOnTo.png)
 
 **cherry-pick** - просто пытается вставить выбранный коммит в нужную ветку
 
