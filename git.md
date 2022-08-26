@@ -34,22 +34,22 @@ Git является распределенным, то есть не завис
 
 ![reset checkout](https://git-scm.com/book/en/v2/images/reset-checkout.png)
 
-|                                          | HEAD | Индекс | Рабочий Каталог | Сохранность РК? |
-| ---------------------------------------- | ---- | ------ | --------------- | --------------- |
+|                                             | HEAD | Индекс | Рабочий Каталог | Сохранность РК? |
+|---------------------------------------------|------|--------|-----------------|-----------------|
 | **На уровне коммитов (без указания путей)** |      |        |                 |                 |
-| `reset --soft [commit]`                  | REF  | NO     | NO              | YES             |
-| `reset [commit]`                         | REF  | YES    | NO              | YES             |
-| `reset --hard [commit]`                  | REF  | YES    | YES             | **NO**          |
-| `checkout [commit]`                      | HEAD | YES    | YES             | YES             |
-| **На уровне файлов (с указанием путей)** |      |        |                 |                 |
-| `reset (commit) [file]`                  | NO   | YES    | NO              | YES             |
-| `checkout (commit) [file]`               | NO   | YES    | YES             | **NO**          |
+| `reset --soft [commit]`                     | REF  | NO     | NO              | YES             |
+| `reset [commit]`                            | REF  | YES    | NO              | YES             |
+| `reset --hard [commit]`                     | REF  | YES    | YES             | **NO**          |
+| `checkout [commit]`                         | HEAD | YES    | YES             | YES             |
+| **На уровне файлов (с указанием путей)**    |      |        |                 |                 |
+| `reset (commit) [file]`                     | NO   | YES    | NO              | YES             |
+| `checkout (commit) [file]`                  | NO   | YES    | YES             | **NO**          |
 
 ## merge rebase cherry-pick
 
 **merge** - слияние двух веток, в новом коммите
 
-**rebase** - перебазирование ветки таким образом, чтобы история выглядела так чтобы ее коммиты выходили из заданного(как правило послденего) . Отребейзенные коммиты меняю свою дату и хеш.
+**rebase** - перебазирование ветки таким образом, чтобы история выглядела так, чтобы ее коммиты выходили из заданного (как правило, последнего). Отребейзенные коммиты меняю свою дату и хеш.
 
 ![](media/gitMergeRebase.jpeg)
 
