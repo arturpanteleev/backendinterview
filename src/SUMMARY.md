@@ -1,5 +1,7 @@
 # Оглавление
 
+[Введение](README.md)
+
 * [Алгоритмы и Структуры Данных](algostruct/README.md)
   * [Базовые структуры](algostruct/structBasics.md)
   * [Массив](algostruct/array.md)
