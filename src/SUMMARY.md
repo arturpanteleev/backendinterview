@@ -90,7 +90,6 @@
   * [Побитовые операции](unsorted/bits.md)
   * [Типизация](unsorted/types.md)
   * [Юникод](unsorted/unicode.md)
-* [Менеджмент и тимлидство](manage/README.md)  
-  * [Методологии разработки](manage/devmethods.md)
+* [Методологии разработки](manage/devmethods.md)  
 * [ЧекЛист](checkList.md)
 
