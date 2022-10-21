@@ -1,0 +1,11 @@
+[book]
+title = "Backend interview"
+description = "Книжка для подготовки к собеседованию на должность backend developer"
+authors = ["Artur Panteleev"]
+language = "ru"
+
+
+[output.html]
+mathjax-support = true
+site-url = "https://backendinterview.ru"
+git-repository-url = "https://github.com/arturpanteleev/phpInterview"
