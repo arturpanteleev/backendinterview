@@ -26,14 +26,11 @@
       * [Индексы](db/specific/mysql/indexes.md)
       * [Основы SQL](db/specific/mysql/sql.md)
       * [Explain](db/specific/mysql/explain.md)
-      * [Разное](db/specific/mysql/unsorted.md)     
-      
+      * [Разное](db/specific/mysql/unsorted.md)        
     * [PostgreSql](db/specific/postgreSql/README.md) 
-
-    * [NoSql](db/specific/noSql/README.md) 
-      
+    * [NoSql](db/specific/noSql/README.md)       
+      * [Redis](db/specific/noSql/redis.md)
       * [Memcaced](db/specific/noSql/memcached.md) 
-      * [Redis](db/specific/noSql/redis.md) 
       * [Tarantool](db/specific/noSql/tarantool.md)
       * [Mongo](db/specific/noSql/mongo.md) 
     * [ClickHouse](db/specific/clickhouse.md) 
