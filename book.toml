@@ -7,5 +7,5 @@ language = "ru"
 
 [output.html]
 mathjax-support = true
-site-url = "https://backendinterview.ru"
+site-url = "/book/"
 git-repository-url = "https://github.com/arturpanteleev/phpInterview"
