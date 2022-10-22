@@ -33,3 +33,8 @@ jobs:
           git add .
           git commit -m "Deploy $GITHUB_SHA to gh-pages"
           git push --force --set-upstream origin gh-pages
+
+      - uses: crazy-max/ghaction-github-pages@v3
+        with:
+          target_branch: gh-pages
+          build_dir: .
