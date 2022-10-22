@@ -4,7 +4,7 @@
 
 * [Linux](linux.md)
 * [Основы виртуализации](virtualization/README.md)
-  * [Docker](devops/virtualization/docker.md)
-  * [Kubernetes](devops/virtualization/kubernetes.md)
+  * [Docker](virtualization/docker.md)
+  * [Kubernetes](virtualization/kubernetes.md)
 * [Deployment](deployment.md)
 * [Мониторинг](monitoring.md)

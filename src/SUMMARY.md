@@ -55,7 +55,7 @@
     * [Laravel](php/frameworks/laravel.md) 
     * [Symfony](php/frameworks/symfony.md) 
   * [Разное](php/uncategorized.md) 
-* [GoLang](goLang//README.md)
+* [GoLang](goLang/README.md)
   * [Типы данных](goLang/types.md)
   * [Сoncurrency](goLang/concurrency/README.md)
     * [Каналы](goLang/concurrency/chanel.md)

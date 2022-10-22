@@ -24,7 +24,7 @@ Docker — программное обеспечение для автомати
 - **Volume** – дисковое пространство между хостом и контейнером. Это папка на вашей локальной машине примонтированная внутрь контейнера. Меняете тут меняется там, и наоборот.
 - **Dockerfile** – файл с набором инструкций для создания образа будущего контейнера
 - **Service (сервис)** – по сути это запущенный образ (один или несколько контейнеров), дополнительно сконфигурированный такими опциями как открытие портов, маппинг папок (volume) и прочее. Обычно это делается при помощи docker-compose.yml файла.
-- **Docker-compose**  – тулза, облегчающая сборку и запуск системы состоящей из нескольких контейнеров, связанных между собой.
+- **Docker-compose** – тулза, облегчающая сборку и запуск системы состоящей из нескольких контейнеров, связанных между собой.
 - **Build (билд, билдить)** – процесс создания образа из набора инструкций в докерфайле, или нескольких докерфайлов, если билд делается с помощью композера
   
 
@@ -61,7 +61,7 @@ CMD ["php", "-S", "0.0.0.0:9095", "-t", "public", "public/index.php"]
 ```
 
 1. Use RUN instructions to build your image by adding layers on top of initial image.
-2. Prefer ENTRYPOINT to CMD when building executable Docker image and you need a command always to be executed. Additionally use CMD if you need to provide extra default arguments that could be overwritten from command line when docker container runs.
+2. Prefer ENTRYPOINT to CMD when building executable Docker image, and you need a command always to be executed. Additionally, use CMD if you need to provide extra default arguments that could be overwritten from command line when docker container runs.
 3. Choose CMD if you need to provide a default command and/or arguments that can be overwritten from command line when docker container runs.
 
 
