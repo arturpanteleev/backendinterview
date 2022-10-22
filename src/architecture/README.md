@@ -7,6 +7,6 @@
 - [Принципы хорошей архитектуры](principles.md)
 - [Архитектурные паттерны](architecturesPatterns.md)
 - [DDD](ddd.md)
-- [Микросервисы](microservices/README.md)
+- [Микросервисы](microserices/README.md)
 - [Разное](uncategorized.md)
 

@@ -6,7 +6,7 @@
 
 merge, beforeOptimization, optimization, beforeRemoving, removing, afterRemoving  — по умолчанию конфигурация компилятора уже содержит набор проходов.
 
-- *before/after*— лишь «хуки» для пользовательских «проходов» и не используются стандартными (добавленными по умолчанию);
+- *before/after* — лишь «хуки» для пользовательских «проходов» и не используются стандартными (добавленными по умолчанию);
 - *merge* — обрабатывает *расширения (extensions)* контейнера;
 - *optimization* — оптимизируют контейнер, примерами могут служить: ResolveInterfaceInjectorsPass (преобразует [интерфейсные инъекции](http://martinfowler.com/articles/injection.html#InterfaceInjection)), CheckCircularReferencesPass (проверяет циклические ссылки в контейнере)
 - *removing* — удаляют неиспользуемые сервисы, например, RemoveUnusedDefinitionsPass (удаляет неиспользуемые приватные сервисы)
