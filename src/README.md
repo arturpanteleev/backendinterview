@@ -8,7 +8,7 @@
 
 Вопросы можно задать в чат [@phpgeeks](https://t.me/phpgeeks) или в лс [@arturpanteleev](https://t.me/arturpanteleev)
 
-Улучшения/дополнения шлите сюда [https://github.com/arturpanteleev/phpInterview](https://github.com/arturpanteleev/phpInterview)
+Улучшения/дополнения шлите сюда [github.com/arturpanteleev/phpInterview](https://github.com/arturpanteleev/phpInterview)
 
 *P.S. Первый кирпич в создание данного пособия заложил, увековечив здесь своё имя, Сергей Пронин.*
 
