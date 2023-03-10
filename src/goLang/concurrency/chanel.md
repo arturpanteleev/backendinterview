@@ -76,7 +76,7 @@ func main() {
 }
 ```
 
-Опять же, порядок исполнения неизвестен, пример с первой читающей горутиной мы разобрали выше, поэтому сейчас допустим, что два значения были записаны в канал, и после этого один из элементов вычитан. И первым шагом идёт создание канала, который будет выглядеть вот так:
+Допустим, что два значения были записаны в канал, и после этого один из элементов вычитан. И первым шагом идёт создание канала, который будет выглядеть вот так:
 
 ![img](https://habrastorage.org/files/6f4/e78/6af/6f4e786af89b47f49e0b52d1869a2180.png)
 
@@ -152,16 +152,13 @@ for val := range someChan {
 При записи, нужно во первых обернуть в recover. Во вторых рекомендуется сначала "убить", писателей, а потом уже закрывать канал. Также One general principle of using Go channels is **don't close a channel from the receiver side and don't close a channel if the channel has multiple concurrent senders**. In other words, we should only close a channel in a sender goroutine if the sender is the only sender of the channel.
 
 **It is worth collecting the channel axioms in one post:**
-
 - a send on a `nil` channel blocks forever ([Spec: Send statements](https://golang.org/ref/spec#Send_statements))
 - a receive from a `nil` channel blocks forever ([Spec: Receive operator](https://golang.org/ref/spec#Receive_operator))
 - a send to a closed channel panics ([Spec: Send statements](https://golang.org/ref/spec#Send_statements))
 - a receive from a closed channel returns the zero value immediately ([Spec: Receive operator](https://golang.org/ref/spec#Receive_operator))
 
 
-
 *Дополнительно:*
-
 - [Как работают каналы. Часть 1](https://medium.com/@victor_nerd/под-капотом-golang-как-работают-каналы-часть-1-e1da9e3e104d)
 - [Как работают каналы. Часть 2](https://medium.com/@victor_nerd/golang-channel-internal-part2-b4e37ad9a118)
 - [Как устроены каналы в Go](https://habr.com/ru/post/308070/)
