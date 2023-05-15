@@ -73,7 +73,7 @@
   * [HTTP](network/http.md)
   * [TLS](network/tls.md)
   * [DNS](network/dns.md)
-  * [TCP vs UDP](network/tcp_udp.md)
+  * [TCP/IP](network/tcp_ip.md)
   * [Сетевые модели](network/networkModels.md)
   * [realTime взаимодействие с сервером](network/realTime.md)
   * [Что происходит при нажатии на g](network/whatHappenWhen.md)
