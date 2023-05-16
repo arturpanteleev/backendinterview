@@ -146,15 +146,10 @@ BDD - behaviour-driven development - это разработка, основан
 
 **Разработка через тестирование** (test-driven development, TDD) — техника [разработки программного обеспечения](https://ru.wikipedia.org/wiki/%D0%A0%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B0_%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE_%D0%BE%D0%B1%D0%B5%D1%81%D0%BF%D0%B5%D1%87%D0%B5%D0%BD%D0%B8%D1%8F), которая основывается на повторении очень коротких циклов разработки: сначала пишется тест, покрывающий желаемое изменение, затем пишется код, который позволит пройти тест, и под конец проводится рефакторинг нового кода к соответствующим стандартам.
 
-
-
 *Дополнительно:*
-
 * [Тестирование. Фундаментальная теория](https://dou.ua/forums/topic/13389/) - самый лучший
 * [PHPUnit Getting Started](https://phpunit.de/getting-started/phpunit-7.html) 
 * [Unit Testing Tutorial Part I: Introduction to PHPUnit](https://jtreminio.com/blog/unit-testing-tutorial-part-i-introduction-to-phpunit/)
 * [ProTesting](http://www.protesting.ru)
 * [PHPUnit для начинающих](https://phpprofi.ru/series/show/1)
 * https://codeception.com/05-06-2013/specification-testing-coparison.html
-
-
