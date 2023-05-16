@@ -1,0 +1,266 @@
+<!DOCTYPE HTML>
+<html lang="ru" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Шардинг - Backend interview</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Книжка для подготовки к собеседованию на должность backend developer">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../../favicon.svg">
+        <link rel="shortcut icon" href="../../../favicon.png">
+        <link rel="stylesheet" href="../../../css/variables.css">
+        <link rel="stylesheet" href="../../../css/general.css">
+        <link rel="stylesheet" href="../../../css/chrome.css">
+        <link rel="stylesheet" href="../../../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../../highlight.css">
+        <link rel="stylesheet" href="../../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../../index.html">Введение</a></li><li class="chapter-item expanded "><a href="../../../algostruct/index.html"><strong aria-hidden="true">1.</strong> Алгоритмы и Структуры Данных</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../algostruct/structBasics.html"><strong aria-hidden="true">1.1.</strong> Базовые структуры</a></li><li class="chapter-item expanded "><a href="../../../algostruct/array.html"><strong aria-hidden="true">1.2.</strong> Массив</a></li><li class="chapter-item expanded "><a href="../../../algostruct/hashTable.html"><strong aria-hidden="true">1.3.</strong> Хэш-Таблица</a></li><li class="chapter-item expanded "><a href="../../../algostruct/tree.html"><strong aria-hidden="true">1.4.</strong> Дерево</a></li><li class="chapter-item expanded "><a href="../../../algostruct/graph.html"><strong aria-hidden="true">1.5.</strong> Граф</a></li><li class="chapter-item expanded "><a href="../../../algostruct/probability.html"><strong aria-hidden="true">1.6.</strong> Вероятностные</a></li><li class="chapter-item expanded "><a href="../../../algostruct/crypto.html"><strong aria-hidden="true">1.7.</strong> Криптография</a></li><li class="chapter-item expanded "><a href="../../../algostruct/unsorted.html"><strong aria-hidden="true">1.8.</strong> Разное</a></li></ol></li><li class="chapter-item expanded "><a href="../../../db/index.html"><strong aria-hidden="true">2.</strong> Базы Данных</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../db/dBTheory/index.html"><strong aria-hidden="true">2.1.</strong> Теория Баз Данных</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../db/dBTheory/transactions.html"><strong aria-hidden="true">2.1.1.</strong> Транзакции</a></li><li class="chapter-item expanded "><a href="../../../db/dBTheory/normalForms.html"><strong aria-hidden="true">2.1.2.</strong> Нормальные формы</a></li><li class="chapter-item expanded "><a href="../../../db/dBTheory/distrubedDb/index.html"><strong aria-hidden="true">2.1.3.</strong> Распределенные БД</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../db/dBTheory/distrubedDb/replication.html"><strong aria-hidden="true">2.1.3.1.</strong> Репликация</a></li><li class="chapter-item expanded "><a href="../../../db/dBTheory/distrubedDb/sharding.html" class="active"><strong aria-hidden="true">2.1.3.2.</strong> Шардинг</a></li><li class="chapter-item expanded "><a href="../../../db/dBTheory/distrubedDb/unsorted.html"><strong aria-hidden="true">2.1.3.3.</strong> Разное</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../../db/specific/index.html"><strong aria-hidden="true">2.2.</strong> Конкретные БД</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../db/specific/mysql/index.html"><strong aria-hidden="true">2.2.1.</strong> MySql</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../db/specific/mysql/architecture.html"><strong aria-hidden="true">2.2.1.1.</strong> Архитектура MySql</a></li><li class="chapter-item expanded "><a href="../../../db/specific/mysql/concurency.html"><strong aria-hidden="true">2.2.1.2.</strong> Конкурентный доступ</a></li><li class="chapter-item expanded "><a href="../../../db/specific/mysql/indexes.html"><strong aria-hidden="true">2.2.1.3.</strong> Индексы</a></li><li class="chapter-item expanded "><a href="../../../db/specific/mysql/sql.html"><strong aria-hidden="true">2.2.1.4.</strong> Основы SQL</a></li><li class="chapter-item expanded "><a href="../../../db/specific/mysql/explain.html"><strong aria-hidden="true">2.2.1.5.</strong> Explain</a></li><li class="chapter-item expanded "><a href="../../../db/specific/mysql/unsorted.html"><strong aria-hidden="true">2.2.1.6.</strong> Разное</a></li></ol></li><li class="chapter-item expanded "><a href="../../../db/specific/postgreSql/index.html"><strong aria-hidden="true">2.2.2.</strong> PostgreSql</a></li><li class="chapter-item expanded "><a href="../../../db/specific/noSql/index.html"><strong aria-hidden="true">2.2.3.</strong> NoSql</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../db/specific/noSql/redis.html"><strong aria-hidden="true">2.2.3.1.</strong> Redis</a></li><li class="chapter-item expanded "><a href="../../../db/specific/noSql/memcached.html"><strong aria-hidden="true">2.2.3.2.</strong> Memcaced</a></li><li class="chapter-item expanded "><a href="../../../db/specific/noSql/tarantool.html"><strong aria-hidden="true">2.2.3.3.</strong> Tarantool</a></li><li class="chapter-item expanded "><a href="../../../db/specific/noSql/mongo.html"><strong aria-hidden="true">2.2.3.4.</strong> Mongo</a></li></ol></li><li class="chapter-item expanded "><a href="../../../db/specific/clickhouse.html"><strong aria-hidden="true">2.2.4.</strong> ClickHouse</a></li><li class="chapter-item expanded "><a href="../../../db/specific/messages/index.html"><strong aria-hidden="true">2.2.5.</strong> Брокеры сообщений</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../db/specific/messages/rabbit.html"><strong aria-hidden="true">2.2.5.1.</strong> Rabbit</a></li><li class="chapter-item expanded "><a href="../../../db/specific/messages/kafka.html"><strong aria-hidden="true">2.2.5.2.</strong> Kafka</a></li><li class="chapter-item expanded "><a href="../../../db/specific/messages/nats.html"><strong aria-hidden="true">2.2.5.3.</strong> Nats</a></li></ol></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../../architecture/index.html"><strong aria-hidden="true">3.</strong> Архитектура</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../architecture/oopBase.html"><strong aria-hidden="true">3.1.</strong> Основы ООП</a></li><li class="chapter-item expanded "><a href="../../../architecture/gof.html"><strong aria-hidden="true">3.2.</strong> Паттерны GoF(Банда 4)</a></li><li class="chapter-item expanded "><a href="../../../architecture/principles.html"><strong aria-hidden="true">3.3.</strong> Принципы хорошей архитектуры</a></li><li class="chapter-item expanded "><a href="../../../architecture/architecturesPatterns.html"><strong aria-hidden="true">3.4.</strong> Архитектурные паттерны</a></li><li class="chapter-item expanded "><a href="../../../architecture/ddd.html"><strong aria-hidden="true">3.5.</strong> DDD</a></li><li class="chapter-item expanded "><a href="../../../architecture/microserices/index.html"><strong aria-hidden="true">3.6.</strong> Микросервисы</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../architecture/microserices/integration.html"><strong aria-hidden="true">3.6.1.</strong> Паттерны и протоколы интеграции</a></li><li class="chapter-item expanded "><a href="../../../architecture/microserices/monolithSeparation.html"><strong aria-hidden="true">3.6.2.</strong> Способы распиливания монолита</a></li></ol></li><li class="chapter-item expanded "><a href="../../../architecture/uncategorized.html"><strong aria-hidden="true">3.7.</strong> Разное</a></li></ol></li><li class="chapter-item expanded "><a href="../../../php/index.html"><strong aria-hidden="true">4.</strong> PHP</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../php/innovations.html"><strong aria-hidden="true">4.1.</strong> Фичи новых версий</a></li><li class="chapter-item expanded "><a href="../../../php/internals.html"><strong aria-hidden="true">4.2.</strong> PHP Internals</a></li><li class="chapter-item expanded "><a href="../../../php/frameworks/index.html"><strong aria-hidden="true">4.3.</strong> Фреймворки</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../php/frameworks/laravel.html"><strong aria-hidden="true">4.3.1.</strong> Laravel</a></li><li class="chapter-item expanded "><a href="../../../php/frameworks/symfony.html"><strong aria-hidden="true">4.3.2.</strong> Symfony</a></li></ol></li><li class="chapter-item expanded "><a href="../../../php/uncategorized.html"><strong aria-hidden="true">4.4.</strong> Разное</a></li></ol></li><li class="chapter-item expanded "><a href="../../../goLang/index.html"><strong aria-hidden="true">5.</strong> GoLang</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../goLang/types.html"><strong aria-hidden="true">5.1.</strong> Типы данных</a></li><li class="chapter-item expanded "><a href="../../../goLang/concurrency/index.html"><strong aria-hidden="true">5.2.</strong> Сoncurrency</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../goLang/concurrency/chanel.html"><strong aria-hidden="true">5.2.1.</strong> Каналы</a></li><li class="chapter-item expanded "><a href="../../../goLang/concurrency/gouritine.html"><strong aria-hidden="true">5.2.2.</strong> Горутины</a></li><li class="chapter-item expanded "><a href="../../../goLang/concurrency/sync.html"><strong aria-hidden="true">5.2.3.</strong> Sync</a></li><li class="chapter-item expanded "><a href="../../../goLang/concurrency/patterns.html"><strong aria-hidden="true">5.2.4.</strong> Паттерны</a></li></ol></li><li class="chapter-item expanded "><a href="../../../goLang/scheduler.html"><strong aria-hidden="true">5.3.</strong> Планировщик</a></li><li class="chapter-item expanded "><a href="../../../goLang/memory.html"><strong aria-hidden="true">5.4.</strong> Управление памятью</a></li><li class="chapter-item expanded "><a href="../../../goLang/ecosystem.html"><strong aria-hidden="true">5.5.</strong> Экосистема</a></li></ol></li><li class="chapter-item expanded "><a href="../../../javascript.html"><strong aria-hidden="true">6.</strong> JavaScript</a></li><li class="chapter-item expanded "><a href="../../../ib.html"><strong aria-hidden="true">7.</strong> Информационная безопасность</a></li><li class="chapter-item expanded "><a href="../../../git.html"><strong aria-hidden="true">8.</strong> Git</a></li><li class="chapter-item expanded "><a href="../../../network/index.html"><strong aria-hidden="true">9.</strong> Основы сетей</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../network/serverIteractions.html"><strong aria-hidden="true">9.1.</strong> Взаимодействие с веб-сервером</a></li><li class="chapter-item expanded "><a href="../../../network/http.html"><strong aria-hidden="true">9.2.</strong> HTTP</a></li><li class="chapter-item expanded "><a href="../../../network/tls.html"><strong aria-hidden="true">9.3.</strong> TLS</a></li><li class="chapter-item expanded "><a href="../../../network/dns.html"><strong aria-hidden="true">9.4.</strong> DNS</a></li><li class="chapter-item expanded "><a href="../../../network/tcp_ip.html"><strong aria-hidden="true">9.5.</strong> TCP/IP</a></li><li class="chapter-item expanded "><a href="../../../network/networkModels.html"><strong aria-hidden="true">9.6.</strong> Сетевые модели</a></li><li class="chapter-item expanded "><a href="../../../network/realTime.html"><strong aria-hidden="true">9.7.</strong> realTime взаимодействие с сервером</a></li><li class="chapter-item expanded "><a href="../../../network/whatHappenWhen.html"><strong aria-hidden="true">9.8.</strong> Что происходит при нажатии на g</a></li></ol></li><li class="chapter-item expanded "><a href="../../../os.html"><strong aria-hidden="true">10.</strong> Операционые системы</a></li><li class="chapter-item expanded "><a href="../../../devops/index.html"><strong aria-hidden="true">11.</strong> Системное администрирование</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../devops/linux.html"><strong aria-hidden="true">11.1.</strong> Linux</a></li><li class="chapter-item expanded "><a href="../../../devops/virtualization/index.html"><strong aria-hidden="true">11.2.</strong> Основы виртуализации</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../devops/virtualization/docker.html"><strong aria-hidden="true">11.2.1.</strong> Docker</a></li><li class="chapter-item expanded "><a href="../../../devops/virtualization/kubernetes.html"><strong aria-hidden="true">11.2.2.</strong> Kubernetes</a></li></ol></li><li class="chapter-item expanded "><a href="../../../devops/deployment.html"><strong aria-hidden="true">11.3.</strong> Deployment</a></li><li class="chapter-item expanded "><a href="../../../devops/monitoring.html"><strong aria-hidden="true">11.4.</strong> Мониторинг</a></li></ol></li><li class="chapter-item expanded "><a href="../../../test.html"><strong aria-hidden="true">12.</strong> Тестирование</a></li><li class="chapter-item expanded "><a href="../../../unsorted/index.html"><strong aria-hidden="true">13.</strong> Разное</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../../unsorted/bits.html"><strong aria-hidden="true">13.1.</strong> Побитовые операции</a></li><li class="chapter-item expanded "><a href="../../../unsorted/types.html"><strong aria-hidden="true">13.2.</strong> Типизация</a></li><li class="chapter-item expanded "><a href="../../../unsorted/unicode.html"><strong aria-hidden="true">13.3.</strong> Юникод</a></li></ol></li><li class="chapter-item expanded "><a href="../../../devmethods.html"><strong aria-hidden="true">14.</strong> Методологии разработки</a></li><li class="chapter-item expanded "><a href="../../../checkList.html"><strong aria-hidden="true">15.</strong> ЧекЛист</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Backend interview</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/arturpanteleev/phpInterview" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="Шардинг-sharding"><a class="header" href="#Шардинг-sharding">Шардинг (sharding)</a></h1>
+<p>Шардинг — прием, который позволяет распределять данные между разными физическими серверами. Процесс шардинга предполагает разнесения данных между отдельными шардами на основе некого ключа шардинга. Связанные одинаковым значением ключа шардинга сущности группируются в набор данных по заданному ключу, а этот набор хранится в пределах одного физического шарда. Это существенно облегчает обработку данных. </p>
+<p>Шардинг можно рассматривать как частный случай партиционирования. Партиционирование(partitioning, также секционирование) — это разбиение таблиц, содержащих большое количество записей, на логические части по неким выбранным администратором критериям. Партиционирование таблиц делит весь объем операций по обработке данных на несколько независимых и параллельно выполняющихся потоков, что существенно ускоряет работу СУБД. Для правильного конфигурирования параметров партиционирования необходимо, чтобы в каждом потоке было примерно одинаковое количество записей.</p>
+<p><em>Например, на новостных сайтах имеет смысл партиционировать записи по дате публикации, так как свежие новости на несколько порядков более востребованы и чаще требуется работа именно с ними, а не со всех архивом за годы существования новостного ресурса.</em></p>
+<p>Самая важная и сложная задача, возникающая при шардинге – поиск и выборка данных. Способ поиска зависит от того, как они шардированы. Наша цель состоит в том, чтобы самые важные и часто встречающиеся запросы затрагивали как можно меньше секций. В этом плане очень важно выбрать ключ (или ключи) секционирования данных. Ключ шардирования определяет, в какую секцию попадает та или иная строка. Если известен ключ шардирования некоторого объекта, то можно ответить на два вопроса:</p>
+<ul>
+<li>Где следует сохранить данные?</li>
+<li>Где найти запрошенные данные?</li>
+</ul>
+<p>Запросы к нескольким шарданм хуже, чем к одному, но если они затрагивают не слишком много шардов, то все еще не так плохо. Самый худший случай – когда у вас нет ни малейшего представления о том, где находятся данные, и приходится просматривать все шарды без исключения.</p>
+<h4 id="Выбор-ключа-шардирования"><a class="header" href="#Выбор-ключа-шардирования">Выбор ключа шардирования</a></h4>
+<p>Обычно хорошим ключом секционирования является идентификатор какой-нибудь важной сущности в базе данных. Такие сущности называются единицами шардирвания (unit of sharding). Например, если
+информация секционируется по идентификатору пользователя или клиента, то единицей секционирования является соответственно пользователь или клиент.</p>
+<p>Если модель данных сложна, то и секционировать ее труднее. Во многих приложениях существует более одного ключа секционирования, особенно если в данных можно выделить несколько важных «измерений». Иными словами, приложение должно иметь возможность эффективно взглянуть на информацию под разными углами зрения и получить целостное представление. Это означает, что некоторые данные придется хранить в двух разных видах.</p>
+<h3 id="Распределение-данных"><a class="header" href="#Распределение-данных">Распределение данных</a></h3>
+<p>Существует два основных способа распределения данных по секциям: фиксированное и динамическое. Для обеих стратегий необходима функция секционирования, которая принимает на входе ключ секционирования строки и возвращает номер секции, в которой эта строка находится. Здесь слово «функция» употребляется в математическом смысле как отображение множества входных значений (области определения) во множество выходных значений (область значений), такую функцию можно реализовать разными способами, в том числе с использованием справочной таблицы в базе данных.</p>
+<h5 id="Фиксированное-распределение"><a class="header" href="#Фиксированное-распределение">Фиксированное распределение</a></h5>
+<p>Для фиксированного распределения применяется функция разбиения, которая зависит только от значения ключа секционирования. В качестве примеров можно привести деление по модулю или хеш-функции. Такие функции отображают значения ключей секционирования на конечное число «ячеек» (buckets), в которых хранятся данные.
+Пусть имеется всего 100 ячеек и требуется найти, в какую из них поместить пользователя 111. С применением деления по модулю ответ ясен:остаток от деления 111 на 100 равен 11, поэтому пользователь должен находиться в секции 11.</p>
+<p>Однако у этой стратегии есть и недостатки.</p>
+<ul>
+<li>Если секции велики и их немного, то балансировать нагрузку между ними будет сложно.</li>
+<li>При фиксированном распределении вы лишены возможности решать, куда помещать конкретную запись, а это важно в приложениях, где нагрузка на единицы секционирования неравномерна. Некоторые части данных используются гораздо чаще, чем остальные, и когда такие обращения по большей части адресуются к одной и той же секции, стратегия фиксированного распределения не позволяет снять нагрузку, переместив часть данных в другую секцию. Эта проблема не так серьезна, если элементы данных малы, но их количество в каждой секции велико; закон больших чисел все расставит по своим местам.</li>
+<li>Как правило, изменить алгоритм секционирования сложнее, потому что требуется перераспределить все существующие данные. Например, если секционирование производилось делением по модулю 10, то имеется 10 секций. Когда приложение вырастет, и секции станут слишком большими, возникнет желание увеличить их количество до 20. Но для этого придется перехешировать все заново, обновить очень много данных и перераспределить их по новым секциям.</li>
+</ul>
+<h5 id="Динамическое-распределение"><a class="header" href="#Динамическое-распределение">Динамическое распределение</a></h5>
+<p>Альтернативой фиксированному распределению является динамическое распределение, описание которого хранится отдельно в виде отображения единицы секционирования на номер секции. Примером может служить таблица с двумя столбцами: идентификатор пользователя и идентификатор секции:</p>
+<pre><code class="language-sql">CREATE TABLE user_to_shard (
+  user_id INT NOT NULL,
+  shard_id INT NOT NULL,
+  PRIMARY KEY (user_id)
+);
+</code></pre>
+<p>Функцией разбиения служит сама таблица. Зная ключ секционирования (идентификатор пользователя), можно найти соответствующий номер секции. Если подходящей строки не существует, можно выбрать нужную секцию и добавить строку в таб лицу. Впоследствии сопоставление можно будет изменить, потому стратегия и называется динамической.</p>
+<p>Table functions – это когда у вас просто какой-то config. Использование подходов Table functions к шардингу очень тесно завязано на таком понятии как virtual bucket. Вспомните, у вас есть функция отображения ключа на шард. Представьте себе, что у вас посередине появляется некое промежуточное отображение, т.е. это отображение превращается в два. Сначала вы отображаете ключ на некоторый виртуальный bucket, потом виртуальный bucket – на соответствующую координату в пространстве вашего кластера.</p>
+<p>Существует не очень много методов это все сделать. А еще мы помним о том, что самое главное – это дать свободу и удобство работы системному администратору. Виртуальные bucket-ы, как правило, выбираются в достаточно большом количестве. Почему они виртуальные? Потому что на самом деле они не отражают реального физического сервера. И используется несколько методов для отображения непосредственно ключа на шард.</p>
+<p>Один метод – это когда первая часть «key to bucket» function – это просто какой-то хэш или консистентный хэш, т.е. какая-то часть, которая определяется по формуле, а bucket непосредственно на шард отображается через config. Вторая вещь более сложная – когда вы и то и то отображаете через config. Более сложная, потому что вам, условно говоря, для каждого ключа нужно еще помнить, где он лежит. Вы приобретаете возможность передвинуть любой ключ куда угодно, но с другой стороны вы теряете возможность легко и быстро, имея просто маленький config в «bucket to shard», из ключа определить bucket и потом пойти достаточно быстро пойти в нужное место.</p>
+<p>С динамическим распределением связаны определенные накладные расходы, так как требуется обращение к внешнему ресурсу, например серверу каталогов (узлу, на котором хранится отображение). Для поддержания приемлемой эффективности такая архитектура часто нуждается в дополнительных слоях программного обеспечения. Например, можно использовать распределенную сис тему кэширования, в памяти
+которой хранятся данные с сервера каталогов, которые на практике изменяются довольно редко.
+Основное достоинство динамического распределения – более точное управление местом хранения данных. Это упрощает равномерное разделение данных по секциям и позволяет гибко адаптироваться к непредвиденным изменениям.</p>
+<p>Кроме того, динамическое распределение дает возможность выстраивать многоуровневую стратегию шардировани поверх простого отображения ключей на секции. Например, можно организовать двойное отображение, при котором каждой единице секционирования сопоставляется некоторая группа (например, группа членов клуба книголюбов), а сами группы по возможности размещаются в одной секции. Это позволяет воспользоваться преимуществами близости шардов и избегать межсекционных запросов. Динамическое распределение дает возможность создавать несбалансированные секции. Это полезно, когда не все сервера одинаково мощные или когда некоторые серверы используются еще и для других целей, например для архивирования данных. Если при этом имеется еще и возможность в любой момент перебалансировать шарды, то можно поддерживать взаимно-однозначное соответствие между секциями и узлами, не растрачивая впустую емкость дисков. Некоторым нравится та простота, которая свойственна хранению в каждом узле ровно одной сек
+ции (но не забывайте, что имеет смысл делать шарды относительно небольшими). Динамическое распределение позволяет организовать стратегию секционирования любой сложности, фиксированное такого богатства выбора не предоставляет.</p>
+<h5 id="Комбинирование-динамического-и-фиксированного-распределений"><a class="header" href="#Комбинирование-динамического-и-фиксированного-распределений">Комбинирование динамического и фиксированного распределений</a></h5>
+<p>Можно также применять комбинацию динамического и фиксированного распределения. Это часто бывает полезно, а иногда даже необходимо. Динамическое распределение хорошо работает, когда отображение
+не слишком велико. С ростом количества единиц секционирования его эффективность падает.</p>
+<p>В качестве примера рассмотрим сис тему, в которой хранятся ссылки между сайтами. В ней необходимо хранить десятки миллиардов строк, а ключом секционирования является комбинация исходного и конечного URL. На любой из двух URL могут быть сотни миллионов ссылок, поэтому ни один URL по отдельности не является достаточно избирательным. Однако невозможно хранить все комбинации исходного и конечного URL в таб лице сопоставления, поскольку их слишком много, а каждый URL занимает много места.</p>
+<p>Одно из возможных решений – конкатенировать URL и написать хеш-функцию, отображающую получившиеся строки на фиксированное число ячеек, которые затем можно динамически отображать на шарды. Если количество ячеек достаточно велико, скажем, миллион, то в каждый шард их можно поместить довольно много. В результате мы получаем многие преимущества динамического секционирования, не заводя гигантскую таблицу отображения.</p>
+<h4 id="Поиск-данных"><a class="header" href="#Поиск-данных">Поиск данных</a></h4>
+<p>Самых распространенных метода – три:</p>
+<ul>
+<li><strong>Умный клиент</strong> </li>
+</ul>
+<p>Представьте себе, что у вас есть табличная функция, которая использует маппинг ключа на bucket. Используется какой-то хэш, какая-то формула. Затем у вас есть некоторый config, который состоит из всего лишь небольшого количества данных, например, 1000 маппингов, 1000 строк, 1000 соответствий ключ-значение. В результате это все где-то зашито в вашем клиенте. Ваш клиент получил ключ, сразу определил, на какой сервер идти, и сразу пошел на этот сервер.</p>
+<p>В принципе, хороший метод, самый простой и самый клевый. За одним исключением – в случае, если у вас разрастается инфраструктура, и вам в какой-то момент нужно задевелопить кучу других каких-то клиентов, на других языках, для других приложений, то вам нужно повторить эту логику – это во-первых. Во-вторых, если вам нужно сделать каким-то образом решардинг, и сделать это с нулевым maintenance subwindow, то это сделать довольно сложно, потому что вся логика – в процессах приложений, которые сейчас работают. Каким-то образом вам надо сигнализировать, что что-то сейчас будет меняться, карта такая-то будет становиться другой и т.д. Все это, в общем, достаточно сложно.</p>
+<ul>
+<li><strong>Прокси</strong></li>
+</ul>
+<p>Представьте себе, что прокси делает следующее: он принимает запрос, как будто к одной ноде, вернее, как будто к одному приложению, и клиент просто не знает о том, что на самом деле за этим прокси есть много нод.</p>
+<p>Какая-то логика применяется внутри прокси, он определяет, на какую ноду идти, делает запрос, получает данные, потом передает эти данные назад клиенту. Это очень удобно, хотя бы потому, что ничего специально учить не надо, разговаривать можно как с одной базой, как мы привыкли, и если у нас есть какие-то клиентские приложения, которые уже написаны, нам их переписывать не надо.</p>
+<p>Жирные стрелочки на этом слайде указывают, где потекли данные. Например, видно, что жирные данные текут уже в два места. Одно место – это между прокси и, собственно, нодой данных. Другое место – это между прокси и клиентом. Для больших производительных систем это является неким дополнительным условием, которое надо иметь в виду – удвоение трафика внутри площадки.</p>
+<p>Прокси перегружается. Вы увеличиваете их количество. Прокси выходят из строя, у вас появляется еще одна точка отказа. Решение неидеальное, но какой еще потенциальный профит у этого решения? Вы в прокси можете также заниматься load balancing-ом, вы можете смотреть, какие ноды у вас вышли из строя, т.е. автоматически определять, делать failover полностью прозрачным для прокси. Т.е. прокси позволяет сделать логику приложения очень простой.</p>
+<p>Есть некий способ упростить всю эту технологию, если сделать так, чтобы прокси работала на том же хосте, на котором работает само приложение. Проблема прокси – вы должны распространять состояние шардинга, т.е. прокси должны знать, где какой ключ находится. И тут мы приходим к следующей технологии, которая упрощает именно эту историю – технологии вынесения этого состояния в единое место – в координатор.</p>
+<ul>
+<li><strong>Координатор</strong></li>
+</ul>
+<p>Координатор – это вещь, похожая на предыдущие (т.е. клиент, по- прежнему, ничего не знает), но совершенно другая. Координатор – это просто такой классный парень, который очень быстро отвечает на простые вопросы «Куда мне идти?». Получает маленькую порцию вопросов, т.е. длина вопроса небольшая, быстро дает ответ, после этого клиент сам устанавливает соединение и идет на нужную дата-ноду. Здесь преимущество заключается в том, что у вас убирается сложность прокси.</p>
+<p>Эта архитектура обладает определенными проблемами. Если координатор вдруг упадет, то все пропало. Но с другой стороны, координатор – вещь крайне простая и ее очень легко резервировать через асинхронный мастер-мастер, даже мастер-слэйв.</p>
+<h4 id="Перераспределине-данныхрешардинг"><a class="header" href="#Перераспределине-данныхрешардинг">Перераспределине данных(решардинг)</a></h4>
+<p>При необходимости можно переместить данные из одной секции в другую, чтобы сбалансировать нагрузку. Например, многие читатели, намверное, слышали, как разработчики больших сайтов фотогалерей или
+популярных социальных сетей рассказывали о своих инструментах перемещения пользователей в другие секции. Способность перемещать данные открывает целый ряд возможностей. Например, чтобы модернизировать оборудование, можно перенести всех пользователей из старой секции в новую, не останавливая секцию целиком и не переводя ее в режим чтения.</p>
+<p>Однако мы стараемся по возможности избегать перебалансирования, так как это может вызвать приостановку обслуживания. Из-за перемещения данных становится сложнее добавлять в приложение новые функции, поскольку их приходится учитывать в сценариях перебалансирования. Если секции не слишком велики, то прибегать к этому, возможно, и не понадобится; часто для балансирования нагрузки достаточно перенести секцию целиком, а это гораздо проще, чем перемещать часть секции (и более эффективно, если говорить о стоимости в расчете на одну строку данных).</p>
+<p>Один из подходов – «update is a move». Идея следующая – всегда, когда вы меняете кокой-то ключ, вы его неявно двигаете. Допустим, у вас ключ шардинга – это, собственно, ключ шардинга и timestamp. Когда вы меняете данные, вы меняете timestamp, и он у вас естественным образом оказывается на другом шарде. Вы можете в какой-то момент закрыть апдейты на определенный шард и рано или поздно просто его вывести из строя. Т.е. очень просто передвигать данные, очень просто выводить данные из строя.</p>
+<p>Второй подход – «data expiration». В нем просто добавили несколько серверов, явно не решардили, данные естественным образом заэкспайрились – получилась новая схема шардинга. Этот же подход можно использовать где угодно, где вы можете старые данные просто удалять. Тогда вы новые данные льете на новые ноды или закрываете какие-то старые ноды. Данные сами собой просто постепенно переезжают.</p>
+<p>Здесь ключевым моментом являются части – горячая и холодная. Автоматически появляются на вашем кластере горячая и холодная части, и может оказаться, что если вы неправильно подобрали какие-то конфигурации или веса, то горячая часть будет очень маленькой, и число серверов, которые вам нужно постоянно добавлять для того, чтобы поддерживать горячую часть (например, если это на twitter или выборы Обамы)...</p>
+<h3 id="Консистентный-хэш"><a class="header" href="#Консистентный-хэш">Консистентный хэш</a></h3>
+<p>Способ создания распределенных хеш-таблиц, при котором вывод из строя одного или более серверов-хранилищ не приводит к необходимости полного переразмещения всех хранимых ключей и значений. Консистентное хеширование позволяет перераспределять только те ключи, которые использовались удаленным сервером или которые будут использоваться новым сервером. Таким образом, в случае выхода из строя одного узла, ключи не просто переходят на следующую ноду, а равномерно распределяются по нескольким следующим нодам.</p>
+<p>Идея простая, возьмем окружность и будем рассматривать ее как интервал на котором определена хеш-функция функция. Применив хеш-функцию к набору ключей (синие точки) и серверов (зеленые точки) сможем разместить их на окружности. Для того чтобы определить на каком сервере размещен ключ, найдем ключ на окружности и будем двигаться по часовой стрелке до ближайшего сервера. Теперь в случае падения (недоступности) сервера, загрузить на новые сервер необходимо только недоступные данные. Все остальные хеши не меняют свое местоположение, то есть консистентны. При добавлении нового сервера соседний разделяет с ним часть своих данных.</p>
+<p><img src="http://dyagilev.org/images/consistent-hashing/consistent_hashing11.png" alt="img" /></p>
+<p>На практике также применяют следующий трюк. Сервер можно пометить на окружности не одной точкой, а несколькими. Что это дает ? - более равномерное распределение данных по серверам - при падении сервера данные распределяются не на один соседний, а на несколько, распределяя тем самым нагрузку - при добавлении нового сервера, точки можно делать ‘активными’ постепенно одна за другой, предотвращая шквальную нагрузку на сервер - если конфигурация серверов отличается, например размером диска, количество данных можно контролировать числом его точек. Больше точек - большая длина окружности принадлежит этому серверу и соответственно больше данных.</p>
+<p><img src="http://dyagilev.org/images/consistent-hashing/consistent_hashing4.png" alt="img" /></p>
+<p>Для реализации храним хеши серверов в виде какого-либо дерева, например Red-Black. Операция поиска сервера по ключу будет занимать <code>O(log n)</code>.</p>
+<p><em><strong>Дополнительно:</strong></em></p>
+<ul>
+<li>http://dyagilev.org/blog/2012/03/23/consistent-hashing/</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../../db/dBTheory/distrubedDb/replication.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../../../db/dBTheory/distrubedDb/unsorted.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../../db/dBTheory/distrubedDb/replication.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../../../db/dBTheory/distrubedDb/unsorted.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

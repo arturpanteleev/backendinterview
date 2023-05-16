@@ -1,0 +1,302 @@
+<!DOCTYPE HTML>
+<html lang="ru" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Тестирование - Backend interview</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Книжка для подготовки к собеседованию на должность backend developer">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">Введение</a></li><li class="chapter-item expanded "><a href="algostruct/index.html"><strong aria-hidden="true">1.</strong> Алгоритмы и Структуры Данных</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="algostruct/structBasics.html"><strong aria-hidden="true">1.1.</strong> Базовые структуры</a></li><li class="chapter-item expanded "><a href="algostruct/array.html"><strong aria-hidden="true">1.2.</strong> Массив</a></li><li class="chapter-item expanded "><a href="algostruct/hashTable.html"><strong aria-hidden="true">1.3.</strong> Хэш-Таблица</a></li><li class="chapter-item expanded "><a href="algostruct/tree.html"><strong aria-hidden="true">1.4.</strong> Дерево</a></li><li class="chapter-item expanded "><a href="algostruct/graph.html"><strong aria-hidden="true">1.5.</strong> Граф</a></li><li class="chapter-item expanded "><a href="algostruct/probability.html"><strong aria-hidden="true">1.6.</strong> Вероятностные</a></li><li class="chapter-item expanded "><a href="algostruct/crypto.html"><strong aria-hidden="true">1.7.</strong> Криптография</a></li><li class="chapter-item expanded "><a href="algostruct/unsorted.html"><strong aria-hidden="true">1.8.</strong> Разное</a></li></ol></li><li class="chapter-item expanded "><a href="db/index.html"><strong aria-hidden="true">2.</strong> Базы Данных</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="db/dBTheory/index.html"><strong aria-hidden="true">2.1.</strong> Теория Баз Данных</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="db/dBTheory/transactions.html"><strong aria-hidden="true">2.1.1.</strong> Транзакции</a></li><li class="chapter-item expanded "><a href="db/dBTheory/normalForms.html"><strong aria-hidden="true">2.1.2.</strong> Нормальные формы</a></li><li class="chapter-item expanded "><a href="db/dBTheory/distrubedDb/index.html"><strong aria-hidden="true">2.1.3.</strong> Распределенные БД</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="db/dBTheory/distrubedDb/replication.html"><strong aria-hidden="true">2.1.3.1.</strong> Репликация</a></li><li class="chapter-item expanded "><a href="db/dBTheory/distrubedDb/sharding.html"><strong aria-hidden="true">2.1.3.2.</strong> Шардинг</a></li><li class="chapter-item expanded "><a href="db/dBTheory/distrubedDb/unsorted.html"><strong aria-hidden="true">2.1.3.3.</strong> Разное</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="db/specific/index.html"><strong aria-hidden="true">2.2.</strong> Конкретные БД</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="db/specific/mysql/index.html"><strong aria-hidden="true">2.2.1.</strong> MySql</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="db/specific/mysql/architecture.html"><strong aria-hidden="true">2.2.1.1.</strong> Архитектура MySql</a></li><li class="chapter-item expanded "><a href="db/specific/mysql/concurency.html"><strong aria-hidden="true">2.2.1.2.</strong> Конкурентный доступ</a></li><li class="chapter-item expanded "><a href="db/specific/mysql/indexes.html"><strong aria-hidden="true">2.2.1.3.</strong> Индексы</a></li><li class="chapter-item expanded "><a href="db/specific/mysql/sql.html"><strong aria-hidden="true">2.2.1.4.</strong> Основы SQL</a></li><li class="chapter-item expanded "><a href="db/specific/mysql/explain.html"><strong aria-hidden="true">2.2.1.5.</strong> Explain</a></li><li class="chapter-item expanded "><a href="db/specific/mysql/unsorted.html"><strong aria-hidden="true">2.2.1.6.</strong> Разное</a></li></ol></li><li class="chapter-item expanded "><a href="db/specific/postgreSql/index.html"><strong aria-hidden="true">2.2.2.</strong> PostgreSql</a></li><li class="chapter-item expanded "><a href="db/specific/noSql/index.html"><strong aria-hidden="true">2.2.3.</strong> NoSql</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="db/specific/noSql/redis.html"><strong aria-hidden="true">2.2.3.1.</strong> Redis</a></li><li class="chapter-item expanded "><a href="db/specific/noSql/memcached.html"><strong aria-hidden="true">2.2.3.2.</strong> Memcaced</a></li><li class="chapter-item expanded "><a href="db/specific/noSql/tarantool.html"><strong aria-hidden="true">2.2.3.3.</strong> Tarantool</a></li><li class="chapter-item expanded "><a href="db/specific/noSql/mongo.html"><strong aria-hidden="true">2.2.3.4.</strong> Mongo</a></li></ol></li><li class="chapter-item expanded "><a href="db/specific/clickhouse.html"><strong aria-hidden="true">2.2.4.</strong> ClickHouse</a></li><li class="chapter-item expanded "><a href="db/specific/messages/index.html"><strong aria-hidden="true">2.2.5.</strong> Брокеры сообщений</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="db/specific/messages/rabbit.html"><strong aria-hidden="true">2.2.5.1.</strong> Rabbit</a></li><li class="chapter-item expanded "><a href="db/specific/messages/kafka.html"><strong aria-hidden="true">2.2.5.2.</strong> Kafka</a></li><li class="chapter-item expanded "><a href="db/specific/messages/nats.html"><strong aria-hidden="true">2.2.5.3.</strong> Nats</a></li></ol></li></ol></li></ol></li><li class="chapter-item expanded "><a href="architecture/index.html"><strong aria-hidden="true">3.</strong> Архитектура</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="architecture/oopBase.html"><strong aria-hidden="true">3.1.</strong> Основы ООП</a></li><li class="chapter-item expanded "><a href="architecture/gof.html"><strong aria-hidden="true">3.2.</strong> Паттерны GoF(Банда 4)</a></li><li class="chapter-item expanded "><a href="architecture/principles.html"><strong aria-hidden="true">3.3.</strong> Принципы хорошей архитектуры</a></li><li class="chapter-item expanded "><a href="architecture/architecturesPatterns.html"><strong aria-hidden="true">3.4.</strong> Архитектурные паттерны</a></li><li class="chapter-item expanded "><a href="architecture/ddd.html"><strong aria-hidden="true">3.5.</strong> DDD</a></li><li class="chapter-item expanded "><a href="architecture/microserices/index.html"><strong aria-hidden="true">3.6.</strong> Микросервисы</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="architecture/microserices/integration.html"><strong aria-hidden="true">3.6.1.</strong> Паттерны и протоколы интеграции</a></li><li class="chapter-item expanded "><a href="architecture/microserices/monolithSeparation.html"><strong aria-hidden="true">3.6.2.</strong> Способы распиливания монолита</a></li></ol></li><li class="chapter-item expanded "><a href="architecture/uncategorized.html"><strong aria-hidden="true">3.7.</strong> Разное</a></li></ol></li><li class="chapter-item expanded "><a href="php/index.html"><strong aria-hidden="true">4.</strong> PHP</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="php/innovations.html"><strong aria-hidden="true">4.1.</strong> Фичи новых версий</a></li><li class="chapter-item expanded "><a href="php/internals.html"><strong aria-hidden="true">4.2.</strong> PHP Internals</a></li><li class="chapter-item expanded "><a href="php/frameworks/index.html"><strong aria-hidden="true">4.3.</strong> Фреймворки</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="php/frameworks/laravel.html"><strong aria-hidden="true">4.3.1.</strong> Laravel</a></li><li class="chapter-item expanded "><a href="php/frameworks/symfony.html"><strong aria-hidden="true">4.3.2.</strong> Symfony</a></li></ol></li><li class="chapter-item expanded "><a href="php/uncategorized.html"><strong aria-hidden="true">4.4.</strong> Разное</a></li></ol></li><li class="chapter-item expanded "><a href="goLang/index.html"><strong aria-hidden="true">5.</strong> GoLang</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="goLang/types.html"><strong aria-hidden="true">5.1.</strong> Типы данных</a></li><li class="chapter-item expanded "><a href="goLang/concurrency/index.html"><strong aria-hidden="true">5.2.</strong> Сoncurrency</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="goLang/concurrency/chanel.html"><strong aria-hidden="true">5.2.1.</strong> Каналы</a></li><li class="chapter-item expanded "><a href="goLang/concurrency/gouritine.html"><strong aria-hidden="true">5.2.2.</strong> Горутины</a></li><li class="chapter-item expanded "><a href="goLang/concurrency/sync.html"><strong aria-hidden="true">5.2.3.</strong> Sync</a></li><li class="chapter-item expanded "><a href="goLang/concurrency/patterns.html"><strong aria-hidden="true">5.2.4.</strong> Паттерны</a></li></ol></li><li class="chapter-item expanded "><a href="goLang/scheduler.html"><strong aria-hidden="true">5.3.</strong> Планировщик</a></li><li class="chapter-item expanded "><a href="goLang/memory.html"><strong aria-hidden="true">5.4.</strong> Управление памятью</a></li><li class="chapter-item expanded "><a href="goLang/ecosystem.html"><strong aria-hidden="true">5.5.</strong> Экосистема</a></li></ol></li><li class="chapter-item expanded "><a href="javascript.html"><strong aria-hidden="true">6.</strong> JavaScript</a></li><li class="chapter-item expanded "><a href="ib.html"><strong aria-hidden="true">7.</strong> Информационная безопасность</a></li><li class="chapter-item expanded "><a href="git.html"><strong aria-hidden="true">8.</strong> Git</a></li><li class="chapter-item expanded "><a href="network/index.html"><strong aria-hidden="true">9.</strong> Основы сетей</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="network/serverIteractions.html"><strong aria-hidden="true">9.1.</strong> Взаимодействие с веб-сервером</a></li><li class="chapter-item expanded "><a href="network/http.html"><strong aria-hidden="true">9.2.</strong> HTTP</a></li><li class="chapter-item expanded "><a href="network/tls.html"><strong aria-hidden="true">9.3.</strong> TLS</a></li><li class="chapter-item expanded "><a href="network/dns.html"><strong aria-hidden="true">9.4.</strong> DNS</a></li><li class="chapter-item expanded "><a href="network/tcp_ip.html"><strong aria-hidden="true">9.5.</strong> TCP/IP</a></li><li class="chapter-item expanded "><a href="network/networkModels.html"><strong aria-hidden="true">9.6.</strong> Сетевые модели</a></li><li class="chapter-item expanded "><a href="network/realTime.html"><strong aria-hidden="true">9.7.</strong> realTime взаимодействие с сервером</a></li><li class="chapter-item expanded "><a href="network/whatHappenWhen.html"><strong aria-hidden="true">9.8.</strong> Что происходит при нажатии на g</a></li></ol></li><li class="chapter-item expanded "><a href="os.html"><strong aria-hidden="true">10.</strong> Операционые системы</a></li><li class="chapter-item expanded "><a href="devops/index.html"><strong aria-hidden="true">11.</strong> Системное администрирование</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="devops/linux.html"><strong aria-hidden="true">11.1.</strong> Linux</a></li><li class="chapter-item expanded "><a href="devops/virtualization/index.html"><strong aria-hidden="true">11.2.</strong> Основы виртуализации</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="devops/virtualization/docker.html"><strong aria-hidden="true">11.2.1.</strong> Docker</a></li><li class="chapter-item expanded "><a href="devops/virtualization/kubernetes.html"><strong aria-hidden="true">11.2.2.</strong> Kubernetes</a></li></ol></li><li class="chapter-item expanded "><a href="devops/deployment.html"><strong aria-hidden="true">11.3.</strong> Deployment</a></li><li class="chapter-item expanded "><a href="devops/monitoring.html"><strong aria-hidden="true">11.4.</strong> Мониторинг</a></li></ol></li><li class="chapter-item expanded "><a href="test.html" class="active"><strong aria-hidden="true">12.</strong> Тестирование</a></li><li class="chapter-item expanded "><a href="unsorted/index.html"><strong aria-hidden="true">13.</strong> Разное</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="unsorted/bits.html"><strong aria-hidden="true">13.1.</strong> Побитовые операции</a></li><li class="chapter-item expanded "><a href="unsorted/types.html"><strong aria-hidden="true">13.2.</strong> Типизация</a></li><li class="chapter-item expanded "><a href="unsorted/unicode.html"><strong aria-hidden="true">13.3.</strong> Юникод</a></li></ol></li><li class="chapter-item expanded "><a href="devmethods.html"><strong aria-hidden="true">14.</strong> Методологии разработки</a></li><li class="chapter-item expanded "><a href="checkList.html"><strong aria-hidden="true">15.</strong> ЧекЛист</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Backend interview</h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/arturpanteleev/phpInterview" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="Тестирование"><a class="header" href="#Тестирование">Тестирование</a></h1>
+<h2 id="Уровни-Тестирования"><a class="header" href="#Уровни-Тестирования">Уровни Тестирования</a></h2>
+<h3 id="Модульное-тестирование-unit-testing"><a class="header" href="#Модульное-тестирование-unit-testing">Модульное тестирование (Unit Testing)</a></h3>
+<p>Компонентное (модульное) тестирование проверяет функциональность и ищет дефекты в частях приложения, которые доступны и могут быть протестированы по-отдельности (модули программ, объекты, классы, функции и т.д.).</p>
+<h4 id="aaaarrange-act-assert"><a class="header" href="#aaaarrange-act-assert">AAA(arrange-act-assert)</a></h4>
+<p>Шаблон для форматирования Unit тестов. Обозначающий разделения теста на 3 части</p>
+<ol>
+<li>Arrange - все необходимые подготовки и входные данные</li>
+<li>Act - собственно вызов того метода который вы тестируете</li>
+<li>Assert - проверки, что метод делает то что надо</li>
+</ol>
+<h3 id="Интеграционное-тестирование-integration-testing"><a class="header" href="#Интеграционное-тестирование-integration-testing">Интеграционное тестирование (Integration Testing)</a></h3>
+<p>Проверяется взаимодействие между компонентами системы после проведения компонентного тестирования.</p>
+<h3 id="Системное-тестирование-system-testing"><a class="header" href="#Системное-тестирование-system-testing">Системное тестирование (System Testing)</a></h3>
+<p>Основной задачей системного тестирования является проверка как функциональных, так и не функциональных требований в системе в целом. При этом выявляются дефекты, такие как неверное использование ресурсов системы, непредусмотренные комбинации данных пользовательского уровня, несовместимость с окружением, непредусмотренные сценарии использования, отсутствующая или неверная функциональность, неудобство использования и т.д.</p>
+<h3 id="Операционное-тестирование-release-testing"><a class="header" href="#Операционное-тестирование-release-testing">Операционное тестирование (Release Testing).</a></h3>
+<p>Даже если система удовлетворяет всем требованиям, важно убедиться в том, что она удовлетворяет нуждам пользователя и выполняет свою роль в среде своей эксплуатации, как это было определено в бизнес модели системы. Следует учесть, что и бизнес модель может содержать ошибки. Поэтому так важно провести операционное тестирование как финальный шаг валидации. Кроме этого, тестирование в среде эксплуатации позволяет выявить и нефункциональные проблемы, такие как: конфликт с другими системами, смежными в области бизнеса или в программных и электронных окружениях; недостаточная производительность системы в среде эксплуатации и др. Очевидно, что нахождение подобных вещей на стадии внедрения — критичная и дорогостоящая проблема. Поэтому так важно проведение не только верификации, но и валидации, с самых ранних этапов разработки ПО.</p>
+<h3 id="Приемочное-тестирование-acceptance-testing"><a class="header" href="#Приемочное-тестирование-acceptance-testing">Приемочное тестирование (Acceptance Testing)</a></h3>
+<p>Формальный процесс тестирования, который проверяет соответствие системы требованиям и проводится с целью:
+•	определения удовлетворяет ли система приемочным критериям;
+•	вынесения решения заказчиком или другим уполномоченным лицом принимается приложение или нет.</p>
+<h2 id="Виды--типы-тестирования"><a class="header" href="#Виды--типы-тестирования">Виды / типы тестирования</a></h2>
+<h4 id="Функциональные-виды-тестирования"><a class="header" href="#Функциональные-виды-тестирования">Функциональные виды тестирования</a></h4>
+<ul>
+<li>
+<p>Функциональное тестирование (Functional testing)</p>
+</li>
+<li>
+<p>Тестирование пользовательского интерфейса (GUI Testing)</p>
+</li>
+<li>
+<p>Тестирование безопасности (Security and Access Control Testing)</p>
+</li>
+<li>
+<p>Тестирование взаимодействия (Interoperability Testing)</p>
+</li>
+</ul>
+<h4 id="Нефункциональные-виды-тестирования"><a class="header" href="#Нефункциональные-виды-тестирования">Нефункциональные виды тестирования</a></h4>
+<ul>
+<li>Все виды тестирования производительности:</li>
+<li>нагрузочное тестирование (Performance and Load Testing)</li>
+<li>стрессовое тестирование (Stress Testing)</li>
+<li>тестирование стабильности или надежности (Stability / Reliability Testing)</li>
+<li>объемное тестирование (Volume Testing)</li>
+<li>Тестирование установки (Installation testing)</li>
+<li>Тестирование удобства пользования (Usability Testing)</li>
+<li>Тестирование на отказ и восстановление (Failover and Recovery Testing)</li>
+<li>Конфигурационное тестирование (Configuration Testing)</li>
+</ul>
+<h4 id="Связанные-с-изменениями-виды-тестирования"><a class="header" href="#Связанные-с-изменениями-виды-тестирования">Связанные с изменениями виды тестирования</a></h4>
+<ul>
+<li>Дымовое тестирование (Smoke Testing)</li>
+<li>Регрессионное тестирование (Regression Testing)</li>
+<li>Повторное тестирование (Re-testing)</li>
+<li>Тестирование сборки (Build Verification Test)</li>
+<li>Санитарное тестирование или проверка согласованности/исправности (Sanity Testing)</li>
+</ul>
+<h2 id="Фреймворкиинструменты-для-тестирования"><a class="header" href="#Фреймворкиинструменты-для-тестирования">Фреймворки/инструменты для тестирования</a></h2>
+<h3 id="php-unit"><a class="header" href="#php-unit">PHP Unit</a></h3>
+<p>PHP Unit - самый популярный фреймворк для модульного тестирования в PHP.</p>
+<p>PHPUnit is based on the idea that developers should be able to find mistakes in their newly committed code quickly and assert that no <a href="https://en.wikipedia.org/wiki/Regression_testing">code regression</a> has occurred in other parts of the code base. Much like other <a href="https://en.wikipedia.org/wiki/Unit_testing">unit testing</a> frameworks, PHPUnit uses <a href="https://en.wikipedia.org/wiki/XUnit#Assertions">assertions</a> to verify that the behavior of the specific component - or <em>&quot;unit&quot;</em> - being tested behaves as expected.</p>
+<p><strong>Data Provider</strong></p>
+<p>Метод, являющийся <em>data provider</em>-ом, должен возвращать массив массивов или объект, реализующий интерфейс <code>Iterator</code>. Метод, являющийся тестом, будет вызван несколько раз - с каждым массивом и в качестве аргументов будет передано содержимое массива.</p>
+<p>Некоторые ключевые моменты при использовании <em>data provider</em>-а:</p>
+<ul>
+<li>Метод <em>data provider</em>-а должен быть публичным (<code>public</code>).</li>
+<li>Метод <em>data provider</em>-а должен возвращать массив собранных данных.</li>
+<li>Метод теста должен использовать аннотацию <code>@dataProvider</code> чтобы указать какой метод использовать в качестве <em>data provider</em>-а.</li>
+</ul>
+<p><strong>Mock vs Stub</strong></p>
+<p>The <code>createMock</code> method is used to create three mostly known test doubles. It's how you configure the object makes it a dummy, a stub, or a mock.</p>
+<p>You can also create test stubs with the mock builder (<code>getMockBuilder</code> returns the mock builder). It's just another way of doing the same thing that lets you to tweak some additional mock options with a fluent interface (see <a href="https://phpunit.de/manual/current/en/test-doubles.html#test-doubles.mock-objects">the documentation</a> for more).</p>
+<p>Dummy is passed around, but never actually called, or if it's called it responds with a default answer (mostly <code>null</code>). It mainly exists to satisfy a list of arguments.</p>
+<pre><code class="language-php">$dummy = $this-&gt;createMock(SomeClass::class);
+
+// SUT - System Under Test
+$sut-&gt;action($dummy);
+</code></pre>
+<p>Stubs are used with query like methods - methods that return things, but it's not important if they're actually called.</p>
+<pre><code class="language-php">$stub = $this-&gt;createMock(SomeClass::class);
+$stub-&gt;method('getSomething')
+    -&gt;willReturn('foo');
+
+$sut-&gt;action($stub);
+</code></pre>
+<p>Mocks are used with command like methods - it's important that they're called, and we don't care much about their return value (command methods don't usually return any value).</p>
+<pre><code class="language-php">$mock = $this-&gt;createMock(SomeClass::class);
+$mock-&gt;expects($this-&gt;once())
+    -&gt;method('doSomething')
+    -&gt;with('bar');
+
+$sut-&gt;action($mock);
+</code></pre>
+<p>Expectations will be verified automatically after your test method finished executing. In the example above, the test will fail if the method <code>doSomething</code> wasn't called on <code>SomeClass</code>, or it was called with arguments different to the ones you configured.</p>
+<h3 id="codeception"><a class="header" href="#codeception">Codeception</a></h3>
+<p>Сodeception это, надстройка над PHPUnit(или любым другим тест фреймворком). Она позволяет выполнять сценарные тесты на движке PHPUnit. При этом все ваши существующие тесты для PHPUnit Codeception сможет подхватить без каких-либо проблем. К ним вы сможете легко добавить функциональные и приемочные тесты. Очень многие задачи, требующие костылей (например, интеграция с <a href="https://automated-testing.info/tags/webdriver">Selenium</a>, с БД) в Codeception уже решены.</p>
+<h3 id="behat"><a class="header" href="#behat">Behat</a></h3>
+<p>Behat - это инструмент BDD.</p>
+<p>BDD - behaviour-driven development - это разработка, основанная на описании поведения. То есть, есть специальный человек(или люди) который пишет описания вида &quot;я как пользователь хочу <strong>когда</strong> нажали кнопку пуск <strong>тогда</strong> показывалось меню как на картинке&quot;. (там есть специально выделенные ключевые слова). </p>
+<p>В чем преимущество BDD?</p>
+<ul>
+<li><strong>тесты</strong> читаемые для не программистов.</li>
+<li>их легко изменять. Они часто пишутся почти на чистом английском.</li>
+<li>их теперь может писать product owner или другие заинтересованные лица.</li>
+<li>результаты выполнения тестов более &quot;человечные&quot;.</li>
+<li><strong>тесты</strong> не зависят от целевого языка программирования. Миграция на другой язык сильно упрощается.</li>
+</ul>
+<p>И именно для этих целей Behat и используется. Позволяет писать тесты человекопонятным английским языком в формате Given-When-Then, преобразуя эти инструкции в вызов автотестов.</p>
+<h3 id="selenium"><a class="header" href="#selenium">Selenium</a></h3>
+<p><em>Selenium -- это инструмент для автоматизированного управления браузерами.</em> Наиболее популярной областью применения Selenium является автоматизация тестирования веб-приложений. Однако при помощи Selenium можно автоматизировать любые другие рутинные действия, выполняемые через браузер(клик на кнопку, наведение мыши на объект, печать в инпут и т.д).</p>
+<h2 id="tdd"><a class="header" href="#tdd">TDD</a></h2>
+<p><strong>Разработка через тестирование</strong> (test-driven development, TDD) — техника <a href="https://ru.wikipedia.org/wiki/%D0%A0%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B0_%D0%BF%D1%80%D0%BE%D0%B3%D1%80%D0%B0%D0%BC%D0%BC%D0%BD%D0%BE%D0%B3%D0%BE_%D0%BE%D0%B1%D0%B5%D1%81%D0%BF%D0%B5%D1%87%D0%B5%D0%BD%D0%B8%D1%8F">разработки программного обеспечения</a>, которая основывается на повторении очень коротких циклов разработки: сначала пишется тест, покрывающий желаемое изменение, затем пишется код, который позволит пройти тест, и под конец проводится рефакторинг нового кода к соответствующим стандартам.</p>
+<p><em>Дополнительно:</em></p>
+<ul>
+<li><a href="https://dou.ua/forums/topic/13389/">Тестирование. Фундаментальная теория</a> - самый лучший</li>
+<li><a href="https://phpunit.de/getting-started/phpunit-7.html">PHPUnit Getting Started</a> </li>
+<li><a href="https://jtreminio.com/blog/unit-testing-tutorial-part-i-introduction-to-phpunit/">Unit Testing Tutorial Part I: Introduction to PHPUnit</a></li>
+<li><a href="http://www.protesting.ru">ProTesting</a></li>
+<li><a href="https://phpprofi.ru/series/show/1">PHPUnit для начинающих</a></li>
+<li>https://codeception.com/05-06-2013/specification-testing-coparison.html</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="devops/monitoring.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="unsorted/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="devops/monitoring.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="unsorted/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

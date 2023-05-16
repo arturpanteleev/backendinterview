@@ -1,0 +1,305 @@
+<!DOCTYPE HTML>
+<html lang="ru" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Нормальные формы - Backend interview</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Книжка для подготовки к собеседованию на должность backend developer">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../../favicon.svg">
+        <link rel="shortcut icon" href="../../favicon.png">
+        <link rel="stylesheet" href="../../css/variables.css">
+        <link rel="stylesheet" href="../../css/general.css">
+        <link rel="stylesheet" href="../../css/chrome.css">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../../highlight.css">
+        <link rel="stylesheet" href="../../tomorrow-night.css">
+        <link rel="stylesheet" href="../../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../../index.html">Введение</a></li><li class="chapter-item expanded "><a href="../../algostruct/index.html"><strong aria-hidden="true">1.</strong> Алгоритмы и Структуры Данных</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../algostruct/structBasics.html"><strong aria-hidden="true">1.1.</strong> Базовые структуры</a></li><li class="chapter-item expanded "><a href="../../algostruct/array.html"><strong aria-hidden="true">1.2.</strong> Массив</a></li><li class="chapter-item expanded "><a href="../../algostruct/hashTable.html"><strong aria-hidden="true">1.3.</strong> Хэш-Таблица</a></li><li class="chapter-item expanded "><a href="../../algostruct/tree.html"><strong aria-hidden="true">1.4.</strong> Дерево</a></li><li class="chapter-item expanded "><a href="../../algostruct/graph.html"><strong aria-hidden="true">1.5.</strong> Граф</a></li><li class="chapter-item expanded "><a href="../../algostruct/probability.html"><strong aria-hidden="true">1.6.</strong> Вероятностные</a></li><li class="chapter-item expanded "><a href="../../algostruct/crypto.html"><strong aria-hidden="true">1.7.</strong> Криптография</a></li><li class="chapter-item expanded "><a href="../../algostruct/unsorted.html"><strong aria-hidden="true">1.8.</strong> Разное</a></li></ol></li><li class="chapter-item expanded "><a href="../../db/index.html"><strong aria-hidden="true">2.</strong> Базы Данных</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../db/dBTheory/index.html"><strong aria-hidden="true">2.1.</strong> Теория Баз Данных</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../db/dBTheory/transactions.html"><strong aria-hidden="true">2.1.1.</strong> Транзакции</a></li><li class="chapter-item expanded "><a href="../../db/dBTheory/normalForms.html" class="active"><strong aria-hidden="true">2.1.2.</strong> Нормальные формы</a></li><li class="chapter-item expanded "><a href="../../db/dBTheory/distrubedDb/index.html"><strong aria-hidden="true">2.1.3.</strong> Распределенные БД</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../db/dBTheory/distrubedDb/replication.html"><strong aria-hidden="true">2.1.3.1.</strong> Репликация</a></li><li class="chapter-item expanded "><a href="../../db/dBTheory/distrubedDb/sharding.html"><strong aria-hidden="true">2.1.3.2.</strong> Шардинг</a></li><li class="chapter-item expanded "><a href="../../db/dBTheory/distrubedDb/unsorted.html"><strong aria-hidden="true">2.1.3.3.</strong> Разное</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../db/specific/index.html"><strong aria-hidden="true">2.2.</strong> Конкретные БД</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../db/specific/mysql/index.html"><strong aria-hidden="true">2.2.1.</strong> MySql</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../db/specific/mysql/architecture.html"><strong aria-hidden="true">2.2.1.1.</strong> Архитектура MySql</a></li><li class="chapter-item expanded "><a href="../../db/specific/mysql/concurency.html"><strong aria-hidden="true">2.2.1.2.</strong> Конкурентный доступ</a></li><li class="chapter-item expanded "><a href="../../db/specific/mysql/indexes.html"><strong aria-hidden="true">2.2.1.3.</strong> Индексы</a></li><li class="chapter-item expanded "><a href="../../db/specific/mysql/sql.html"><strong aria-hidden="true">2.2.1.4.</strong> Основы SQL</a></li><li class="chapter-item expanded "><a href="../../db/specific/mysql/explain.html"><strong aria-hidden="true">2.2.1.5.</strong> Explain</a></li><li class="chapter-item expanded "><a href="../../db/specific/mysql/unsorted.html"><strong aria-hidden="true">2.2.1.6.</strong> Разное</a></li></ol></li><li class="chapter-item expanded "><a href="../../db/specific/postgreSql/index.html"><strong aria-hidden="true">2.2.2.</strong> PostgreSql</a></li><li class="chapter-item expanded "><a href="../../db/specific/noSql/index.html"><strong aria-hidden="true">2.2.3.</strong> NoSql</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../db/specific/noSql/redis.html"><strong aria-hidden="true">2.2.3.1.</strong> Redis</a></li><li class="chapter-item expanded "><a href="../../db/specific/noSql/memcached.html"><strong aria-hidden="true">2.2.3.2.</strong> Memcaced</a></li><li class="chapter-item expanded "><a href="../../db/specific/noSql/tarantool.html"><strong aria-hidden="true">2.2.3.3.</strong> Tarantool</a></li><li class="chapter-item expanded "><a href="../../db/specific/noSql/mongo.html"><strong aria-hidden="true">2.2.3.4.</strong> Mongo</a></li></ol></li><li class="chapter-item expanded "><a href="../../db/specific/clickhouse.html"><strong aria-hidden="true">2.2.4.</strong> ClickHouse</a></li><li class="chapter-item expanded "><a href="../../db/specific/messages/index.html"><strong aria-hidden="true">2.2.5.</strong> Брокеры сообщений</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../db/specific/messages/rabbit.html"><strong aria-hidden="true">2.2.5.1.</strong> Rabbit</a></li><li class="chapter-item expanded "><a href="../../db/specific/messages/kafka.html"><strong aria-hidden="true">2.2.5.2.</strong> Kafka</a></li><li class="chapter-item expanded "><a href="../../db/specific/messages/nats.html"><strong aria-hidden="true">2.2.5.3.</strong> Nats</a></li></ol></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../../architecture/index.html"><strong aria-hidden="true">3.</strong> Архитектура</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../architecture/oopBase.html"><strong aria-hidden="true">3.1.</strong> Основы ООП</a></li><li class="chapter-item expanded "><a href="../../architecture/gof.html"><strong aria-hidden="true">3.2.</strong> Паттерны GoF(Банда 4)</a></li><li class="chapter-item expanded "><a href="../../architecture/principles.html"><strong aria-hidden="true">3.3.</strong> Принципы хорошей архитектуры</a></li><li class="chapter-item expanded "><a href="../../architecture/architecturesPatterns.html"><strong aria-hidden="true">3.4.</strong> Архитектурные паттерны</a></li><li class="chapter-item expanded "><a href="../../architecture/ddd.html"><strong aria-hidden="true">3.5.</strong> DDD</a></li><li class="chapter-item expanded "><a href="../../architecture/microserices/index.html"><strong aria-hidden="true">3.6.</strong> Микросервисы</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../architecture/microserices/integration.html"><strong aria-hidden="true">3.6.1.</strong> Паттерны и протоколы интеграции</a></li><li class="chapter-item expanded "><a href="../../architecture/microserices/monolithSeparation.html"><strong aria-hidden="true">3.6.2.</strong> Способы распиливания монолита</a></li></ol></li><li class="chapter-item expanded "><a href="../../architecture/uncategorized.html"><strong aria-hidden="true">3.7.</strong> Разное</a></li></ol></li><li class="chapter-item expanded "><a href="../../php/index.html"><strong aria-hidden="true">4.</strong> PHP</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../php/innovations.html"><strong aria-hidden="true">4.1.</strong> Фичи новых версий</a></li><li class="chapter-item expanded "><a href="../../php/internals.html"><strong aria-hidden="true">4.2.</strong> PHP Internals</a></li><li class="chapter-item expanded "><a href="../../php/frameworks/index.html"><strong aria-hidden="true">4.3.</strong> Фреймворки</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../php/frameworks/laravel.html"><strong aria-hidden="true">4.3.1.</strong> Laravel</a></li><li class="chapter-item expanded "><a href="../../php/frameworks/symfony.html"><strong aria-hidden="true">4.3.2.</strong> Symfony</a></li></ol></li><li class="chapter-item expanded "><a href="../../php/uncategorized.html"><strong aria-hidden="true">4.4.</strong> Разное</a></li></ol></li><li class="chapter-item expanded "><a href="../../goLang/index.html"><strong aria-hidden="true">5.</strong> GoLang</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../goLang/types.html"><strong aria-hidden="true">5.1.</strong> Типы данных</a></li><li class="chapter-item expanded "><a href="../../goLang/concurrency/index.html"><strong aria-hidden="true">5.2.</strong> Сoncurrency</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../goLang/concurrency/chanel.html"><strong aria-hidden="true">5.2.1.</strong> Каналы</a></li><li class="chapter-item expanded "><a href="../../goLang/concurrency/gouritine.html"><strong aria-hidden="true">5.2.2.</strong> Горутины</a></li><li class="chapter-item expanded "><a href="../../goLang/concurrency/sync.html"><strong aria-hidden="true">5.2.3.</strong> Sync</a></li><li class="chapter-item expanded "><a href="../../goLang/concurrency/patterns.html"><strong aria-hidden="true">5.2.4.</strong> Паттерны</a></li></ol></li><li class="chapter-item expanded "><a href="../../goLang/scheduler.html"><strong aria-hidden="true">5.3.</strong> Планировщик</a></li><li class="chapter-item expanded "><a href="../../goLang/memory.html"><strong aria-hidden="true">5.4.</strong> Управление памятью</a></li><li class="chapter-item expanded "><a href="../../goLang/ecosystem.html"><strong aria-hidden="true">5.5.</strong> Экосистема</a></li></ol></li><li class="chapter-item expanded "><a href="../../javascript.html"><strong aria-hidden="true">6.</strong> JavaScript</a></li><li class="chapter-item expanded "><a href="../../ib.html"><strong aria-hidden="true">7.</strong> Информационная безопасность</a></li><li class="chapter-item expanded "><a href="../../git.html"><strong aria-hidden="true">8.</strong> Git</a></li><li class="chapter-item expanded "><a href="../../network/index.html"><strong aria-hidden="true">9.</strong> Основы сетей</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../network/serverIteractions.html"><strong aria-hidden="true">9.1.</strong> Взаимодействие с веб-сервером</a></li><li class="chapter-item expanded "><a href="../../network/http.html"><strong aria-hidden="true">9.2.</strong> HTTP</a></li><li class="chapter-item expanded "><a href="../../network/tls.html"><strong aria-hidden="true">9.3.</strong> TLS</a></li><li class="chapter-item expanded "><a href="../../network/dns.html"><strong aria-hidden="true">9.4.</strong> DNS</a></li><li class="chapter-item expanded "><a href="../../network/tcp_ip.html"><strong aria-hidden="true">9.5.</strong> TCP/IP</a></li><li class="chapter-item expanded "><a href="../../network/networkModels.html"><strong aria-hidden="true">9.6.</strong> Сетевые модели</a></li><li class="chapter-item expanded "><a href="../../network/realTime.html"><strong aria-hidden="true">9.7.</strong> realTime взаимодействие с сервером</a></li><li class="chapter-item expanded "><a href="../../network/whatHappenWhen.html"><strong aria-hidden="true">9.8.</strong> Что происходит при нажатии на g</a></li></ol></li><li class="chapter-item expanded "><a href="../../os.html"><strong aria-hidden="true">10.</strong> Операционые системы</a></li><li class="chapter-item expanded "><a href="../../devops/index.html"><strong aria-hidden="true">11.</strong> Системное администрирование</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../devops/linux.html"><strong aria-hidden="true">11.1.</strong> Linux</a></li><li class="chapter-item expanded "><a href="../../devops/virtualization/index.html"><strong aria-hidden="true">11.2.</strong> Основы виртуализации</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../devops/virtualization/docker.html"><strong aria-hidden="true">11.2.1.</strong> Docker</a></li><li class="chapter-item expanded "><a href="../../devops/virtualization/kubernetes.html"><strong aria-hidden="true">11.2.2.</strong> Kubernetes</a></li></ol></li><li class="chapter-item expanded "><a href="../../devops/deployment.html"><strong aria-hidden="true">11.3.</strong> Deployment</a></li><li class="chapter-item expanded "><a href="../../devops/monitoring.html"><strong aria-hidden="true">11.4.</strong> Мониторинг</a></li></ol></li><li class="chapter-item expanded "><a href="../../test.html"><strong aria-hidden="true">12.</strong> Тестирование</a></li><li class="chapter-item expanded "><a href="../../unsorted/index.html"><strong aria-hidden="true">13.</strong> Разное</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../../unsorted/bits.html"><strong aria-hidden="true">13.1.</strong> Побитовые операции</a></li><li class="chapter-item expanded "><a href="../../unsorted/types.html"><strong aria-hidden="true">13.2.</strong> Типизация</a></li><li class="chapter-item expanded "><a href="../../unsorted/unicode.html"><strong aria-hidden="true">13.3.</strong> Юникод</a></li></ol></li><li class="chapter-item expanded "><a href="../../devmethods.html"><strong aria-hidden="true">14.</strong> Методологии разработки</a></li><li class="chapter-item expanded "><a href="../../checkList.html"><strong aria-hidden="true">15.</strong> ЧекЛист</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Backend interview</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/arturpanteleev/phpInterview" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="Нормализация-и-нормальные-формы"><a class="header" href="#Нормализация-и-нормальные-формы">Нормализация и нормальные формы</a></h1>
+<p><strong>Нормализация</strong> — это процесс организации данных в базе данных, включающий создание таблиц и установление отношений между ними в соответствии с правилами (нормальными формами), которые обеспечивают защиту данных и делают базу данных более гибкой, устраняя избыточность и несогласованные зависимости.</p>
+<p>Процесс проектирования БД с использованием метода НФ является итерационным и заключается в последовательном переводе отношения из 1НФ в НФ более высокого порядка по определенным правилам. Каждая следующая НФ ограничивается определенным типом функциональных зависимостей и устранением соответствующих аномалий при выполнении операций над отношениями БД, а также сохранении свойств предшествующих НФ.</p>
+<p><strong>Нормальная форма</strong> — требование, предъявляемое к структуре таблиц в теории реляционных баз данных для устранения из базы избыточных функциональных зависимостей между атрибутами (полями таблиц).</p>
+<p><strong>Функциональная зависимость</strong> между атрибутами (множествами атрибутов) X и Y означает, что для любого допустимого набора кортежей в данном отношении: если два кортежа совпадают по значению X, то они совпадают по значению Y. Например, если значение атрибута «Название компании» — Canonical Ltd, то значением атрибута «Штаб-квартира» в таком кортеже всегда будет Millbank Tower, London, United Kingdom. Обозначение: {X} -&gt; {Y}.</p>
+<p><strong>Метод нормальных форм (НФ)</strong> состоит в сборе информации об объектах решения задачи в рамках одного отношения и последующей декомпозиции этого отношения на несколько взаимосвязанных отношений на основе процедур нормализации отношений. </p>
+<p><strong>Цель нормализации</strong>: исключить избыточное дублирование данных, которое является причиной аномалий, возникших при добавлении, редактировании и удалении кортежей(строк таблицы).</p>
+<p><strong>Аномалией</strong> называется такая ситуация в таблице БД, которая приводит к противоречию в БД либо существенно усложняет обработку БД. Причиной является излишнее дублирование данных в таблице, которое вызывается наличием функциональных зависимостей от не ключевых атрибутов.</p>
+<p><strong>Аномалии-модификации</strong> проявляются в том, что изменение одних данных может повлечь просмотр всей таблицы и соответствующее изменение некоторых записей таблицы.</p>
+<p><strong>Аномалии-удаления</strong> — при удалении какого либо кортежа из таблицы может пропасть информация, которая не связана на прямую с удаляемой записью.</p>
+<p><strong>Аномалии-добавления</strong> возникают, когда информацию в таблицу нельзя поместить, пока она не полная, либо вставка записи требует дополнительного просмотра таблицы.</p>
+<h4 id="Первая-нормальная-форма"><a class="header" href="#Первая-нормальная-форма">Первая нормальная форма</a></h4>
+<p>Отношение находится в 1НФ, если все его атрибуты являются простыми, все используемые домены должны содержать только скалярные значения. Не должно быть повторений строк в таблице.</p>
+<p>Например, есть таблица «Автомобили»:</p>
+<table><thead><tr><th>Фирма</th><th>Модели</th></tr></thead><tbody>
+<tr><td>BMW</td><td>M5, X5M, M1</td></tr>
+<tr><td>Nissan</td><td>GT-R</td></tr>
+</tbody></table>
+<p>Нарушение нормализации 1НФ происходит в моделях BMW, т.к. в одной ячейке содержится список из 3 элементов: M5, X5M, M1, т.е. он не является атомарным. Преобразуем таблицу к 1НФ:</p>
+<table><thead><tr><th>Фирма</th><th>Модели</th></tr></thead><tbody>
+<tr><td>BMW</td><td>M5</td></tr>
+<tr><td>BMW</td><td>X5M</td></tr>
+<tr><td>BMW</td><td>M1</td></tr>
+<tr><td>Nissan</td><td>GT-R</td></tr>
+</tbody></table>
+<h4 id="Вторая-нормальная-форма"><a class="header" href="#Вторая-нормальная-форма">Вторая нормальная форма</a></h4>
+<p>Отношение находится во 2НФ, если оно находится в 1НФ и каждый не ключевой атрибут неприводимо зависит от Первичного Ключа(ПК).</p>
+<p>Неприводимость означает, что в составе потенциального ключа отсутствует меньшее подмножество атрибутов, от которого можно также вывести данную функциональную зависимость.</p>
+<p>Например, дана таблица:</p>
+<table><thead><tr><th>Модель</th><th>Фирма</th><th>Цена</th><th>Скидка</th></tr></thead><tbody>
+<tr><td>M5</td><td>BMW</td><td>5500000</td><td>5%</td></tr>
+<tr><td>X5M</td><td>BMW</td><td>6000000</td><td>5%</td></tr>
+<tr><td>M1</td><td>BMW</td><td>2500000</td><td>5%</td></tr>
+<tr><td>GT-R</td><td>Nissan</td><td>5000000</td><td>10%</td></tr>
+</tbody></table>
+<p>Таблица находится в первой нормальной форме, но не во второй. Цена машины зависит от модели и фирмы. Скидка зависит от фирмы, то есть зависимость от первичного ключа неполная. Исправляется это путем декомпозиции на два отношения, в которых не ключевые атрибуты зависят от ПК.</p>
+<table><thead><tr><th>Модель</th><th>Фирма</th><th>Цена</th></tr></thead><tbody>
+<tr><td>M5</td><td>BMW</td><td>5500000</td></tr>
+<tr><td>X5M</td><td>BMW</td><td>6000000</td></tr>
+<tr><td>M1</td><td>BMW</td><td>2500000</td></tr>
+<tr><td>GT-R</td><td>Nissan</td><td>5000000</td></tr>
+</tbody></table>
+<table><thead><tr><th>Фирма</th><th>Скидка</th></tr></thead><tbody>
+<tr><td>BMW</td><td>5%</td></tr>
+<tr><td>Nissan</td><td>10%</td></tr>
+</tbody></table>
+<h4 id="Третья-нормальная-форма"><a class="header" href="#Третья-нормальная-форма">Третья нормальная форма</a></h4>
+<p>Отношение находится в 3НФ, когда находится во 2НФ и каждый не ключевой атрибут нетранзитивно зависит от первичного ключа. Проще говоря, второе правило требует выносить все не ключевые поля, содержимое которых может относиться к нескольким записям таблицы в отдельные таблицы.</p>
+<p>Рассмотрим таблицу:</p>
+<table><thead><tr><th>Модель</th><th>Магазин</th><th>Телефон</th></tr></thead><tbody>
+<tr><td>BMW</td><td>Риал-авто</td><td>87-33-98</td></tr>
+<tr><td>Audi</td><td>Риал-авто</td><td>87-33-98</td></tr>
+<tr><td>Nissan</td><td>Некст-Авто</td><td>94-54-12</td></tr>
+</tbody></table>
+<p>Таблица находится во 2НФ, но не в 3НФ.</p>
+<p>В отношении атрибут «Модель» является первичным ключом. Личных телефонов у автомобилей нет, и телефон зависит исключительно от магазина.</p>
+<p>Таким образом, в отношении существуют следующие функциональные зависимости: Модель → Магазин, Магазин → Телефон, Модель → Телефон.</p>
+<p>Зависимость Модель → Телефон является транзитивной, следовательно, отношение не находится в 3НФ.</p>
+<p>В результате разделения исходного отношения получаются два отношения, находящиеся в 3НФ:</p>
+<p>Риал-авто 87-33-98 </p>
+<p>Риал-авто 87-33-98 </p>
+<p>Некст-Авто 94-54-12 </p>
+<table><thead><tr><th>Модель</th><th>Магазин</th></tr></thead><tbody>
+<tr><td>BMW</td><td>Риал-авто</td></tr>
+<tr><td>Audi</td><td>Риал-авто</td></tr>
+<tr><td>Nissan</td><td>Некст-Авто</td></tr>
+</tbody></table>
+<h4 id="Нормальная-форма-Бойса-Кодда-НФБК-частная-форма-третьей-нормальной-формы"><a class="header" href="#Нормальная-форма-Бойса-Кодда-НФБК-частная-форма-третьей-нормальной-формы">Нормальная форма Бойса-Кодда (НФБК) (частная форма третьей нормальной формы)</a></h4>
+<p>Определение 3НФ не совсем подходит для следующих отношений:</p>
+<ol>
+<li>
+<p>отношение имеет две или более потенциальных ключа;</p>
+</li>
+<li>
+<p>два и более потенциальных ключа являются составными;</p>
+</li>
+<li>
+<p>они пересекаются, т.е. имеют хотя бы один атрибут.</p>
+</li>
+</ol>
+<p>Для отношений, имеющих один потенциальный ключ (первичный), НФБК является 3НФ.</p>
+<p>Отношение находится в НФБК, когда каждая нетривиальная и неприводимая слева функциональная зависимость обладает потенциальным ключом в качестве детерминанта.</p>
+<p>Предположим, рассматривается отношение, представляющее данные о бронировании стоянки на день:</p>
+<table><thead><tr><th>Номер стоянки</th><th>Время начала</th><th>Время окончания</th><th>Тариф</th></tr></thead><tbody>
+<tr><td>1</td><td>09:30</td><td>10:30</td><td>Бережливый</td></tr>
+<tr><td>1</td><td>11:00</td><td>12:00</td><td>Бережливый</td></tr>
+<tr><td>1</td><td>14:00</td><td>15:30</td><td>Стандарт</td></tr>
+<tr><td>2</td><td>10:00</td><td>12:00</td><td>Премиум-В</td></tr>
+<tr><td>2</td><td>12:00</td><td>14:00</td><td>Премиум-В</td></tr>
+<tr><td>2</td><td>15:00</td><td>18:00</td><td>Премиум-А</td></tr>
+</tbody></table>
+<p>Тариф имеет уникальное название и зависит от выбранной стоянки и наличии льгот, в частности:</p>
+<ul>
+<li>«Бережливый»: стоянка 1 для льготников</li>
+<li>«Стандарт»: стоянка 1 для не льготников</li>
+<li>«Премиум-А»: стоянка 2 для льготников</li>
+<li>«Премиум-B»: стоянка 2 для не льготников.</li>
+</ul>
+<p>Таким образом, возможны следующие составные первичные ключи: {Номер стоянки, Время начала}, {Номер стоянки, Время окончания}, {Тариф, Время начала}, {Тариф, Время окончания}.</p>
+<p>Отношение находится в 3НФ. Требования второй нормальной формы выполняются, так как все атрибуты входят в какой-то из потенциальных ключей, а неключевых атрибутов в отношении нет. Также нет и транзитивных зависимостей, что соответствует требованиям третьей нормальной формы. Тем не менее существует функциональная зависимость Тариф → Номер стоянки, в которой левая часть (детерминант) не является потенциальным ключом отношения, то есть отношение не находится в нормальной форме Бойса — Кодда.</p>
+<p>Недостатком данной структуры является то, что, например, по ошибке можно приписать тариф «Бережливый» к бронированию второй стоянки, хотя он может относиться только к первой стоянки.</p>
+<p>Можно улучшить структуру с помощью декомпозиции отношения на два и добавления атрибута </p>
+<p><strong>Имеет льготы</strong>, получив отношения, удовлетворяющие НФБК (подчёркнуты атрибуты, входящие в первичный ключ.):</p>
+<p>Тарифы</p>
+<table><thead><tr><th>Тариф</th><th>Номер стоянки</th><th>Имеет льготы</th></tr></thead><tbody>
+<tr><td>Бережливый</td><td>1</td><td>Да</td></tr>
+<tr><td>Стандарт</td><td>1</td><td>Нет</td></tr>
+<tr><td>Премиум-А</td><td>2</td><td>Да</td></tr>
+<tr><td>Премиум-В</td><td>2</td><td>Нет</td></tr>
+</tbody></table>
+<p>Бронирование</p>
+<table><thead><tr><th>Тариф</th><th>Время начала</th><th>Время окончания</th></tr></thead><tbody>
+<tr><td>Бережливый</td><td>09:30</td><td>10:30</td></tr>
+<tr><td>Бережливый</td><td>11:00</td><td>12:00</td></tr>
+<tr><td>Стандарт</td><td>14:00</td><td>15:30</td></tr>
+<tr><td>Премиум-В</td><td>10:00</td><td>12:00</td></tr>
+<tr><td>Премиум-В</td><td>12:00</td><td>14:00</td></tr>
+<tr><td>Премиум-А</td><td>15:00</td><td>18:00</td></tr>
+</tbody></table>
+<p>Также еще есть несколько нормальных форм(4,5,Доменно-ключевая,6) но на них всем похуй.</p>
+<p><em><strong>Дополнительное чтение:</strong></em></p>
+<p><a href="https://habr.com/post/254773/">Нормализация отношений. Шесть нормальных форм</a></p>
+<p><a href="http://www.libma.ru/kompyutery_i_internet/bazy_dannyh_konspekt_lekcii/p10.php">Лекция № 10. Нормальные формы</a></p>
+<p><a href="http://www.mstu.edu.ru/study/materials/zelenkov/ch_4_2.html">4.2.Теория нормальных форм.</a></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../db/dBTheory/transactions.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../../db/dBTheory/distrubedDb/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../db/dBTheory/transactions.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../../db/dBTheory/distrubedDb/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

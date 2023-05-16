@@ -1,0 +1,416 @@
+<!DOCTYPE HTML>
+<html lang="ru" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Типы данных - Backend interview</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Книжка для подготовки к собеседованию на должность backend developer">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Введение</a></li><li class="chapter-item expanded "><a href="../algostruct/index.html"><strong aria-hidden="true">1.</strong> Алгоритмы и Структуры Данных</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../algostruct/structBasics.html"><strong aria-hidden="true">1.1.</strong> Базовые структуры</a></li><li class="chapter-item expanded "><a href="../algostruct/array.html"><strong aria-hidden="true">1.2.</strong> Массив</a></li><li class="chapter-item expanded "><a href="../algostruct/hashTable.html"><strong aria-hidden="true">1.3.</strong> Хэш-Таблица</a></li><li class="chapter-item expanded "><a href="../algostruct/tree.html"><strong aria-hidden="true">1.4.</strong> Дерево</a></li><li class="chapter-item expanded "><a href="../algostruct/graph.html"><strong aria-hidden="true">1.5.</strong> Граф</a></li><li class="chapter-item expanded "><a href="../algostruct/probability.html"><strong aria-hidden="true">1.6.</strong> Вероятностные</a></li><li class="chapter-item expanded "><a href="../algostruct/crypto.html"><strong aria-hidden="true">1.7.</strong> Криптография</a></li><li class="chapter-item expanded "><a href="../algostruct/unsorted.html"><strong aria-hidden="true">1.8.</strong> Разное</a></li></ol></li><li class="chapter-item expanded "><a href="../db/index.html"><strong aria-hidden="true">2.</strong> Базы Данных</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db/dBTheory/index.html"><strong aria-hidden="true">2.1.</strong> Теория Баз Данных</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db/dBTheory/transactions.html"><strong aria-hidden="true">2.1.1.</strong> Транзакции</a></li><li class="chapter-item expanded "><a href="../db/dBTheory/normalForms.html"><strong aria-hidden="true">2.1.2.</strong> Нормальные формы</a></li><li class="chapter-item expanded "><a href="../db/dBTheory/distrubedDb/index.html"><strong aria-hidden="true">2.1.3.</strong> Распределенные БД</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db/dBTheory/distrubedDb/replication.html"><strong aria-hidden="true">2.1.3.1.</strong> Репликация</a></li><li class="chapter-item expanded "><a href="../db/dBTheory/distrubedDb/sharding.html"><strong aria-hidden="true">2.1.3.2.</strong> Шардинг</a></li><li class="chapter-item expanded "><a href="../db/dBTheory/distrubedDb/unsorted.html"><strong aria-hidden="true">2.1.3.3.</strong> Разное</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../db/specific/index.html"><strong aria-hidden="true">2.2.</strong> Конкретные БД</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db/specific/mysql/index.html"><strong aria-hidden="true">2.2.1.</strong> MySql</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db/specific/mysql/architecture.html"><strong aria-hidden="true">2.2.1.1.</strong> Архитектура MySql</a></li><li class="chapter-item expanded "><a href="../db/specific/mysql/concurency.html"><strong aria-hidden="true">2.2.1.2.</strong> Конкурентный доступ</a></li><li class="chapter-item expanded "><a href="../db/specific/mysql/indexes.html"><strong aria-hidden="true">2.2.1.3.</strong> Индексы</a></li><li class="chapter-item expanded "><a href="../db/specific/mysql/sql.html"><strong aria-hidden="true">2.2.1.4.</strong> Основы SQL</a></li><li class="chapter-item expanded "><a href="../db/specific/mysql/explain.html"><strong aria-hidden="true">2.2.1.5.</strong> Explain</a></li><li class="chapter-item expanded "><a href="../db/specific/mysql/unsorted.html"><strong aria-hidden="true">2.2.1.6.</strong> Разное</a></li></ol></li><li class="chapter-item expanded "><a href="../db/specific/postgreSql/index.html"><strong aria-hidden="true">2.2.2.</strong> PostgreSql</a></li><li class="chapter-item expanded "><a href="../db/specific/noSql/index.html"><strong aria-hidden="true">2.2.3.</strong> NoSql</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db/specific/noSql/redis.html"><strong aria-hidden="true">2.2.3.1.</strong> Redis</a></li><li class="chapter-item expanded "><a href="../db/specific/noSql/memcached.html"><strong aria-hidden="true">2.2.3.2.</strong> Memcaced</a></li><li class="chapter-item expanded "><a href="../db/specific/noSql/tarantool.html"><strong aria-hidden="true">2.2.3.3.</strong> Tarantool</a></li><li class="chapter-item expanded "><a href="../db/specific/noSql/mongo.html"><strong aria-hidden="true">2.2.3.4.</strong> Mongo</a></li></ol></li><li class="chapter-item expanded "><a href="../db/specific/clickhouse.html"><strong aria-hidden="true">2.2.4.</strong> ClickHouse</a></li><li class="chapter-item expanded "><a href="../db/specific/messages/index.html"><strong aria-hidden="true">2.2.5.</strong> Брокеры сообщений</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db/specific/messages/rabbit.html"><strong aria-hidden="true">2.2.5.1.</strong> Rabbit</a></li><li class="chapter-item expanded "><a href="../db/specific/messages/kafka.html"><strong aria-hidden="true">2.2.5.2.</strong> Kafka</a></li><li class="chapter-item expanded "><a href="../db/specific/messages/nats.html"><strong aria-hidden="true">2.2.5.3.</strong> Nats</a></li></ol></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../architecture/index.html"><strong aria-hidden="true">3.</strong> Архитектура</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../architecture/oopBase.html"><strong aria-hidden="true">3.1.</strong> Основы ООП</a></li><li class="chapter-item expanded "><a href="../architecture/gof.html"><strong aria-hidden="true">3.2.</strong> Паттерны GoF(Банда 4)</a></li><li class="chapter-item expanded "><a href="../architecture/principles.html"><strong aria-hidden="true">3.3.</strong> Принципы хорошей архитектуры</a></li><li class="chapter-item expanded "><a href="../architecture/architecturesPatterns.html"><strong aria-hidden="true">3.4.</strong> Архитектурные паттерны</a></li><li class="chapter-item expanded "><a href="../architecture/ddd.html"><strong aria-hidden="true">3.5.</strong> DDD</a></li><li class="chapter-item expanded "><a href="../architecture/microserices/index.html"><strong aria-hidden="true">3.6.</strong> Микросервисы</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../architecture/microserices/integration.html"><strong aria-hidden="true">3.6.1.</strong> Паттерны и протоколы интеграции</a></li><li class="chapter-item expanded "><a href="../architecture/microserices/monolithSeparation.html"><strong aria-hidden="true">3.6.2.</strong> Способы распиливания монолита</a></li></ol></li><li class="chapter-item expanded "><a href="../architecture/uncategorized.html"><strong aria-hidden="true">3.7.</strong> Разное</a></li></ol></li><li class="chapter-item expanded "><a href="../php/index.html"><strong aria-hidden="true">4.</strong> PHP</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../php/innovations.html"><strong aria-hidden="true">4.1.</strong> Фичи новых версий</a></li><li class="chapter-item expanded "><a href="../php/internals.html"><strong aria-hidden="true">4.2.</strong> PHP Internals</a></li><li class="chapter-item expanded "><a href="../php/frameworks/index.html"><strong aria-hidden="true">4.3.</strong> Фреймворки</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../php/frameworks/laravel.html"><strong aria-hidden="true">4.3.1.</strong> Laravel</a></li><li class="chapter-item expanded "><a href="../php/frameworks/symfony.html"><strong aria-hidden="true">4.3.2.</strong> Symfony</a></li></ol></li><li class="chapter-item expanded "><a href="../php/uncategorized.html"><strong aria-hidden="true">4.4.</strong> Разное</a></li></ol></li><li class="chapter-item expanded "><a href="../goLang/index.html"><strong aria-hidden="true">5.</strong> GoLang</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../goLang/types.html" class="active"><strong aria-hidden="true">5.1.</strong> Типы данных</a></li><li class="chapter-item expanded "><a href="../goLang/concurrency/index.html"><strong aria-hidden="true">5.2.</strong> Сoncurrency</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../goLang/concurrency/chanel.html"><strong aria-hidden="true">5.2.1.</strong> Каналы</a></li><li class="chapter-item expanded "><a href="../goLang/concurrency/gouritine.html"><strong aria-hidden="true">5.2.2.</strong> Горутины</a></li><li class="chapter-item expanded "><a href="../goLang/concurrency/sync.html"><strong aria-hidden="true">5.2.3.</strong> Sync</a></li><li class="chapter-item expanded "><a href="../goLang/concurrency/patterns.html"><strong aria-hidden="true">5.2.4.</strong> Паттерны</a></li></ol></li><li class="chapter-item expanded "><a href="../goLang/scheduler.html"><strong aria-hidden="true">5.3.</strong> Планировщик</a></li><li class="chapter-item expanded "><a href="../goLang/memory.html"><strong aria-hidden="true">5.4.</strong> Управление памятью</a></li><li class="chapter-item expanded "><a href="../goLang/ecosystem.html"><strong aria-hidden="true">5.5.</strong> Экосистема</a></li></ol></li><li class="chapter-item expanded "><a href="../javascript.html"><strong aria-hidden="true">6.</strong> JavaScript</a></li><li class="chapter-item expanded "><a href="../ib.html"><strong aria-hidden="true">7.</strong> Информационная безопасность</a></li><li class="chapter-item expanded "><a href="../git.html"><strong aria-hidden="true">8.</strong> Git</a></li><li class="chapter-item expanded "><a href="../network/index.html"><strong aria-hidden="true">9.</strong> Основы сетей</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../network/serverIteractions.html"><strong aria-hidden="true">9.1.</strong> Взаимодействие с веб-сервером</a></li><li class="chapter-item expanded "><a href="../network/http.html"><strong aria-hidden="true">9.2.</strong> HTTP</a></li><li class="chapter-item expanded "><a href="../network/tls.html"><strong aria-hidden="true">9.3.</strong> TLS</a></li><li class="chapter-item expanded "><a href="../network/dns.html"><strong aria-hidden="true">9.4.</strong> DNS</a></li><li class="chapter-item expanded "><a href="../network/tcp_ip.html"><strong aria-hidden="true">9.5.</strong> TCP/IP</a></li><li class="chapter-item expanded "><a href="../network/networkModels.html"><strong aria-hidden="true">9.6.</strong> Сетевые модели</a></li><li class="chapter-item expanded "><a href="../network/realTime.html"><strong aria-hidden="true">9.7.</strong> realTime взаимодействие с сервером</a></li><li class="chapter-item expanded "><a href="../network/whatHappenWhen.html"><strong aria-hidden="true">9.8.</strong> Что происходит при нажатии на g</a></li></ol></li><li class="chapter-item expanded "><a href="../os.html"><strong aria-hidden="true">10.</strong> Операционые системы</a></li><li class="chapter-item expanded "><a href="../devops/index.html"><strong aria-hidden="true">11.</strong> Системное администрирование</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../devops/linux.html"><strong aria-hidden="true">11.1.</strong> Linux</a></li><li class="chapter-item expanded "><a href="../devops/virtualization/index.html"><strong aria-hidden="true">11.2.</strong> Основы виртуализации</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../devops/virtualization/docker.html"><strong aria-hidden="true">11.2.1.</strong> Docker</a></li><li class="chapter-item expanded "><a href="../devops/virtualization/kubernetes.html"><strong aria-hidden="true">11.2.2.</strong> Kubernetes</a></li></ol></li><li class="chapter-item expanded "><a href="../devops/deployment.html"><strong aria-hidden="true">11.3.</strong> Deployment</a></li><li class="chapter-item expanded "><a href="../devops/monitoring.html"><strong aria-hidden="true">11.4.</strong> Мониторинг</a></li></ol></li><li class="chapter-item expanded "><a href="../test.html"><strong aria-hidden="true">12.</strong> Тестирование</a></li><li class="chapter-item expanded "><a href="../unsorted/index.html"><strong aria-hidden="true">13.</strong> Разное</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../unsorted/bits.html"><strong aria-hidden="true">13.1.</strong> Побитовые операции</a></li><li class="chapter-item expanded "><a href="../unsorted/types.html"><strong aria-hidden="true">13.2.</strong> Типизация</a></li><li class="chapter-item expanded "><a href="../unsorted/unicode.html"><strong aria-hidden="true">13.3.</strong> Юникод</a></li></ol></li><li class="chapter-item expanded "><a href="../devmethods.html"><strong aria-hidden="true">14.</strong> Методологии разработки</a></li><li class="chapter-item expanded "><a href="../checkList.html"><strong aria-hidden="true">15.</strong> ЧекЛист</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Backend interview</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/arturpanteleev/phpInterview" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="Типы-данных"><a class="header" href="#Типы-данных">Типы данных</a></h1>
+<h2 id="Фундаментальные-типы"><a class="header" href="#Фундаментальные-типы">Фундаментальные типы</a></h2>
+<h3 id="Целочисленные-типы"><a class="header" href="#Целочисленные-типы">Целочисленные типы</a></h3>
+<ul>
+<li><strong>int8</strong>, <strong>int16</strong>, <strong>int32</strong>, <strong>int64</strong>, <strong>int</strong></li>
+<li><strong>uint8</strong>, <strong>uint16</strong>, <strong>uint32</strong>, <strong>uint64</strong>, <strong>uint</strong></li>
+<li><strong>byte</strong>: синоним типа <strong><code>uint8</code></strong></li>
+<li><strong>rune</strong>: синоним типа <strong><code>int32</code></strong></li>
+</ul>
+<p>Стоит отметить типы <strong>int</strong> и <strong>uint</strong>. Они имеют наиболее эффективный размер для определенной платформы (32 или 64 бита). Это наиболее используемый тип для представления целых чисел в программе. Причем различные компиляторы могут предоставлять различный размер для этих типов даже для одной и той же платформы. </p>
+<h3 id="Числа-с-плавающей-точкойдробные"><a class="header" href="#Числа-с-плавающей-точкойдробные">Числа с плавающей точкой(дробные)</a></h3>
+<ul>
+<li><strong>float32</strong>: представляет число с плавающей точкой от 1.4<em>10-45 до 3.4</em>1038(для положительных). Занимает в памяти 4 байта (32 бита)</li>
+<li><strong>float64</strong>: представляет число с плавающей точкой от 4.9<em>10-324 до 1.8</em>10308 (для положительных) и занимает 8 байт.</li>
+</ul>
+<p>Тип <strong>float32</strong> обеспечивает шесть десятичных цифр точности, в то время как точность, обеспечиваемая типом <strong>float64</strong>, составляет около 15 цифр. В качестве разделителя между целой и дробной частью применяется точка.</p>
+<h3 id="Комплексные-числа"><a class="header" href="#Комплексные-числа">Комплексные числа</a></h3>
+<ul>
+<li><strong>complex64</strong>: комплексное число, где вещественная и мнимая части представляют числа float32</li>
+<li><strong>complex128</strong>: комплексное число, где вещественная и мнимая части представляют числа float64</li>
+</ul>
+<h3 id="Тип-bool"><a class="header" href="#Тип-bool">Тип bool</a></h3>
+<p>Логический тип или тип bool может иметь одно из двух значений: <strong>true</strong> (истина) или <strong>false</strong> (ложь).</p>
+<h3 id="Строки"><a class="header" href="#Строки">Строки</a></h3>
+<p>Строки же представляют собой <strong>неизменяемый</strong> последовательный набор byte <strong>фиксированного размера</strong>. Это означает, что вы не можете изменять строки — только создавать новые. Это важно понимать в контексте производительности программы. В программах, где нужна очень высокая производительность, постоянное создание большого количества строк создаст ощутимую нагрузку на сборщик мусора.</p>
+<p>С юникод строками удобнее работать как со слайсами из <strong>rune</strong></p>
+<pre><code class="language-go">func main() {
+   message := &quot;Строка&quot;
+
+    // тут перебираем строку как массив байт
+   for i := 0; i &lt; len(message); i++ {
+      fmt.Printf(&quot;Type: %T, Val: %s\n&quot;, message[i], string(message[i])) // Type: uint8, Val: Ð
+   }
+
+   // тут как массив рун
+   for _, val := range message {
+      fmt.Printf(&quot;Type: %T, Val: %s\n&quot;, val, string(val)) // Type: int32, Val: С
+   }
+}
+</code></pre>
+<h3 id="Константы"><a class="header" href="#Константы">Константы</a></h3>
+<p>Константы вычисляются на тапе компиляции и не меняются в рантайме. Имеют интересную систему типов(чуть отличающуюся от фундаментальных), имеют повышенную точность. Есть генератор констант <strong>iota</strong>.</p>
+<h3 id="Значение-по-умолчанию"><a class="header" href="#Значение-по-умолчанию">Значение по умолчанию</a></h3>
+<p>Если переменной не присвоено значение, то она имеет значение по умолчанию, которое определено для ее типа. Для числовых типов это число 0, для логического типа - false, для строк - &quot;&quot;(пустая строка).</p>
+<h2 id="Составные"><a class="header" href="#Составные">Составные</a></h2>
+<h3 id="Массив"><a class="header" href="#Массив">Массив</a></h3>
+<p>По определению тип массива состоит из длины и типа его элементов. Например, тип <code>[4]int</code> представляет массив из четырёх целых чисел. Размер массива неизменяем; его <em>длина - это часть его типа</em> (<code>[4]int</code> и <code>[5]int</code> различные, несовместимые типы). Массивы могут быть проиндексированы, поэтому с помощью выражения <code>s[n]</code> мы получаем доступ к n-ному элементу, начиная с нуля. Массивы не нужно инициализировать явно; нулевой массив - это готовый к использованию массив, элементы которого являются нулями:</p>
+<pre><code class="language-go">var a [4]int
+a[0] = 1
+// a[2] == 0, нулевое значение типа int
+</code></pre>
+<p>Представление [4]int в памяти - это просто четыре целых значения, расположенных последовательно:</p>
+<img src="../media/go/slice-array.png" max-width="100%"/>
+<p>Массивы в Go и есть значения. Переменная с именем массива обозначает весь массив; это не указатель на первый элемент (как это было бы в случае С). Это значит, что когда вы присваиваете значение или проходитесь по массиву, вы будете делать копию его содержимого (для избежания копирования, вы могли бы передавать указатель на массив, но тогда это будет указатель на него, а не сам массив). </p>
+<p>Литерал массива может быть задан так + можете указать компилятору посчитать количество значений:</p>
+<pre><code class="language-go">b := [2]string{&quot;Penn&quot;, &quot;Teller&quot;}
+с := [...]string{&quot;Penn&quot;, &quot;Teller&quot;}
+</code></pre>
+<h3 id="Слайсы"><a class="header" href="#Слайсы">Слайсы</a></h3>
+<p>Слайс - это дескриптор сегмента массива. Он состоит из указателя на массив, длины сегмента и его вместимости (максимальной длины сегмента).</p>
+<pre><code class="language-go">type slice struct {
+	array unsafe.Pointer
+	len   int
+	cap   int
+}
+</code></pre>
+<p>Наша переменная <code>s</code>, созданная ранее с помощью <code>make([]byte, 5)</code>, имеет такую структуру:</p>
+<img src="../media/go/slice-1.png" max-width="100%"/>
+<p>Длина - это число элементов, на которое ссылается слайс. Вместимость - это число элементов лежащего в основе массива (начиная с элемента, на который ссылается указатель слайса). Разница между длиной и вместимостью станет чётче по ходу знакомства с остальными примерами.</p>
+<p>По мере изменения промежутков слайса, можно наблюдать изменения в структуре данных слайса и их отношениях с лежащим в основе массивом:</p>
+<pre><code class="language-go">s = s[2:4]
+</code></pre>
+<img src="../media/go/slice-2.png" max-width="100%"/>
+<p>Слайсниг не производит копирование данных слайса. Создаётся новое значение слайса, указывающее на исходный массив. Это делает операцию слайсинга такой же эффективной, как и манипуляции с индексами массива. Таким образом, изменение элементов (не самого слайса) нового слайса изменяет элементы исходного:</p>
+<pre><code class="language-go">d := []byte{'r', 'o', 'a', 'd'}
+e := d[2:] 
+// e == []byte{'a', 'd'}
+e[1] = 'm'
+// e == []byte{'a', 'm'}
+// d == []byte{'r', 'o', 'a', 'm'}
+</code></pre>
+<p>Ранее мы слайсили <code>s</code> до длины, меньшей, чем вместимость. Мы можем увеличить <code>s</code> до её вместимости, сделав слайсинг снова. Слайс нельзя сделать большим, чем его вместимость. Если вы попытаетесь, это вызовет панику времени выполнения, как и когда происходит обращение к индексу вне границ слайса или массива.</p>
+<h2 id="Увеличение-слайсов-функции-copy-и-append"><a class="header" href="#Увеличение-слайсов-функции-copy-и-append">Увеличение слайсов (функции copy и append)</a></h2>
+<p>Для увеличения вместимости слайса необходимо создать новый, более крупный слайс и скопировать элементы исходного слайса в него. Эта техника показывает, как реализуются динамические массивы в других языках. Следующий пример удваивает вместимость <code>s</code>, создавая новый слайс <code>t</code>, копируя содержимое <code>s</code> в <code>t</code>, а затем присваивая <code>s</code> значение слайса <code>t</code>:</p>
+<pre><code class="language-go">t := make([]byte, len(s), (cap(s)+1)*2) // +1 в случае cap(s) == 0
+for i := range s {
+        t[i] = s[i]
+}
+
+s = t
+</code></pre>
+<p>Повторяющаяся часть этой часто используемой операции реализована с помощью простой встроенной функции <code>copy</code>. Как подсказывает её имя, эта функция копирует данные из слайса-источника в слайс-приёмник. Возвращается количество скопированных элементов.</p>
+<pre><code class="language-go">func copy(dst, src []T) int
+</code></pre>
+<p>Функция <code>copy</code> поддерживает копирование между слайсами разной длины (она скопирует только до меньшего числа элементов). К тому же, <code>copy</code> может справиться со слайсами, относящимися к одному массиву в основе этих слайсов, работая правильно с перекрытием слайсов.</p>
+<p>Используя <code>copy</code>, можно упростить кусочек кода выше:</p>
+<pre><code class="language-go">t := make([]byte, len(s), (cap(s)+1)*2)
+copy(t, s)
+s = t
+</code></pre>
+<p>Часто необходимо добавить данные в конец слайса. Эта функция добавляет элементы в байтовый слайс, увеличивая сам слайс по необходимости, и возвращает обновлённый слайс:</p>
+<pre><code class="language-go">func AppendByte(slice []byte, data ...byte) []byte {
+    m := len(slice)
+    n := m + len(data)
+    if n &gt; cap(slice) { // если нужно, перераспределить память
+        // выделяем в два раза больше нужного, для увеличения в будущем
+        newSlice := make([]byte, (n+1)*2)
+        copy(newSlice, slice)
+        slice = newSlice
+    }
+    slice = slice[0:n]
+    copy(slice[m:n], data)
+    return slice
+}
+</code></pre>
+<p>Можно было бы использовать AppendByte таким образом:</p>
+<pre><code class="language-go">p := []byte{2, 3, 5}
+p = AppendByte(p, 7, 11, 13)
+// p == []byte{2, 3, 5, 7, 11, 13}
+</code></pre>
+<p>Такие функции, как AppendByte, полезны, потому что они предоставляют полный контроль над способом увеличения слайсов. В зависимости от характеристики программы может понадобиться создание более маленького или большого слайса, или загрузить слайс элементами до предельного размера памяти.</p>
+<p>Хотя большинству программ не нужен абсолютный контроль, поэтому Go предоставляет встроенную функцию <code>append</code>, которая хорошо подходит в большинстве случаев. Она имеет такую сигнатуру:</p>
+<pre><code class="language-go">func append(s []T, x ...T) []T
+</code></pre>
+<p>Эта функция добавляет элементы в конец слайса <code>s</code> и увеличивает вместимость, если нужно.</p>
+<pre><code class="language-go">a := make([]int, 1)
+// a == []int{0}
+a = append(a, 1, 2, 3)
+// a == []int{0, 1, 2, 3}
+</code></pre>
+<p>Чтобы добавить один слайс в другой, используйте <code>…</code> в качестве второго аргумента, чтобы он стал списком аргументов.</p>
+<pre><code class="language-go">a := []string{&quot;John&quot;, &quot;Paul&quot;}
+b := []string{&quot;George&quot;, &quot;Ringo&quot;, &quot;Pete&quot;}
+a = append(a, b...) // то же самое, что и &quot;append(a, b[0], b[1], b[2])&quot;
+// a == []string{&quot;John&quot;, &quot;Paul&quot;, &quot;George&quot;, &quot;Ringo&quot;, &quot;Pete&quot;}
+</code></pre>
+<p>Так как нулевой слайс работает как слайс нулевой длины, вы можете объявить переменную со слайсом и затем циклично добавлять в неё элементы:</p>
+<pre><code class="language-go">// Filter возвращает новый слайс,
+// из элементов s, удовлетворяющих условиям функции f()
+func Filter(s []int, fn func(int) bool) []int {
+    var p []int // == nil
+    for _, v := range s {
+        if fn(v) {
+            p = append(p, v)
+        }
+    }
+    return p
+}
+</code></pre>
+<h2 id="Возможная-ловушка"><a class="header" href="#Возможная-ловушка">Возможная ловушка</a></h2>
+<p>Как говорилось ранее, переслайсинг (re-slicing) среза не создаёт копию массива в основании. Массив полностью будет существовать в памяти, пока на него не перестанут ссылаться. Иногда это вызывает хранение всех данных в памяти, когда нужна только их небольшая часть.</p>
+<p>Например, функция <code>FindDigits</code> загружает файл в память и ищет в нём первую группу последовательных цифр, возвращая их в новом слайсе.</p>
+<pre><code class="language-go">var digitRegexp = regexp.MustCompile(&quot;[0-9]+&quot;)
+
+func FindDigits(filename string) []byte {
+    b, _ := ioutil.ReadFile(filename)
+    return digitRegexp.Find(b)
+}
+</code></pre>
+<p>Этот код работает, как и говорилось, однако возвращаемый срез <code>[]byte</code> указывает на массив, содержащий файл целиком. Так как слайс ссылается на исходный массив, пока слайс есть в памяти, сборщик мусора не сможет очистить массив; несколько важных байтов файла держат всё содержимое в памяти.</p>
+<p>Чтобы исправить это, можно скопировать интересующие нас данные в новый слайс до того, как вернуть значение.</p>
+<pre><code class="language-go">func CopyDigits(filename string) []byte {
+    b, _ := ioutil.ReadFile(filename)
+    b = digitRegexp.Find(b)
+    c := make([]byte, len(b))
+    copy(c, b)
+    return c
+}
+</code></pre>
+<h3 id="map"><a class="header" href="#map">Map</a></h3>
+<p>Отображение или map представляет ссылку на хеш-таблицу - структуру данных, где каждый элемент представляет пару &quot;ключ-значение&quot;. При этом каждый элемент имеет уникальный ключ, по которому можно получить значение элемента. Отображение определяется как объект типа map[K]V, где К представляет тип ключа, а V - тип значения. Причем тип ключа K должен поддерживать операцию сравнения ==, чтобы отображение могло сопоставить значение с одним из ключей и хеш-таблицы.</p>
+<pre><code class="language-go">// A header for a Go map.
+type hmap struct {
+	// Note: the format of the hmap is also encoded in cmd/compile/internal/gc/reflect.go.
+	// Make sure this stays in sync with the compiler's definition.
+	count     int // # live cells == size of map.  Must be first (used by len() builtin)
+	flags     uint8
+	B         uint8  // log_2 of # of buckets (can hold up to loadFactor * 2^B items)
+	noverflow uint16 // approximate number of overflow buckets; see incrnoverflow for details
+	hash0     uint32 // hash seed
+
+	buckets    unsafe.Pointer // array of 2^B Buckets. may be nil if count==0.
+	oldbuckets unsafe.Pointer // previous bucket array of half the size, non-nil only when growing
+	nevacuate  uintptr        // progress counter for evacuation (buckets less than this have been evacuated)
+
+	extra *mapextra // optional fields
+}
+</code></pre>
+<p>Например, определение отображения, которое в качестве ключей имеет тип string, а в качестве значений - тип int:</p>
+<pre><code class="language-go">var people map[string] int   
+// Ключи представляют тип string, значения - тип int`
+</code></pre>
+<p>Для проверки наличия элемента по определенному ключу можно применять выражение if. Если значение по заданному ключу имеется в отображении, то переменная ok будет равна true, а переменная val будет хранить полученное значение. Если переменная ok равна false, то значения по ключу в отображении нет.</p>
+<pre><code class="language-go">	var people = map[string]int{&quot;Tom&quot;: 1, &quot;Bob&quot;: 2, &quot;Sam&quot;: 4, &quot;Alice&quot;: 8}
+
+	if val, ok := people[&quot;Tom&quot;]; ok {
+		fmt.Println(val)
+	}
+</code></pre>
+<p>Адрес элемента мапы получить невозможно(сделано из-за того что адрес может стать недействителен, после рехеширования)</p>
+<pre><code class="language-go">_ = &amp;ages[&quot;bob&quot;] // ТАК НЕЛЬЗЯ!!!
+</code></pre>
+<h3 id="Структура"><a class="header" href="#Структура">Структура</a></h3>
+<p>Структура — составной тип, содержащий именованные поля. Также поддерживается встраивание структур в качестве анонимного поля(как способ реализации композиции). К полям и методам встроенных структур можно обращаться как черзе них, так и через &quot;родительскую&quot;.</p>
+<h2 id="Интерфейсы"><a class="header" href="#Интерфейсы">Интерфейсы</a></h2>
+<pre><code class="language-go">type iface struct {
+	tab  *itab
+	data unsafe.Pointer
+}
+
+type itab struct {
+	inter *interfacetype
+	_type *_type
+	hash  uint32 // copy of _type.hash. Used for type switches.
+	_     [4]byte
+	fun   [1]uintptr // variable sized. fun[0]==0 means _type does not implement inter.
+}
+
+type interfacetype struct {
+	typ     _type
+	pkgpath name
+	mhdr    []imethod
+} 
+
+//пустой интерфейс interface{}
+type eface struct {
+    _type *_type
+    data  unsafe.Pointer
+}
+</code></pre>
+<p>Интерфейсы представляют абстракцию поведения других типов. Интерфейсы позволяют определять функции, которые не привязаны к конкретной реализации. То есть интерфейсы определяют некоторый функционал, но не реализуют его.</p>
+<p>Для определения интерфейса применяется ключевое слово interface:</p>
+<pre><code class="language-go">type имя_интерфейса interface {определения_функций()}
+</code></pre>
+<h3 id="nill-interface-vs-nil-pointer-interface"><a class="header" href="#nill-interface-vs-nil-pointer-interface">Nill interface vs nil pointer interface</a></h3>
+<img src="../media/go/nilIface.png" width="100%">
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../goLang/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../goLang/concurrency/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../goLang/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../goLang/concurrency/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

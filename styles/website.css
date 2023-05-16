@@ -1,0 +1,13 @@
+.book .book-summary ul.summary li a, .book .book-summary ul.summary li span {
+    padding: 2px 5px;
+    font-size: 0.85em;
+}
+.book .book-summary ul.summary li i.fa-check {
+    right: 5px;
+    top: 7px;
+}
+
+.markdown-section img {
+    display: block;
+    margin: 0 auto;
+}

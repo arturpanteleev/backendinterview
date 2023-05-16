@@ -1,0 +1,460 @@
+<!DOCTYPE HTML>
+<html lang="ru" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Что происходит при нажатии на g - Backend interview</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Книжка для подготовки к собеседованию на должность backend developer">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Введение</a></li><li class="chapter-item expanded "><a href="../algostruct/index.html"><strong aria-hidden="true">1.</strong> Алгоритмы и Структуры Данных</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../algostruct/structBasics.html"><strong aria-hidden="true">1.1.</strong> Базовые структуры</a></li><li class="chapter-item expanded "><a href="../algostruct/array.html"><strong aria-hidden="true">1.2.</strong> Массив</a></li><li class="chapter-item expanded "><a href="../algostruct/hashTable.html"><strong aria-hidden="true">1.3.</strong> Хэш-Таблица</a></li><li class="chapter-item expanded "><a href="../algostruct/tree.html"><strong aria-hidden="true">1.4.</strong> Дерево</a></li><li class="chapter-item expanded "><a href="../algostruct/graph.html"><strong aria-hidden="true">1.5.</strong> Граф</a></li><li class="chapter-item expanded "><a href="../algostruct/probability.html"><strong aria-hidden="true">1.6.</strong> Вероятностные</a></li><li class="chapter-item expanded "><a href="../algostruct/crypto.html"><strong aria-hidden="true">1.7.</strong> Криптография</a></li><li class="chapter-item expanded "><a href="../algostruct/unsorted.html"><strong aria-hidden="true">1.8.</strong> Разное</a></li></ol></li><li class="chapter-item expanded "><a href="../db/index.html"><strong aria-hidden="true">2.</strong> Базы Данных</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db/dBTheory/index.html"><strong aria-hidden="true">2.1.</strong> Теория Баз Данных</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db/dBTheory/transactions.html"><strong aria-hidden="true">2.1.1.</strong> Транзакции</a></li><li class="chapter-item expanded "><a href="../db/dBTheory/normalForms.html"><strong aria-hidden="true">2.1.2.</strong> Нормальные формы</a></li><li class="chapter-item expanded "><a href="../db/dBTheory/distrubedDb/index.html"><strong aria-hidden="true">2.1.3.</strong> Распределенные БД</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db/dBTheory/distrubedDb/replication.html"><strong aria-hidden="true">2.1.3.1.</strong> Репликация</a></li><li class="chapter-item expanded "><a href="../db/dBTheory/distrubedDb/sharding.html"><strong aria-hidden="true">2.1.3.2.</strong> Шардинг</a></li><li class="chapter-item expanded "><a href="../db/dBTheory/distrubedDb/unsorted.html"><strong aria-hidden="true">2.1.3.3.</strong> Разное</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../db/specific/index.html"><strong aria-hidden="true">2.2.</strong> Конкретные БД</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db/specific/mysql/index.html"><strong aria-hidden="true">2.2.1.</strong> MySql</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db/specific/mysql/architecture.html"><strong aria-hidden="true">2.2.1.1.</strong> Архитектура MySql</a></li><li class="chapter-item expanded "><a href="../db/specific/mysql/concurency.html"><strong aria-hidden="true">2.2.1.2.</strong> Конкурентный доступ</a></li><li class="chapter-item expanded "><a href="../db/specific/mysql/indexes.html"><strong aria-hidden="true">2.2.1.3.</strong> Индексы</a></li><li class="chapter-item expanded "><a href="../db/specific/mysql/sql.html"><strong aria-hidden="true">2.2.1.4.</strong> Основы SQL</a></li><li class="chapter-item expanded "><a href="../db/specific/mysql/explain.html"><strong aria-hidden="true">2.2.1.5.</strong> Explain</a></li><li class="chapter-item expanded "><a href="../db/specific/mysql/unsorted.html"><strong aria-hidden="true">2.2.1.6.</strong> Разное</a></li></ol></li><li class="chapter-item expanded "><a href="../db/specific/postgreSql/index.html"><strong aria-hidden="true">2.2.2.</strong> PostgreSql</a></li><li class="chapter-item expanded "><a href="../db/specific/noSql/index.html"><strong aria-hidden="true">2.2.3.</strong> NoSql</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db/specific/noSql/redis.html"><strong aria-hidden="true">2.2.3.1.</strong> Redis</a></li><li class="chapter-item expanded "><a href="../db/specific/noSql/memcached.html"><strong aria-hidden="true">2.2.3.2.</strong> Memcaced</a></li><li class="chapter-item expanded "><a href="../db/specific/noSql/tarantool.html"><strong aria-hidden="true">2.2.3.3.</strong> Tarantool</a></li><li class="chapter-item expanded "><a href="../db/specific/noSql/mongo.html"><strong aria-hidden="true">2.2.3.4.</strong> Mongo</a></li></ol></li><li class="chapter-item expanded "><a href="../db/specific/clickhouse.html"><strong aria-hidden="true">2.2.4.</strong> ClickHouse</a></li><li class="chapter-item expanded "><a href="../db/specific/messages/index.html"><strong aria-hidden="true">2.2.5.</strong> Брокеры сообщений</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db/specific/messages/rabbit.html"><strong aria-hidden="true">2.2.5.1.</strong> Rabbit</a></li><li class="chapter-item expanded "><a href="../db/specific/messages/kafka.html"><strong aria-hidden="true">2.2.5.2.</strong> Kafka</a></li><li class="chapter-item expanded "><a href="../db/specific/messages/nats.html"><strong aria-hidden="true">2.2.5.3.</strong> Nats</a></li></ol></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../architecture/index.html"><strong aria-hidden="true">3.</strong> Архитектура</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../architecture/oopBase.html"><strong aria-hidden="true">3.1.</strong> Основы ООП</a></li><li class="chapter-item expanded "><a href="../architecture/gof.html"><strong aria-hidden="true">3.2.</strong> Паттерны GoF(Банда 4)</a></li><li class="chapter-item expanded "><a href="../architecture/principles.html"><strong aria-hidden="true">3.3.</strong> Принципы хорошей архитектуры</a></li><li class="chapter-item expanded "><a href="../architecture/architecturesPatterns.html"><strong aria-hidden="true">3.4.</strong> Архитектурные паттерны</a></li><li class="chapter-item expanded "><a href="../architecture/ddd.html"><strong aria-hidden="true">3.5.</strong> DDD</a></li><li class="chapter-item expanded "><a href="../architecture/microserices/index.html"><strong aria-hidden="true">3.6.</strong> Микросервисы</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../architecture/microserices/integration.html"><strong aria-hidden="true">3.6.1.</strong> Паттерны и протоколы интеграции</a></li><li class="chapter-item expanded "><a href="../architecture/microserices/monolithSeparation.html"><strong aria-hidden="true">3.6.2.</strong> Способы распиливания монолита</a></li></ol></li><li class="chapter-item expanded "><a href="../architecture/uncategorized.html"><strong aria-hidden="true">3.7.</strong> Разное</a></li></ol></li><li class="chapter-item expanded "><a href="../php/index.html"><strong aria-hidden="true">4.</strong> PHP</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../php/innovations.html"><strong aria-hidden="true">4.1.</strong> Фичи новых версий</a></li><li class="chapter-item expanded "><a href="../php/internals.html"><strong aria-hidden="true">4.2.</strong> PHP Internals</a></li><li class="chapter-item expanded "><a href="../php/frameworks/index.html"><strong aria-hidden="true">4.3.</strong> Фреймворки</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../php/frameworks/laravel.html"><strong aria-hidden="true">4.3.1.</strong> Laravel</a></li><li class="chapter-item expanded "><a href="../php/frameworks/symfony.html"><strong aria-hidden="true">4.3.2.</strong> Symfony</a></li></ol></li><li class="chapter-item expanded "><a href="../php/uncategorized.html"><strong aria-hidden="true">4.4.</strong> Разное</a></li></ol></li><li class="chapter-item expanded "><a href="../goLang/index.html"><strong aria-hidden="true">5.</strong> GoLang</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../goLang/types.html"><strong aria-hidden="true">5.1.</strong> Типы данных</a></li><li class="chapter-item expanded "><a href="../goLang/concurrency/index.html"><strong aria-hidden="true">5.2.</strong> Сoncurrency</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../goLang/concurrency/chanel.html"><strong aria-hidden="true">5.2.1.</strong> Каналы</a></li><li class="chapter-item expanded "><a href="../goLang/concurrency/gouritine.html"><strong aria-hidden="true">5.2.2.</strong> Горутины</a></li><li class="chapter-item expanded "><a href="../goLang/concurrency/sync.html"><strong aria-hidden="true">5.2.3.</strong> Sync</a></li><li class="chapter-item expanded "><a href="../goLang/concurrency/patterns.html"><strong aria-hidden="true">5.2.4.</strong> Паттерны</a></li></ol></li><li class="chapter-item expanded "><a href="../goLang/scheduler.html"><strong aria-hidden="true">5.3.</strong> Планировщик</a></li><li class="chapter-item expanded "><a href="../goLang/memory.html"><strong aria-hidden="true">5.4.</strong> Управление памятью</a></li><li class="chapter-item expanded "><a href="../goLang/ecosystem.html"><strong aria-hidden="true">5.5.</strong> Экосистема</a></li></ol></li><li class="chapter-item expanded "><a href="../javascript.html"><strong aria-hidden="true">6.</strong> JavaScript</a></li><li class="chapter-item expanded "><a href="../ib.html"><strong aria-hidden="true">7.</strong> Информационная безопасность</a></li><li class="chapter-item expanded "><a href="../git.html"><strong aria-hidden="true">8.</strong> Git</a></li><li class="chapter-item expanded "><a href="../network/index.html"><strong aria-hidden="true">9.</strong> Основы сетей</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../network/serverIteractions.html"><strong aria-hidden="true">9.1.</strong> Взаимодействие с веб-сервером</a></li><li class="chapter-item expanded "><a href="../network/http.html"><strong aria-hidden="true">9.2.</strong> HTTP</a></li><li class="chapter-item expanded "><a href="../network/tls.html"><strong aria-hidden="true">9.3.</strong> TLS</a></li><li class="chapter-item expanded "><a href="../network/dns.html"><strong aria-hidden="true">9.4.</strong> DNS</a></li><li class="chapter-item expanded "><a href="../network/tcp_ip.html"><strong aria-hidden="true">9.5.</strong> TCP/IP</a></li><li class="chapter-item expanded "><a href="../network/networkModels.html"><strong aria-hidden="true">9.6.</strong> Сетевые модели</a></li><li class="chapter-item expanded "><a href="../network/realTime.html"><strong aria-hidden="true">9.7.</strong> realTime взаимодействие с сервером</a></li><li class="chapter-item expanded "><a href="../network/whatHappenWhen.html" class="active"><strong aria-hidden="true">9.8.</strong> Что происходит при нажатии на g</a></li></ol></li><li class="chapter-item expanded "><a href="../os.html"><strong aria-hidden="true">10.</strong> Операционые системы</a></li><li class="chapter-item expanded "><a href="../devops/index.html"><strong aria-hidden="true">11.</strong> Системное администрирование</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../devops/linux.html"><strong aria-hidden="true">11.1.</strong> Linux</a></li><li class="chapter-item expanded "><a href="../devops/virtualization/index.html"><strong aria-hidden="true">11.2.</strong> Основы виртуализации</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../devops/virtualization/docker.html"><strong aria-hidden="true">11.2.1.</strong> Docker</a></li><li class="chapter-item expanded "><a href="../devops/virtualization/kubernetes.html"><strong aria-hidden="true">11.2.2.</strong> Kubernetes</a></li></ol></li><li class="chapter-item expanded "><a href="../devops/deployment.html"><strong aria-hidden="true">11.3.</strong> Deployment</a></li><li class="chapter-item expanded "><a href="../devops/monitoring.html"><strong aria-hidden="true">11.4.</strong> Мониторинг</a></li></ol></li><li class="chapter-item expanded "><a href="../test.html"><strong aria-hidden="true">12.</strong> Тестирование</a></li><li class="chapter-item expanded "><a href="../unsorted/index.html"><strong aria-hidden="true">13.</strong> Разное</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../unsorted/bits.html"><strong aria-hidden="true">13.1.</strong> Побитовые операции</a></li><li class="chapter-item expanded "><a href="../unsorted/types.html"><strong aria-hidden="true">13.2.</strong> Типизация</a></li><li class="chapter-item expanded "><a href="../unsorted/unicode.html"><strong aria-hidden="true">13.3.</strong> Юникод</a></li></ol></li><li class="chapter-item expanded "><a href="../devmethods.html"><strong aria-hidden="true">14.</strong> Методологии разработки</a></li><li class="chapter-item expanded "><a href="../checkList.html"><strong aria-hidden="true">15.</strong> ЧекЛист</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Backend interview</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/arturpanteleev/phpInterview" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="what-happens-when"><a class="header" href="#what-happens-when">What happens when...</a></h2>
+<h2 id="1-Нажата-клавиша-g"><a class="header" href="#1-Нажата-клавиша-g">1. Нажата клавиша «g»</a></h2>
+<p>Когда вы нажимаете клавишу «g», браузер получает событие и запускается механизм автоподстановки. В зависимости от алгоритма браузера и его режима (включена ли функция «инкогнито») в выпадающем окне под строкой URL пользователю будет предложено определённое количество вариантов для автоподстановки.</p>
+<p>Большинство алгоритмов автоподстановки ранжируют рекомендации в зависимости от истории поиска и оставленных закладках. Некоторые браузеры (например, Rockmelt) даже предлагают профили друзей на Facebook. Когда пользователь планирует напечатать в адресной строке «google.com», ничего из вышеперечисленного не играет роли, но, тем не менее, выполнится большое количество кода, а рекомендации будут обновляться с каждой новой напечатанной буквой. Возможно, браузер предложит перейти на google.com, до того, как пользователь вобьёт адрес целиком.</p>
+<h2 id="2-Клавиша-enter-нажата-до-конца"><a class="header" href="#2-Клавиша-enter-нажата-до-конца">2. Клавиша «enter» нажата до конца</a></h2>
+<p>В качестве некой нулевой точки можно выбрать момент, когда клавиша Enter на клавиатуре нажата до конца и находится в нижнем положении. В этой точке замыкается электрическая цепь этой клавиши и небольшое количество тока отправляется по электросхеме клавиатуры, которая сканирует состояние каждого переключателя клавиши и конвертирует сигнал в целочисленный код клавиши (в данном случае — 13). Затем контроллер клавиатуры конвертирует код клавиши для передачи его компьютеру. Как правило, сейчас передача происходит через USB или Bluetooth, а раньше клавиатура подключалась к компьютеру с помощью коннекторов PS/2 или ADB.</p>
+<p><em>В случае USB-клавиатуры:</em></p>
+<ul>
+<li>Для работы USB-контуру клавиатуры требуется 5 вольт питания, которые поступают через USB-контроллер на компьютере.</li>
+<li>Сгенерированный код клавиши хранится в регистре внутренней памяти клавиатуры, который называется «конечной точкой» (endpoint).</li>
+<li>USB-контроллер компьютера опрашивает эту конечную точку каждые 10 микросекунд и получает хранящийся там код клавиши.</li>
+<li>Затем это значение поступает в USB SIE (Serial Interface Engine) для конвертации в один или более USB-пакетов, которые формируются по низкоуровневому протоколу USB.</li>
+<li>Эти пакеты затем пересылаются с помощью различных электрических сигналов через D+ и D- контакты с максимальной скоростью 1,5 Мб/сек — поскольку HID-устройства (Human Interface Device) всегда были «низкоскоростными».</li>
+<li>Этот последовательный сигнал далее декодируется в USB-контроллере компьютера и интерпретируется универсальным драйвером HID-устройства (клавиатуры). Затем значение кода клавиши передаётся на «железный» уровень абстракции операционной системы.</li>
+</ul>
+<p><em>В случае виртуальной клавиатуры (тачскрин):</em></p>
+<ul>
+<li>Когда пользователь прикладывает палец к современному ёмкостному тач-экрану, небольшое количество тока передаётся к пальцу. Это замыкает цепь через электростатическое поле проводящего слоя и создаёт падение напряжения в этой точке экрана. Экранный контроллер затем инициирует прерывание, сообщающее координату «клика».</li>
+<li>Затем мобильная ОС оповещает текущее открытое приложение о событии клика в одном из GUI-элементов (в этом случае — кнопках виртуальной клавиатуры).</li>
+<li>Виртуальная клавиатура вызывает программное прерывание для отправки сообщения «клавиша нажата» обратно в ОС.</li>
+<li>Это прерывание оповещает текущее открытое приложение о возникновении события «нажатия клавиши».</li>
+</ul>
+<h4 id="21-Возникло-прерывание-не-для-usb-клавиатур"><a class="header" href="#21-Возникло-прерывание-не-для-usb-клавиатур">2.1 Возникло прерывание [не для USB-клавиатур]</a></h4>
+<p>Клавиатура отправляет сигналы в свою «линию запросов прерываний» (IRQ), которая затем сопоставляется с «вектором прерывания» (целое число) контроллером прерываний. Процессор использует «таблицу дескрипторов прерываний» (IDT) для сопоставления векторов прерываний с функциями («обработчики прерываний») ядра. Когда появляется прерывание, процессор (CPU) обновляет IDT вектором прерывания и запускает соответствующий обработчик. Таким образом, в дело вступает ядро.</p>
+<h4 id="22-На-windows-Сообщение-wm_keydown-отправлено-приложению"><a class="header" href="#22-На-windows-Сообщение-wm_keydown-отправлено-приложению">2.2 (На Windows) Сообщение <code>WM_KEYDOWN</code> отправлено приложению</a></h4>
+<p>HID передаёт событие нажатой клавиши драйверу <code>KBDHID.sys</code>, который конвертирует его в <a href="https://ru.wikipedia.org/wiki/%D0%A1%D0%BA%D0%B0%D0%BD-%D0%BA%D0%BE%D0%B4">скан-код</a> (scancode). В данном конкретном случае скан-код — <code>VK_RETURN</code> (<code>0x0D</code>). Драйвер <code>KDBHID.sys</code> связывается с драйвером <code>KBDCLASS.sys</code> (драйвер классов клавиатуры). Он отвечает за безопасную обработку всего ввода с клавиатуры. В дальнейшем этот драйвер вызывает <code>Win32K.sys</code> (после возможной передачи сообщения через установленные сторонние клавиатурные фильтры). Все это происходит в режиме ядра.</p>
+<p>Win32K.sys определяет, какое окно активно в данный момент, с помощью функции <code>GetForegroundWindow()</code>. Этот API обеспечивает обработку окна адресной строки в браузере. Затем главный «насос сообщений» Windows вызывает <code>SendMessage(hWnd, WM_KEYDOWN, VK_RETURN, lParam)</code>. <code>lParam</code> — это битовая маска, которая указывает на дальнейшую информацию о нажатии клавиши: счётчик повторов (в этом случае 0), актуальный скан-код (может зависеть от OEM, но <code>VK_RETURN</code> обычно не зависит от этого), информацию о том, были ли нажаты дополнительные клавиши (например, Alt, Shift, Ctrl — в нашем случае не были) и некоторые другие данные.</p>
+<p>В API Windows есть функция <code>SendMessage</code>, которая помещает сообщение в очередь для конкретного обработчика окон (<code>hWnd</code>). После этого для обработки всех сообщений очереди вызывается главная функция обработки сообщений (<code>WindowProc</code>), присвоенная обработчику <code>hWnd</code>.</p>
+<p>Окно (<code>hWnd</code>), активное в данный момент, представляет из себя контрол обработки и в этом случае у WindowsProc есть обработчик для сообщений <code>WM_KEYDOWN</code>. Этот код изучает третий параметр, который поступил в <code>SendMessage (wParam)</code> и, поскольку это <code>VK_RETURN</code>, понимает, что пользователь нажал клавишу ENTER.</p>
+<h4 id="23-В-os-x-Событие-nsevent-keydown-отправлено-приложению"><a class="header" href="#23-В-os-x-Событие-nsevent-keydown-отправлено-приложению">2.3 (В OS X) Событие <code>NSEVent KeyDown</code> отправлено приложению</a></h4>
+<p>Сигнал прерывания активирует событие прерывания в драйвере I/O Kit клавиатуры. Драйвер переводит сигнал в код клавиатуры, который затем передаётся процессу OS X под названием. В результате,  передаёт событие любому подходящему (активному или «слушающему») приложению через Mach-порт, в котором событие помещается в очередь. Затем события могут быть прочитаны из этой очереди потоками с достаточными привилегиями, чтобы вызывать функцию. Чаще всего это происходит и обрабатывается с помощью основного цикла через <code>NSEvent</code> в <code>NSEventype KeyDown</code>.</p>
+<h4 id="24-В-gnulinux-Сервер-xorg-слушает-клавиатурные-коды"><a class="header" href="#24-В-gnulinux-Сервер-xorg-слушает-клавиатурные-коды">2.4 (В GNU/Linux) Сервер Xorg слушает клавиатурные коды</a></h4>
+<p>В случае графического X server, для получения нажатия клавиши будет использован общий драйвер событий. Переназначение клавиатурных кодов скан-кодам осуществляется с помощью специальных правил и карт X Server. Когда скан-кода нажатой клавиши завершён, X server посылает символ в window manager (DWM, metacity, i3), который затем отправляет его в активное окно. Графический API окна, получившего символ, печатает соответствующий символ шрифта в нужном поле.</p>
+<h2 id="3-Парсинг-url"><a class="header" href="#3-Парсинг-url">3. Парсинг URL</a></h2>
+<p>Теперь у браузера есть следующая информация об URL:</p>
+<pre><code>Protocol «HTTP» - Использовать «Hyper Text Transfer Protocol»
+Resource «/» - Показать главную (индексную) страницу
+</code></pre>
+<h4 id="31-Это-url-или-поисковый-запрос"><a class="header" href="#31-Это-url-или-поисковый-запрос">3.1 Это URL или поисковый запрос?</a></h4>
+<p>Когда пользователь не вводит протокол или доменное имя, то браузер «скармливает» то, что человек напечатал, поисковой машине, установленной по умолчанию. Часто к URL добавляется специальный текст, который позволяет поисковой машине понять, что информация передана из URL-строки определённого браузера.</p>
+<h4 id="32-Список-проверки-hsts"><a class="header" href="#32-Список-проверки-hsts">3.2 Список проверки HSTS</a></h4>
+<ul>
+<li>Браузер проверяет список «предзагруженных HSTS (HTTP Strict Transport Security)». Это список сайтов, которые требуют, чтобы к ним обращались только по HTTPS.</li>
+<li>Если нужный сайт есть в этом списке, то браузер отправляет ему запрос через HTTPS вместо HTTP. В противном случае начальный запрос посылается по HTTP. (При этом сайт может использовать политику HSTS, но не находиться в списке HSTS — в таком случае на первый запрос по HTTP будет отправлен ответ о том, что необходимо отправлять запросы по HTTPS. Однако это может сделать пользователя уязвимым к <a href="https://en.wikipedia.org/wiki/Moxie_Marlinspike#Notable_research">downgrade-атакам</a> — чтобы этого избежать, в браузеры и включают список HSTS).</li>
+</ul>
+<h4 id="33-Конвертация-не-ascii-unicode-символов-в-название-хоста"><a class="header" href="#33-Конвертация-не-ascii-unicode-символов-в-название-хоста">3.3 Конвертация не-ASCII Unicode символов в название хоста</a></h4>
+<ul>
+<li>Браузер проверяет имя хоста на наличие символов, отличных от <code>a-z</code>, <code>A-Z</code>, <code>0-9</code>, <code>-</code>, или <code>.</code>.</li>
+<li>В случае доменного имени google.com никаких проблем не будет, но если бы домен содержал не-ASCII символы, то браузер бы применил кодировку <a href="https://en.wikipedia.org/wiki/Punycode">Punycode</a> для этой части URL.</li>
+</ul>
+<h2 id="4-Определение-dns"><a class="header" href="#4-Определение-dns">4. Определение DNS</a></h2>
+<ul>
+<li>Браузер проверяет наличие домена в своём кэше.</li>
+<li>Если домена там нет, то браузер вызывает библиотечную функцию <code>gethostbyname</code> (отличается в разных ОС) для поиска нужного адреса.</li>
+<li>Прежде, чем искать домен по DNS <code>gethostbyname</code> пытается найти нужный адрес в файле <code>hosts</code> (его расположение отличается в разных ОС).</li>
+<li>Если домен нигде не закэширован и отсутствует в файле <code>hosts</code>, <code>gethostbyname</code> отправляет запрос к сетевому DNS-серверу. Как правило, это локальный роутер или DNS-сервер интернет-провайдера.</li>
+<li>Если DNS-сервер находится в той же подсети, то <a href="https://ru.wikipedia.org/wiki/ARP">ARP-запрос</a> отправляется этому серверу.</li>
+<li>Если DNS-сервер находится в другой подсети, то ARP-запрос отправляется на IP-адрес шлюза по умолчанию (default gateway).</li>
+</ul>
+<h4 id="41-Процесс-отправки-arp-запроса"><a class="header" href="#41-Процесс-отправки-arp-запроса">4.1 Процесс отправки ARP-запроса</a></h4>
+<p>Для того, чтобы отправить широковещательный ARP-запрос необходимо отыскать целевой IP-адрес, а также знать MAC-адрес интерфейса, который будет использоваться для отправки ARP-запроса.
+<code>Target IP = MAC</code>
+Если же записи в кэше нет:</p>
+<ul>
+<li>Проверяется таблица маршрутизации — это делается для того, чтобы узнать, есть ли искомый IP-адрес в какой-либо из подсетей локальной таблицы. Если он там, то запрос посылается с помощью интерфейса, связанного с этой подсетью. Если адрес в таблице не обнаружен, то используется интерфейс подсети шлюза по умолчанию.</li>
+<li>Определяется MAC-адрес выбранного сетевого интерфейса.</li>
+<li>Отправляется ARP-запрос (второй уровень стека):</li>
+</ul>
+<p>ARP-запрос:</p>
+<pre><code>Sender MAC: interface:mac:address:here
+Sender IP: interface.ip.goes.here
+Target MAC: FF:FF:FF:FF:FF:FF (Broadcast)
+Target IP: target.ip.goes.here
+</code></pre>
+<p>В зависимости от того, какое «железо» расположено между компьютером и роутером (маршрутизатором):
+Прямое соединение:</p>
+<ul>
+<li>Если компьютер подключён к сетевому концентратору, то этот хаб отправляет широковещательный ARP-запрос со всех своих портов. Если роутер подключён по тому же «проводу», то отправит ARP-ответ.</li>
+</ul>
+<p>Между ними концентратор (Хаб):</p>
+<ul>
+<li>Если компьютер подключён к сетевому концентратору, то этот хаб отправляет широковещательный ARP-запрос со всех своих портов. Если роутер подключён по тому же «проводу», то отправит ARP-ответ.</li>
+</ul>
+<p>Между ними коммутатор (свитч):</p>
+<ul>
+<li>Если компьютер соединён с сетевым коммутатором, то этот свитч проверит локальную CAM/MAC-таблицу, чтобы узнать, какой порт в ней имеет нужный MAC-адрес. Если нужного адреса в таблице нет, то он заново отправит широковещательный ARP-запрос по всем портам.</li>
+<li>Если в таблице есть нужная запись, то свитч отправит ARP-запрос на порт с искомым MAC-адресом.</li>
+<li>Если роутер «на одной линии» со свитчем, то он ответит (ARP Reply).</li>
+</ul>
+<p>ARP-ответ:</p>
+<pre><code>Sender MAC: target:mac:address:here
+Sender IP: target.ip.goes.here
+Target MAC: interface:mac:address:here
+Target IP: interface.ip.goes.here
+</code></pre>
+<p>Теперь у сетевой библиотеки есть IP-адрес либо DNS-сервера, либо шлюза по умолчанию, который можно использовать для разрешения доменного имени:</p>
+<ul>
+<li>Порт 53 открывается для отправки UDP-запроса к DNS-серверу (если размер ответа слишком велик, будет использован TCP).</li>
+<li>Если локальный или на стороне провайдера DNS-сервер «не знает» нужный адрес, то запрашивается рекурсивный поиск, который проходит по списку вышестоящих DNS-серверов, пока не будет найдена SOA-запись, а затем возвращается результат.</li>
+</ul>
+<h2 id="5-Открытие-сокета"><a class="header" href="#5-Открытие-сокета">5. Открытие сокета</a></h2>
+<p>Когда браузер получает IP-адрес конечного сервера, то он берёт эту информацию и данные об используемом порте из URL (80 порт для HTTP, 443 для HTTPS) и осуществляет вызов функции <code>socket</code> системной библиотеки и запрашивает поток TCP сокета — <code>AF_INET</code> и <code>SOCK_STREAM</code>.</p>
+<ul>
+<li>Этот запрос сначала проходит через транспортный уровень, где собирается TCP-сегмент. В заголовок добавляется порт назначения, исходный порт выбирается из динамического пула ядра (<code>ip_local_port_range</code> в Linux).</li>
+<li>Получившийся сегмент отправляется на сетевой уровень, на котором добавляется дополнительный IP-заголовок. Также включаются IP-адрес сервера назначения и адрес текущей машины — после этого пакет сформирован.</li>
+<li>Пакет передаётся на канальный уровень. Добавляется заголовок кадра, включающий MAC-адрес сетевой карты (NIC) компьютера, а также MAC-адрес шлюза (локального роутера). Как и на предыдущих этапах, если ядру ничего не известно о MAC-адресе шлюза, то для его нахождения отправляется широковещательный ARP-запрос.</li>
+</ul>
+<p>На этой точке пакет готов к передаче через:</p>
+<ul>
+<li><a href="http://en.wikipedia.org/wiki/IEEE_802.3">Ethernet</a></li>
+<li><a href="https://en.wikipedia.org/wiki/IEEE_802.11">WiFi</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Cellular_data_communication_protocol">По сотовой связи</a></li>
+</ul>
+<p>В случае интернет-соединения большинства частных пользователей или небольших компаний пакет будет отправлен с компьютера, через локальную сеть, а затем через модем (), который транслирует цифровые единицы и нули в аналоговый сигнал, подходящий для передачи по телефонной линии, кабелю или беспроводным телефонным соединениям. На другой стороне соединения расположен другой модем, который конвертирует аналоговый сигнал в цифровые данные и передаёт их следующему, где происходит дальнейший анализ данных об отправителе и получателе.</p>
+<p>В конечном итоге пакет доберётся до маршрутизатора, управляющего локальной подсетью. Затем он продолжит путешествовать от одного роутера к другому, пока не доберётся до сервера назначения. Каждый маршрутизатор на пути будет извлекать адрес назначения из IP-заголовка и отправлять пакет на следующий хоп. Значение поля TTL (time to live) в IP-заголовке будет каждый раз уменьшаться после прохождения каждого роутера. Если значение поля TTL достигнет нуля, пакет будет отброшен (это произойдёт также если у маршрутизатора не будет места в текущей очереди — например, из-за перегрузки сети).</p>
+<p>Во время TCP-соединения происходит множество подобных запросов и ответов.</p>
+<h4 id="51-Жизненный-цикл-tcp-соединения"><a class="header" href="#51-Жизненный-цикл-tcp-соединения">5.1 Жизненный цикл TCP-соединения</a></h4>
+<p><strong>a. Клиент выбирает номер начальной последовательности (ISN) и отправляет пакет серверу с установленным битом SYN для открытия соединения.</strong></p>
+<p><strong>b. Сервер получает пакет с битом SYN и, если готов к установлению соединения, то:</strong></p>
+<ul>
+<li>Увеличивает номер своей начальной последовательности;</li>
+<li>Увеличивает номер подтверждения получения;</li>
+<li>Устанавливает поле ACK.</li>
+</ul>
+<p><strong>c. Клиент подтверждает соединение путём отправки пакета:</strong></p>
+<ul>
+<li>Увеличивает номер своей начальной последовательности;</li>
+<li>Увеличивает номер подтверждения получения;</li>
+<li>Устанавливает поле ACK.</li>
+</ul>
+<p><strong>d. Данные передаются следующим образом:</strong></p>
+<ul>
+<li>Сторона, которая хочет закрыть соединение, отправляет пакет FIN;</li>
+<li>Другая сторона подтверждает FIN (с помощью ACK) и отправляет собственный FIN-пакет;</li>
+<li>Инициатор прекращения соединения подтверждает получение FIN отправкой собственного ACK.</li>
+</ul>
+<p><strong>e. Закрытие соединения:</strong></p>
+<ul>
+<li>Сторона, которая хочет закрыть соединение, отправляет пакет FIN;</li>
+<li>Другая сторона подтверждает FIN (с помощью ACK) и отправляет собственный FIN-пакет;</li>
+<li>Инициатор прекращения соединения подтверждает получение FIN отправкой собственного ACK.</li>
+</ul>
+<h2 id="6-tls-handshake"><a class="header" href="#6-tls-handshake">6. TLS handshake</a></h2>
+<ul>
+<li>Клиентский компьютер отправляет сообщение <code>ClientHello</code> серверу со своей версией протокола <a href="https://ru.wikipedia.org/wiki/TLS">TLS</a>, списком поддерживаемых алгоритмов шифрования и методов компрессии данных.</li>
+<li>Сервер отвечает клиенту сообщением <code>ServerHello</code>, содержащим версию TLS, выбранный метод шифрования, выбранные методы компрессии и публичный сертификат сервиса, подписанный центром сертификации. Сертификат содержит публичный ключ, который будет использоваться клиентом для шифрования оставшейся части процедуры «рукопожатия» (<code>handshake</code>), пока не будет согласован симметричный ключ.</li>
+<li>Клиент подтверждает сертификат сервера с помощью своего списка центров сертификации. Если сертификат подписан центром из списка, то серверу можно доверять, и клиент генерирует строку псевдослучайных байтов и шифрует её с помощью публичного ключа сервера. Эти случайные байты могут быть использованы для определения симметричного ключа.</li>
+<li>Сервер расшифровывает случайные байты с помощью своего секретного ключа и использует эти байты для генерации своей копии симметричного мастер-ключа.</li>
+<li>Клиент отправляет серверу сообщение <code>Finished</code>, шифруя хеш передачи с помощью симметричного ключа.</li>
+<li>Сервер генерирует собственный хеш, а затем расшифровывает полученный от клиента хеш, чтобы проверить, совпадёт ли он с собственным. Если совпадение обнаружено, сервер отправляет клиенту собственный ответ <code>Finished</code>, также зашифрованный симметричным ключом.</li>
+<li>После этого TLS-сессия передаёт данные приложения (HTTP), зашифрованные с помощью подтверждённого симметричного ключа.</li>
+</ul>
+<h2 id="7-Протокол-http"><a class="header" href="#7-Протокол-http">7. Протокол HTTP</a></h2>
+<p>Если используемый браузер был создан Google, то вместо отправки HTTP-запроса для получения страницы, он отправит запрос, чтобы попытаться «договориться» с сервером об «апгрейде» протокола с HTTP до <a href="https://ru.wikipedia.org/wiki/SPDY">SPDY</a> («спиди»).</p>
+<p>Если клиент использует HTTP-протокол и не поддерживает SPDY, то отправляет серверу запрос следующей формы:</p>
+<pre><code>GET / HTTP/1.1
+Host: google.com
+Connection: close
+[другие заголовки]
+</code></pre>
+<p>где <code>[другие заголовки]</code> — это серия пар «ключ: значение», разбитых переносом строки. (Здесь предполагается, что в использованном браузере нет никаких ошибок, нарушающих спецификацию HTTP. Также предполагается, что браузер использует <code>HTTP/1.1</code>, в противном случае он может не включать заголовок <code>Host</code> в запрос и версия, отданная в ответ на GET-запрос может быть <code>HTTP/1.0</code> или <code>HTTP/0.9</code>).</p>
+<p><code>HTTP/1.1</code> определяет опцию закрытия соединения («close») для отправителя — с её помощью происходит уведомление о закрытии соединения после завершения ответа. К примеру: </p>
+<p><code>Connection: close</code></p>
+<p>Приложения <code>HTTP/1.1</code>, которые не поддерживают постоянные соединения, обязаны включать опцию «close» в каждое сообщение.</p>
+<p>После отправки запроса и заголовков, браузер отправляет серверу единичную пустую строку, сигнализируя о том, что содержимое сообщения закончилось.</p>
+<p>Сервер отвечает специальным кодом, который обозначает статус запроса и включает ответ следующей формы:</p>
+<pre><code>200 OK
+[заголовки ответа]
+</code></pre>
+<p>После этого посылается пустая строка, а затем оставшийся контент HTML-страницы. Сервер может затем закрыть соединение, или, если того требуют отправленные клиентом заголовки, сохранять соединение открытым для его использования следующими запросами.</p>
+<pre><code>304 Not Modified``[заголовки ответа]
+</code></pre>
+<p>и, соответственно, клиенту не посылается никакого контента, вместо этого браузер «достаёт» HTML из кэша.</p>
+<p>После разбора HTML, браузер (и сервер) повторяет процесс загрузки для каждого ресурса (изображения, стили, скрипты, favicon.ico и так далее), на который ссылается HTML-страница, но при этом изменяется адрес каждого запроса c <code>GET / HTTP/1.1</code> на <code>GET /$(относительный URL ресурса www.google.com) HTTP/1.1</code>.</p>
+<p>Если HTML ссылается на ресурс, размещённый на домене, отличном от google.com, то браузер возвращается к шагам, включающим разрешение доменного имени, а затем заново проходит процесс до текущего состояния, но уже для другого домена. Заголовок <code>Host</code> в запросе вместо google.com будет установлен на нужное доменное имя.</p>
+<h4 id="71-Обработка-http-запросов-на-сервере"><a class="header" href="#71-Обработка-http-запросов-на-сервере">7.1 Обработка HTTP-запросов на сервере</a></h4>
+<p><code>HTTPD</code> (HTTP Daemon) является одним из инструментов обработки запросов/ответов на стороне сервера. Наиболее популярные HTTPD-серверы это Apache или Nginx для Linux и IIS для Windows.</p>
+<p>— HTTPD (HTTP Daemon) получает запрос.</p>
+<p>— Сервер разбирает запрос по следующим параметрам:</p>
+<ul>
+<li>
+<p>Метод HTTP-запроса (<code>GET</code>, <code>POST</code>, <code>HEAD</code>, <code>PUT</code> или <code>DELETE</code>). В случае URL-адреса, который пользователь напечатал в строке браузера, мы имеем дело с GET-запросом.</p>
+</li>
+<li>
+<p>Домен. В нашем случае — google.com.</p>
+</li>
+<li>
+<p>Запрашиваемые пути/страницы, в нашем случае — <code>/</code> (нет запрошенных путей, <code>/</code> — это путь по умолчанию).</p>
+</li>
+<li>
+<p>Сервер проверяет существование виртуального хоста, который соответствует google.com.</p>
+</li>
+<li>
+<p>Сервер проверяет, что google.com может принимать GET-запросы.</p>
+</li>
+<li>
+<p>Сервер проверяет, имеет ли клиент право использовать этот метод (на основе IP-адреса, аутентификации и прочее).</p>
+</li>
+<li>
+<p>Если на сервере установлен модуль перезаписи (<code>mod_rewrite</code> для Apache или <code>URL Rewrite</code> для IIS), то он сопоставляет запрос с одним из сконфигурированных правил. Если находится совпадающее правило, то сервер использует его, чтобы переписать запрос.</p>
+</li>
+<li>
+<p>Сервер находит контент, который соответствует запросу, в нашем случае он изучит индексный файл.</p>
+</li>
+<li>
+<p>Далее сервер разбирает («парсит») файл с помощью обработчика. Если Google работает на PHP, то сервер использует PHP для интерпретации индексного файла и направляет результат клиенту.</p>
+</li>
+</ul>
+<h2 id="8-За-кулисами-браузера"><a class="header" href="#8-За-кулисами-браузера">8. За кулисами браузера</a></h2>
+<p>Задача браузера заключается в том, чтобы показывать пользователю выбранные им веб-ресурсы, запрашивая их с сервера и отображая в окне просмотра. Как правило, такими ресурсами являются HTML-документы, но это может быть и PDF, изображения или контент другого типа. Расположение ресурсов определяется с помощью URL.</p>
+<p>Способ, который браузер использует для интерпретации и отображения HTML-файлов описан в спецификациях HTML и CSS. Эти документы разработаны и поддерживаются консорциумом W3C (World Wide Web Consortium), которая занимается стандартизацией веба.</p>
+<p>Интерфейсы браузеров сильно похожи между собой. У них есть большое количество одинаковых элементов:</p>
+<ul>
+<li>Адресная строка, куда вставляются URL-адреса;</li>
+<li>Кнопки возврата на предыдущую и следующую страницу;</li>
+<li>Возможность создания закладок;</li>
+<li>Кнопки обновления страницы (рефреш) и остановки загрузки текущих документов;</li>
+<li>Кнопка «домой», возвращающая пользователя на домашнюю страницу.</li>
+</ul>
+<h3 id="Высокоуровневая-структура-браузера"><a class="header" href="#Высокоуровневая-структура-браузера">Высокоуровневая структура браузера</a></h3>
+<p>Браузер включает следующие компоненты:</p>
+<ul>
+<li><strong>Пользовательский интерфейс</strong>: В него входит адресная строка, кнопки продвижения вперёд/назад, меню закладок и так далее. Сюда относятся все элементы, кроме окна, в котором собственно отображается веб-страница.</li>
+<li><strong>«Движок» браузера</strong>: Распределяет действия между движком рендеринга и интерфейсом пользователя.</li>
+<li><strong>«Движок» рендеринга</strong>: Отвечает за отображение запрашиваемого контента. К примеру, если запрашивается HTML, то «движок» разбирает код HTML и CSS, а затем отображает полученный контент на экране.</li>
+<li><strong>Сетевая часть</strong>: с помощью сетевых функций браузер обрабатывает вызовы, вроде HTTP-запросов, с применением различных реализаций для разных платформ.</li>
+<li><strong>Бэкенд интерфейса (UI)</strong>: Используется для отрисовки базовых виджетов, вроде комбо-боксов и окон.</li>
+<li><strong>Интерпретатор JavaScript</strong>: Используется для парсинга и выполнения JavaScript-кода.</li>
+<li><strong>Хранилище данных</strong>: Браузеру может понадобиться локально хранить некоторые данные (например, cookie). Кроме того, браузеры поддерживают различные механизмы хранения, такие как <code>localStorage</code>, <code>IndexedDB</code>, <code>WebSQL</code> и <code>FileSystem</code>.</li>
+</ul>
+<h2 id="9-Парсинг-html"><a class="header" href="#9-Парсинг-html">9. Парсинг HTML</a></h2>
+<p>Движок рендеринга начинает получать содержимое запрашиваемого документа от сетевого механизма браузера. Как правило, контент поступает кусками по 8Кб. Главной задачей HTML-парсера является разбор разметки в специальное дерево.</p>
+<p>Получающееся на выходе дерево («parse tree») — это дерево DOM-элементов и узлов атрибутов. DOM — сокращение от <code>Document Object Model</code>. Это модель объектного представления HTML-документа и интерфейс для взаимодействия HTML-элементов с «внешним миром» (например, JavaScript-кодом). Корнем дерева является объект «Документ».</p>
+<h3 id="Алгоритм-разбора"><a class="header" href="#Алгоритм-разбора">Алгоритм разбора</a></h3>
+<p>HTML-нельзя «распарсить» с помощью обычных анализаторов (нисходящих или восходящих). Тому есть несколько причин:</p>
+<ul>
+<li>Прощающая почти что угодно природа языка;</li>
+<li>Тот факт, что браузеры обладают известной толерантностью к ошибкам и поддерживают популярные ошибки в HTML.</li>
+<li>Процесс парсинга может заходить в тупик. В других языках код, который требуется разобрать, не меняется в процессе анализа, в то время как в HTML с помощью динамического кода (например, скриптовые элементы, содержащие вызовы <code>document.write()</code>) могут добавляться дополнительные токены, в результате чего сам процесс парсинга модифицирует вывод.</li>
+</ul>
+<p>Невозможность использования привычных технологий парсинга приводит к тому, что разработчики браузеров реализуют собственные механизмы разбора HTML. Алгоритм парсинга подробно описан в <a href="http://www.w3.org/TR/html5/">спецификации HTML5</a>.</p>
+<p>Алгоритм состоит из двух этапов: токенизации и создания дерева.</p>
+<h4 id="Действия-после-завершения-парсинга"><a class="header" href="#Действия-после-завершения-парсинга">Действия после завершения парсинга</a></h4>
+<p>После этого браузер начинает подгружать внешние ресурсы, связанные со страницей (стили, изображения, скрипты и так далее).</p>
+<p>На этом этапе браузер помечает документ, как интерактивный и начинает разбирать скрипты, находящиеся в «отложенном» состоянии: то есть те из них, что должны быть исполнены после парсинга. После этого статус документа устанавливается в состояние «<code>complete</code>» и инициируется событие загрузки («<code>load</code>»).</p>
+<p>Важный момент: ошибки <code>«Invalid Syntax»</code> при разборе не может быть, поскольку браузеры исправляют любой «невалидный» контент и продолжают работу.</p>
+<h2 id="10-Интерпретация-css"><a class="header" href="#10-Интерпретация-css">10. Интерпретация CSS</a></h2>
+<ul>
+<li>Во время разбора браузер парсит CSS-файлы, содержимое тегов <code>&lt;style&gt;</code> и атрибутов «style» c помощью «<a href="http://www.w3.org/TR/CSS2/grammar.html">лексической и синтаксической грамматики CSS</a>».</li>
+<li>Каждый CSS-файл разбирается в объект <code>StyleSheet</code>, каждый из таких объектов содержит правила CSS с селекторами и объектами в соответствии с грамматикой CSS.</li>
+<li>Парсер CSS может быть как восходящим, так и нисходящим.</li>
+</ul>
+<h2 id="11-Рендеринг-страниц"><a class="header" href="#11-Рендеринг-страниц">11. Рендеринг страниц</a></h2>
+<ul>
+<li>Путём перебора DOM-узлов и вычисления для каждого узла значений CSS-стилей создаётся «Дерево рендера» (Render Tree или Frame Tree).</li>
+<li>Вычисляется предпочтительная ширина каждого узла в нижней части дерева — для этого суммируются значения предпочтительной ширины дочерних узлов, а также горизонтальные поля, границы и отступы узлов.</li>
+<li>Вычисляется реальная ширина каждого узла сверху-вниз (доступная ширина каждого узла выделяется его потомкам).</li>
+<li>Вычисляется высота каждого узла снизу-вверх — для этого применяется перенос текста и суммируются значения полей, высоты, отступов и границ потомков.</li>
+<li>Вычисляются координаты каждого узла (с использованием ранее полученной информации).</li>
+<li>Если элементы плавающие или спозиционированы абсолютно, или относительно, предпринимаются более сложные действия. Более подробно они описаны <a href="http://dev.w3.org/csswg/css2/">здесь</a> и <a href="http://www.w3.org/Style/CSS/current-work">здесь</a>.</li>
+<li>Создаются слои для описания того, какие части страницы можно анимировать без необходимости повторного растрирования. Каждый объект (фрейма или рендера) присваивается слою.</li>
+<li>Для каждого слоя на странице выделяются текстуры.</li>
+<li>Объекты (рендеры/фреймы) каждого слоя перебираются и для соответствующих слоёв выполняются команды отрисовки. Растрирование может осуществляться процессором или возможна отрисовка на графическом процессоре (GPU) через D2D/SkiaGL.</li>
+<li>Все вышеперечисленные шаги могут требовать повторного использования значений, сохранённых с последнего рендеринга страницы, такая инкрементальная работа требует меньше затрат.</li>
+<li>Слои страницы отправляются процессу-компоновщику, где они комбинируются со слоями для другого видимого контента (интерфейс браузера, iframe-элементы, addon-панели).</li>
+<li>Вычисляются финальные позиции слоёв и через Direct3D/OpenGL отдаются композитные команды. Командные буферы GPU освобождаются для асинхронного рендеринга и фрейм отправляется для отображения на экран.</li>
+</ul>
+<h2 id="12-Рендеринг-gpu"><a class="header" href="#12-Рендеринг-gpu">12. Рендеринг GPU</a></h2>
+<ul>
+<li>Во время процесса рендеринга уровни графических вычислений могут использовать процессор компьютера или графический процессор (GPU).</li>
+<li>Во втором случае уровни графического программного обеспечения делят задачу на множество частей, что позволяет использовать параллелизм GPU для вычисления плавающей точки, которое требуется для процесса рендеринга.</li>
+</ul>
+<h2 id="13-Вызванное-пользователем-и-пост-рендеринговое-исполнение"><a class="header" href="#13-Вызванное-пользователем-и-пост-рендеринговое-исполнение">13. Вызванное пользователем и пост-рендеринговое исполнение</a></h2>
+<p>После завершения рендеринга, браузер исполняет JavaScript-код в результате срабатывания некоего часового механизма (так работают дудлы на странице Google) или в результате действий пользователя (ввод поискового запроса в строку и получение рекомендаций в ответ). Также могут срабатывать плагины вроде Flash или Java (но не в рассматриваемом примере с домашней страницей Google). Скрипты могут потребовать обработки дополнительных сетевых запросов, изменять страницу или её шаблон, что приведёт к следующему этапу рендеринга и отрисовки.</p>
+<p><em>Дополнительно:</em></p>
+<ul>
+<li><a href="https://habr.com/ru/company/htmlacademy/blog/254825/">Что на самом деле происходит, когда пользователь вбивает в браузер адрес google.com</a></li>
+<li><a href="https://github.com/alex/what-happens-when">What happens when</a></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../network/realTime.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../os.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../network/realTime.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../os.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

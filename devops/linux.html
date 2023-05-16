@@ -1,0 +1,432 @@
+<!DOCTYPE HTML>
+<html lang="ru" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Linux - Backend interview</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Книжка для подготовки к собеседованию на должность backend developer">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Введение</a></li><li class="chapter-item expanded "><a href="../algostruct/index.html"><strong aria-hidden="true">1.</strong> Алгоритмы и Структуры Данных</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../algostruct/structBasics.html"><strong aria-hidden="true">1.1.</strong> Базовые структуры</a></li><li class="chapter-item expanded "><a href="../algostruct/array.html"><strong aria-hidden="true">1.2.</strong> Массив</a></li><li class="chapter-item expanded "><a href="../algostruct/hashTable.html"><strong aria-hidden="true">1.3.</strong> Хэш-Таблица</a></li><li class="chapter-item expanded "><a href="../algostruct/tree.html"><strong aria-hidden="true">1.4.</strong> Дерево</a></li><li class="chapter-item expanded "><a href="../algostruct/graph.html"><strong aria-hidden="true">1.5.</strong> Граф</a></li><li class="chapter-item expanded "><a href="../algostruct/probability.html"><strong aria-hidden="true">1.6.</strong> Вероятностные</a></li><li class="chapter-item expanded "><a href="../algostruct/crypto.html"><strong aria-hidden="true">1.7.</strong> Криптография</a></li><li class="chapter-item expanded "><a href="../algostruct/unsorted.html"><strong aria-hidden="true">1.8.</strong> Разное</a></li></ol></li><li class="chapter-item expanded "><a href="../db/index.html"><strong aria-hidden="true">2.</strong> Базы Данных</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db/dBTheory/index.html"><strong aria-hidden="true">2.1.</strong> Теория Баз Данных</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db/dBTheory/transactions.html"><strong aria-hidden="true">2.1.1.</strong> Транзакции</a></li><li class="chapter-item expanded "><a href="../db/dBTheory/normalForms.html"><strong aria-hidden="true">2.1.2.</strong> Нормальные формы</a></li><li class="chapter-item expanded "><a href="../db/dBTheory/distrubedDb/index.html"><strong aria-hidden="true">2.1.3.</strong> Распределенные БД</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db/dBTheory/distrubedDb/replication.html"><strong aria-hidden="true">2.1.3.1.</strong> Репликация</a></li><li class="chapter-item expanded "><a href="../db/dBTheory/distrubedDb/sharding.html"><strong aria-hidden="true">2.1.3.2.</strong> Шардинг</a></li><li class="chapter-item expanded "><a href="../db/dBTheory/distrubedDb/unsorted.html"><strong aria-hidden="true">2.1.3.3.</strong> Разное</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../db/specific/index.html"><strong aria-hidden="true">2.2.</strong> Конкретные БД</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db/specific/mysql/index.html"><strong aria-hidden="true">2.2.1.</strong> MySql</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db/specific/mysql/architecture.html"><strong aria-hidden="true">2.2.1.1.</strong> Архитектура MySql</a></li><li class="chapter-item expanded "><a href="../db/specific/mysql/concurency.html"><strong aria-hidden="true">2.2.1.2.</strong> Конкурентный доступ</a></li><li class="chapter-item expanded "><a href="../db/specific/mysql/indexes.html"><strong aria-hidden="true">2.2.1.3.</strong> Индексы</a></li><li class="chapter-item expanded "><a href="../db/specific/mysql/sql.html"><strong aria-hidden="true">2.2.1.4.</strong> Основы SQL</a></li><li class="chapter-item expanded "><a href="../db/specific/mysql/explain.html"><strong aria-hidden="true">2.2.1.5.</strong> Explain</a></li><li class="chapter-item expanded "><a href="../db/specific/mysql/unsorted.html"><strong aria-hidden="true">2.2.1.6.</strong> Разное</a></li></ol></li><li class="chapter-item expanded "><a href="../db/specific/postgreSql/index.html"><strong aria-hidden="true">2.2.2.</strong> PostgreSql</a></li><li class="chapter-item expanded "><a href="../db/specific/noSql/index.html"><strong aria-hidden="true">2.2.3.</strong> NoSql</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db/specific/noSql/redis.html"><strong aria-hidden="true">2.2.3.1.</strong> Redis</a></li><li class="chapter-item expanded "><a href="../db/specific/noSql/memcached.html"><strong aria-hidden="true">2.2.3.2.</strong> Memcaced</a></li><li class="chapter-item expanded "><a href="../db/specific/noSql/tarantool.html"><strong aria-hidden="true">2.2.3.3.</strong> Tarantool</a></li><li class="chapter-item expanded "><a href="../db/specific/noSql/mongo.html"><strong aria-hidden="true">2.2.3.4.</strong> Mongo</a></li></ol></li><li class="chapter-item expanded "><a href="../db/specific/clickhouse.html"><strong aria-hidden="true">2.2.4.</strong> ClickHouse</a></li><li class="chapter-item expanded "><a href="../db/specific/messages/index.html"><strong aria-hidden="true">2.2.5.</strong> Брокеры сообщений</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db/specific/messages/rabbit.html"><strong aria-hidden="true">2.2.5.1.</strong> Rabbit</a></li><li class="chapter-item expanded "><a href="../db/specific/messages/kafka.html"><strong aria-hidden="true">2.2.5.2.</strong> Kafka</a></li><li class="chapter-item expanded "><a href="../db/specific/messages/nats.html"><strong aria-hidden="true">2.2.5.3.</strong> Nats</a></li></ol></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../architecture/index.html"><strong aria-hidden="true">3.</strong> Архитектура</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../architecture/oopBase.html"><strong aria-hidden="true">3.1.</strong> Основы ООП</a></li><li class="chapter-item expanded "><a href="../architecture/gof.html"><strong aria-hidden="true">3.2.</strong> Паттерны GoF(Банда 4)</a></li><li class="chapter-item expanded "><a href="../architecture/principles.html"><strong aria-hidden="true">3.3.</strong> Принципы хорошей архитектуры</a></li><li class="chapter-item expanded "><a href="../architecture/architecturesPatterns.html"><strong aria-hidden="true">3.4.</strong> Архитектурные паттерны</a></li><li class="chapter-item expanded "><a href="../architecture/ddd.html"><strong aria-hidden="true">3.5.</strong> DDD</a></li><li class="chapter-item expanded "><a href="../architecture/microserices/index.html"><strong aria-hidden="true">3.6.</strong> Микросервисы</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../architecture/microserices/integration.html"><strong aria-hidden="true">3.6.1.</strong> Паттерны и протоколы интеграции</a></li><li class="chapter-item expanded "><a href="../architecture/microserices/monolithSeparation.html"><strong aria-hidden="true">3.6.2.</strong> Способы распиливания монолита</a></li></ol></li><li class="chapter-item expanded "><a href="../architecture/uncategorized.html"><strong aria-hidden="true">3.7.</strong> Разное</a></li></ol></li><li class="chapter-item expanded "><a href="../php/index.html"><strong aria-hidden="true">4.</strong> PHP</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../php/innovations.html"><strong aria-hidden="true">4.1.</strong> Фичи новых версий</a></li><li class="chapter-item expanded "><a href="../php/internals.html"><strong aria-hidden="true">4.2.</strong> PHP Internals</a></li><li class="chapter-item expanded "><a href="../php/frameworks/index.html"><strong aria-hidden="true">4.3.</strong> Фреймворки</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../php/frameworks/laravel.html"><strong aria-hidden="true">4.3.1.</strong> Laravel</a></li><li class="chapter-item expanded "><a href="../php/frameworks/symfony.html"><strong aria-hidden="true">4.3.2.</strong> Symfony</a></li></ol></li><li class="chapter-item expanded "><a href="../php/uncategorized.html"><strong aria-hidden="true">4.4.</strong> Разное</a></li></ol></li><li class="chapter-item expanded "><a href="../goLang/index.html"><strong aria-hidden="true">5.</strong> GoLang</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../goLang/types.html"><strong aria-hidden="true">5.1.</strong> Типы данных</a></li><li class="chapter-item expanded "><a href="../goLang/concurrency/index.html"><strong aria-hidden="true">5.2.</strong> Сoncurrency</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../goLang/concurrency/chanel.html"><strong aria-hidden="true">5.2.1.</strong> Каналы</a></li><li class="chapter-item expanded "><a href="../goLang/concurrency/gouritine.html"><strong aria-hidden="true">5.2.2.</strong> Горутины</a></li><li class="chapter-item expanded "><a href="../goLang/concurrency/sync.html"><strong aria-hidden="true">5.2.3.</strong> Sync</a></li><li class="chapter-item expanded "><a href="../goLang/concurrency/patterns.html"><strong aria-hidden="true">5.2.4.</strong> Паттерны</a></li></ol></li><li class="chapter-item expanded "><a href="../goLang/scheduler.html"><strong aria-hidden="true">5.3.</strong> Планировщик</a></li><li class="chapter-item expanded "><a href="../goLang/memory.html"><strong aria-hidden="true">5.4.</strong> Управление памятью</a></li><li class="chapter-item expanded "><a href="../goLang/ecosystem.html"><strong aria-hidden="true">5.5.</strong> Экосистема</a></li></ol></li><li class="chapter-item expanded "><a href="../javascript.html"><strong aria-hidden="true">6.</strong> JavaScript</a></li><li class="chapter-item expanded "><a href="../ib.html"><strong aria-hidden="true">7.</strong> Информационная безопасность</a></li><li class="chapter-item expanded "><a href="../git.html"><strong aria-hidden="true">8.</strong> Git</a></li><li class="chapter-item expanded "><a href="../network/index.html"><strong aria-hidden="true">9.</strong> Основы сетей</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../network/serverIteractions.html"><strong aria-hidden="true">9.1.</strong> Взаимодействие с веб-сервером</a></li><li class="chapter-item expanded "><a href="../network/http.html"><strong aria-hidden="true">9.2.</strong> HTTP</a></li><li class="chapter-item expanded "><a href="../network/tls.html"><strong aria-hidden="true">9.3.</strong> TLS</a></li><li class="chapter-item expanded "><a href="../network/dns.html"><strong aria-hidden="true">9.4.</strong> DNS</a></li><li class="chapter-item expanded "><a href="../network/tcp_ip.html"><strong aria-hidden="true">9.5.</strong> TCP/IP</a></li><li class="chapter-item expanded "><a href="../network/networkModels.html"><strong aria-hidden="true">9.6.</strong> Сетевые модели</a></li><li class="chapter-item expanded "><a href="../network/realTime.html"><strong aria-hidden="true">9.7.</strong> realTime взаимодействие с сервером</a></li><li class="chapter-item expanded "><a href="../network/whatHappenWhen.html"><strong aria-hidden="true">9.8.</strong> Что происходит при нажатии на g</a></li></ol></li><li class="chapter-item expanded "><a href="../os.html"><strong aria-hidden="true">10.</strong> Операционые системы</a></li><li class="chapter-item expanded "><a href="../devops/index.html"><strong aria-hidden="true">11.</strong> Системное администрирование</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../devops/linux.html" class="active"><strong aria-hidden="true">11.1.</strong> Linux</a></li><li class="chapter-item expanded "><a href="../devops/virtualization/index.html"><strong aria-hidden="true">11.2.</strong> Основы виртуализации</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../devops/virtualization/docker.html"><strong aria-hidden="true">11.2.1.</strong> Docker</a></li><li class="chapter-item expanded "><a href="../devops/virtualization/kubernetes.html"><strong aria-hidden="true">11.2.2.</strong> Kubernetes</a></li></ol></li><li class="chapter-item expanded "><a href="../devops/deployment.html"><strong aria-hidden="true">11.3.</strong> Deployment</a></li><li class="chapter-item expanded "><a href="../devops/monitoring.html"><strong aria-hidden="true">11.4.</strong> Мониторинг</a></li></ol></li><li class="chapter-item expanded "><a href="../test.html"><strong aria-hidden="true">12.</strong> Тестирование</a></li><li class="chapter-item expanded "><a href="../unsorted/index.html"><strong aria-hidden="true">13.</strong> Разное</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../unsorted/bits.html"><strong aria-hidden="true">13.1.</strong> Побитовые операции</a></li><li class="chapter-item expanded "><a href="../unsorted/types.html"><strong aria-hidden="true">13.2.</strong> Типизация</a></li><li class="chapter-item expanded "><a href="../unsorted/unicode.html"><strong aria-hidden="true">13.3.</strong> Юникод</a></li></ol></li><li class="chapter-item expanded "><a href="../devmethods.html"><strong aria-hidden="true">14.</strong> Методологии разработки</a></li><li class="chapter-item expanded "><a href="../checkList.html"><strong aria-hidden="true">15.</strong> ЧекЛист</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Backend interview</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/arturpanteleev/phpInterview" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="Основы-linux"><a class="header" href="#Основы-linux">Основы Linux</a></h1>
+<h2 id="Команды-Управление-файлами"><a class="header" href="#Команды-Управление-файлами">Команды Управление файлами</a></h2>
+<ul>
+<li><strong>ls</strong> - Утилита для просмотра содержимого каталогов. По умолчанию показывает текущий каталог. Если в параметрах передать путь, то она перечислит содержимое того каталога. Полезные опции -l (List) и -a (All). Первая форматирует вывод в виде списка с более подробной информацией, а вторая включает показ скрытых файлов.</li>
+<li><strong>cat</strong> - Печатает содержимое файла, переданного в параметре, в стандартный вывод. Если передать несколько файлов, команда склеит их. Также можно перенаправить вывод в еще один файл, с помощью символа '&gt;'. Если нужно вывести только определенное количество строк используйте опцию -n (Number).</li>
+<li><strong>cd</strong> - Позволяет перейти из текущего каталога, в указанный. Если запустить без параметров - возвращает в домашний каталог. Вызов с двумя точками возвращает на уровень вверх относительно текущего каталога. Вызов с тире (cd -) возвращает к предыдущему каталогу. </li>
+<li><strong>pwd</strong> - Печатает на экран текущий каталог. Это может быть полезно, если ваша командная строка Linux не выводит такую информацию, а также особенно полезно в Bash программировании, для получения ссылки на каталог в котором выполняется скрипт.</li>
+<li><strong>mkdir</strong> - Создание новых каталогов. Наиболее удобная опция - p (Parents), позволяет создать всю структуру подкаталогов одной командой, даже если они еще не существуют.</li>
+<li><strong>file</strong> - Показывает тип файла. В Linux файлы не обязаны всегда иметь расширения для того, чтобы с ними работать. Поэтому пользователю иногда трудно определить, что за файл перед ним. </li>
+<li><strong>cp</strong> - Копирование файлов и каталогов. Она не копирует каталоги рекурсивно по умолчанию, поэтому не забудьте добавить опцию -r (Recursive) или -a (Archive). Последняя включает режим сохранения атрибутов, владельца и временного штампа, в дополнение к рекурсивному копированию.</li>
+<li><strong>mv</strong> - Перемещение или переименование файлов и каталогов. Примечательно, что переименование и перемещение - это одна и та же операция. Переименование - это перемещение файла в ту же папку с другим именем.</li>
+<li><strong>rm</strong> - Удаляет файлы и папки. Очень полезная команда Linux, с помощью нее вы можете убрать весь беспорядок. Однако будьте осторожны при ее использовании. Хоть и для того чтобы повредить систему вам нужно серьезно постараться, вы можете удалить собственные важные файлы. Rm не удаляет файлы в корзину, из которой потом все можно будет восстановить. Так что будьте осторожны, чтобы потом не говорили: &quot;rm съела мою курсовую&quot;. Все действия необратимы. Если нужно рекурсивное удаление, используйте опцию -r.</li>
+<li><strong>ln</strong> - Создает жесткие или символические ссылки на файлы. Символические или программные ссылки - это что-то похожее на ярлыки в Windows. Они предоставляют удобный способ доступа к определенному файлу. Символические ссылки указывают на файл, но не имеют никаких метаданных. Жесткие ссылки в отличие от символических указывают на физический адрес области диска, где хранятся данные файла.</li>
+<li><strong>chmod</strong></li>
+</ul>
+<p><code>chmod опции права /путь/к/файлу</code></p>
+<p>Изменяет права доступа к файлу. </p>
+<p>Есть три основных вида прав:</p>
+<ul>
+<li><strong>r</strong> - чтение;</li>
+<li><strong>w</strong> - запись;</li>
+<li><strong>x</strong> - выполнение;</li>
+<li><strong>s</strong> - выполнение от имени суперпользователя (дополнительный);</li>
+</ul>
+<p>Также есть три категории пользователей, для которых вы можете установить эти права на файл linux:</p>
+<ul>
+<li><strong>u</strong> - владелец файла;</li>
+<li><strong>g</strong> - группа файла;</li>
+<li><strong>o</strong> - все остальные пользователи;</li>
+</ul>
+<p>Наиболее популярен восьмеричный формат задания прав:</p>
+<ul>
+<li><strong>0</strong> - никаких прав;</li>
+<li><strong>1</strong> - <strong>только выполнение</strong>;</li>
+<li><strong>2</strong> - <strong>только запись</strong>;</li>
+<li><strong>3</strong> - выполнение и запись;</li>
+<li><strong>4</strong> -  <strong>только чтение</strong>;</li>
+<li><strong>5</strong> - чтение и выполнение;</li>
+<li><strong>6</strong> - чтение и запись;</li>
+<li><strong>7</strong> - чтение запись и выполнение.</li>
+</ul>
+<p>Например:</p>
+<ul>
+<li>
+<p><strong>744</strong> - разрешить все для владельца, а остальным только чтение;</p>
+</li>
+<li>
+<p><strong>755</strong> - все для владельца, остальным только чтение и выполнение;</p>
+</li>
+<li>
+<p><strong>764</strong> - все для владельца, чтение и запись для группы, и только чтение для остальных;</p>
+</li>
+<li>
+<p><strong>777</strong> - всем разрешено все.</p>
+</li>
+<li>
+<p><strong>chown</strong> - Изменяющая владельца и/или группу для указанных файлов. Только суперпользователь может изменять владельцев. Для рекурсивного изменения используйте опцию -R. Поменять владельца для <code>strace.log</code> в 'rob' и идентификатор группы в developers: <code>chown rob:developers strace.log</code></p>
+</li>
+<li>
+<p><strong>find</strong> - Поиск в файловой системе, файлов и папок. Это очень гибкая и мощная команда Linux не только из-за своих возможностей поиска, но и благодаря возможности выполнять произвольные команды для найденных файлов.</p>
+</li>
+</ul>
+<p><strong>locate</strong></p>
+<p>В отличие от find ведет поиск в базе данных updatedb, для шаблонов имен файлов. Эта база данных содержит снимок файловой системы, что позволяет искать очень быстро. Но этот поиск ненадежен, потому что вы не можете быть уверены, что ничего не изменилось с момента последнего снимка.</p>
+<p><strong>du</strong></p>
+<p>(disk usage) Показать размер файла или каталога. Одни из наиболее полезных опций - h (Human), которая преобразует размеры файлов в легко читаемый формат, -s (Summarize) выводит минимум данных и -d (Depth) - устанавливает глубину рекурсии по каталогам. </p>
+<p><code>du [опции][каталоги_или_файлы]</code></p>
+<p>Опции:</p>
+<ul>
+<li><code>–b</code> выводит информацию в байтах(а не в килобайтах).</li>
+<li><code>–c</code> выводит итоговую информацию об использовании дисковой памяти.</li>
+<li><code>–k</code> выводит информацию в килобайтах(по умолчанию).</li>
+<li><code>–s</code> выводит итоговую информацию об использовании дискового пространства без информации о каталогах.</li>
+<li><code>-h</code> вывести информацию в человекочитаемом виде.</li>
+<li><code>-d</code> (Depth) - устанавливает глубину рекурсии по каталогам. </li>
+</ul>
+<p><strong>df</strong></p>
+<p><strong>df</strong>(disk free) - позволяет узнать размер свободного и занятого пространства во всех смонтированных файловых системах.</p>
+<p><code>df [опции][файловая_система]</code></p>
+<p>Опции:</p>
+<ul>
+<li><code>-a</code> выводит информацию обо всех файловых системах.</li>
+<li><code>-h</code> выводит размеры в удобном для человека виде (мегабайты, килобайты, гигабайты и т.д.)</li>
+<li><code>-T</code> показать тип файловой системы.</li>
+<li><code>-t</code> выводит информацию только об указанных типах файловых систем.</li>
+</ul>
+<p><strong>dd</strong></p>
+<p>Как сказано в официальном руководстве, это команда терминала для копирования и преобразования файлов. Не очень понятное описание, но это все что делает dd. Вы передаете ей файл-источник и пункт назначения, и пару дополнительных опций. Затем она делает копию одного файла в другой. Вы можете задать точный размер данных, которые нужно записать или скопировать. Работает утилита со всеми устройствами. Например, если вы хотите перезаписать жесткий диск нулями из /dev/zero, можете сделать это. Также она часто используется для создания LiveUSB или гибридных ISO образов.</p>
+<p><strong>mount /umount</strong></p>
+<p>Это команды консоли Linux для подключения и отключения файловых систем Linux. Можно подключать все, от USB накопителей, до ISO образов. И только у суперпользователя есть права для этого.</p>
+<h2 id="Работа-с-текстом"><a class="header" href="#Работа-с-текстом">Работа с текстом</a></h2>
+<p><strong>more/less</strong></p>
+<p>Это две простенькие команды терминала, для просмотра длинных текстов, которые не вмещаются на одном экране. Представьте себе очень длинный вывод команды. Или вы вызвали cat для просмотра файла и вашему эмулятору терминала потребовалось несколько секунд, чтобы прокрутить весь текст. Если ваш терминал не поддерживает прокрутки, вы можете сделать это с помощью less. Less новее, чем more и поддерживает больше опций, поэтому использовать more нет причин.</p>
+<p><strong>head/tail</strong></p>
+<p>Еще одна пара, но здесь у каждой команды своя область применения. Head выводит несколько первых строк из файла (голова), а tail выдает несколько последних строк (хвост). По умолчанию каждая утилита выводит десять строк. Но это можно изменить с помощью опции -n. Еще один полезный параметр -f. Это сокращение от Follow (следовать), утилита постоянно выводит изменения в файле на экран. Например, если вы хотите следить за лог файлом, вместо того чтобы постоянно открывать и закрывать его используйте tail -nf.</p>
+<p><strong>grep</strong></p>
+<p>Grep, как и другие инструменты Linux делает одно действие, но делает его хорошо. Она ищет текст по шаблону. По умолчанию она принимает стандартный ввод, но вы можете искать в файлах. Шаблон может быть строкой, или регулярным выражением. Она может вывести как совпадающие, так и несовпадающие строки и их контекст. Каждый раз, когда вы выполняете команду, которая выдает очень много информации, не нужно анализировать все вручную, пусть grep делает свою магию.</p>
+<p><strong>sort</strong></p>
+<p>Сортировка строк текста по различным критериям. Наиболее полезные: -n (Numeric) - по числовому значению, и -r (Reverse), которая переворачивает вывод. Это может быть полезно для сортировки вывода du. Например, если хотите отсортировать файлы по размеру, просто соедините эти команды.</p>
+<p><strong>wc</strong></p>
+<p>wc(word count) -Утилита командной строки Linux для подсчета количества слов, строк, байт и символов.</p>
+<pre><code class="language-bash"> wc -l &lt;filename&gt; вывести количество строк
+ wc -c &lt;filename&gt; вывести количество байт
+ wc -m &lt;filename&gt; вывести количество символов
+ wc -L &lt;filename&gt; вывести длину самой длинной строки
+ wc -w &lt;filename&gt; вывести количество слов
+</code></pre>
+<p><strong>uniq</strong></p>
+<p>Утилита Unix, с помощью которой можно вывести или отфильтровать повторяющиеся строки в отсортированном файле. Если входной файл задан как («-») или не задан вовсе, чтение производится из стандартного ввода. Если выходной файл не задан, запись производится в стандартный вывод. Вторая и последующие копии повторяющихся соседних строк не записываются. Повторяющиеся входные строки не распознаются, если они не следуют строго друг за другом, поэтому может потребоваться предварительная сортировка файлов.</p>
+<pre><code>uniq [-c | -d | -u] [-i] [-f число_полей] [-s | -w число_символов] [входной_файл [выходной_файл]]
+</code></pre>
+<p>Опции:</p>
+<ul>
+<li><code>-u</code> Выводить только те строки, которые не повторяются на входе.</li>
+<li><code>-d</code> Выводить только те строки, которые повторяются на входе.</li>
+<li><code>-c</code> Перед каждой строкой выводить число повторений этой строки на входе и один пробел.</li>
+<li><code>-i</code> Сравнивать строки без учёта регистра.</li>
+<li><code>-s число_символов</code> Определяет количество символов, начиная с начала строки, игнорируемых при сравнении. Все остальные символы сравниваются. Символы нумеруются начиная с единицы.</li>
+<li><code>-w число символов</code> Определяет количество символов, начиная с начала строки, участвующих в сравнении. Все остальные символы игнорируются.</li>
+<li><code>-f число_полей</code>  Игнорировать при сравнении первые число_полей полей каждой строки ввода. Полем является строка непробельных символов, отделённая от соседних полей пробельными символами. Поля нумеруются начиная с единицы.</li>
+</ul>
+<p><strong>diff</strong></p>
+<p>Показывает различия между двумя файлами, в построчном сравнении. Причем выводятся только строки, в которых обнаружены отличия. Измененные строки отмечаются символом &quot;с&quot;, удаленные - &quot;d&quot;, а новые - &quot;а&quot;.</p>
+<h2 id="Управление-процессам"><a class="header" href="#Управление-процессам">Управление процессам</a></h2>
+<p><strong>kill / xkill / pkill / killall</strong></p>
+<p>Все они служат для завершения процессов. Но они принимают различные параметры для идентификации процессов. <strong>Kill</strong> нужен PID процесса, xkill - достаточно кликнуть по окну, чтобы закрыть его, <strong>killall</strong> и <strong>pkill</strong> принимают имя процесса. </p>
+<p><strong>Команда killall</strong> в Linux предназначена для «убийства» всех процессов, имеющих одно и то же имя. Это удобно, так как нам не нужно знать PID процесса. Например, мы хотим закрыть все процессы с именем gcalctool. Выполните в терминале:</p>
+<pre><code class="language-bash">killall gcalctool
+</code></pre>
+<p>Команда killall, так же как и kill, по умолчанию шлет сигнал SIGTERM. Чтобы послать другой сигнал нужно воспользоваться опцией <em>-s</em>. Например:</p>
+<pre><code class="language-bash">killall -s 9 gcalctool
+</code></pre>
+<p>Когда вы выполняете команду &quot;kill&quot;, то фактически вы посылаете системе сигнал, чтобы заставить ее завершить некорректно ведущее себя приложение. Всего вы можете использовать до 60 сигналов, но все, что нужно знать, это SIGTERM (15) и SIGKILL (9).</p>
+<p><strong>SIGTERM</strong> – Этот сигнал запрашивает остановку процесса который работает. Этот сигнал может быть проигнорирован. Процессу дается время, чтобы хорошо выключился. Когда программа хорошо выключается, это означает, что ей дано время, чтобы спасти его прогресс и освободить ресурсы. Другими словами, он не «forced» прекращение работы процесса.</p>
+<p><strong>SIGKILL</strong> – сигнал SIGKILL заставляет процесс прекратить выполнение своей работы немедленно. Программа не может игнорировать этот сигнал. Несохраненный прогресс будет потерян.</p>
+<p>Вы можете просмотреть все сигналы с помощью команды:</p>
+<pre><code class="language-bash">$ kill -l
+</code></pre>
+<p>Вот некоторые:</p>
+<table><thead><tr><th>N</th><th>Имя</th><th>Описание</th><th>Можно перехватывать</th><th>Можно блокировать</th></tr></thead><tbody>
+<tr><td>1</td><td>HUP</td><td>Hangup. Отбой</td><td>Да</td><td>Да</td></tr>
+<tr><td>2</td><td>INT</td><td>Interrupt. В случае выполнения простых команд вызывает прекращение выполнения, в интерактивных программах - прекращение активного процесса</td><td>Да</td><td>Да</td></tr>
+<tr><td>3</td><td>QUIT</td><td>Как правило, сильнее сигнала Interrupt</td><td>Да</td><td>Да</td></tr>
+<tr><td>4</td><td>ILL</td><td>Illegal Instruction. Центральный процессор столкнулся с незнакомой командой (в большинстве случаев это означает, что допущена программная ошибка). Сигнал отправляется программе, в которой возникла проблема</td><td>Да</td><td>Да</td></tr>
+<tr><td>8</td><td>FPE</td><td>Floating Point Exception. Вычислительная ошибка, например, деление на ноль</td><td>Да</td><td>Да</td></tr>
+<tr><td>9</td><td>KILL</td><td>Всегда прекращает выполнение процесса</td><td>Нет</td><td>Нет</td></tr>
+<tr><td>11</td><td>SEGV</td><td>Segmentation Violation. Доступ к недозволенной области памяти</td><td>Да</td><td>Да</td></tr>
+<tr><td>13</td><td>PIPE</td><td>Была предпринята попытка передачи данных с помощью конвейера или очереди FIFO, однако не существует процесса, способного принять эти данные</td><td>Да</td><td>Да</td></tr>
+<tr><td>15</td><td>TERM</td><td>Software Termination. Требование закончить процесс (программное завершение)</td><td>Да</td><td>Да</td></tr>
+</tbody></table>
+<p>​	</p>
+<p><strong>ps / pgrep</strong></p>
+<p>Команда ps выдает информацию об активных процессах. По умолчанию информация дается только о процессах, ассоциированных с данным терминалом. Выводятся идентификатор процесса, идентификатор терминала, истраченное к данному моменту время ЦП и имя команды. Если нужна иная информация, следует пользоваться опциями. Одна из самых распространенных комбинаций флагов: <code>ps aux</code> Выводятся все процессы, выполняющиеся от имени всех пользователей (выводит статистику, время старта процесса и команду, которая его стартовала)</p>
+<p><strong>top / htop</strong></p>
+<p>Обе команды похожи, обе отображают процессы, и могут быть использованы как консольные системные мониторы. Я рекомендую установить htop, если в вашем дистрибутиве он не поставляется по умолчанию, так как это намного улучшенная версия top. Вы сможете не только просматривать, но и контролировать процессы через его интерактивный интерфейс.</p>
+<p><strong>time</strong></p>
+<p>Время выполнения процесса. Это секундомер для выполнения программы. Полезно если вам интересно насколько сильно ваша реализация алгоритма отстает от стандартной. Но несмотря на такое название она не сообщит вам текущее время, используйте для этого команду date.</p>
+<h2 id="Пользовательское-окружение"><a class="header" href="#Пользовательское-окружение">Пользовательское окружение</a></h2>
+<p><strong>su / sudo</strong></p>
+<p>Su и sudo - это два способа выполнить одну и ту же задачу - запустить программу от имени другого пользователя. В зависимости от вашего дистрибутива, вы, наверное, используете одну или другую. Но работают обе. Разница в том, что su переключает вас на другого пользователя, а sudo только выполняет команду от его имени. Поэтому использование sudo будет наиболее безопасным вариантом работы.</p>
+<p><strong>сhroot</strong> </p>
+<p>Операция изменения корневого каталога диска для запущенного процесса и его дочерних процессов. Программа, запущенная в таком окружении не может получить доступ к файлам вне нового корневого каталога. Это измененное окружение называется chroot jail.</p>
+<p><strong>date</strong></p>
+<p>В отличие от time, делает именно то, чего вы от него и ожидаете - выводит дату и время в стандартный вывод. Вывод можно форматировать, в зависимости от ваших потребностей: вывести год, месяц, день, установить 12-ти или 24-ти часовой формат, получить наносекунды или номер недели. Например, date +&quot;%j %V&quot;, выведет день в году и номер недели в формате ISO.</p>
+<p><strong>alias</strong></p>
+<p>Эта команда создает синонимы для других команд Linux. Это означает, что вы можете делать новые команды или группы команд, а также переименовывать существующие. Это очень удобно для сокращения длинных команд, которые вы часто используете, или создания более понятных имен для команд которые вы используете нечасто и не можете запомнить.</p>
+<p><strong>uname</strong></p>
+<p>Выводит некоторую основную информацию о системе. Без параметров она не покажет ничего полезного, кроме строчки Linux, но если задать параметр -a (All) можно получить информацию о ядре, имени хоста и узнать архитектуру процессора.</p>
+<p><strong>uptime</strong></p>
+<p>Сообщает вам время работы системы. Не очень существенная информация, но может быть полезна для случайных вычислений или просто ради интереса, как давно был перезагружен сервер.</p>
+<p><strong>sleep</strong></p>
+<p>Вам, наверное, интересно как же ее можно использовать. Но даже кроме Bash скриптинга, у нее есть свои преимущества. Например, если вы хотите выключить компьютер через определенный промежуток времени, или в качестве импровизированной тревоги.</p>
+<h2 id="Управления-пользователями"><a class="header" href="#Управления-пользователями">Управления пользователями</a></h2>
+<p><strong>useradd / userdel / usermod</strong></p>
+<p>Эти команды консоли Linux позволяют вам добавлять, удалять и изменять учетные записи пользователей. Скорее всего, вы не будете использовать их очень часто. Особенно если это домашний компьютер, и вы являетесь единственным пользователем. И даже если нет, управлять пользователями можно с помощью графического интерфейса, но лучше о них знать на случай, если вдруг понадобится.</p>
+<p><strong>passwd</strong></p>
+<p>Эта команда позволяет изменить пароль учетной записи пользователя. Как суперпользователь, вы можете сбросить пароли всех пользователей, несмотря на то, что не можете их увидеть. Хорошая практика безопасности - менять пароль не очень редко.</p>
+<h4 id="linux-команды-для-просмотра-документации"><a class="header" href="#linux-команды-для-просмотра-документации">Linux команды для просмотра документации</a></h4>
+<p><strong>man / whatis</strong></p>
+<p>Команда man открывает руководство по определенной команде. Для всех основных команд Linux есть man страницы. Whatis какие разделы руководств есть для данной команды.</p>
+<p><strong>whereis</strong></p>
+<p>Показывает полный путь к исполняемому файлу программы. Также может показать путь к исходникам если они есть в системе.</p>
+<h3 id="Команды-linux-для-управления-сетью"><a class="header" href="#Команды-linux-для-управления-сетью">Команды Linux для управления сетью</a></h3>
+<p><strong>ip</strong></p>
+<p>Если список команд Linux для управления сетью вам кажется слишком коротким, скорее всего, вы незнакомы с утилитой ip. В пакете net-tools содержится множество других утилит ipconfig, netstat и другие устаревшие, вроде iproute2. Все это заменяет одна утилита - ip. Вы можете рассматривать ее как швейцарский армейский нож для работы с сетью, или непонятную массу, но в любом случае за ней будущее.</p>
+<p><strong>ping</strong></p>
+<p>Ping - это ICMP ECHO_REQUEST дейтаграммы, но на самом деле это неважно. Важно то, что утилита ping может быть очень полезным диагностическим инструментом. Она поможет быстро проверить подключены ли вы к маршрутизатору или к интернету, и дает кое-какое представление о качестве этой связи.</p>
+<p><strong>nethogs</strong></p>
+<p>Если у вас медленный интернет, то вам, наверное, было бы интересно знать сколько трафика использует та или иная программа в Linux, или вообще какая программа потребляет всю скорость. Теперь это можно сделать с помощью утилиты nethogs. Для того чтобы задать сетевой интерфейс используйте опцию -i.</p>
+<p><strong>traceroute</strong></p>
+<p>Это усовершенствованная версия ping. Кроме непосредственно доступности узла, мы можем увидеть полный маршрут сетевых пакетов, а также время доставки их на каждый узел.</p>
+<h2 id="Рецепты"><a class="header" href="#Рецепты">Рецепты</a></h2>
+<p><strong>Копируем файл/папку с сервера на сервер</strong></p>
+<pre><code class="language-sh">scp -r /path/from/destination username@hostname:/path/to/destination
+</code></pre>
+<p><strong>Мониторим состояние сервера</strong></p>
+<p><strong>Ищем логи</strong></p>
+<p><strong>Системные вызовы скрипта пхп</strong></p>
+<p><strong>Слушатель 80 порта</strong></p>
+<p><strong>Посчитать топ 10 адресов в логах</strong></p>
+<pre><code class="language-bash">less /var/log/nginx/access.log | cut -d' ' -f1 | sort | uniq -c
+</code></pre>
+<p>Разберём подробно:</p>
+<ol>
+<li><code>less</code> — утилита для вывода содержимого файла /var/log/nginx/access.log. Указываем путь до нужного access-лога.</li>
+<li><code>cut -d' ' -f1</code> — разбиваем строку на подстроки разделителем &quot;пробел&quot;. Разделитель указывается флагом -d. Флагом -f указываем порядковый номер поля, которое будет отображаться в выводе. В данном случае «1» - первое поле, это и есть ip-адрес.</li>
+<li><code>sort</code>  — сортировка строк по порядку. Команда сгруппирует одинаковые строки &quot;рядом&quot;. Команда sort необходима для корректной работы следующей команды - <code>uniq</code>.</li>
+<li><code>uniq</code>— выведет только уникальные строки. Т.е. в результате будут только уникальные ip-адреса.</li>
+<li>Для вывода количества, нужно добавить флаг <code>-с</code> (от слова <strong>c</strong>ount) к команде <code>uniq</code>:</li>
+</ol>
+<p>Ищем с каких серверов демон получает запросы</p>
+<p><strong>.bashrc</strong>
+Файл ~/.bashrc определяет поведение командной оболочки для конкретного пользователя(переменных окружения например). Загружается каждый раз, когда пользователь создает терминальный сеанс, то есть проще говоря, открывает новый терминал. Все переменные окружения, созданные в этом файле вступают в силу каждый раз когда началась новая терминальная сессия.</p>
+<h2 id="cТРУКТУРА-ФАЙЛОВОЙ-СИСТЕМЫ-linux"><a class="header" href="#cТРУКТУРА-ФАЙЛОВОЙ-СИСТЕМЫ-linux">CТРУКТУРА ФАЙЛОВОЙ СИСТЕМЫ LINUX</a></h2>
+<ul>
+<li>/ - КОРЕНЬ</li>
+<li>/BIN - (BINARIES) БИНАРНЫЕ ФАЙЛЫ ПОЛЬЗОВАТЕЛЯ</li>
+<li>/SBIN - (SYSTEM BINARIES) СИСТЕМНЫЕ ИСПОЛНЯЕМЫЕ ФАЙЛЫ</li>
+<li>/ETC - (ETCETERA) КОНФИГУРАЦИОННЫЕ ФАЙЛЫ</li>
+<li>/DEV - (DEVICES) ФАЙЛЫ УСТРОЙСТВ</li>
+<li>/PROC - (PROCCESS) ИНФОРМАЦИЯ О ПРОЦЕССАХ</li>
+<li>/VAR (VARIABLE) - ПЕРЕМЕННЫЕ ФАЙЛЫ</li>
+<li>/VAR/LOG - ФАЙЛЫ ЛОГОВ</li>
+<li>/VAR/LIB - БАЗЫ ДАННЫХ</li>
+<li>/VAR/MAIL - ПОЧТА</li>
+<li>/VAR/SPOOL - ПРИНТЕР</li>
+<li>/VAR/LOCK - ФАЙЛЫ БЛОКИРОВОК</li>
+<li>/VAR/RUN - PID ПРОЦЕССОВ</li>
+<li>/TMP (TEMP) - ВРЕМЕННЫЕ ФАЙЛЫ</li>
+<li>/USR - (USER APPLICATIONS) ПРОГРАММЫ ПОЛЬЗОВАТЕЛЯ</li>
+<li>/USR/BIN/ - ИСПОЛНЯЕМЫЕ ФАЙЛЫ</li>
+<li>/USR/SBIN/ -  Содержит двоичные файлы программ для системного администрирования</li>
+<li>/USR/LIB/ - БИБЛИОТЕКИ для программ из /usr/bin или /usr/sbin.</li>
+<li>/USR/LOCAL - ФАЙЛЫ ПОЛЬЗОВАТЕЛЯ</li>
+<li>/HOME - ДОМАШНЯЯ ПАПКА</li>
+<li>/BOOT - ФАЙЛЫ ЗАГРУЗЧИКА</li>
+<li>/LIB (LIBRARY) - СИСТЕМНЫЕ БИБЛИОТЕКИ</li>
+<li>/OPT (OPTIONAL APPLICATIONS) - ДОПОЛНИТЕЛЬНЫЕ ПРОГРАММЫ</li>
+<li>/MNT (MOUNT) - МОНТИРОВАНИЕ</li>
+<li>/MEDIA - СЪЕМНЫЕ НОСИТЕЛИ</li>
+<li>/SRV (SERVER) - СЕРВЕР</li>
+<li>/RUN - ПРОЦЕССЫ</li>
+<li>/SYS (SYSTEM) - ИНФОРМАЦИЯ О СИСТЕМЕ</li>
+</ul>
+<p><em><strong>Дополнительно:</strong></em></p>
+<ul>
+<li>https://habr.com/post/280093/</li>
+<li>https://habr.com/company/ruvds/blog/323330/</li>
+<li>http://rus-linux.net/MyLDP/server/monitoring-servera-v-konsoli.html</li>
+<li><a href="https://losst.ru/ctruktura-fajlovoj-sistemy-linux">CТРУКТУРА ФАЙЛОВОЙ СИСТЕМЫ LINUX</a></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../devops/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../devops/virtualization/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../devops/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../devops/virtualization/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

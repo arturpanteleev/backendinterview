@@ -1,0 +1,472 @@
+<!DOCTYPE HTML>
+<html lang="ru" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>PHP Internals - Backend interview</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Книжка для подготовки к собеседованию на должность backend developer">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Введение</a></li><li class="chapter-item expanded "><a href="../algostruct/index.html"><strong aria-hidden="true">1.</strong> Алгоритмы и Структуры Данных</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../algostruct/structBasics.html"><strong aria-hidden="true">1.1.</strong> Базовые структуры</a></li><li class="chapter-item expanded "><a href="../algostruct/array.html"><strong aria-hidden="true">1.2.</strong> Массив</a></li><li class="chapter-item expanded "><a href="../algostruct/hashTable.html"><strong aria-hidden="true">1.3.</strong> Хэш-Таблица</a></li><li class="chapter-item expanded "><a href="../algostruct/tree.html"><strong aria-hidden="true">1.4.</strong> Дерево</a></li><li class="chapter-item expanded "><a href="../algostruct/graph.html"><strong aria-hidden="true">1.5.</strong> Граф</a></li><li class="chapter-item expanded "><a href="../algostruct/probability.html"><strong aria-hidden="true">1.6.</strong> Вероятностные</a></li><li class="chapter-item expanded "><a href="../algostruct/crypto.html"><strong aria-hidden="true">1.7.</strong> Криптография</a></li><li class="chapter-item expanded "><a href="../algostruct/unsorted.html"><strong aria-hidden="true">1.8.</strong> Разное</a></li></ol></li><li class="chapter-item expanded "><a href="../db/index.html"><strong aria-hidden="true">2.</strong> Базы Данных</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db/dBTheory/index.html"><strong aria-hidden="true">2.1.</strong> Теория Баз Данных</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db/dBTheory/transactions.html"><strong aria-hidden="true">2.1.1.</strong> Транзакции</a></li><li class="chapter-item expanded "><a href="../db/dBTheory/normalForms.html"><strong aria-hidden="true">2.1.2.</strong> Нормальные формы</a></li><li class="chapter-item expanded "><a href="../db/dBTheory/distrubedDb/index.html"><strong aria-hidden="true">2.1.3.</strong> Распределенные БД</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db/dBTheory/distrubedDb/replication.html"><strong aria-hidden="true">2.1.3.1.</strong> Репликация</a></li><li class="chapter-item expanded "><a href="../db/dBTheory/distrubedDb/sharding.html"><strong aria-hidden="true">2.1.3.2.</strong> Шардинг</a></li><li class="chapter-item expanded "><a href="../db/dBTheory/distrubedDb/unsorted.html"><strong aria-hidden="true">2.1.3.3.</strong> Разное</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../db/specific/index.html"><strong aria-hidden="true">2.2.</strong> Конкретные БД</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db/specific/mysql/index.html"><strong aria-hidden="true">2.2.1.</strong> MySql</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db/specific/mysql/architecture.html"><strong aria-hidden="true">2.2.1.1.</strong> Архитектура MySql</a></li><li class="chapter-item expanded "><a href="../db/specific/mysql/concurency.html"><strong aria-hidden="true">2.2.1.2.</strong> Конкурентный доступ</a></li><li class="chapter-item expanded "><a href="../db/specific/mysql/indexes.html"><strong aria-hidden="true">2.2.1.3.</strong> Индексы</a></li><li class="chapter-item expanded "><a href="../db/specific/mysql/sql.html"><strong aria-hidden="true">2.2.1.4.</strong> Основы SQL</a></li><li class="chapter-item expanded "><a href="../db/specific/mysql/explain.html"><strong aria-hidden="true">2.2.1.5.</strong> Explain</a></li><li class="chapter-item expanded "><a href="../db/specific/mysql/unsorted.html"><strong aria-hidden="true">2.2.1.6.</strong> Разное</a></li></ol></li><li class="chapter-item expanded "><a href="../db/specific/postgreSql/index.html"><strong aria-hidden="true">2.2.2.</strong> PostgreSql</a></li><li class="chapter-item expanded "><a href="../db/specific/noSql/index.html"><strong aria-hidden="true">2.2.3.</strong> NoSql</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db/specific/noSql/redis.html"><strong aria-hidden="true">2.2.3.1.</strong> Redis</a></li><li class="chapter-item expanded "><a href="../db/specific/noSql/memcached.html"><strong aria-hidden="true">2.2.3.2.</strong> Memcaced</a></li><li class="chapter-item expanded "><a href="../db/specific/noSql/tarantool.html"><strong aria-hidden="true">2.2.3.3.</strong> Tarantool</a></li><li class="chapter-item expanded "><a href="../db/specific/noSql/mongo.html"><strong aria-hidden="true">2.2.3.4.</strong> Mongo</a></li></ol></li><li class="chapter-item expanded "><a href="../db/specific/clickhouse.html"><strong aria-hidden="true">2.2.4.</strong> ClickHouse</a></li><li class="chapter-item expanded "><a href="../db/specific/messages/index.html"><strong aria-hidden="true">2.2.5.</strong> Брокеры сообщений</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db/specific/messages/rabbit.html"><strong aria-hidden="true">2.2.5.1.</strong> Rabbit</a></li><li class="chapter-item expanded "><a href="../db/specific/messages/kafka.html"><strong aria-hidden="true">2.2.5.2.</strong> Kafka</a></li><li class="chapter-item expanded "><a href="../db/specific/messages/nats.html"><strong aria-hidden="true">2.2.5.3.</strong> Nats</a></li></ol></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../architecture/index.html"><strong aria-hidden="true">3.</strong> Архитектура</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../architecture/oopBase.html"><strong aria-hidden="true">3.1.</strong> Основы ООП</a></li><li class="chapter-item expanded "><a href="../architecture/gof.html"><strong aria-hidden="true">3.2.</strong> Паттерны GoF(Банда 4)</a></li><li class="chapter-item expanded "><a href="../architecture/principles.html"><strong aria-hidden="true">3.3.</strong> Принципы хорошей архитектуры</a></li><li class="chapter-item expanded "><a href="../architecture/architecturesPatterns.html"><strong aria-hidden="true">3.4.</strong> Архитектурные паттерны</a></li><li class="chapter-item expanded "><a href="../architecture/ddd.html"><strong aria-hidden="true">3.5.</strong> DDD</a></li><li class="chapter-item expanded "><a href="../architecture/microserices/index.html"><strong aria-hidden="true">3.6.</strong> Микросервисы</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../architecture/microserices/integration.html"><strong aria-hidden="true">3.6.1.</strong> Паттерны и протоколы интеграции</a></li><li class="chapter-item expanded "><a href="../architecture/microserices/monolithSeparation.html"><strong aria-hidden="true">3.6.2.</strong> Способы распиливания монолита</a></li></ol></li><li class="chapter-item expanded "><a href="../architecture/uncategorized.html"><strong aria-hidden="true">3.7.</strong> Разное</a></li></ol></li><li class="chapter-item expanded "><a href="../php/index.html"><strong aria-hidden="true">4.</strong> PHP</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../php/innovations.html"><strong aria-hidden="true">4.1.</strong> Фичи новых версий</a></li><li class="chapter-item expanded "><a href="../php/internals.html" class="active"><strong aria-hidden="true">4.2.</strong> PHP Internals</a></li><li class="chapter-item expanded "><a href="../php/frameworks/index.html"><strong aria-hidden="true">4.3.</strong> Фреймворки</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../php/frameworks/laravel.html"><strong aria-hidden="true">4.3.1.</strong> Laravel</a></li><li class="chapter-item expanded "><a href="../php/frameworks/symfony.html"><strong aria-hidden="true">4.3.2.</strong> Symfony</a></li></ol></li><li class="chapter-item expanded "><a href="../php/uncategorized.html"><strong aria-hidden="true">4.4.</strong> Разное</a></li></ol></li><li class="chapter-item expanded "><a href="../goLang/index.html"><strong aria-hidden="true">5.</strong> GoLang</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../goLang/types.html"><strong aria-hidden="true">5.1.</strong> Типы данных</a></li><li class="chapter-item expanded "><a href="../goLang/concurrency/index.html"><strong aria-hidden="true">5.2.</strong> Сoncurrency</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../goLang/concurrency/chanel.html"><strong aria-hidden="true">5.2.1.</strong> Каналы</a></li><li class="chapter-item expanded "><a href="../goLang/concurrency/gouritine.html"><strong aria-hidden="true">5.2.2.</strong> Горутины</a></li><li class="chapter-item expanded "><a href="../goLang/concurrency/sync.html"><strong aria-hidden="true">5.2.3.</strong> Sync</a></li><li class="chapter-item expanded "><a href="../goLang/concurrency/patterns.html"><strong aria-hidden="true">5.2.4.</strong> Паттерны</a></li></ol></li><li class="chapter-item expanded "><a href="../goLang/scheduler.html"><strong aria-hidden="true">5.3.</strong> Планировщик</a></li><li class="chapter-item expanded "><a href="../goLang/memory.html"><strong aria-hidden="true">5.4.</strong> Управление памятью</a></li><li class="chapter-item expanded "><a href="../goLang/ecosystem.html"><strong aria-hidden="true">5.5.</strong> Экосистема</a></li></ol></li><li class="chapter-item expanded "><a href="../javascript.html"><strong aria-hidden="true">6.</strong> JavaScript</a></li><li class="chapter-item expanded "><a href="../ib.html"><strong aria-hidden="true">7.</strong> Информационная безопасность</a></li><li class="chapter-item expanded "><a href="../git.html"><strong aria-hidden="true">8.</strong> Git</a></li><li class="chapter-item expanded "><a href="../network/index.html"><strong aria-hidden="true">9.</strong> Основы сетей</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../network/serverIteractions.html"><strong aria-hidden="true">9.1.</strong> Взаимодействие с веб-сервером</a></li><li class="chapter-item expanded "><a href="../network/http.html"><strong aria-hidden="true">9.2.</strong> HTTP</a></li><li class="chapter-item expanded "><a href="../network/tls.html"><strong aria-hidden="true">9.3.</strong> TLS</a></li><li class="chapter-item expanded "><a href="../network/dns.html"><strong aria-hidden="true">9.4.</strong> DNS</a></li><li class="chapter-item expanded "><a href="../network/tcp_ip.html"><strong aria-hidden="true">9.5.</strong> TCP/IP</a></li><li class="chapter-item expanded "><a href="../network/networkModels.html"><strong aria-hidden="true">9.6.</strong> Сетевые модели</a></li><li class="chapter-item expanded "><a href="../network/realTime.html"><strong aria-hidden="true">9.7.</strong> realTime взаимодействие с сервером</a></li><li class="chapter-item expanded "><a href="../network/whatHappenWhen.html"><strong aria-hidden="true">9.8.</strong> Что происходит при нажатии на g</a></li></ol></li><li class="chapter-item expanded "><a href="../os.html"><strong aria-hidden="true">10.</strong> Операционые системы</a></li><li class="chapter-item expanded "><a href="../devops/index.html"><strong aria-hidden="true">11.</strong> Системное администрирование</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../devops/linux.html"><strong aria-hidden="true">11.1.</strong> Linux</a></li><li class="chapter-item expanded "><a href="../devops/virtualization/index.html"><strong aria-hidden="true">11.2.</strong> Основы виртуализации</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../devops/virtualization/docker.html"><strong aria-hidden="true">11.2.1.</strong> Docker</a></li><li class="chapter-item expanded "><a href="../devops/virtualization/kubernetes.html"><strong aria-hidden="true">11.2.2.</strong> Kubernetes</a></li></ol></li><li class="chapter-item expanded "><a href="../devops/deployment.html"><strong aria-hidden="true">11.3.</strong> Deployment</a></li><li class="chapter-item expanded "><a href="../devops/monitoring.html"><strong aria-hidden="true">11.4.</strong> Мониторинг</a></li></ol></li><li class="chapter-item expanded "><a href="../test.html"><strong aria-hidden="true">12.</strong> Тестирование</a></li><li class="chapter-item expanded "><a href="../unsorted/index.html"><strong aria-hidden="true">13.</strong> Разное</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../unsorted/bits.html"><strong aria-hidden="true">13.1.</strong> Побитовые операции</a></li><li class="chapter-item expanded "><a href="../unsorted/types.html"><strong aria-hidden="true">13.2.</strong> Типизация</a></li><li class="chapter-item expanded "><a href="../unsorted/unicode.html"><strong aria-hidden="true">13.3.</strong> Юникод</a></li></ol></li><li class="chapter-item expanded "><a href="../devmethods.html"><strong aria-hidden="true">14.</strong> Методологии разработки</a></li><li class="chapter-item expanded "><a href="../checkList.html"><strong aria-hidden="true">15.</strong> ЧекЛист</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Backend interview</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/arturpanteleev/phpInterview" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="php-internals"><a class="header" href="#php-internals">PHP Internals</a></h1>
+<h2 id="zval"><a class="header" href="#zval">Zval</a></h2>
+<p>Структура данных <strong>zval</strong>(Zend value) используется для представления любых значений PHP. Zval хранит в себе само значение и тип этого значения. Это необходимо потому что PHP — это язык с динамической типизацией и поэтому тип переменных известен только во время выполнения программы (run-time), а не во время компиляции (compile-time). Кроме того, тип переменной может быть изменен в течение жизни zval, то есть zval ранее хранимый как целое число (integer) позднее может содержать строку (string).</p>
+<p>Структура zval в PHP5 выглядит так:</p>
+<pre><code class="language-C">typedef struct _zval_struct {
+    zvalue_value value;
+    zend_uint refcount__gc;
+    zend_uchar type;
+    zend_uchar is_ref__gc;
+} zval;
+</code></pre>
+<p>Тип переменной хранится как целочисленная метка (type tag, unsigned char). Метка может принимать одно из 8 значений, которое соответствует 8 типам данных доступных в PHP. Эти значения должны присваиваться с использованием констант вида <code>IS_TYPE</code>. Например, <code>IS_NULL</code>соответствует типу данных null, а <code>IS_STRING</code> — строке.</p>
+<p><strong>zvalue_value</strong> — это union. Union — в языке С – это структура, в которой можно объявить несколько членов разных типов, но лишь один компонент может быть доступен для использования в данный момент времени, размер union равен размеру самого большого компонента. Все компоненты объединения хранятся в памяти в одном месте и могут интерпретироваться по-разному, в зависимости от того, к кому из них вы обращаетесь. Если считать lval, то его значение будет интерпретировано как знаковое целочисленное. Значение dval будет представлено в виде числа двойной точности с плавающей запятой. И так далее. Чтобы узнать, какой компонент объединения используется в данный момент, можно посмотреть текущее значение свойства type.</p>
+<pre><code class="language-c">typedef union _zvalue_value {
+    long lval;                 // Для булевых, целочисленных и ресурсов
+    double dval;               // Для чисел с плавающей запятой
+    struct {                   // Для строковых
+        char *val;
+        int len;
+    } str;
+    HashTable *ht;             // Для массивов
+    zend_object_value obj;     // Для объектов
+    zend_ast *ast;             // Для констант
+} zvalue_value;
+</code></pre>
+<p><strong>refcount__gc</strong> - когда вы присваиваете переменной значение другой переменной, то они обе ссылаются на один zval, а refcount инкрементируется. Теперь, если вы захотите изменить значение одной из этих переменных, то PHP, увидя refcount больше 1, скопирует этот zval, сделает изменения там, и ваша переменная будет указывать уже на новый zval. Эта техника называется <strong>copy on write</strong>, и она позволяет неплохо снизить потребление памяти. </p>
+<p>У подсчёта ссылок есть один серьёзный недостаток: этот механизм не способен определять циклические ссылки. Для этого в PHP используется дополнительный инструмент — <a href="http://php.net/manual/en/features.gc.collecting-cycles.php">циклический сборщик мусора</a>. Каждый раз, когда значение refcount уменьшается и возникает вероятность, что <code>zval</code>стал частью цикла, он записывается в root buffer. Когда этот буфер заполняется, потенциальные циклы помечаются и зачищаются сборщиком мусора. </p>
+<p>А что происходит со ссылками(пхпшными)? Все очень просто: если вы создаете ссылку от переменной, то флаг <strong>is_ref</strong> становится равным 1, и больше вышеописанная оптимизация для этого zval-а применяться не будет. </p>
+<p>Вот список основных проблем, связанных с реализацией  <code>zval</code>  в PHP 5:</p>
+<ul>
+<li><code>Zval</code> (почти) всегда требуется размещать в куче.</li>
+<li><code>Zval</code> всегда требуют использования подсчёта ссылок и сбора информации о циклах. Даже в тех случаях, когда расшаривание значений не стоит потраченных ресурсов (целочисленные) или циклы не могут возникнуть в принципе.</li>
+<li>Прямой подсчёт ссылок приводит к двойному выполнению этой процедуры в случае с объектами и ресурсами. </li>
+<li>В некоторых случаях приходится прибегать к большому количеству обходных манёвров. Например, чтобы получить доступ к объекту, хранящемуся в переменной, необходимо суммарно разыменовать четыре указателя, со всеми сопутствующими цепочками. Об этом я тоже поговорю во второй части.</li>
+<li>Прямой подсчёт ссылок также означает, что значения можно расшаривать только между <code>zval</code>’ами. Например, строку невозможно совместно использовать в <code>zval</code> и ключе хэш-таблицы (без хранения этого ключа также в виде zval).</li>
+</ul>
+<h3 id="zvalы-в-php-7"><a class="header" href="#zvalы-в-php-7">Zval’ы в PHP 7</a></h3>
+<p>In PHP 7 a zval can be reference counted or not. There is a flag in the zval structure which determined this.</p>
+<p>There are some types which are never refcounted. These types are null, bool, int and double.</p>
+<p>There are other types which are always refcounted. These are objects, resources and references.</p>
+<p>And then there are types, which are <em>sometimes</em> refcounted. Those are strings and arrays.</p>
+<p>For strings the not-refcounted variant is called an &quot;interned string&quot;. If you're using an NTS (not thread-safe) PHP 7 build, which you typically are, all string literals in your code will be interned. These interned strings are deduplicated (i.e. there is only one interned string with a certain content) and are guaranteed to exist for the full duration of the request, so there is no need to use reference counting for them. If you use opcache, these strings will live in shared memory, in which case you <em>can't</em> use reference counting for them (as our refcounting mechanism is non-atomic). Interned strings have a dummy refcount of 1, which is what you're seeing here.</p>
+<p>For arrays the not-refcounted variant is called an &quot;immutable array&quot;. If you use opcache, then constant array literals in your code will be converted into immutable arrays. Once again, these live in shared memory and as such must not use refcounting. Immutable arrays have a dummy refcount of 2, as it allows us to optimize certain separation paths.</p>
+<p>В седьмой версии языка мы получили новую реализацию zval. Одним из главных нововведений стало то, что zval больше не нужно отдельно размещать в куче. Также refcount теперь хранится не в самом zval, а в любом из комплексных значений, на которые он указывает — в строках, массивах или объектах. Это даёт следующие преимущества:</p>
+<ul>
+<li><strong>Простые значения не требуют размещения в куче и не используют подсчёт ссылок. А хранятся или в стеке, или в составе комплексных структур.</strong></li>
+<li>Больше нет никакого двойного подсчёта. В случае с объектами используется счётчик только внутри самого объекта.</li>
+<li>Поскольку refcount теперь хранится в самом значении, то оно может быть использовано независимо от самого zval. Например, строка может использоваться и в zval, и быть ключом в хэш-таблице.</li>
+<li>Теперь стало гораздо меньше указателей, которые нужно перебрать, чтобы получить значение.</li>
+</ul>
+<p>Вот как выглядит структура нового zval:</p>
+<pre><code class="language-c">    zend_value value;
+    union {
+        struct {
+            ZEND_ENDIAN_LOHI_4(
+                zend_uchar type,
+                zend_uchar type_flags,
+                zend_uchar const_flags,
+                zend_uchar reserved)
+        } v;
+        uint32_t type_info;
+    } u1;
+    union {
+        uint32_t var_flags;
+        uint32_t next;                 // hash collision chain
+        uint32_t cache_slot;           // literal cache slot
+        uint32_t lineno;               // line number (for ast nodes)
+        uint32_t num_args;             // arguments number for EX(This)
+        uint32_t fe_pos;               // foreach position
+        uint32_t fe_iter_idx;          // foreach iterator index
+    } u2;
+};`
+</code></pre>
+<p>Первый компонент остался практически таким же, это объединение value. Второй компонент — целочисленный, хранящий информацию о типе, который с помощью объединения разбит на отдельные байты (можно игнорировать макрос ZEND_ENDIAN_LOHI_4, он нужен лишь для обеспечения консистентной структуры между платформами с разными порядками следования байтов). Важными частями этой вложенной конструкции являются type и type_flags, о них я расскажу ниже.</p>
+<p>Также здесь есть одна небольшая проблема. Value занимает 8 байт, и благодаря своей структуре добавление даже одного байта повлечёт за собой увеличение размера zval на 16 байт. Но ведь нам не нужно целых 8 байт для хранения типа. Поэтому в zval есть дополнительное объединение u2, которое по умолчанию не используется, но может применяться для хранения 4 байт данных. Разные компоненты объединения предназначены для разных видов использования этого дополнительного хранилища.</p>
+<p>В PHP 7 объединение <code>value</code>  несколько отличается от пятой версии:</p>
+<pre><code class="language-c">typedef union _zend_value {
+    zend_long         lval;
+    double            dval;
+    zend_refcounted  *counted;
+    zend_string      *str;
+    zend_array       *arr;
+    zend_object      *obj;
+    zend_resource    *res;
+    zend_reference   *ref;
+    zend_ast_ref     *ast;
+
+    // Эти пока можно игнорировать, они специальные
+    zval             *zv;
+    void             *ptr;
+    zend_class_entry *ce;
+    zend_function    *func;
+    struct {
+        ZEND_ENDIAN_LOHI(
+            uint32_t w1,
+            uint32_t w2)
+    } ww;
+} zend_value;
+</code></pre>
+<p>Обратите внимание, что <code>value</code>  теперь занимает 8 байт вместо 16. Оно хранит только целочисленные (<code>lval</code>) и числа с плавающей запятой (<code>dval</code>). Всё остальное — это указатель. Все типы указателей (за исключением специальных, отмеченных выше) используют подсчёт ссылок и содержат заголовок, определяемый zend_refcounted:</p>
+<pre><code class="language-c">struct _zend_refcounted {
+    uint32_t refcount;
+    union {
+        struct {
+            ZEND_ENDIAN_LOHI_3(
+                zend_uchar    type,
+                zend_uchar    flags,
+                uint16_t      gc_info)
+        } v;
+        uint32_t type_info;
+    } u;
+};
+</code></pre>
+<p>Я уже упоминал, что <code>zval</code> больше не нужно отдельно размещать в куче. Но их же нужно где-то хранить. Они всё ещё являются частью структур, размещаемых в кучах. Например, хэш-таблица будет содержать собственный <code>zval</code> вместо указателя на отдельный <code>zval</code>. Скомпилированная таблица переменных функции и таблица свойств объекта будут представлять собой <code>zval</code>-массивы. В качестве таких <code>zval</code> теперь обычно хранятся те, у которых косвенность на один уровень ниже. То есть <code>zval</code>’ом теперь называется то, что раньше было <code>zval</code>*.</p>
+<p>Когда-то нужно было копировать <code>zval</code>* и инкрементить его refcount, чтобы использовать <code>zval</code> в новом месте. Теперь для этого достаточно скопировать содержимое <code>zval</code> (игнорируя <code>u2</code>) и, <strong>может быть</strong>, инкрементить refcount того значения, на которое он указывает, если значение использует подсчёт ссылок.</p>
+<p>Откуда PHP знает, что используется подсчёт? Это нельзя определить по одному лишь типу, поскольку некоторые типы не используют refcount — например, строки и массивы. Для этого используется один бит компонента <code>type_info</code>.</p>
+<h2 id="Внутренние-типы"><a class="header" href="#Внутренние-типы">Внутренние типы</a></h2>
+<p>Какие типы поддерживаются в PHP 7:</p>
+<pre><code class="language-c">// обычные типы данных
+#define IS_UNDEF                    0
+#define IS_NULL                     1
+#define IS_FALSE                    2
+#define IS_TRUE                     3
+#define IS_LONG                     4
+#define IS_DOUBLE                   5
+#define IS_STRING                   6
+#define IS_ARRAY                    7
+#define IS_OBJECT                   8
+#define IS_RESOURCE                 9
+#define IS_REFERENCE                10
+
+// константные выражения
+#define IS_CONSTANT                 11
+#define IS_CONSTANT_AST             12
+
+// внутренние типы
+#define IS_INDIRECT                 15
+#define IS_PTR                      17
+</code></pre>
+<p>В чём отличия от PHP 5:</p>
+<ul>
+<li>Тип <code>IS_UNDEF</code> используется вместо указателя на <strong>zval</strong> <code>NULL</code> (не путайте с <code>IS_NULL zval</code>). Например, в приведённых выше примерах переменным назначается тип <code>IS_UNDEF</code>.</li>
+<li>Тип <code>IS_BOOL</code> разделён на <code>IS_FALSE</code> и <code>IS_TRUE</code>. Поскольку такое булево значение теперь встроено в тип, это позволяет оптимизировать ряд проверок на основе типа. Данное изменение незаметно для пользователей, которые по-прежнему оперируют единственным «булевым» типом.</li>
+<li><strong>PHP</strong>-ссылки больше не используют в <strong>zval</strong> флаг <code>is_ref</code>. Вместо него введён новый тип <code>IS_REFERENCE</code>. Ниже я расскажу, как это работает.</li>
+<li><code>IS_INDIRECT</code> и <code>IS_PTR</code> являются специальными внутренними типами.</li>
+</ul>
+<p>Тип  <code>IS_LONG</code>  вместо обычного <code>long</code> из языка С теперь использует значение <code>zend_long</code>. Причина в том, что в 64-битных Windows <code>long</code> имеет разрядность только 32 бита. Поэтому PHP 5 больше не использует в Windows в обязательном порядке 32-битные числа. А в PHP 7 вы можете использовать 64-битные значения, если система также 64-битная. </p>
+<h2 id="Массивы"><a class="header" href="#Массивы">Массивы</a></h2>
+<p>На уровне PHP, массив — это упорядоченный список скрещенный с мэпом. Грубо говоря, PHP смешивает эти два понятия, в итоге получается, с одной стороны, очень гибкая структура данных, с другой стороны, далеко не самая оптимальная.  На самом деле, для реализации массивов в PHP, используется вполне себе стандартная структура данных <a href="http://ru.wikipedia.org/wiki/Hash_table">Hash Table</a>. Hash Table хранит в себе указатель на самое первое и последнее значения (нужно для упорядочивания массивов), указатель на текущее значение (используется для итерации по массиву, это то, что возвращает <code>current()</code>), кол-во элементов, представленных в массиве, массив указателей на Bucket-ы (о них далее), и еще кое-что.</p>
+<p>В Hash Table есть две главные сущности, первая — это собственно сам Hash Table, и вторая — это Bucket(ведол). В ведрах хранятся сами значения, то есть на каждое значение — свое ведро. Но помимо этого в ведре хранится оригинал ключа, указатели на следующее и предыдущее ведра (они нужны для упорядочивания массива, ведь в PHP ключи могут идти в любом порядке, в каком вы захотите), и, опять же, еще кое-что.</p>
+<p>Таким образом, когда вы добавляете новый элемент в массив, если такого ключа там еще нет, то под него создается новое ведро и добавляется в Hash Table. Как было сказано выше, у HT есть некий массив указателей на ведра, при этом ведра доступны в этом массиве по некоему индексу, а этот индекс можно вычислить зная ключ ведра. </p>
+<pre><code class="language-c">struct _zend_array {
+    zend_refcounted_h gc;
+    union {
+        struct {
+            ZEND_ENDIAN_LOHI_4(
+                zend_uchar    flags,
+                zend_uchar    nApplyCount,
+                zend_uchar    nIteratorsCount,
+                zend_uchar    reserve)
+        } v;
+        uint32_t flags;           /* доступно 32 флага */
+    } u;
+    uint32_t     nTableMask;       /* маска — nTableSize */
+    Bucket      *arData;           /* полезное хранилище данных */
+    uint32_t     nNumUsed;         /* следующая доступная ячейка в arData */
+    uint32_t     nNumOfElements;   /* общее количество занятых элементов в arData */
+    uint32_t     nTableSize;       /* размер таблицы, всегда равен двойке в степени */
+    uint32_t     nInternalPointer; /* используется для итерации */
+    zend_long    nNextFreeElement; /* следующий доступный целочисленный ключ */
+    dtor_func_t  pDestructor;      /* деструктор данных */
+};
+</code></pre>
+<p>Самое интересное поле данных — arData, это своеобразный указатель на область памяти цепочки Bucket. Сама Bucket представляет собой одну ячейку в массиве:</p>
+<pre><code class="language-c">typedef struct _Bucket {
+    zval              val; /* значение */
+    zend_ulong        h;   /* хэш (или числовой индекс)   */
+    zend_string      *key; /* строковый ключ или NULL для числовых значений */
+} Bucket;
+</code></pre>
+<p>Как вы могли заметить, в структуре Bucket будет храниться zval. Обратите внимание, что здесь используется не указатель на zval, а именно сама структура. Так сделано потому, что в РНР 7 zval’ы больше не размещаются в куче (в отличие от PHP 5), но при этом в РНР 7 может размещаться целевое значение, хранящееся в zval в виде указателя (например, строка РНР).</p>
+<p>Стоит отметить, что в PHP почти все посторено на одной этой структуре HashTable: все переменные, лежащие в каком-либо scope-е, на самом деле лежат в HT, все методы классов, все поля классов, даже сами дефинишины классов лежат в HT, это на самом деле очень гибкая структура. Помимо прочего, HT обеспечивает практически одинаковую скорость выборки/вставки/удаления и сложность всех троих является O(1), <em>но</em> с оговоркой на небольшой оверхед при коллизиях.</p>
+<p>Свойства хэш таблицы:</p>
+<ul>
+<li>Ключ может быть строкой или целочисленным. В первом случае используется структура <code>zend_string</code>, во втором — <code>zend_ulong</code>.</li>
+<li>Хэш-таблица всегда должна помнить порядок добавления её элементов.</li>
+<li>Размер хэш-таблицы меняется автоматически. В зависимости от обстоятельств она самостоятельно уменьшается или увеличивается.</li>
+<li>С точки зрения внутренней реализации размер таблицы всегда равен двойке в степени. Это делается для улучшения производительности и выравнивания размещения данных в памяти.</li>
+<li>Все значения в хэш-таблице хранятся в структуре <code>zval</code>, больше нигде. <code>Zval</code>’ы могут содержать данные любых типов.</li>
+</ul>
+<h3 id="Разрешение-коллизий"><a class="header" href="#Разрешение-коллизий">Разрешение коллизий</a></h3>
+<p>Теперь разберёмся, как разрешаются коллизии. Как вы помните, в хэш-таблице несколько ключей при хэшировании и сжатии могут соответствовать одному и тому же индексу преобразования. Так что, получив индекс преобразования, мы с его помощью извлекаем данные обратно из <code>arData</code> и сравниваем хэши и ключи, проверяя, то ли это, что нужно. Если данные неправильные, мы проходим по связному списку с помощью поля <code>zval.u2.next</code>, в котором отражается следующая ячейка для внесения данных.</p>
+<p>Обратите внимание, что связный список не рассеян по памяти, как традиционные связные списки. Вместо того чтобы ходить по нескольким размещённым в памяти указателям, полученным от кучи — и наверняка разбросанным по адресному пространству, — мы считываем из памяти полный вектор  <code>arData</code> <strong>И это одна из главных причин увеличения производительности хэш-таблиц в РНР 7, а также всего языка.</strong></p>
+<p>В РНР 7 у хэш-таблиц очень высокая локальность данных. В большинстве случаев доступ происходит за 1 наносекунду, поскольку данные обычно находятся в процессорном кэше первого уровня.</p>
+<h2 id="Строки"><a class="header" href="#Строки">Строки</a></h2>
+<p>В PHP 7 строки представляются с помощью типа  <code>zend_string</code>:</p>
+<pre><code class="language-c">struct _zend_string {
+    zend_refcounted   gc;
+    zend_ulong        h;        /* hash value */
+    size_t            len;
+    char              val[1];
+};
+</code></pre>
+<p>Помимо содержащегося в заголовке <code>refcounted</code>, здесь также используется кэш хэша h, длина <code>len</code> и значение <code>val</code>. Кэш хэша используется для того, чтобы не пересчитывать хэш строки при каждом обращении к <code>HashTable</code>. При первом использовании он инициализируется как ненулевой хэш. Если вы не слишком хорошо знакомы с разнообразными хаками в языке С, то определение  <code>val</code> может показаться странным: он объявляется как массив символов с одним-единственным элементом. Но мы же наверняка захотим хранить строки длиной больше, чем один символ. Здесь используется метод под названием «структурный хак» (struct hack): массив хоть и объявляется с одним элементом, но при создании <code>zend_string</code> мы определим возможность хранения более длинной строки. Кроме того, можно будет получить доступ к более длинным строкам с помощью <code>val</code>.</p>
+<p>Новая реализация строковой переменной имеет ряд преимуществ перед обычными строками в языке С. Во-первых, в неё теперь интегрирована длина, которая больше не «болтается» где-то поблизости. Во-вторых, в заголовке используется подсчёт ссылок, поэтому стало возможным использовать строки в разных местах без применения <code>zval</code>. Это особенно важно для расшаривания ключей хэш-таблицы.</p>
+<p>Но есть и большая ложка дёгтя. Получить из <code>zend_string</code> строку языка С легко (с помощью str-&gt;val), а вот из С-строки напрямую получить <code>zend_string</code>  нельзя. Для этого придётся скопировать значение строки в заново созданный zend_string. Особенно досадно, когда дело доходит до работы с текстовыми строками (literal string), то есть постоянными строками (constant string), встречающимися в исходном С-коде.</p>
+<p>Изолированные (interned) строки — это такие строки, которые не уничтожаются до завершения запроса и потому не нуждаются в использовании счётчика ссылок. Они дедуплицированы, поэтому при создании новой изолированной строки движок сначала проверяет, нет ли другой с таким же значением. Вообще все строки, имеющиеся в PHP-коде (включая переменные, названия функций и т.д.), обычно являются изолированными. Неизменяемые строки — это изолированные строки, созданные до начала запроса. Они не уничтожаются по окончании запроса, в отличие от изолированных.</p>
+<p>Если используется OPCache, то изолированные строки будут храниться в общей памяти (SHM) и использоваться всеми PHP-процессами. В этом случае неизменяемые строки становятся бесполезными, поскольку изолированные и так не будут уничтожены.</p>
+<h2 id="Классы-и-объекты"><a class="header" href="#Классы-и-объекты">Классы и объекты</a></h2>
+<p>Классы:</p>
+<ul>
+<li>Классы занимают много памяти.</li>
+<li>Внутренние классы гораздо лучше оптимизированы по сравнению с пользовательскими, потому что последние должны быть созданы и уничтожены при каждом запросе. Внутренние классы существуют постоянно.</li>
+<li>Классы, интерфейсы и трейты используют одни и те же структуру и процедуры, различия очень малы.</li>
+<li>Во время наследования или объявления процесс привязки сильно и долго нагружает процессор, но памяти задействуется немного, поскольку многие вещи не дуплицируются, а используются совместно. Кроме того, лучше запускать привязку классов во время компиляции.</li>
+</ul>
+<p>Объекты</p>
+<p>PHP7 отказались от двойного подсчёта ссылок, уменьшили потребление памяти и количество косвенной адресации. Так выглядит новая структура zend_object:</p>
+<pre><code class="language-c">struct _zend_object {
+    zend_refcounted   gc;
+    uint32_t          handle;
+    zend_class_entry *ce;
+    const zend_object_handlers *handlers;
+    HashTable        *properties;
+    zval              properties_table[1];
+};
+</code></pre>
+<p>Эта структура — почти всё, что осталось от объекта. zend_object_value, заменённый прямым указателем на объект и хранилище объектов, хоть и не исключён совсем, но на глаза попадается куда реже.</p>
+<h2 id="Улучшение-производительности-php7"><a class="header" href="#Улучшение-производительности-php7">Улучшение производительности PHP7</a></h2>
+<ul>
+<li>
+<p><strong>Упакованные массивы</strong> — Они потребляют меньше памяти и во многих случаях работают гораздо быстрее традиционных массивов. Упакованные массивы должны удовлетворять критериям:</p>
+<ul>
+<li>Ключи — только целочисленные значения;</li>
+<li>Ключи вставляются в массив только по возрастанию.</li>
+</ul>
+<p>Не забывайте: Если вам нужен список, то не используйте строки в ключах (это не даст применять оптимизацию упакованных массивов); Если ключи в списке только целочисленные, постарайтесь распределить их по возрастанию (в противном случае оптимизация тоже не сработает).</p>
+</li>
+<li>
+<p><strong>Неизменяемые массивы</strong> - они являются частью расширения OPCache. Неизменяемые массивы — это массивы, заполненные неизменяемыми типами (нет переменных, нет вызовов функций, всё решается во время компиляции), которые не дуплицируются в памяти при переносе из одного места в другое в ходе runtime’а PHP. Также эти типы никогда не уничтожаются в памяти (от одного запроса к другому).</p>
+</li>
+<li>
+<p>Оптимизация encapsed-строк</p>
+</li>
+<li>
+<p>Целочисленные и значения с плавающей запятой в PHP 7 бесплатны</p>
+<p>В PHP 7 совершенно иной способ размещения переменных в памяти. Вместо кучи они теперь хранятся в пулах стековой памяти. У этого есть побочный эффект: вы можете бесплатно повторно использовать контейнеры переменных (variable containers), память не выделяется. В PHP 5 такое невозможно, там для каждого создания/присвоения переменной нужно выделить немного памяти (что ухудшает производительность). В седьмой версии использование целочисленных и значений с плавающей запятой совершенно бесплатно: память нужного размера уже выделена для самих контейнеров переменных. </p>
+</li>
+<li>
+<p>Reference mismatch</p>
+</li>
+</ul>
+<p><em>Дополнительно:</em></p>
+<ul>
+<li>
+<p>http://www.phpinternalsbook.com/</p>
+</li>
+<li>
+<p>https://romka.gitbooks.io/php-internals-book-ru/</p>
+</li>
+<li>
+<p><a href="https://habr.com/post/162713/">Как устроены переменные в PHP</a></p>
+</li>
+<li>
+<p><a href="https://habr.com/post/162685/">Как устроены массивы в PHP</a></p>
+</li>
+<li>
+<p><a href="https://habr.com/company/mailru/blog/257999/">Внутреннее представление значений в PHP7 (часть 1)</a></p>
+</li>
+<li>
+<p><a href="https://habr.com/company/mailru/blog/261131/">Внутреннее представление значений в PHP 7 (часть 2)</a></p>
+</li>
+<li>
+<p><a href="https://habr.com/company/mailru/blog/308240/">Массивы в РНР 7: хэш-таблицы</a></p>
+</li>
+<li>
+<p><a href="https://habr.com/company/mailru/blog/255237/">Подробно об объектах и классах в PHP</a></p>
+</li>
+<li>
+<p><a href="https://habr.com/company/mailru/blog/275497/">Объекты в PHP 7</a></p>
+</li>
+<li>
+<p><a href="https://habr.com/company/mailru/blog/318008/">Улучшение производительности PHP 7</a></p>
+</li>
+<li>
+<p><a href="https://habr.com/company/mailru/blog/310054/">Обзор расширения OPCache для PHP</a></p>
+</li>
+<li>
+<p><a href="https://habr.com/company/mailru/blog/311068/">Трамплин вызова магических функций в PHP 7</a></p>
+</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../php/innovations.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../php/frameworks/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../php/innovations.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../php/frameworks/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

@@ -1,0 +1,452 @@
+<!DOCTYPE HTML>
+<html lang="ru" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>HTTP - Backend interview</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Книжка для подготовки к собеседованию на должность backend developer">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Введение</a></li><li class="chapter-item expanded "><a href="../algostruct/index.html"><strong aria-hidden="true">1.</strong> Алгоритмы и Структуры Данных</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../algostruct/structBasics.html"><strong aria-hidden="true">1.1.</strong> Базовые структуры</a></li><li class="chapter-item expanded "><a href="../algostruct/array.html"><strong aria-hidden="true">1.2.</strong> Массив</a></li><li class="chapter-item expanded "><a href="../algostruct/hashTable.html"><strong aria-hidden="true">1.3.</strong> Хэш-Таблица</a></li><li class="chapter-item expanded "><a href="../algostruct/tree.html"><strong aria-hidden="true">1.4.</strong> Дерево</a></li><li class="chapter-item expanded "><a href="../algostruct/graph.html"><strong aria-hidden="true">1.5.</strong> Граф</a></li><li class="chapter-item expanded "><a href="../algostruct/probability.html"><strong aria-hidden="true">1.6.</strong> Вероятностные</a></li><li class="chapter-item expanded "><a href="../algostruct/crypto.html"><strong aria-hidden="true">1.7.</strong> Криптография</a></li><li class="chapter-item expanded "><a href="../algostruct/unsorted.html"><strong aria-hidden="true">1.8.</strong> Разное</a></li></ol></li><li class="chapter-item expanded "><a href="../db/index.html"><strong aria-hidden="true">2.</strong> Базы Данных</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db/dBTheory/index.html"><strong aria-hidden="true">2.1.</strong> Теория Баз Данных</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db/dBTheory/transactions.html"><strong aria-hidden="true">2.1.1.</strong> Транзакции</a></li><li class="chapter-item expanded "><a href="../db/dBTheory/normalForms.html"><strong aria-hidden="true">2.1.2.</strong> Нормальные формы</a></li><li class="chapter-item expanded "><a href="../db/dBTheory/distrubedDb/index.html"><strong aria-hidden="true">2.1.3.</strong> Распределенные БД</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db/dBTheory/distrubedDb/replication.html"><strong aria-hidden="true">2.1.3.1.</strong> Репликация</a></li><li class="chapter-item expanded "><a href="../db/dBTheory/distrubedDb/sharding.html"><strong aria-hidden="true">2.1.3.2.</strong> Шардинг</a></li><li class="chapter-item expanded "><a href="../db/dBTheory/distrubedDb/unsorted.html"><strong aria-hidden="true">2.1.3.3.</strong> Разное</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../db/specific/index.html"><strong aria-hidden="true">2.2.</strong> Конкретные БД</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db/specific/mysql/index.html"><strong aria-hidden="true">2.2.1.</strong> MySql</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db/specific/mysql/architecture.html"><strong aria-hidden="true">2.2.1.1.</strong> Архитектура MySql</a></li><li class="chapter-item expanded "><a href="../db/specific/mysql/concurency.html"><strong aria-hidden="true">2.2.1.2.</strong> Конкурентный доступ</a></li><li class="chapter-item expanded "><a href="../db/specific/mysql/indexes.html"><strong aria-hidden="true">2.2.1.3.</strong> Индексы</a></li><li class="chapter-item expanded "><a href="../db/specific/mysql/sql.html"><strong aria-hidden="true">2.2.1.4.</strong> Основы SQL</a></li><li class="chapter-item expanded "><a href="../db/specific/mysql/explain.html"><strong aria-hidden="true">2.2.1.5.</strong> Explain</a></li><li class="chapter-item expanded "><a href="../db/specific/mysql/unsorted.html"><strong aria-hidden="true">2.2.1.6.</strong> Разное</a></li></ol></li><li class="chapter-item expanded "><a href="../db/specific/postgreSql/index.html"><strong aria-hidden="true">2.2.2.</strong> PostgreSql</a></li><li class="chapter-item expanded "><a href="../db/specific/noSql/index.html"><strong aria-hidden="true">2.2.3.</strong> NoSql</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db/specific/noSql/redis.html"><strong aria-hidden="true">2.2.3.1.</strong> Redis</a></li><li class="chapter-item expanded "><a href="../db/specific/noSql/memcached.html"><strong aria-hidden="true">2.2.3.2.</strong> Memcaced</a></li><li class="chapter-item expanded "><a href="../db/specific/noSql/tarantool.html"><strong aria-hidden="true">2.2.3.3.</strong> Tarantool</a></li><li class="chapter-item expanded "><a href="../db/specific/noSql/mongo.html"><strong aria-hidden="true">2.2.3.4.</strong> Mongo</a></li></ol></li><li class="chapter-item expanded "><a href="../db/specific/clickhouse.html"><strong aria-hidden="true">2.2.4.</strong> ClickHouse</a></li><li class="chapter-item expanded "><a href="../db/specific/messages/index.html"><strong aria-hidden="true">2.2.5.</strong> Брокеры сообщений</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db/specific/messages/rabbit.html"><strong aria-hidden="true">2.2.5.1.</strong> Rabbit</a></li><li class="chapter-item expanded "><a href="../db/specific/messages/kafka.html"><strong aria-hidden="true">2.2.5.2.</strong> Kafka</a></li><li class="chapter-item expanded "><a href="../db/specific/messages/nats.html"><strong aria-hidden="true">2.2.5.3.</strong> Nats</a></li></ol></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../architecture/index.html"><strong aria-hidden="true">3.</strong> Архитектура</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../architecture/oopBase.html"><strong aria-hidden="true">3.1.</strong> Основы ООП</a></li><li class="chapter-item expanded "><a href="../architecture/gof.html"><strong aria-hidden="true">3.2.</strong> Паттерны GoF(Банда 4)</a></li><li class="chapter-item expanded "><a href="../architecture/principles.html"><strong aria-hidden="true">3.3.</strong> Принципы хорошей архитектуры</a></li><li class="chapter-item expanded "><a href="../architecture/architecturesPatterns.html"><strong aria-hidden="true">3.4.</strong> Архитектурные паттерны</a></li><li class="chapter-item expanded "><a href="../architecture/ddd.html"><strong aria-hidden="true">3.5.</strong> DDD</a></li><li class="chapter-item expanded "><a href="../architecture/microserices/index.html"><strong aria-hidden="true">3.6.</strong> Микросервисы</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../architecture/microserices/integration.html"><strong aria-hidden="true">3.6.1.</strong> Паттерны и протоколы интеграции</a></li><li class="chapter-item expanded "><a href="../architecture/microserices/monolithSeparation.html"><strong aria-hidden="true">3.6.2.</strong> Способы распиливания монолита</a></li></ol></li><li class="chapter-item expanded "><a href="../architecture/uncategorized.html"><strong aria-hidden="true">3.7.</strong> Разное</a></li></ol></li><li class="chapter-item expanded "><a href="../php/index.html"><strong aria-hidden="true">4.</strong> PHP</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../php/innovations.html"><strong aria-hidden="true">4.1.</strong> Фичи новых версий</a></li><li class="chapter-item expanded "><a href="../php/internals.html"><strong aria-hidden="true">4.2.</strong> PHP Internals</a></li><li class="chapter-item expanded "><a href="../php/frameworks/index.html"><strong aria-hidden="true">4.3.</strong> Фреймворки</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../php/frameworks/laravel.html"><strong aria-hidden="true">4.3.1.</strong> Laravel</a></li><li class="chapter-item expanded "><a href="../php/frameworks/symfony.html"><strong aria-hidden="true">4.3.2.</strong> Symfony</a></li></ol></li><li class="chapter-item expanded "><a href="../php/uncategorized.html"><strong aria-hidden="true">4.4.</strong> Разное</a></li></ol></li><li class="chapter-item expanded "><a href="../goLang/index.html"><strong aria-hidden="true">5.</strong> GoLang</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../goLang/types.html"><strong aria-hidden="true">5.1.</strong> Типы данных</a></li><li class="chapter-item expanded "><a href="../goLang/concurrency/index.html"><strong aria-hidden="true">5.2.</strong> Сoncurrency</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../goLang/concurrency/chanel.html"><strong aria-hidden="true">5.2.1.</strong> Каналы</a></li><li class="chapter-item expanded "><a href="../goLang/concurrency/gouritine.html"><strong aria-hidden="true">5.2.2.</strong> Горутины</a></li><li class="chapter-item expanded "><a href="../goLang/concurrency/sync.html"><strong aria-hidden="true">5.2.3.</strong> Sync</a></li><li class="chapter-item expanded "><a href="../goLang/concurrency/patterns.html"><strong aria-hidden="true">5.2.4.</strong> Паттерны</a></li></ol></li><li class="chapter-item expanded "><a href="../goLang/scheduler.html"><strong aria-hidden="true">5.3.</strong> Планировщик</a></li><li class="chapter-item expanded "><a href="../goLang/memory.html"><strong aria-hidden="true">5.4.</strong> Управление памятью</a></li><li class="chapter-item expanded "><a href="../goLang/ecosystem.html"><strong aria-hidden="true">5.5.</strong> Экосистема</a></li></ol></li><li class="chapter-item expanded "><a href="../javascript.html"><strong aria-hidden="true">6.</strong> JavaScript</a></li><li class="chapter-item expanded "><a href="../ib.html"><strong aria-hidden="true">7.</strong> Информационная безопасность</a></li><li class="chapter-item expanded "><a href="../git.html"><strong aria-hidden="true">8.</strong> Git</a></li><li class="chapter-item expanded "><a href="../network/index.html"><strong aria-hidden="true">9.</strong> Основы сетей</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../network/serverIteractions.html"><strong aria-hidden="true">9.1.</strong> Взаимодействие с веб-сервером</a></li><li class="chapter-item expanded "><a href="../network/http.html" class="active"><strong aria-hidden="true">9.2.</strong> HTTP</a></li><li class="chapter-item expanded "><a href="../network/tls.html"><strong aria-hidden="true">9.3.</strong> TLS</a></li><li class="chapter-item expanded "><a href="../network/dns.html"><strong aria-hidden="true">9.4.</strong> DNS</a></li><li class="chapter-item expanded "><a href="../network/tcp_ip.html"><strong aria-hidden="true">9.5.</strong> TCP/IP</a></li><li class="chapter-item expanded "><a href="../network/networkModels.html"><strong aria-hidden="true">9.6.</strong> Сетевые модели</a></li><li class="chapter-item expanded "><a href="../network/realTime.html"><strong aria-hidden="true">9.7.</strong> realTime взаимодействие с сервером</a></li><li class="chapter-item expanded "><a href="../network/whatHappenWhen.html"><strong aria-hidden="true">9.8.</strong> Что происходит при нажатии на g</a></li></ol></li><li class="chapter-item expanded "><a href="../os.html"><strong aria-hidden="true">10.</strong> Операционые системы</a></li><li class="chapter-item expanded "><a href="../devops/index.html"><strong aria-hidden="true">11.</strong> Системное администрирование</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../devops/linux.html"><strong aria-hidden="true">11.1.</strong> Linux</a></li><li class="chapter-item expanded "><a href="../devops/virtualization/index.html"><strong aria-hidden="true">11.2.</strong> Основы виртуализации</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../devops/virtualization/docker.html"><strong aria-hidden="true">11.2.1.</strong> Docker</a></li><li class="chapter-item expanded "><a href="../devops/virtualization/kubernetes.html"><strong aria-hidden="true">11.2.2.</strong> Kubernetes</a></li></ol></li><li class="chapter-item expanded "><a href="../devops/deployment.html"><strong aria-hidden="true">11.3.</strong> Deployment</a></li><li class="chapter-item expanded "><a href="../devops/monitoring.html"><strong aria-hidden="true">11.4.</strong> Мониторинг</a></li></ol></li><li class="chapter-item expanded "><a href="../test.html"><strong aria-hidden="true">12.</strong> Тестирование</a></li><li class="chapter-item expanded "><a href="../unsorted/index.html"><strong aria-hidden="true">13.</strong> Разное</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../unsorted/bits.html"><strong aria-hidden="true">13.1.</strong> Побитовые операции</a></li><li class="chapter-item expanded "><a href="../unsorted/types.html"><strong aria-hidden="true">13.2.</strong> Типизация</a></li><li class="chapter-item expanded "><a href="../unsorted/unicode.html"><strong aria-hidden="true">13.3.</strong> Юникод</a></li></ol></li><li class="chapter-item expanded "><a href="../devmethods.html"><strong aria-hidden="true">14.</strong> Методологии разработки</a></li><li class="chapter-item expanded "><a href="../checkList.html"><strong aria-hidden="true">15.</strong> ЧекЛист</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Backend interview</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/arturpanteleev/phpInterview" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h2 id="http"><a class="header" href="#http">HTTP</a></h2>
+<p><strong>HTTP</strong>(HyperText Transfer Protocol) — протокол прикладного уровня; аналогичными ему являются FTP и SMTP. Обмен сообщениями идёт по схеме «запрос-ответ». Для идентификации ресурсов HTTP использует глобальные URI. В отличие от многих других протоколов, HTTP не сохраняет своего состояния. Это означает отсутствие сохранения промежуточного состояния между парами «запрос-ответ». Компоненты, использующие HTTP, могут самостоятельно осуществлять сохранение информации о состоянии, связанной с последними запросами и ответами (например, «куки» на стороне клиента, «сессии» на стороне сервера). </p>
+<p>API многих программных продуктов также подразумевает использование <strong>HTTP</strong> для передачи данных — сами данные при этом могут иметь любой формат, например, <em>XML</em> или <em>JSON</em>.</p>
+<h2 id="Структура-http-запроса"><a class="header" href="#Структура-http-запроса">Структура HTTP запроса</a></h2>
+<p>HTTP запрос состоит из трех основных частей, которые идут в нем именно в том порядке, который указан ниже. Между заголовками и телом сообщения находится пустая строка (в качестве разделителя), она представляет собой символ перевода строки.</p>
+<ul>
+<li>
+<p><strong>Строка запроса</strong> – указывает метод передачи, URI к которому нужно обратиться и версию протокола HTTP, пример: <code>GET / HTTP/1.1</code></p>
+</li>
+<li>
+<p><strong>Заголовки</strong> – описывают тело сообщений, передают различные параметры и др. сведения и информацию.</p>
+</li>
+<li>
+<p>Пустая строка (разделитель)</p>
+</li>
+<li>
+<p><strong>Тело сообщения</strong> — это сами данные, которые передаются в запросе.  Тело сообщения – это необязательный параметр и может отсутствовать. </p>
+</li>
+</ul>
+<pre><code class="language-http">POST /cgi-bin/process.cgi HTTP/1.1
+User-Agent: Mozilla/4.0 (compatible; MSIE5.01; Windows NT)
+Host: www.example.com
+Content-Type: application/x-www-form-urlencoded
+Content-Length: length
+Accept-Language: ru-ru
+Accept-Encoding: gzip, deflate
+Connection: Keep-Alive
+
+licenseID=string&amp;content=string&amp;/paramsXML=string
+</code></pre>
+<h2 id="Структура-http-ответа"><a class="header" href="#Структура-http-ответа">Структура HTTP ответа</a></h2>
+<p><code>HTTP/Версия Код состояния Пояснение</code></p>
+<p><strong>Код состояния</strong> (<em>Status Code</em>) — три цифры (первая из которых указывает на класс состояния), которые определяют результат совершения запроса. Например, в случае, если был использован метод GET, и сервер предоставляет ресурс с указанным идентификатором, то такое состояние задаётся с помощью кода 200. Если сервер сообщает о том, что такого ресурса не существует — 404. Если сервер сообщает о том, что не может предоставить доступ к данному ресурсу по причине отсутствия необходимых привилегий у клиента, то используется код 403. Спецификация HTTP 1.1 определяет 40 различных кодов HTTP, а также допускается расширение протокола и использование дополнительных кодов состояний.</p>
+<p><strong>Пояснение</strong> к коду состояния (<em>Reason Phrase</em>) — текстовое (но не включающее символы <em>CR</em> и <em>LF</em>) пояснение к коду ответа, предназначено для упрощения чтения ответа человеком. Пояснение может не учитываться клиентским программным обеспечением, а также может отличаться от стандартного в некоторых реализациях серверного ПО.</p>
+<p>После стартовой строки следуют заголовки, а также тело ответа. Например:</p>
+<pre><code class="language-http">HTTP/1.1 200 OK
+Server: nginx/1.2.1
+Date: Sat, 08 Mar 2014 22:53:46 GMT
+Content-Type: application/octet-stream
+Content-Length: 7
+Last-Modified: Sat, 08 Mar 2014 22:53:30 GMT
+Connection: keep-alive
+Accept-Ranges: bytes
+
+Wisdom
+</code></pre>
+<p>Тело ответа следует через два переноса строки после последнего заголовка. Для определения окончания тела ответа используется значение заголовка <strong>Content-Length</strong> (в данном случае ответ содержит 7 восьмеричных байтов: слово «Wisdom» и символ переноса строки).</p>
+<h2 id="http-методы"><a class="header" href="#http-методы">HTTP методы</a></h2>
+<p><strong>Http Метод</strong> представляет собой последовательность из любых символов, кроме управляющих и разделителей, и определяет операцию, которую нужно осуществить с указанным ресурсом. </p>
+<h4 id="options"><a class="header" href="#options">OPTIONS</a></h4>
+<p>Используется для определения возможностей веб-сервера или параметров соединения для конкретного ресурса. В ответ серверу следует включить заголовок <code>Allow</code> со списком поддерживаемых методов. Также в заголовке ответа может включаться информация о поддерживаемых расширениях.</p>
+<p>Предполагается, что запрос клиента может содержать тело сообщения для указания интересующих его сведений. Формат тела и порядок работы с ним в настоящий момент не определён; сервер пока должен его игнорировать. Аналогичная ситуация и с телом в ответе сервера.</p>
+<p>Для того чтобы узнать возможности всего сервера, клиент должен указать в URI звёздочку — «<code>*</code>». Запросы «<code>OPTIONS * HTTP/1.1</code>» могут также применяться для проверки работоспособности сервера (аналогично пингованию) и тестирования на предмет поддержки сервером протокола HTTP версии 1.1.</p>
+<p>Результат выполнения этого метода не кэшируется.</p>
+<h4 id="get"><a class="header" href="#get">GET</a></h4>
+<p>Используется для запроса содержимого указанного ресурса. С помощью метода <code>GET</code> можно также начать какой-либо процесс. В этом случае в тело ответного сообщения следует включить информацию о ходе выполнения процесса.</p>
+<p>Клиент может передавать параметры выполнения запроса в URI целевого ресурса после символа «<code>?</code>»:
+<code>GET /path/resource?param1=value1&amp;param2=value2 HTTP/1.1</code></p>
+<p>Согласно стандарту HTTP, запросы типа <code>GET</code> считаются идемпотентными</p>
+<p>Кроме обычного метода <code>GET</code>, различают ещё</p>
+<ul>
+<li><a href="https://ru.wikipedia.org/wiki/HTTP#%D0%A3%D1%81%D0%BB%D0%BE%D0%B2%D0%BD%D1%8B%D0%B5_GET">Условный <code>GET</code></a> — содержит заголовки <code>If-Modified-Since</code>, <code>If-Match</code>, <code>If-Range</code> и подобные;</li>
+<li><a href="https://ru.wikipedia.org/wiki/HTTP#%D0%A7%D0%B0%D1%81%D1%82%D0%B8%D1%87%D0%BD%D1%8B%D0%B5_GET">Частичный <code>GET</code></a> — содержит в запросе <code>Range</code>.</li>
+</ul>
+<p>Порядок выполнения подобных запросов определён стандартами отдельно.</p>
+<h4 id="head"><a class="header" href="#head">HEAD</a></h4>
+<p>Аналогичен методу <code>GET</code>, за исключением того, что в ответе сервера отсутствует тело. Запрос <code>HEAD</code> обычно применяется для извлечения <a href="https://ru.wikipedia.org/wiki/%D0%9C%D0%B5%D1%82%D0%B0%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D0%B5">метаданных</a>, проверки наличия ресурса (<a href="https://ru.wikipedia.org/wiki/%D0%92%D0%B0%D0%BB%D0%B8%D0%B4%D0%B0%D1%86%D0%B8%D1%8F">валидация</a> URL) и чтобы узнать, не изменился ли он с момента последнего обращения.</p>
+<p>Заголовки ответа могут кэшироваться. При несовпадении <a href="https://ru.wikipedia.org/wiki/%D0%9C%D0%B5%D1%82%D0%B0%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D0%B5">метаданных</a> ресурса с соответствующей информацией в кэше — копия ресурса помечается как устаревшая.</p>
+<h4 id="post"><a class="header" href="#post">POST</a></h4>
+<p>Применяется для передачи пользовательских данных заданному ресурсу. Например, в <a href="https://ru.wikipedia.org/wiki/%D0%91%D0%BB%D0%BE%D0%B3">блогах</a> посетители обычно могут вводить свои комментарии к записям в HTML-форму, после чего они передаются серверу методом <a href="https://ru.wikipedia.org/wiki/POST_(HTTP)">POST</a> и он помещает их на страницу. При этом передаваемые данные (в примере с блогами — текст комментария) включаются в тело запроса. Аналогично с помощью метода <code>POST</code> обычно загружаются файлы на сервер.</p>
+<p>В отличие от метода <code>GET</code>, метод <code>POST</code> не считается идемпотентным[<a href="https://ru.wikipedia.org/wiki/HTTP#cite_note-http-spec-methods-4">4]</a>, то есть многократное повторение одних и тех же запросов <code>POST</code> может возвращать разные результаты (например, после каждой отправки комментария будет появляться очередная копия этого комментария).</p>
+<p>При результате выполнения <code>200</code> (Ok) в тело ответа следует включить сообщение об итоге выполнения запроса. Если был создан ресурс, то серверу следует вернуть ответ <code>201</code> (Created) с указанием <a href="https://ru.wikipedia.org/wiki/URI">URI</a> нового ресурса в заголовке <code>Location</code>.</p>
+<p>Сообщение ответа сервера на выполнение метода <code>POST</code> не кэшируется.</p>
+<h4 id="put"><a class="header" href="#put">PUT</a></h4>
+<p>Применяется для загрузки содержимого запроса на указанный в запросе URI. Если по заданному URI не существует ресурс, то сервер создаёт его и возвращает статус <code>201</code> (Created). Если же был изменён ресурс, то сервер возвращает <code>200</code> (Ok) или <code>204</code> (No Content). Сервер не должен игнорировать некорректные заголовки <code>Content-*</code>, передаваемые клиентом вместе с сообщением. Если какой-то из этих заголовков не может быть распознан или не допустим при текущих условиях, то необходимо вернуть код ошибки <code>501</code> (Not Implemented).</p>
+<p>Фундаментальное различие методов <code>POST</code> и <code>PUT</code> заключается в понимании предназначений URI ресурсов. Метод <code>POST</code> предполагает, что по указанному URI будет производиться обработка передаваемого клиентом содержимого. Используя <code>PUT</code>, клиент предполагает, что загружаемое содержимое соответствует находящемуся по данному URI ресурсу.</p>
+<p>Сообщения ответов сервера на метод <code>PUT</code> не кэшируются.</p>
+<h4 id="patch"><a class="header" href="#patch">PATCH</a></h4>
+<p>Аналогично PUT, но применяется только к фрагменту ресурса.</p>
+<h4 id="delete"><a class="header" href="#delete">DELETE</a></h4>
+<p>Удаляет указанный ресурс.</p>
+<h4 id="trace"><a class="header" href="#trace">TRACE</a></h4>
+<p>Возвращает полученный запрос так, что клиент может увидеть, какую информацию промежуточные серверы добавляют или изменяют в запросе.</p>
+<h4 id="connect"><a class="header" href="#connect">CONNECT</a></h4>
+<p>Преобразует соединение запроса в прозрачный <a href="https://ru.wikipedia.org/wiki/TCP/IP">TCP/IP</a>-туннель, обычно, чтобы содействовать установлению защищённого <a href="https://ru.wikipedia.org/wiki/SSL">SSL</a>-соединения через нешифрованный <a href="https://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%BE%D0%BA%D1%81%D0%B8-%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80">прокси</a>.</p>
+<h2 id="Коды-состояний"><a class="header" href="#Коды-состояний">Коды состояний</a></h2>
+<p>Используются для определения состояния запроса, разделены на 5 групп. Каждая группа имеет собственный «общий смысл»:</p>
+<ul>
+<li>1xx — информационные. Они описывают процесс передачи.</li>
+<li>2xx — успешные. Эти говорят нам об успешной передаче.</li>
+<li>3xx — перенаправленные. Эти же сигнализируют о перенаправлении запроса.</li>
+<li>4xx — ошибка клиента. Ошибки в запросе, синтаксисе, хосте обращения и т.д.</li>
+<li>5xx — ошибка сервера. Ошибки в выполнении запроса, связанные с сервером.</li>
+</ul>
+<p>Примеры:</p>
+<ul>
+<li><strong>200 ОК</strong> — означает что всё в порядке, запрос обработан и дан ответ.</li>
+<li><strong>301 Moved Permanently</strong> — означает что нужный документ перенесён на другой URI. Новый адрес указывается в заголовке Location.</li>
+<li><strong>302 Found(v1.1), Moved Temporarily(v1.0)</strong> — указывает на то, что нужный документ временно перенесён на другой URI, который находится в заголовке Location.</li>
+<li><strong>400 Bad Request</strong> — означает что в запросе допущена синтаксическая ошибка.</li>
+<li><strong>401 Unauthorized</strong> — означает что для доступа нужно пройти аутентификацию.</li>
+<li><strong>403 Forbidden</strong> — не хватает прав доступа для выполнения запроса.</li>
+<li><strong>404 Not Found</strong> — сервер не может найти запрошенный URI.</li>
+<li><strong>500 Internal Server Error</strong> — любая ошибка сервера, если она не подходит под любой другой код ответа.</li>
+</ul>
+<h2 id="Основные-http-заголовки"><a class="header" href="#Основные-http-заголовки">Основные HTTP заголовки</a></h2>
+<h3 id="Общие"><a class="header" href="#Общие">Общие</a></h3>
+<ul>
+<li><strong>Cache-Control</strong> — параметры управления кэшированием.</li>
+<li><strong>Connection</strong> — информация о соединении.</li>
+<li><strong>Date</strong> — дата создания сообщения.</li>
+<li><strong>Pragma</strong> — специфические опции для выполнения.</li>
+<li><strong>Transfer-Encoding</strong> — перечень кодировок, применённых для формирования сообщения.</li>
+<li><strong>Upgrade</strong> — перечень протоколов, с которыми может работать клиент. Сервер указывает один.</li>
+<li><strong>Via</strong> — история прохождения запроса через прокси сервера, с указанием версии протокола.</li>
+</ul>
+<p><strong>Запроса</strong></p>
+<ul>
+<li><strong>Accept</strong> — перечень форматов, с которыми работает ресурс. Остальные игнорируются.</li>
+<li><strong>Accept-Charset</strong> — список кодировок с которыми может работать клиент.</li>
+<li><strong>Accept-Encoding</strong> — список кодировок, применяемых при кодировании сущности при передаче.</li>
+<li><strong>Accept-Language</strong> — перечень языков, с которыми может работать клиент.</li>
+<li><strong>Cookie</strong> - передает на сервер все свои куки</li>
+<li><strong>Host</strong> — указание доменного имени и порта хоста для запрашиваемого ресурса. Нужно для работы виртуальных хостингов.</li>
+<li><strong>Max-Forwards</strong> — указывает предельное кол-во переходов по Proxy серверам.</li>
+<li><strong>Referer</strong> — указывает URI ресурса, с которого клиент сделал запрос.</li>
+<li><strong>User-Agent</strong> — перечень названий и версий компонентов системы клиента.</li>
+</ul>
+<p><strong>Ответа</strong></p>
+<ul>
+<li><strong>Location</strong> — указывает URI ресурса или URI, на который нужно перейти.</li>
+<li><strong>Public</strong> — перечисляет доступные методы, подобно Allow, но для всего сервера.</li>
+<li><strong>Server</strong> — перечень названий и версий ПО на сервере, для прокси это поле Via.</li>
+<li><strong>Set-Cookie</strong> — устанавливает cookie для клиента</li>
+</ul>
+<p><strong>Сущности</strong></p>
+<ul>
+<li>
+<p><strong>Content-Encoding</strong> — указывает способ кодирования сущности.</p>
+</li>
+<li>
+<p><strong>Content-Language</strong> — язык содержимого.</p>
+</li>
+<li>
+<p><strong>Content-Length</strong> — размер сообщения выраженный в октетах.</p>
+</li>
+<li>
+<p><strong>Content-Location</strong> — резервное расположение сущности.</p>
+</li>
+<li>
+<p><strong>Content-Disposition</strong> — В обычном HTTP-ответе заголовок <code>**Content-Disposition**</code> является индикатором того, что ожидаемый контент ответа будет отображаться в браузере, как вэб-страница или часть вэб-страницы, или же как вложение, которое затем может быть скачано и сохранено локально. </p>
+<p>В случае, если тело HTTP-запроса типа <code>multipart/form-data</code>, то общий заголовок <strong>Content-Disposition</strong> используется для каждой из составных частей multipart тела для указания дополнительных сведений по полю, к которому применён заголовок. Каждая часть отделена с помощью <em>границы (boundary)</em>, определённой в заголовке <a href="https://developer.mozilla.org/ru/docs/Web/HTTP/Headers/Content-Type"><code>Content-Type</code></a>. <code>Content-Disposition,</code> используемый непосредственно для всего тела HTTP-запроса, ни на что не влияет.</p>
+</li>
+<li>
+<p><strong>Content-MD5</strong> — MD5-хэш для проверки целостности полученных данных.</p>
+</li>
+<li>
+<p><strong>Content-Type</strong> — способ и формат отображения сущности.</p>
+</li>
+<li>
+<p><strong>Link</strong> — ссылка на связанный с сущностью ресурс.</p>
+</li>
+<li>
+<p><strong>Title</strong> — заголовок сущности.</p>
+</li>
+<li>
+<p><strong>Allow</strong> — перечень методов, поддерживаемых именно этим ресурсом(ток для ответа)</p>
+</li>
+</ul>
+<p><em>Дополнительно:</em></p>
+<ul>
+<li><a href="https://ru.wikipedia.org/wiki/%D0%A1%D0%BF%D0%B8%D1%81%D0%BE%D0%BA_%D0%B7%D0%B0%D0%B3%D0%BE%D0%BB%D0%BE%D0%B2%D0%BA%D0%BE%D0%B2_HTTP#%D0%9E%D1%81%D0%BD%D0%BE%D0%B2%D0%BD%D1%8B%D0%B5_%D0%B7%D0%B0%D0%B3%D0%BE%D0%BB%D0%BE%D0%B2%D0%BA%D0%B8">Основные_заголовки</a></li>
+<li><a href="https://zametkinapolyah.ru/servera-i-protokoly/tema-10-spravochnik-polej-http-zagolovkov-spisok-polej-http-zagolovka-zagolovki-http-soobshhenij-zaprosov-i-otvetov.html">Справочник полей HTTP заголовков</a></li>
+</ul>
+<h2 id="cookie"><a class="header" href="#cookie">Cookie</a></h2>
+<p>Ку́ки — небольшой фрагмент данных, отправленный веб-сервером и хранимый на компьютере пользователя. Веб-клиент (обычно веб-браузер) всякий раз при попытке открыть страницу соответствующего сайта пересылает этот фрагмент данных веб-серверу в составе HTTP-запроса. Применяется для сохранения данных на стороне пользователя, на практике обычно используется для:</p>
+<ul>
+<li>аутентификации пользователя;</li>
+<li>хранения персональных предпочтений и настроек пользователя;</li>
+<li>отслеживания состояния сеанса[en] доступа пользователя;</li>
+<li>ведения статистики о пользователях.</li>
+</ul>
+<h3 id="Установка-куки"><a class="header" href="#Установка-куки">Установка куки</a></h3>
+<p>Запрашивая страницу, браузер отправляет веб-серверу короткий текст с HTTP-запросом. Например, для доступа к странице http://www.example.org/index.html, браузер отправляет на сервер www.example.org обычный запрос. На который сервер отвечает, отправляя запрашиваемую страницу вместе с текстом, содержащим HTTP-ответ. Там может содержаться указание браузеру сохранить куки:</p>
+<pre><code class="language-http">HTTP/1.1 200 OK
+Content-type: text/html
+Set-Cookie: name=value
+</code></pre>
+<p>Строка <code>Set-cookie</code> отправляется лишь тогда, когда сервер желает, чтобы браузер сохранил куки. В этом случае, если куки поддерживаются браузером и их приём включён, браузер запоминает строку <code>name=value</code> (имя = значение) и отправляет её обратно серверу с каждым последующим запросом. Например, при запросе следующей страницы http://www.example.org/spec.html браузер пошлёт серверу www.example.org следующий запрос:</p>
+<pre><code class="language-http">GET /spec.html HTTP/1.1
+Host: www.example.org
+Cookie: name=value
+Accept: */*
+</code></pre>
+<h2 id="https"><a class="header" href="#https">HTTPS</a></h2>
+<p><strong>HTTPS</strong> (HyperText Transfer Protocol Secure) — расширение протокола HTTP, поддерживающее шифрование. Данные, передаваемые по протоколу HTTPS, «упаковываются» в криптографический протокол SSL или TLS. В отличие от HTTP, для HTTPS по умолчанию используется TCP-порт 443.</p>
+<p>HTTPS не является отдельным протоколом. Это обычный HTTP, работающий через шифрованные транспортные механизмы TLS. Он обеспечивает защиту от атак, основанных на прослушивании сетевого соединения — от снифферских атак и атак типа man-in-the-middle, при условии, что будут использоваться шифрующие средства и сертификат сервера проверен и ему доверяют.</p>
+<h2 id="Новшества-разных-версий-http"><a class="header" href="#Новшества-разных-версий-http">Новшества разных версий HTTP</a></h2>
+<h3 id="http-11"><a class="header" href="#http-11">HTTP 1.1</a></h3>
+<p>Новым в этой версии был режим «постоянного соединения»(keep-alive): TCP-соединение может оставаться открытым после отправки ответа на запрос, что позволяет посылать несколько запросов за одно соединение. Клиент теперь обязан посылать информацию об имени хоста(<a href="https://developer.mozilla.org/ru/docs/Web/HTTP/Headers/Host"><code>Host</code></a> заголовок), к которому он обращается, что сделало возможной более простую организацию виртуального хостинга.</p>
+<p>Достоинства:</p>
+<ul>
+<li>Ниже загрузка <a href="https://ru.wikipedia.org/wiki/%D0%A6%D0%9F%D0%A3">ЦПУ</a> и расход памяти (потому как открывается меньше соединений одновременно).</li>
+<li>Можно использовать <a href="https://ru.wikipedia.org/wiki/HTTP_pipelining">HTTP pipelining (конвейерную обработку)</a> запросов и ответов.</li>
+<li>Снижает вероятность перегрузки сети (меньше <a href="https://ru.wikipedia.org/wiki/TCP">TCP</a> соединений).</li>
+<li>Уменьшает <a href="https://ru.wikipedia.org/wiki/%D0%9B%D0%B0%D0%B3_(%D0%BA%D0%BE%D0%BC%D0%BF%D1%8C%D1%8E%D1%82%D0%B5%D1%80%D0%BD%D1%8B%D0%B9_%D1%81%D0%BB%D0%B5%D0%BD%D0%B3)">лаги</a> для последующих запросов (не нужно заново устанавливать TCP соединение).</li>
+<li>Ошибки HTTP возвращаются без закрытия соединения — клиенты могут пробовать новые команды, и, если они не поддерживаются сервером, послать повторный запрос в том же соединении, используя старую семантику.</li>
+</ul>
+<p>Эти достоинства особенно проявляются для защищённых <a href="https://ru.wikipedia.org/wiki/HTTPS">HTTPS</a> соединений, потому что создание защищённого соединения требует больше процессорного времени и сетевого обмена между клиентом и сервером.</p>
+<h3 id="http--2"><a class="header" href="#http--2">HTTP  2</a></h3>
+<ul>
+<li>бинарный, сжатие заголовков;</li>
+<li>мультиплексирование данных;</li>
+<li>приоритизация;</li>
+<li>возможна отмена загрузки;</li>
+<li>server push</li>
+</ul>
+<p>Вторая крупная версия сетевого протокола HTTP, используемая для доступа к World Wide Web. Протокол основан на SPDY.</p>
+<p>В отличие от текстового HTTP 1.1, HTTP/2 — бинарный. Поэтому протокол более эффективен при парсинге, более компактный при передаче, подвержен меньшему количеству ошибок.</p>
+<p>В HTTP 1.1 браузеры используют множественные подключения к серверу для загрузки веб-страницы, причем количество таких соединений ограничено. Но это не решает проблему с блокированием канала медленными пакетами. Тогда как в HTTP/2 используется мультиплексирование, которое позволяет браузеру использовать одно соединение TCP для всех запросов. Все файлы подгружаются параллельно. Запросы и ответы разделяются по фреймам с мета-данными, которые ассоциируют запросы и ответы. Так что они не перекрывают друг-друга и не вызывают путаницы. При этом ответы получаются по мере их готовности, следовательно, тяжелые запросы не будут блокировать обработку и выдачу более простых объектов.</p>
+<p>HTTP 1.1 offers different workarounds for latency issues, including pipelining and the Keep-Alive header. However, pipelining was never widely implemented and the Keep-Alive header suffered from head-of-line blocking: the current request must complete before the next one can be sent.</p>
+<p>In HTTP/2, multiple asset requests can reuse a single TCP connection. Unlike HTTP 1.1 requests that use the Keep-Alive header, the requests and response binary frames in HTTP/2 are interleaved and head-of-line blocking does not happen. The cost of establishing a connection (the well-known “three-way handshake”) has to happen only once per host. Multiplexing is especially beneficial for secure connections because of the performance cost involved with multiple TLS negotiations.</p>
+<p>Вместе с мультиплексированием появилась приоритезация трафика. Запросам можно назначить приоритет на основе важности и зависимости. Так что при загрузке веб-страницы браузер будет в первую очередь получать важные данные, CSS-код, к примеру, а все второстепенное обработается в последнюю очередь.</p>
+<p>Протокол HTTP построен таким образом, что при отправке запросов также передаются заголовки, которые содержат дополнительную информацию. Сервер, в свою очередь, также прикрепляет заголовки к ответам. А учитывая, что веб-страницы состоят из множества файлов, все заголовки могут занимать приличный объем. Поэтому в HTTP/2 присутствует <strong>сжатие заголовков</strong>, которое позволит существенно сократить объем вспомогательной информации, так что браузер сможет отправить все запросы сразу.</p>
+<p>При использовании протокола HTTP 1.1 браузер запрашивает страницу, сервер отправляет в ответ HTML и ждет, пока браузер его обработает и запросит все необходимые файлы: JavaScript, CSS и фото. Поэтому в новый протокол внедрили интересную функцию под названием Server Push. Она позволяет серверу сразу же, не дожидаясь ответа веб-браузера, добавить нужные по его мнению файлы в кэш для быстрой выдачи.</p>
+<h3 id="http3"><a class="header" href="#http3">HTTP3</a></h3>
+<p>Протокол <strong>QUIC</strong> с 2013 года развивает Google в качестве альтернативы TCP+TLS. Главным преимуществом является снижение задержек при потере пакетов и уменьшение времени установки и согласования соединений. Технически <strong>QUIC</strong> представляет собой надстройку над протоколом UDP. QUIC поддерживает мультиплексирование нескольких соединений, а также методы шифрования, аналогичные TLS/SSL.</p>
+<ul>
+<li>
+<p>уровень безопасности, сравнимый с TLS;</p>
+</li>
+<li>
+<p>контроль целостности потока с помощью прямой коррекции ошибок, предотвращающей потерю пакетов;</p>
+</li>
+<li>
+<p>почти мгновенное установление соединения и возможность сразу после отправки пакета подключения передавать данные, а также минимизация задержки между отправкой запроса и получением ответа;</p>
+</li>
+<li>
+<p>наличие идентификатора соединения UUID позволит сократить время на переподключение к сетям для перемещающихся мобильных клиентов;</p>
+</li>
+<li>
+<p>избавление от таймаутов за счёт отказа от того же номера последовательности при повторной передаче пакетов;</p>
+</li>
+<li>
+<p>разделение на потоки, при котором потеря пакета влияет только на свой поток;</p>
+</li>
+<li>
+<p>новая система коррекции ошибок на основе кодов;</p>
+</li>
+<li>
+<p>выравнивание криптографических границ блоков с границами пакетов QUIC, что снижает влияние потери пакетов на декодирование;</p>
+</li>
+<li>
+<p>отсутствие проблем с блокировкой очереди TCP;</p>
+</li>
+<li>
+<p>система прогнозирования пропускной способности в каждом направлении, что позволяет уменьшить вероятность возникновения перегрузки. Как следствие — рост производительности и пропускной способности, по сравнению с TCP. В частности, для YouTube это позволило снизить повторную буферизацию на 30 %.</p>
+<p><img src="../media/network/htpp_v.png" alt="" /></p>
+</li>
+</ul>
+<p><em>Дополнительно:</em></p>
+<ul>
+<li><a href="https://habr.com/post/215117/">Простым языком об HTTP</a></li>
+<li><a href="https://ruseller.com/lessons.php?id=1726&amp;rub=28">HTTP: протокол, который каждый разработчик должен знать (часть 1)</a></li>
+<li><a href="https://ruseller.com/lessons.php?rub=28&amp;id=1777">HTTP: протокол, который каждый разработчик должен знать (часть 2)</a></li>
+<li>https://developer.mozilla.org/ru/docs/Web/HTTP/Overview</li>
+<li><a href="https://www.8host.com/blog/v-chem-raznica-mezhdu-http1-1-i-http2/">http2</a></li>
+<li><a href="https://ruhighload.com/%D0%9E%D0%BF%D1%82%D0%B8%D0%BC%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F+%D0%B2+http%2F2">Оптимизация в HTTP/2</a></li>
+<li><a href="https://habr.com/company/nixsolutions/blog/304518/">Как HTTP/2 сделает веб быстрее</a></li>
+<li>http://portscan.ru/article-protocol-http.html</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../network/serverIteractions.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../network/tls.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../network/serverIteractions.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../network/tls.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

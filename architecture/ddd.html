@@ -1,0 +1,270 @@
+<!DOCTYPE HTML>
+<html lang="ru" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>DDD - Backend interview</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Книжка для подготовки к собеседованию на должность backend developer">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Введение</a></li><li class="chapter-item expanded "><a href="../algostruct/index.html"><strong aria-hidden="true">1.</strong> Алгоритмы и Структуры Данных</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../algostruct/structBasics.html"><strong aria-hidden="true">1.1.</strong> Базовые структуры</a></li><li class="chapter-item expanded "><a href="../algostruct/array.html"><strong aria-hidden="true">1.2.</strong> Массив</a></li><li class="chapter-item expanded "><a href="../algostruct/hashTable.html"><strong aria-hidden="true">1.3.</strong> Хэш-Таблица</a></li><li class="chapter-item expanded "><a href="../algostruct/tree.html"><strong aria-hidden="true">1.4.</strong> Дерево</a></li><li class="chapter-item expanded "><a href="../algostruct/graph.html"><strong aria-hidden="true">1.5.</strong> Граф</a></li><li class="chapter-item expanded "><a href="../algostruct/probability.html"><strong aria-hidden="true">1.6.</strong> Вероятностные</a></li><li class="chapter-item expanded "><a href="../algostruct/crypto.html"><strong aria-hidden="true">1.7.</strong> Криптография</a></li><li class="chapter-item expanded "><a href="../algostruct/unsorted.html"><strong aria-hidden="true">1.8.</strong> Разное</a></li></ol></li><li class="chapter-item expanded "><a href="../db/index.html"><strong aria-hidden="true">2.</strong> Базы Данных</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db/dBTheory/index.html"><strong aria-hidden="true">2.1.</strong> Теория Баз Данных</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db/dBTheory/transactions.html"><strong aria-hidden="true">2.1.1.</strong> Транзакции</a></li><li class="chapter-item expanded "><a href="../db/dBTheory/normalForms.html"><strong aria-hidden="true">2.1.2.</strong> Нормальные формы</a></li><li class="chapter-item expanded "><a href="../db/dBTheory/distrubedDb/index.html"><strong aria-hidden="true">2.1.3.</strong> Распределенные БД</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db/dBTheory/distrubedDb/replication.html"><strong aria-hidden="true">2.1.3.1.</strong> Репликация</a></li><li class="chapter-item expanded "><a href="../db/dBTheory/distrubedDb/sharding.html"><strong aria-hidden="true">2.1.3.2.</strong> Шардинг</a></li><li class="chapter-item expanded "><a href="../db/dBTheory/distrubedDb/unsorted.html"><strong aria-hidden="true">2.1.3.3.</strong> Разное</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../db/specific/index.html"><strong aria-hidden="true">2.2.</strong> Конкретные БД</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db/specific/mysql/index.html"><strong aria-hidden="true">2.2.1.</strong> MySql</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db/specific/mysql/architecture.html"><strong aria-hidden="true">2.2.1.1.</strong> Архитектура MySql</a></li><li class="chapter-item expanded "><a href="../db/specific/mysql/concurency.html"><strong aria-hidden="true">2.2.1.2.</strong> Конкурентный доступ</a></li><li class="chapter-item expanded "><a href="../db/specific/mysql/indexes.html"><strong aria-hidden="true">2.2.1.3.</strong> Индексы</a></li><li class="chapter-item expanded "><a href="../db/specific/mysql/sql.html"><strong aria-hidden="true">2.2.1.4.</strong> Основы SQL</a></li><li class="chapter-item expanded "><a href="../db/specific/mysql/explain.html"><strong aria-hidden="true">2.2.1.5.</strong> Explain</a></li><li class="chapter-item expanded "><a href="../db/specific/mysql/unsorted.html"><strong aria-hidden="true">2.2.1.6.</strong> Разное</a></li></ol></li><li class="chapter-item expanded "><a href="../db/specific/postgreSql/index.html"><strong aria-hidden="true">2.2.2.</strong> PostgreSql</a></li><li class="chapter-item expanded "><a href="../db/specific/noSql/index.html"><strong aria-hidden="true">2.2.3.</strong> NoSql</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db/specific/noSql/redis.html"><strong aria-hidden="true">2.2.3.1.</strong> Redis</a></li><li class="chapter-item expanded "><a href="../db/specific/noSql/memcached.html"><strong aria-hidden="true">2.2.3.2.</strong> Memcaced</a></li><li class="chapter-item expanded "><a href="../db/specific/noSql/tarantool.html"><strong aria-hidden="true">2.2.3.3.</strong> Tarantool</a></li><li class="chapter-item expanded "><a href="../db/specific/noSql/mongo.html"><strong aria-hidden="true">2.2.3.4.</strong> Mongo</a></li></ol></li><li class="chapter-item expanded "><a href="../db/specific/clickhouse.html"><strong aria-hidden="true">2.2.4.</strong> ClickHouse</a></li><li class="chapter-item expanded "><a href="../db/specific/messages/index.html"><strong aria-hidden="true">2.2.5.</strong> Брокеры сообщений</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db/specific/messages/rabbit.html"><strong aria-hidden="true">2.2.5.1.</strong> Rabbit</a></li><li class="chapter-item expanded "><a href="../db/specific/messages/kafka.html"><strong aria-hidden="true">2.2.5.2.</strong> Kafka</a></li><li class="chapter-item expanded "><a href="../db/specific/messages/nats.html"><strong aria-hidden="true">2.2.5.3.</strong> Nats</a></li></ol></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../architecture/index.html"><strong aria-hidden="true">3.</strong> Архитектура</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../architecture/oopBase.html"><strong aria-hidden="true">3.1.</strong> Основы ООП</a></li><li class="chapter-item expanded "><a href="../architecture/gof.html"><strong aria-hidden="true">3.2.</strong> Паттерны GoF(Банда 4)</a></li><li class="chapter-item expanded "><a href="../architecture/principles.html"><strong aria-hidden="true">3.3.</strong> Принципы хорошей архитектуры</a></li><li class="chapter-item expanded "><a href="../architecture/architecturesPatterns.html"><strong aria-hidden="true">3.4.</strong> Архитектурные паттерны</a></li><li class="chapter-item expanded "><a href="../architecture/ddd.html" class="active"><strong aria-hidden="true">3.5.</strong> DDD</a></li><li class="chapter-item expanded "><a href="../architecture/microserices/index.html"><strong aria-hidden="true">3.6.</strong> Микросервисы</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../architecture/microserices/integration.html"><strong aria-hidden="true">3.6.1.</strong> Паттерны и протоколы интеграции</a></li><li class="chapter-item expanded "><a href="../architecture/microserices/monolithSeparation.html"><strong aria-hidden="true">3.6.2.</strong> Способы распиливания монолита</a></li></ol></li><li class="chapter-item expanded "><a href="../architecture/uncategorized.html"><strong aria-hidden="true">3.7.</strong> Разное</a></li></ol></li><li class="chapter-item expanded "><a href="../php/index.html"><strong aria-hidden="true">4.</strong> PHP</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../php/innovations.html"><strong aria-hidden="true">4.1.</strong> Фичи новых версий</a></li><li class="chapter-item expanded "><a href="../php/internals.html"><strong aria-hidden="true">4.2.</strong> PHP Internals</a></li><li class="chapter-item expanded "><a href="../php/frameworks/index.html"><strong aria-hidden="true">4.3.</strong> Фреймворки</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../php/frameworks/laravel.html"><strong aria-hidden="true">4.3.1.</strong> Laravel</a></li><li class="chapter-item expanded "><a href="../php/frameworks/symfony.html"><strong aria-hidden="true">4.3.2.</strong> Symfony</a></li></ol></li><li class="chapter-item expanded "><a href="../php/uncategorized.html"><strong aria-hidden="true">4.4.</strong> Разное</a></li></ol></li><li class="chapter-item expanded "><a href="../goLang/index.html"><strong aria-hidden="true">5.</strong> GoLang</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../goLang/types.html"><strong aria-hidden="true">5.1.</strong> Типы данных</a></li><li class="chapter-item expanded "><a href="../goLang/concurrency/index.html"><strong aria-hidden="true">5.2.</strong> Сoncurrency</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../goLang/concurrency/chanel.html"><strong aria-hidden="true">5.2.1.</strong> Каналы</a></li><li class="chapter-item expanded "><a href="../goLang/concurrency/gouritine.html"><strong aria-hidden="true">5.2.2.</strong> Горутины</a></li><li class="chapter-item expanded "><a href="../goLang/concurrency/sync.html"><strong aria-hidden="true">5.2.3.</strong> Sync</a></li><li class="chapter-item expanded "><a href="../goLang/concurrency/patterns.html"><strong aria-hidden="true">5.2.4.</strong> Паттерны</a></li></ol></li><li class="chapter-item expanded "><a href="../goLang/scheduler.html"><strong aria-hidden="true">5.3.</strong> Планировщик</a></li><li class="chapter-item expanded "><a href="../goLang/memory.html"><strong aria-hidden="true">5.4.</strong> Управление памятью</a></li><li class="chapter-item expanded "><a href="../goLang/ecosystem.html"><strong aria-hidden="true">5.5.</strong> Экосистема</a></li></ol></li><li class="chapter-item expanded "><a href="../javascript.html"><strong aria-hidden="true">6.</strong> JavaScript</a></li><li class="chapter-item expanded "><a href="../ib.html"><strong aria-hidden="true">7.</strong> Информационная безопасность</a></li><li class="chapter-item expanded "><a href="../git.html"><strong aria-hidden="true">8.</strong> Git</a></li><li class="chapter-item expanded "><a href="../network/index.html"><strong aria-hidden="true">9.</strong> Основы сетей</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../network/serverIteractions.html"><strong aria-hidden="true">9.1.</strong> Взаимодействие с веб-сервером</a></li><li class="chapter-item expanded "><a href="../network/http.html"><strong aria-hidden="true">9.2.</strong> HTTP</a></li><li class="chapter-item expanded "><a href="../network/tls.html"><strong aria-hidden="true">9.3.</strong> TLS</a></li><li class="chapter-item expanded "><a href="../network/dns.html"><strong aria-hidden="true">9.4.</strong> DNS</a></li><li class="chapter-item expanded "><a href="../network/tcp_ip.html"><strong aria-hidden="true">9.5.</strong> TCP/IP</a></li><li class="chapter-item expanded "><a href="../network/networkModels.html"><strong aria-hidden="true">9.6.</strong> Сетевые модели</a></li><li class="chapter-item expanded "><a href="../network/realTime.html"><strong aria-hidden="true">9.7.</strong> realTime взаимодействие с сервером</a></li><li class="chapter-item expanded "><a href="../network/whatHappenWhen.html"><strong aria-hidden="true">9.8.</strong> Что происходит при нажатии на g</a></li></ol></li><li class="chapter-item expanded "><a href="../os.html"><strong aria-hidden="true">10.</strong> Операционые системы</a></li><li class="chapter-item expanded "><a href="../devops/index.html"><strong aria-hidden="true">11.</strong> Системное администрирование</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../devops/linux.html"><strong aria-hidden="true">11.1.</strong> Linux</a></li><li class="chapter-item expanded "><a href="../devops/virtualization/index.html"><strong aria-hidden="true">11.2.</strong> Основы виртуализации</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../devops/virtualization/docker.html"><strong aria-hidden="true">11.2.1.</strong> Docker</a></li><li class="chapter-item expanded "><a href="../devops/virtualization/kubernetes.html"><strong aria-hidden="true">11.2.2.</strong> Kubernetes</a></li></ol></li><li class="chapter-item expanded "><a href="../devops/deployment.html"><strong aria-hidden="true">11.3.</strong> Deployment</a></li><li class="chapter-item expanded "><a href="../devops/monitoring.html"><strong aria-hidden="true">11.4.</strong> Мониторинг</a></li></ol></li><li class="chapter-item expanded "><a href="../test.html"><strong aria-hidden="true">12.</strong> Тестирование</a></li><li class="chapter-item expanded "><a href="../unsorted/index.html"><strong aria-hidden="true">13.</strong> Разное</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../unsorted/bits.html"><strong aria-hidden="true">13.1.</strong> Побитовые операции</a></li><li class="chapter-item expanded "><a href="../unsorted/types.html"><strong aria-hidden="true">13.2.</strong> Типизация</a></li><li class="chapter-item expanded "><a href="../unsorted/unicode.html"><strong aria-hidden="true">13.3.</strong> Юникод</a></li></ol></li><li class="chapter-item expanded "><a href="../devmethods.html"><strong aria-hidden="true">14.</strong> Методологии разработки</a></li><li class="chapter-item expanded "><a href="../checkList.html"><strong aria-hidden="true">15.</strong> ЧекЛист</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Backend interview</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/arturpanteleev/phpInterview" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="ddd"><a class="header" href="#ddd">DDD</a></h1>
+<p><strong>Domain-driven design</strong> (Предметно-ориентированное проектирование, реже проблемно-ориентированное) — это набор принципов и схем, направленных на создание оптимальных систем объектов. Сводится к созданию программных абстракций, которые называются моделями <a href="https://ru.wikipedia.org/wiki/%D0%9F%D1%80%D0%B5%D0%B4%D0%BC%D0%B5%D1%82%D0%BD%D0%B0%D1%8F_%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C">предметных областей</a>. В эти модели входит <a href="https://ru.wikipedia.org/wiki/%D0%91%D0%B8%D0%B7%D0%BD%D0%B5%D1%81-%D0%BB%D0%BE%D0%B3%D0%B8%D0%BA%D0%B0">бизнес-логика</a>, устанавливающая связь между реальными условиями области применения продукта и кодом.</p>
+<p>Предметно-ориентированное проектирование не является какой-либо конкретной технологией или методологией. DDD — это набор правил, которые позволяют принимать правильные проектные решения. Данный подход позволяет значительно ускорить процесс проектирования программного обеспечения в незнакомой предметной области.</p>
+<h2 id="Стратегическое-проектирование"><a class="header" href="#Стратегическое-проектирование">Стратегическое проектирование</a></h2>
+<p>Проектирование на высоком уровне абстракции, без технических нюансов, осуществляемое всей командой - как менеджерами/заказчиками, так и техническими специалистами.</p>
+<p>Основной целью применения DDD является получение высококачественной модели программного обеспечения, которая будет максимально точно отражать поставленные бизнес-цели. Для реализации этого требуется объединение усилий как разработчиков, так и экспертов в предметной области. Создание дружной и сплоченной команды позволяет получить большое количество преимуществ для бизнеса. Обмен знаниями между членами команды снижает шансы появления «тайного знания» о модели, достигается консенсус между экспертами предметной области в отношении различных понятий и терминологии, разрабатывается более точное определение и описание самого бизнеса.</p>
+<h3 id="ubiquitous-language-Единый-язык"><a class="header" href="#ubiquitous-language-Единый-язык">Ubiquitous Language (Единый язык)</a></h3>
+<p>Для того чтобы уравнять разработчиков и экспертов предметной области, чтобы было гораздо проще обмениваться полезными знаниями о предметной области, подход DDD предлагает применять общий набор терминов, понятий и фраз, который будет использоваться в общении между членами команды, и который позже отразится в исходном коде результирующей программы.</p>
+<p>Этот коллективный язык терминов называется - единый язык. (Ubiquitous Language). Это один из основных и самых важных шаблонов предметного-ориентированного проектирования. Это не бизнес жаргон, навязанный разработчикам, а настоящий язык, созданный целостной командой – экспертами в предметной области, разработчиками, бизнес-аналитиками и всеми, кто вовлечен в создание системы. Роль в команде не столь существенна, поскольку каждый член команды использует для описания проекта единый язык. </p>
+<h3 id="bounded-context-Ограниченный-контекст"><a class="header" href="#bounded-context-Ограниченный-контекст">Bounded Context (Ограниченный контекст)</a></h3>
+<p>Очень важно понимать, что в рамках предметной области смысл определенного термина или фразы может сильно отличаться. Существует некая граница, в пределах которой понятия единого языка имеют вполне конкретное контекстное значение - ограниченный контекст (Bounded context). Это второе по значимости свойство DDD после единого языка. Оба эти понятия взаимосвязаны и не могут существовать друг без друга.</p>
+<p>Итак, ограниченный контекст – это явная граница, внутри которой существует модель предметной области, которая отображает единый язык в модель программного обеспечения. </p>
+<ul>
+<li>В каждом ограниченном контексте существует только один <code>единый язык</code>.</li>
+<li>Ограниченные контексты являются относительно небольшими, меньше чем может показаться на первый взгляд. <code>ограниченный контекст</code> достаточно велик только для единого языка изолированной предметной области, но не больше.</li>
+<li>Единый значит «вездесущий» или «повсеместный», т. е. язык, на котором говорят члены команды и на котором выражается отдельная модель предметной области, которую разрабатывает команда.</li>
+<li>Язык является единым только в рамках команды, работающей над проектом в едином ограниченном контексте.</li>
+<li>Попытка применить <code>единый язык</code> в рамках всего предприятия или что хуже, среди нескольких предприятий, закончится провалом.</li>
+</ul>
+<h3 id="Предметная-область-domain"><a class="header" href="#Предметная-область-domain">Предметная область (Domain)</a></h3>
+<p>Это то, что делает организация, и среда, в которой она это делает. Разработчик программного обеспечения для организации обязательно работает в ее <code>предметной области</code>. Следует понимать, что при разработке модели предметной области необходимо сосредоточиться в определенной <code>подобласти</code>, так как практически невозможно создать единственную, всеобъемлющую модель бизнеса даже умеренно сложной организации. Очень важно разделять модели на логические разделенные <code>предметные подобласти</code> (Subdomain) всей <code>предметной области</code>, согласно их фактической функциональности. <code>Подобласти</code> позволяют быстрее определить разные части <code>предметной области</code>, необходимые для решения конкретной задачи</p>
+<h3 id="Смысловое-ядро-core-domain"><a class="header" href="#Смысловое-ядро-core-domain">Смысловое ядро (Core domain)</a></h3>
+<p>Очень важный аспект подхода DDD. <code>Смысловое ядро</code> – это <code>подобласть</code>, имеющая первостепенное значение для организации. Со стратегической точки зрения бизнес должен выделяться своим <code>смысловым ядром</code>. Большинство DDD проектов сосредоточены именно на <code>смысловом ядре</code>. Лучшие разработчики и эксперты должны быть задействованы именно в этой <code>подобласти</code>. Большинство инвестиций должны быть направлены именно сюда для достижения преимущества для бизнеса и получения наибольшей прибыли.</p>
+<h3 id="Пространство-задач-и-пространство-решений"><a class="header" href="#Пространство-задач-и-пространство-решений">Пространство задач и пространство решений</a></h3>
+<p><code>Предметные области</code> из пространства задач и пространства решений. Пространство задач позволяет думать о стратегической бизнес проблеме, которая должна быть решена, а пространство решений, сосредоточится на том, как реализуется программное обеспечение, чтобы решить бизнес проблему.</p>
+<ul>
+<li>Пространство задач – части <code>предметной области</code>, которые необходимы, чтобы создать <code>смысловое ядро</code>. Это комбинация <code>смыслового ядра</code> и <code>подобластей</code>, которое это ядро должно использовать.</li>
+<li>Пространство решений – один или несколько <code>ограниченных контекстов</code>, набор конкретных моделей программного обеспечения. Разработанный <code>ограниченный контекст</code> – это конкретное решение, представление реализации.</li>
+</ul>
+<p>Идеальным вариантом является обеспечение однозначного соответствия между подобластями и ограниченными контекстами. Таким образом, объединяются пространство задач и пространство решений, выделяются модели предметной области в четко определенные области в зависимости от поставленных целей. Если система не разрабатывается с нуля, она часто представляет собой большой комок грязи, где подобласти пересекаются с ограниченными контекстами.</p>
+<h2 id="Тактическое-проектирование"><a class="header" href="#Тактическое-проектирование">Тактическое проектирование</a></h2>
+<p>Использование технических, структурных паттернов в вашем коде, для отражения результатов стратегического проектирования непосредственно в коде приложения.</p>
+<h3 id="entity"><a class="header" href="#entity">Entity</a></h3>
+<p>Если какое-то понятие предметной области является уникальным и отличным от всех других объектов в системе, то для его моделирования используется <code>сущность</code>. Такие <code>объекты-сущности</code> могут сильно отличаться своей формой за весь цикл существования, тем не менее их всегда можно однозначно идентифицировать и найти по запросу. Для этого используются уникальные идентификаторы, создание которых необходимо продумать в первую очередь при проектировании <code>сущности</code>.</p>
+<h3 id="value-object"><a class="header" href="#value-object">Value Object</a></h3>
+<blockquote>
+<p>A small simple object, like money or a date range, whose equality isn't based on identity</p>
+</blockquote>
+<p>Если для объекта не важна индивидуальность, если он полностью определяется своими атрибутами, его следует считать <code>объектом-значением</code>. Чтобы выяснить, является ли какое-то понятие <code>значением</code>, необходимо выяснить, обладает ли оно большинством из следующих характеристик:</p>
+<ul>
+<li>Оно измеряет, оценивает или описывает объект предметной области;</li>
+<li>Должен быть неизменяем (immutable): при попытке обновления значения свойств мы должны создать и вернуть новый экземпляр VO</li>
+<li>Оно моделирует нечто концептуально целостное, объединяя связанные атрибуты в одно целое;</li>
+<li>При изменении способа измерения или описания его можно полностью заменить;</li>
+<li>Его можно сравнивать с другими объектами с помощью отношения равенства <code>значений</code>. Два VO считаются одинаковыми тогда и только тогда, когда все поля VO равны</li>
+<li>Оно предоставляет связанным с ним объектам <code>функцию без побочных эффектов</code>.</li>
+<li>Состоит только из других VO и примитивов(не может содержать сущность или сервис)</li>
+<li>Должен содержать в себе логику самовалидации: нельзя невалидный VO, исключение должно выкидываться прямо из метода VO(конструктор или клон).</li>
+</ul>
+<h3 id="domain-service"><a class="header" href="#domain-service">Domain Service</a></h3>
+<p>Используя единый язык, существительные этого языка отражаются в объекты, а глаголы отражаются в поведения этих объектов. Очень часто существуют глаголы или какие-то действия, которые нельзя отнести к какой-то сущности или к какому-то объекту-значению. Если существует такого рода операция в предметной области, ее объявляют как Domain Service (она отличается от прикладной службы, которая является клиентом). Есть три характеристики служб:</p>
+<ul>
+<li>
+<p>Операция, выполняемая службой, относится к концепции предметной области, которая не принадлежит ни одной из существующих сущностей;</p>
+</li>
+<li>
+<p>Операция выполняется над различными объектами модели предметной области;</p>
+</li>
+<li>
+<p>Операция не имеет состояния.</p>
+</li>
+</ul>
+<h3 id="domain-event"><a class="header" href="#domain-event"><strong>Domain Event</strong></a></h3>
+<p>Событие — это то, что произошло в прошлом. Логически, событие предметной области — это то, что произошло в конкретной предметной области, и то, о чем должны быть в курсе и на что должны реагировать другие части той же предметной области. Должны быть иммутабельными(так как нельзя менять прошлое). Название должно описывать случившиеся в прошлом событие.</p>
+<h3 id="moduleМодуль"><a class="header" href="#moduleМодуль">Module(Модуль)</a></h3>
+<p><code>Модули</code> внутри модели являются именованными контейнерами для некоторой группы объектов предметной области, тесно связанных друг с другом. Их цель – ослабление связей между классами, которые находятся в различных  <code>модулях</code>. Так как <code>модули</code> в подходе DDD – это неформальные или обобщенные разделы, их следует правильно называть. Выбор их имен является функцией  <code>единого языка</code>.</p>
+<h3 id="factory"><a class="header" href="#factory">Factory</a></h3>
+<p>Некоторые <code>агрегаты</code> или <code>сущности</code> могут быть достаточно сложными. Сложный объект не может создавать сам себя посредством конструктора. (В книге Эрика Эванса был приведен пример: двигатель автомобиля, который собирается либо механиком, либо роботом, но он никак не должен собираться сам по себе.) Еще хуже, когда передают создание сложного объекта на клиент. Так, клиент должен знать о внутренней структуре и взаимосвязях внутри объекта. Это нарушает инкапсуляцию и привязывает клиента к определенной реализации (таким образом, при изменении объекта придется менять и реализацию клиента). </p>
+<p>Лучше выполнять создание сложных <code>агрегатов</code> или других объектов отдельно. Для этого используются <code>фабрики</code>. <code>Фабрики</code> – элементы программы, обязанности которого создавать другие объекты.</p>
+<h3 id="aggregate"><a class="header" href="#aggregate">Aggregate</a></h3>
+<p><code>Агрегатом</code> называется кластер из объектов <code>сущностей</code> или <code>значений</code>. То есть эти объекты рассматриваются как единое целое с точки зрения изменения данных. У каждого <code>агрегата</code> есть корень <code>Aggregate Root</code> и граница, внутри которой всегда должны быть удовлетворены инварианты.</p>
+<p>Все обращения к <code>агрегату</code> должны осуществляться через его <code>корень</code>, который представляет собой <code>сущность</code> с глобально уникальным идентификатором. Все внутренние объекты <code>агрегата</code> имеют только локальную идентичность, они могут ссылаться друг на друга как угодно. Внешние объекты могут хранить только ссылку на <code>корень</code>, а не на внутренние объекты.</p>
+<h3 id="repositoryРепозиторий"><a class="header" href="#repositoryРепозиторий">Repository(Репозиторий)</a></h3>
+<p>Репозиторий - область памяти, которая предназначена для безопасного хранения помещенных в нее элементов. Именно этим является Репозиторий в DDD. Репозиторий используется для <code>агрегатов</code>. Помещая <code>агрегат</code> в соответствующий Репозиторий, а затем извлекая его оттуда, вы получаете целостный объект. Если <code>агрегат</code> будет изменен, то изменения будут сохранены. Если <code>агрегат</code> будет удален, то его уже нельзя будет извлечь.</p>
+<p>Каждый <code>агрегат</code>, предполагающий постоянное хранение, имеет свой Репозиторий. Зачастую в Репозитории реализуются методы для выборки полностью сгенерированных агрегатов по каким-то критериям.</p>
+<p>Есть два типа Repository:</p>
+<ol>
+<li>Ориентированные на имитацию коллекций;</li>
+<li>Ориентированные на механизм постоянного хранения.</li>
+</ol>
+<p><strong>Application Layer</strong></p>
+<p><em>Дополнительно:</em></p>
+<ul>
+<li><a href="https://habr.com/post/316438/">DDD: стратегическое проектирование</a></li>
+<li><a href="https://habr.com/post/316890/">DDD: тактическое проектирование</a></li>
+<li><a href="http://sergeyteplyakov.blogspot.com/2014/02/ddd.html">Ключевые концепции DDD</a></li>
+<li><a href="https://habr.com/post/334126/">Domain Driven Design на практике</a></li>
+<li><a href="https://habr.com/post/61524/">DDD: Domain Driven Design</a></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../architecture/architecturesPatterns.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../architecture/microserices/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../architecture/architecturesPatterns.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../architecture/microserices/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>

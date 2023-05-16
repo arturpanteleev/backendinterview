@@ -1,0 +1,484 @@
+<!DOCTYPE HTML>
+<html lang="ru" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Разное - Backend interview</title>
+        <!-- Custom HTML head -->
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Книжка для подготовки к собеседованию на должность backend developer">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    </head>
+    <body>
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Введение</a></li><li class="chapter-item expanded "><a href="../algostruct/index.html"><strong aria-hidden="true">1.</strong> Алгоритмы и Структуры Данных</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../algostruct/structBasics.html"><strong aria-hidden="true">1.1.</strong> Базовые структуры</a></li><li class="chapter-item expanded "><a href="../algostruct/array.html"><strong aria-hidden="true">1.2.</strong> Массив</a></li><li class="chapter-item expanded "><a href="../algostruct/hashTable.html"><strong aria-hidden="true">1.3.</strong> Хэш-Таблица</a></li><li class="chapter-item expanded "><a href="../algostruct/tree.html"><strong aria-hidden="true">1.4.</strong> Дерево</a></li><li class="chapter-item expanded "><a href="../algostruct/graph.html"><strong aria-hidden="true">1.5.</strong> Граф</a></li><li class="chapter-item expanded "><a href="../algostruct/probability.html"><strong aria-hidden="true">1.6.</strong> Вероятностные</a></li><li class="chapter-item expanded "><a href="../algostruct/crypto.html"><strong aria-hidden="true">1.7.</strong> Криптография</a></li><li class="chapter-item expanded "><a href="../algostruct/unsorted.html"><strong aria-hidden="true">1.8.</strong> Разное</a></li></ol></li><li class="chapter-item expanded "><a href="../db/index.html"><strong aria-hidden="true">2.</strong> Базы Данных</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db/dBTheory/index.html"><strong aria-hidden="true">2.1.</strong> Теория Баз Данных</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db/dBTheory/transactions.html"><strong aria-hidden="true">2.1.1.</strong> Транзакции</a></li><li class="chapter-item expanded "><a href="../db/dBTheory/normalForms.html"><strong aria-hidden="true">2.1.2.</strong> Нормальные формы</a></li><li class="chapter-item expanded "><a href="../db/dBTheory/distrubedDb/index.html"><strong aria-hidden="true">2.1.3.</strong> Распределенные БД</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db/dBTheory/distrubedDb/replication.html"><strong aria-hidden="true">2.1.3.1.</strong> Репликация</a></li><li class="chapter-item expanded "><a href="../db/dBTheory/distrubedDb/sharding.html"><strong aria-hidden="true">2.1.3.2.</strong> Шардинг</a></li><li class="chapter-item expanded "><a href="../db/dBTheory/distrubedDb/unsorted.html"><strong aria-hidden="true">2.1.3.3.</strong> Разное</a></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../db/specific/index.html"><strong aria-hidden="true">2.2.</strong> Конкретные БД</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db/specific/mysql/index.html"><strong aria-hidden="true">2.2.1.</strong> MySql</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db/specific/mysql/architecture.html"><strong aria-hidden="true">2.2.1.1.</strong> Архитектура MySql</a></li><li class="chapter-item expanded "><a href="../db/specific/mysql/concurency.html"><strong aria-hidden="true">2.2.1.2.</strong> Конкурентный доступ</a></li><li class="chapter-item expanded "><a href="../db/specific/mysql/indexes.html"><strong aria-hidden="true">2.2.1.3.</strong> Индексы</a></li><li class="chapter-item expanded "><a href="../db/specific/mysql/sql.html"><strong aria-hidden="true">2.2.1.4.</strong> Основы SQL</a></li><li class="chapter-item expanded "><a href="../db/specific/mysql/explain.html"><strong aria-hidden="true">2.2.1.5.</strong> Explain</a></li><li class="chapter-item expanded "><a href="../db/specific/mysql/unsorted.html"><strong aria-hidden="true">2.2.1.6.</strong> Разное</a></li></ol></li><li class="chapter-item expanded "><a href="../db/specific/postgreSql/index.html"><strong aria-hidden="true">2.2.2.</strong> PostgreSql</a></li><li class="chapter-item expanded "><a href="../db/specific/noSql/index.html"><strong aria-hidden="true">2.2.3.</strong> NoSql</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db/specific/noSql/redis.html"><strong aria-hidden="true">2.2.3.1.</strong> Redis</a></li><li class="chapter-item expanded "><a href="../db/specific/noSql/memcached.html"><strong aria-hidden="true">2.2.3.2.</strong> Memcaced</a></li><li class="chapter-item expanded "><a href="../db/specific/noSql/tarantool.html"><strong aria-hidden="true">2.2.3.3.</strong> Tarantool</a></li><li class="chapter-item expanded "><a href="../db/specific/noSql/mongo.html"><strong aria-hidden="true">2.2.3.4.</strong> Mongo</a></li></ol></li><li class="chapter-item expanded "><a href="../db/specific/clickhouse.html"><strong aria-hidden="true">2.2.4.</strong> ClickHouse</a></li><li class="chapter-item expanded "><a href="../db/specific/messages/index.html"><strong aria-hidden="true">2.2.5.</strong> Брокеры сообщений</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../db/specific/messages/rabbit.html"><strong aria-hidden="true">2.2.5.1.</strong> Rabbit</a></li><li class="chapter-item expanded "><a href="../db/specific/messages/kafka.html"><strong aria-hidden="true">2.2.5.2.</strong> Kafka</a></li><li class="chapter-item expanded "><a href="../db/specific/messages/nats.html"><strong aria-hidden="true">2.2.5.3.</strong> Nats</a></li></ol></li></ol></li></ol></li><li class="chapter-item expanded "><a href="../architecture/index.html"><strong aria-hidden="true">3.</strong> Архитектура</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../architecture/oopBase.html"><strong aria-hidden="true">3.1.</strong> Основы ООП</a></li><li class="chapter-item expanded "><a href="../architecture/gof.html"><strong aria-hidden="true">3.2.</strong> Паттерны GoF(Банда 4)</a></li><li class="chapter-item expanded "><a href="../architecture/principles.html"><strong aria-hidden="true">3.3.</strong> Принципы хорошей архитектуры</a></li><li class="chapter-item expanded "><a href="../architecture/architecturesPatterns.html"><strong aria-hidden="true">3.4.</strong> Архитектурные паттерны</a></li><li class="chapter-item expanded "><a href="../architecture/ddd.html"><strong aria-hidden="true">3.5.</strong> DDD</a></li><li class="chapter-item expanded "><a href="../architecture/microserices/index.html"><strong aria-hidden="true">3.6.</strong> Микросервисы</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../architecture/microserices/integration.html"><strong aria-hidden="true">3.6.1.</strong> Паттерны и протоколы интеграции</a></li><li class="chapter-item expanded "><a href="../architecture/microserices/monolithSeparation.html"><strong aria-hidden="true">3.6.2.</strong> Способы распиливания монолита</a></li></ol></li><li class="chapter-item expanded "><a href="../architecture/uncategorized.html"><strong aria-hidden="true">3.7.</strong> Разное</a></li></ol></li><li class="chapter-item expanded "><a href="../php/index.html"><strong aria-hidden="true">4.</strong> PHP</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../php/innovations.html"><strong aria-hidden="true">4.1.</strong> Фичи новых версий</a></li><li class="chapter-item expanded "><a href="../php/internals.html"><strong aria-hidden="true">4.2.</strong> PHP Internals</a></li><li class="chapter-item expanded "><a href="../php/frameworks/index.html"><strong aria-hidden="true">4.3.</strong> Фреймворки</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../php/frameworks/laravel.html"><strong aria-hidden="true">4.3.1.</strong> Laravel</a></li><li class="chapter-item expanded "><a href="../php/frameworks/symfony.html"><strong aria-hidden="true">4.3.2.</strong> Symfony</a></li></ol></li><li class="chapter-item expanded "><a href="../php/uncategorized.html" class="active"><strong aria-hidden="true">4.4.</strong> Разное</a></li></ol></li><li class="chapter-item expanded "><a href="../goLang/index.html"><strong aria-hidden="true">5.</strong> GoLang</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../goLang/types.html"><strong aria-hidden="true">5.1.</strong> Типы данных</a></li><li class="chapter-item expanded "><a href="../goLang/concurrency/index.html"><strong aria-hidden="true">5.2.</strong> Сoncurrency</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../goLang/concurrency/chanel.html"><strong aria-hidden="true">5.2.1.</strong> Каналы</a></li><li class="chapter-item expanded "><a href="../goLang/concurrency/gouritine.html"><strong aria-hidden="true">5.2.2.</strong> Горутины</a></li><li class="chapter-item expanded "><a href="../goLang/concurrency/sync.html"><strong aria-hidden="true">5.2.3.</strong> Sync</a></li><li class="chapter-item expanded "><a href="../goLang/concurrency/patterns.html"><strong aria-hidden="true">5.2.4.</strong> Паттерны</a></li></ol></li><li class="chapter-item expanded "><a href="../goLang/scheduler.html"><strong aria-hidden="true">5.3.</strong> Планировщик</a></li><li class="chapter-item expanded "><a href="../goLang/memory.html"><strong aria-hidden="true">5.4.</strong> Управление памятью</a></li><li class="chapter-item expanded "><a href="../goLang/ecosystem.html"><strong aria-hidden="true">5.5.</strong> Экосистема</a></li></ol></li><li class="chapter-item expanded "><a href="../javascript.html"><strong aria-hidden="true">6.</strong> JavaScript</a></li><li class="chapter-item expanded "><a href="../ib.html"><strong aria-hidden="true">7.</strong> Информационная безопасность</a></li><li class="chapter-item expanded "><a href="../git.html"><strong aria-hidden="true">8.</strong> Git</a></li><li class="chapter-item expanded "><a href="../network/index.html"><strong aria-hidden="true">9.</strong> Основы сетей</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../network/serverIteractions.html"><strong aria-hidden="true">9.1.</strong> Взаимодействие с веб-сервером</a></li><li class="chapter-item expanded "><a href="../network/http.html"><strong aria-hidden="true">9.2.</strong> HTTP</a></li><li class="chapter-item expanded "><a href="../network/tls.html"><strong aria-hidden="true">9.3.</strong> TLS</a></li><li class="chapter-item expanded "><a href="../network/dns.html"><strong aria-hidden="true">9.4.</strong> DNS</a></li><li class="chapter-item expanded "><a href="../network/tcp_ip.html"><strong aria-hidden="true">9.5.</strong> TCP/IP</a></li><li class="chapter-item expanded "><a href="../network/networkModels.html"><strong aria-hidden="true">9.6.</strong> Сетевые модели</a></li><li class="chapter-item expanded "><a href="../network/realTime.html"><strong aria-hidden="true">9.7.</strong> realTime взаимодействие с сервером</a></li><li class="chapter-item expanded "><a href="../network/whatHappenWhen.html"><strong aria-hidden="true">9.8.</strong> Что происходит при нажатии на g</a></li></ol></li><li class="chapter-item expanded "><a href="../os.html"><strong aria-hidden="true">10.</strong> Операционые системы</a></li><li class="chapter-item expanded "><a href="../devops/index.html"><strong aria-hidden="true">11.</strong> Системное администрирование</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../devops/linux.html"><strong aria-hidden="true">11.1.</strong> Linux</a></li><li class="chapter-item expanded "><a href="../devops/virtualization/index.html"><strong aria-hidden="true">11.2.</strong> Основы виртуализации</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../devops/virtualization/docker.html"><strong aria-hidden="true">11.2.1.</strong> Docker</a></li><li class="chapter-item expanded "><a href="../devops/virtualization/kubernetes.html"><strong aria-hidden="true">11.2.2.</strong> Kubernetes</a></li></ol></li><li class="chapter-item expanded "><a href="../devops/deployment.html"><strong aria-hidden="true">11.3.</strong> Deployment</a></li><li class="chapter-item expanded "><a href="../devops/monitoring.html"><strong aria-hidden="true">11.4.</strong> Мониторинг</a></li></ol></li><li class="chapter-item expanded "><a href="../test.html"><strong aria-hidden="true">12.</strong> Тестирование</a></li><li class="chapter-item expanded "><a href="../unsorted/index.html"><strong aria-hidden="true">13.</strong> Разное</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../unsorted/bits.html"><strong aria-hidden="true">13.1.</strong> Побитовые операции</a></li><li class="chapter-item expanded "><a href="../unsorted/types.html"><strong aria-hidden="true">13.2.</strong> Типизация</a></li><li class="chapter-item expanded "><a href="../unsorted/unicode.html"><strong aria-hidden="true">13.3.</strong> Юникод</a></li></ol></li><li class="chapter-item expanded "><a href="../devmethods.html"><strong aria-hidden="true">14.</strong> Методологии разработки</a></li><li class="chapter-item expanded "><a href="../checkList.html"><strong aria-hidden="true">15.</strong> ЧекЛист</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Backend interview</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+                        <a href="https://github.com/arturpanteleev/phpInterview" title="Git repository" aria-label="Git repository">
+                            <i id="git-repository-button" class="fa fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="Разное-о-php"><a class="header" href="#Разное-о-php">Разное о PHP</a></h1>
+<h2 id="Магические-методы-php"><a class="header" href="#Магические-методы-php">Магические методы PHP</a></h2>
+<ul>
+<li><a href="http://php.net/manual/ru/language.oop5.decon.php#object.construct"><strong>__construct()</strong></a> — метод конструктор, если он объявлен в классе то он будет вызываться при каждом создании объекта. Может принимать одно или несколько свойств.</li>
+<li><a href="http://php.net/manual/ru/language.oop5.decon.php#object.destruct"><strong>__destruct()</strong></a> — деструктор вызывается при освобождении всех ссылок на объект в котором он находится или по завершению работы скрипта. Не может принимать свойства.</li>
+<li><a href="http://php.net/manual/ru/language.oop5.overloading.php#object.get"><strong>__get()</strong></a> — будет выполнен при чтении данных из недоступных свойств.</li>
+<li><a href="http://php.net/manual/ru/language.oop5.overloading.php#object.set"><strong>__set()</strong></a> — будет выполнен при записи данных в недоступные свойства.</li>
+<li><a href="http://php.net/manual/ru/language.oop5.overloading.php#object.isset"><strong>__isset()</strong></a> будет выполнен при использовании isset() или empty() на недоступных свойствах.</li>
+<li><a href="http://php.net/manual/ru/language.oop5.overloading.php#object.unset"><strong>__unset()</strong></a> — будет выполнен при вызове unset() на недоступном свойстве.</li>
+<li><a href="http://php.net/manual/ru/language.oop5.overloading.php#object.call"><strong>__call()</strong></a> — данный метод вызывается при вызове недоступных методов класса.</li>
+<li><a href="http://php.net/manual/ru/language.oop5.overloading.php#object.callstatic"><strong>__callStatic()</strong></a> —данный метод вызывается при вызове недоступных методов класса в статическом контексте.</li>
+<li><a href="http://php.net/manual/ru/language.oop5.magic.php#object.tostring"><strong>__toString()</strong></a> — позволяет написать реакцию класса при возведении его в строку.</li>
+<li><a href="http://php.net/manual/ru/language.oop5.magic.php#object.invoke"><strong>__invoke()</strong></a> — вызывается, когда скрипт выполняет объект как функцию.</li>
+<li><a href="http://php.net/manual/ru/language.oop5.cloning.php#object.clone"><strong>__clone()</strong></a> — клонирует объект.</li>
+<li><a href="http://php.net/manual/ru/language.oop5.magic.php#object.sleep"><strong>__sleep()</strong></a> — метод вызывается перед выполнением функции serialize().</li>
+<li><a href="http://php.net/manual/ru/language.oop5.magic.php#object.wakeup"><strong>__wakeup()</strong></a> — метод вызывается перед выполнением функции unserialize()</li>
+<li><a href="http://php.net/manual/ru/language.oop5.magic.php#object.set-state"><strong>__set_state()</strong></a> — этот статический метод вызывается для тех классов, которые экспортируются функцией var_export()</li>
+<li><a href="http://php.net/manual/ru/language.oop5.magic.php#object.debuginfo"><strong>__debugInfo()</strong></a> — метод вызывается функцией <a href="http://php.net/manual/ru/function.var-dump.php">var_dump()</a>, когда необходимо вывести список свойств объекта. Если этот метод не определен, тогда будут выведены все свойства объекта c модификаторами public, protected и private.</li>
+</ul>
+<h2 id="psr-0-vs-psr-4"><a class="header" href="#psr-0-vs-psr-4">PSR-0 vs PSR-4</a></h2>
+<p>Here are the major differences,</p>
+<p><strong>1.</strong> For example if you define that the <code>Acme\Foo\</code> namespace is anchored in <code>src/</code>,</p>
+<ul>
+<li>
+<p>with PSR-0 it means it will look for <code>Acme\Foo\Bar</code> in <code>src/Acme/Foo/Bar.php</code></p>
+</li>
+<li>
+<p>while in PSR-4 it will look for <code>Acme\Foo\Bar</code> in <code>src/Bar.php(where Bar class is)</code>.
+<strong>2.</strong> PSR-4 does not convert underscores to directory separators
+<strong>3.</strong> You would prefer using PSR-4 with namespaces
+<strong>4.</strong> PSR-0 will not work even if the class name is different from file name, like considering above example:</p>
+</li>
+<li>
+<p><code>Acme\Foo\Bar</code> ---&gt; <code>src/Acme/Foo/Bar.php</code> (for Bar class) will work</p>
+</li>
+<li>
+<p><code>Acme\Foo\Bar</code> ---&gt; <code>src/Acme/Foo/Bar2.php</code> (for Bar class) will not work</p>
+</li>
+</ul>
+<h2 id="Замыкания-и-лямда-функции"><a class="header" href="#Замыкания-и-лямда-функции">Замыкания и лямда функции</a></h2>
+<p>Анонимные функции, также известные как замыкания (<em>closures</em>), позволяют создавать функции, не имеющие определенных имен. Они наиболее полезны в качестве значений <a href="http://php.net/manual/ru/language.pseudo-types.php#language.types.callback">callback</a>-параметров, но также могут иметь и множество других применений.</p>
+<p>Анонимные функции реализуются с использованием класса <a href="http://php.net/manual/ru/class.closure.php">Closure</a>.</p>
+<p>В пхп замыканием считает любая анонимная функция, которая может использовать переменные из внешнего(для функции) контекста с помощью конструкции use.</p>
+<pre><code class="language-php">$message = 'привет';
+
+$example = function () use ($message) {
+    var_dump($message);
+};
+$example();
+</code></pre>
+<h3 id="Как-передать-функцию-как-callable"><a class="header" href="#Как-передать-функцию-как-callable">Как передать функцию как callable?</a></h3>
+<ul>
+<li>Анонимная функция</li>
+<li>Имя функции как строку</li>
+<li>Переменную, содержащую функцию</li>
+<li>Массив вида <code>[(className || objectName), method name]</code></li>
+<li>Замыкание в котором дернуть метод объекта</li>
+<li>Объект с реализованным методом <code>__invoke()</code></li>
+</ul>
+<h2 id="composer"><a class="header" href="#composer">Composer</a></h2>
+<h3 id="composerjson-vs-composerlock"><a class="header" href="#composerjson-vs-composerlock">composer.json vs composer.lock</a></h3>
+<ul>
+<li><code>composer.json</code> - содержит допустимые &quot;диапазоны&quot; версий для пакетов</li>
+<li><code>composer.lock</code> - точные версии установленных пакетов, с которыми работает данная версия(коммит) приложения. Так же в отличие от <code>composer.json</code> в <code>lock</code> файл пишутся ВСЕ зависимости которые нужны проекту - например вы зависите от пакета Б, а он зависит от пакета В определенной версии. Пакет В в этом случае попадет в ваш lock файл, и так до конца цепочки зависимостей.</li>
+</ul>
+<h3 id="install-vs-update-vs-require"><a class="header" href="#install-vs-update-vs-require">install vs update vs require</a></h3>
+<p><code>composer install</code> делает следующее:</p>
+<ul>
+<li>Проверяет, существует ли <code>composer.lock</code></li>
+<li>если нет, резолвит зависимости и создаёт его</li>
+<li>если <code>composer.lock</code> существует, устанавливает версии, указанные в нём</li>
+</ul>
+<p><code>composer update</code>:</p>
+<ul>
+<li>Проверяет <code>composer.json</code></li>
+<li>Определяет последние версии на основе указанных в этом файле</li>
+<li>Устанавливает последние версии</li>
+<li>Обновляет <code>composer.lock</code> в соответствии с установленными</li>
+</ul>
+<p><code>composer require somePackage</code>:</p>
+<p>For example if we want to add a dependency with the command line we will simply execute </p>
+<ul>
+<li>composer.json file will be modified automatically and the new dependency will be added</li>
+<li>the dependency will be downloaded to the project</li>
+<li>http://php.net/manual/ru/class.splsubject.php</li>
+</ul>
+<h3 id="Варианты-ограничений-версий-для-composerjson"><a class="header" href="#Варианты-ограничений-версий-для-composerjson">Варианты ограничений версий для composer.json</a></h3>
+<pre><code class="language-json">&quot;require&quot;: {
+    &quot;vendor/package&quot;: &quot;1.3.2&quot;, // exactly 1.3.2
+
+    // &gt;, &lt;, &gt;=, &lt;= | specify upper / lower bounds
+    &quot;vendor/package&quot;: &quot;&gt;=1.3.2&quot;, // anything above or equal to 1.3.2
+    &quot;vendor/package&quot;: &quot;&lt;1.3.2&quot;, // anything below 1.3.2
+
+    // * | wildcard
+    &quot;vendor/package&quot;: &quot;1.3.*&quot;, // &gt;=1.3.0 &lt;1.4.0
+
+    // ~ | allows last digit specified to go up
+    &quot;vendor/package&quot;: &quot;~1.3.2&quot;, // &gt;=1.3.2 &lt;1.4.0
+    &quot;vendor/package&quot;: &quot;~1.3&quot;, // &gt;=1.3.0 &lt;2.0.0
+
+    // ^ | doesn't allow breaking changes (major version fixed - following semver)
+    &quot;vendor/package&quot;: &quot;^1.3.2&quot;, // &gt;=1.3.2 &lt;2.0.0
+    &quot;vendor/package&quot;: &quot;^0.3.2&quot;, // &gt;=0.3.2 &lt;0.4.0 // except if major version is 0
+}
+</code></pre>
+<h2 id="self-vs--static"><a class="header" href="#self-vs--static">Self vs  Static</a></h2>
+<p>Позднее статическое связывание сохраняет имя класса указанного в последнем &quot;неперенаправленном вызове&quot;. В случае статических вызовов это явно указанный класс (обычно слева от оператора <a href="http://php.net/manual/ru/language.oop5.paamayim-nekudotayim.php"><em>::</em></a>); в случае не статических вызовов это класс объекта. &quot;Перенаправленный вызов&quot; - это статический вызов, начинающийся с <em>self::</em>, <em>parent::</em>, <em>static::</em>, или, если двигаться вверх по иерархии классов, <a href="http://php.net/manual/ru/function.forward-static-call.php">forward_static_call()</a>. Функция <a href="http://php.net/manual/ru/function.get-called-class.php">get_called_class()</a> может быть использована для получения строки с именем вызванного класса, а <em>static::</em> представляет ее область действия.</p>
+<p>Само название &quot;позднее статическое связывание&quot; отражает в себе внутреннюю реализацию этой особенности. &quot;Позднее связывание&quot; отражает тот факт, что обращения через <em>static::</em> не будут вычисляться по отношению к классу, в котором вызываемый метод определен, а будут вычисляться на основе информации в ходе исполнения. Также эта особенность была названа &quot;статическое связывание&quot; потому, что она может быть использована (но не обязательно) в статических методах.</p>
+<p>Говоря проще self - обращается непосредственно к классу, в котором описана ф-ция с его использованием, а static - к классу к которому идет обращение из кода.</p>
+<h2 id="Можем-ли-мы-гарантировать-выполнения-деструктора"><a class="header" href="#Можем-ли-мы-гарантировать-выполнения-деструктора">Можем ли мы гарантировать выполнения деструктора?</a></h2>
+<p>Деструктор не выполнится если:</p>
+<ol>
+<li>Exit вызван в другом деструкторе.</li>
+<li>Если другой деструктор бросает исключение.</li>
+<li>Если мы пытаемся обработать исключение в деструкторе.</li>
+<li>При получении SIGTERM в случае запуска через CLI.</li>
+<li>Fatal Error</li>
+</ol>
+<h2 id="Сессии"><a class="header" href="#Сессии">Сессии</a></h2>
+<p>По умолчанию хранятся в файлах. Но можно переопределить:</p>
+<pre><code class="language-ini">session.save_handler = memcached 
+session.save_path = «tcp://192.1680.10:11211, tcp://192.168.0.20:11211»
+</code></pre>
+<p>Основная функция <strong>session_start()</strong>  - создает сессию, либо возобновляет существующую, основываясь на идентификаторе сессии, переданном через GET- или POST-запрос, либо переданный через cookie.</p>
+<p>Когда вызвана функция <strong>session_start()</strong> или когда сессия создается автоматически, PHP вызовет открытие и чтение обработчиков записи сессии. Это могут быть как встроенные обработчики, так и предоставляемые расширениями (например, SQLite или Memcached); или вообще определенный пользователем обработчик, заданный функцией <a href="http://php.net/manual/ru/function.session-set-save-handler.php">session_set_save_handler()</a>. Callback-функция чтения извлечет все существующие данные сессии (сохраненные в специальном сериализованном виде), десериализует их и занесет в суперглобальный массив $_SESSION, после чего вернет сохраненные данные обработчику сессий PH</p>
+<h2 id="Как-выполнить-код-после-exit"><a class="header" href="#Как-выполнить-код-после-exit">Как выполнить код после exit?</a></h2>
+<p>You can use <a href="http://www.php.net/register_shutdown_function">register_shutdown_function()</a> to set a callback function which will be executed when PHP exits.</p>
+<h2 id="Отладка-и-профилировка"><a class="header" href="#Отладка-и-профилировка">Отладка и профилировка</a></h2>
+<h2 id="Анализаторы-кода"><a class="header" href="#Анализаторы-кода">Анализаторы кода</a></h2>
+<ul>
+<li><a href="http://www.program-transformation.org/PHP/PhpSat">php-sat</a> - Requires <a href="http://strategoxt.org/">http://strategoxt.org/</a></li>
+<li><a href="http://pdepend.org/">PHP_Depend</a></li>
+<li><a href="http://pear.php.net/package/PHP_CodeSniffer">PHP_CodeSniffer</a></li>
+<li><a href="http://phpmd.org/">PHP Mess Detector</a></li>
+<li><a href="https://github.com/phpstan/phpstan">PHPStan</a></li>
+<li><a href="https://github.com/FriendsOfPHP/PHP-CS-Fixer">PHP-CS-Fixer</a></li>
+<li><a href="https://github.com/phan/phan">phan</a></li>
+</ul>
+<h2 id="Сегфолт-в-пхп-фпм-как-поймать-как-отловить-трейс"><a class="header" href="#Сегфолт-в-пхп-фпм-как-поймать-как-отловить-трейс">Сегфолт в пхп фпм, как поймать, как отловить трейс</a></h2>
+<p><strong>Ошибка сегментации</strong> (<a href="https://ru.wikipedia.org/wiki/%D0%90%D0%BD%D0%B3%D0%BB%D0%B8%D0%B9%D1%81%D0%BA%D0%B8%D0%B9_%D1%8F%D0%B7%D1%8B%D0%BA">англ.</a> Segmentation fault, сокр. segfault, жарг. <em>сегфолт</em>) — ошибка, возникающая при попытке обращения к недоступным для записи участкам <a href="https://ru.wikipedia.org/wiki/%D0%92%D0%B8%D1%80%D1%82%D1%83%D0%B0%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F_%D0%BF%D0%B0%D0%BC%D1%8F%D1%82%D1%8C">памяти</a> либо при попытке изменить память запрещённым способом</p>
+<h2 id="Список-модулей-пхп"><a class="header" href="#Список-модулей-пхп">Список модулей пхп</a></h2>
+<p><code>php -m</code></p>
+<h2 id="spl"><a class="header" href="#spl">SPL</a></h2>
+<p>Стандартная библиотека PHP (SPL) - это набор интерфейсов и классов, предназначенных для решения стандартных задач. Не требуется никаких внешних библиотек для сборки этого расширения, и оно доступно по умолчанию в PHP 5.0.0 и выше.</p>
+<p>SPL предоставляет ряд стандартных структур данных, итераторов для оббегания объектов, интерфейсов, стандартных исключений, некоторое количество классов для работы с файлами и предоставляет ряд функций, например <a href="http://php.net/manual/ru/function.spl-autoload-register.php">spl_autoload_register()</a>. </p>
+<p>Еще примеры:</p>
+<ul>
+<li><a href="http://php.net/manual/ru/class.countable.php">Countable</a></li>
+<li><a href="http://php.net/manual/ru/class.outeriterator.php">OuterIterator</a></li>
+<li><a href="http://php.net/manual/ru/class.recursiveiterator.php">RecursiveIterator</a></li>
+<li><a href="http://php.net/manual/ru/class.seekableiterator.php">SeekableIterator</a></li>
+<li><a href="http://php.net/manual/ru/class.arrayobject.php">ArrayObject</a></li>
+<li><a href="http://php.net/manual/ru/class.splobserver.php">SplObserver</a></li>
+</ul>
+<h2 id="declarestrict_types1"><a class="header" href="#declarestrict_types1">declare(strict_types=1);</a></h2>
+<p>By default, PHP will cast values of the wrong type into the expected scalar type if possible. For example, a function that is given an integer for a parameter that expects a string will get a variable of type string.</p>
+<p>В случае включенного строгого режима будут фаталы при несовпадении типов. Строгий режим действует ТОЛЬКО внутри того файла, где он был объявлен.</p>
+<h2 id="pecl"><a class="header" href="#pecl">PECL</a></h2>
+<p>PECL (англ. PHP Extension Community Library) — это репозиторий модулей для PHP, написанных на C, доступных через систему пакетов PEAR. PECL был создан, когда возникла проблема удаления некоторых модулей из стандартной поставки PHP. Модули PECL разработаны в соответствии со стандартами кодирования, которые приняты командой разработчиков PHP.</p>
+<h2 id="opcache"><a class="header" href="#opcache">OpCache</a></h2>
+<p>Как работает php-интерпретатор - вначале, написанный нами код разбирается <a href="https://ru.wikipedia.org/wiki/%D0%9B%D0%B5%D0%BA%D1%81%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9_%D0%B0%D0%BD%D0%B0%D0%BB%D0%B8%D0%B7">лексическим анализатором</a>. Далее, полученные лексемы, передаются в <a href="https://ru.wikipedia.org/wiki/%D0%A1%D0%B8%D0%BD%D1%82%D0%B0%D0%BA%D1%81%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9_%D0%B0%D0%BD%D0%B0%D0%BB%D0%B8%D0%B7">синтаксический анализатор</a>. Если синтаксический анализатор дал добро, то лексемы передаются <a href="https://ru.wikipedia.org/wiki/%D0%A2%D1%80%D0%B0%D0%BD%D1%81%D0%BB%D1%8F%D1%82%D0%BE%D1%80">транслятору</a>, а он, в свою очередь, генерирует так называемые opcodes (operation codes). И только после этого, в дело вступает виртуальная машина PHP (та самая Zend Engine) которая и выполняет наш алгоритм из получившихся opcodes. Opcodes так же называют эдаким php-шным ассемблером.</p>
+<p>Акселератор PHP — расширение для PHP, основное назначение которого — увеличение производительности интерпретатора при обработке сценариев путём кэширования их байт-кода.</p>
+<p>PHP — это скриптовый язык, который по умолчанию компилирует те файлы, которые вам нужно запустить. Во время компилирования он извлекает опкоды, исполняет их, а затем немедленно уничтожает. PHP был так разработан: когда он переходит к выполнению запроса R, то «забывает» всё, что было выполнено в ходе запроса R-1.</p>
+<p>Очень маловероятно, что на production-серверах PHP-код изменится между выполнением нескольких запросов. Так что можно считать, что при компилированиях всегда считывается один и тот же исходный код, а значит и опкод будет точно таким же. И если извлекать его для каждого скрипта, то получается бесполезная трата времени и ресурсов.</p>
+<p><img src="../media/phpCache.png" alt="" /></p>
+<p>В связи с большой продолжительностью компилирования были разработаны расширения для кэширования опкодов. Их главная задача — <strong>единожды</strong> скомпилировать каждый PHP-скрипт и закэшировать получившиеся опкоды в общую память, чтобы их мог считать и выполнить каждый рабочий процесс PHP. В результате сильно повышается общая производительность языка, а на запуск скрипта уходит намного меньше времени (сильно зависит от самого скрипта). </p>
+<p>OPCache — это расширение, внедрённое в исходный код PHP начиная с версии 5.5.0. Его необходимо активировать с помощью обычного процесса активации через php.ini. У OPCache есть две основные функции:</p>
+<ul>
+<li>Кэширование опкодов.</li>
+<li>Оптимизация опкодов.</li>
+</ul>
+<p>Поскольку OPCache запускает компилятор, чтобы получить и закэшировать окоды, то он может использовать этот этап для их оптимизации. По сути речь идёт разнообразных оптимизациях компилятора. OPCache работает как многопроходный оптимизатор компилятора.</p>
+<p><em>Дополнительно:</em></p>
+<ul>
+<li><a href="https://habr.com/company/mailru/blog/310054/">Обзор расширения OPCache для PHP</a></li>
+<li><a href="https://habr.com/post/233129/">Исследуем результат работы php-транслятора</a></li>
+</ul>
+<h2 id="Демон-на-php"><a class="header" href="#Демон-на-php">Демон на php</a></h2>
+<p>Применимо к PHP, это скрипт, который может работать самостоятельно, без остановок и без участия пользователя. Как получить такой скрипт? На самом деле, очень просто, нужно лишь нарушить одно из первых правил программирования, которому учат в школе, и <strong>создать бесконечный цикл:</strong></p>
+<pre><code class="language-php">// Чтобы программа работала постоянно, она просто должна постоянно работать ;)
+while(1) {
+    // Тут будет располагаться код Демона
+    // Время сна Демона между итерациями (зависит от потребностей системы)
+    sleep(1); 
+}
+</code></pre>
+<p>Что он должен уметь?</p>
+<ul>
+<li>Запускаться из консоли и отвязываться от неё</li>
+<li>Всю информацию писать в логи, ничего не выводить в консоль</li>
+<li>Уметь плодить дочерние процессы и контролировать их</li>
+<li>Выполнять поставленную задачу</li>
+<li>Корректно завершать работу</li>
+</ul>
+<h2 id="pcntl-в-php"><a class="header" href="#pcntl-в-php">PCNTL в PHP</a></h2>
+<p>Если вы (либо операционная система) прерываете какой-то скрипт (процесс), то никакого &quot;прерывания&quot; не происходит. На самом деле, скрипту (процессу) посылается специальный сигнал &quot;остановиться&quot;. В ответ на этот сигнал скрипт может отправить сообщение &quot;подождать&quot;, тогда ОС подождет. По умолчанию, если никакого ответа от скрипта нет, он останавливается сразу.</p>
+<p>Расширение <a href="http://php.net/manual/ru/intro.pcntl.php">pcntl</a> позволяет получать и обрабатывать сигналы от операционной системы в PHP скриптах.</p>
+<p>Простой скрипт, который перехватывает сигнал окончания работы SIGTERM:</p>
+<pre><code class="language-php">&lt;?
+
+# назначаем обработчик сигнала
+declare(ticks = 1);
+pcntl_signal(SIGTERM, &quot;sig_handler&quot;);
+
+# обработчик сигнала
+function sig_handler($signo)
+{
+        echo &quot;\n&quot; . 'received signal ' . $signo . &quot;\n&quot;;
+}
+
+# бесконечный цикл
+while ( true )
+{
+	for ( $i = 0; $i &lt; 3; $i++ )
+	{
+		echo '.';
+		sleep(1);
+	}
+
+	echo &quot;\n&quot;;
+}
+</code></pre>
+<ul>
+<li>Инструкция declare(ticks = 1) нужна для инициализации обработки сигналов. Используйте ее в начале каждого скрипта, в котором нужен обработчик.</li>
+<li><a href="https://ruhighload.com/doc/php/function.pcntl-signal">pcntl_signal</a> назначает обработчик определенному сигналу.</li>
+<li>В функции sig_handler() мы перехватываем сигнал и обрабатываем его. В нашем примере — просто выводим текст, вместо завершения скрипта.</li>
+</ul>
+<p>Если запустить этот скрипт (php test.php), а в соседнем терминале попытаться его прервать командой pkill -f test.php, увидим такой вывод:</p>
+<pre><code class="language-bash">den@den:~# php test.php 
+...
+received signal 15
+...
+...
+.
+received signal 15
+...
+</code></pre>
+<p>Для фоновых скриптов удобно использовать обработчики сигналов, чтобы обеспечить их правильную остановку и перезапуск. Сигналы SIGTERM и SIGNINT используются для прекращения работы скрипта, SIGHUP используется для перезапуска. В PHP обработка сигналов происходит с помощью функции <a href="https://ruhighload.com/doc/php/function.pcntl-signal">pcntl_signal</a>.</p>
+<p>Функция <strong>pcntl_fork()</strong> создает дочерний процесс, который отличается от родительского процесса только его PID и PPID. Пожалуйста, обратитесь к вашему системному руководству (man) fork(2) для ознакомления со спецификой работы fork на вашей системе. В случае успеха, PID дочернего процесса будет возвращен в родительском потоке (thread) запуска и 0 будет возвращен в дочернем потоке запуска. В случае сбоя, в родительский контекст будет возвращено -1, дочерний процесс создан не будет и PHP сгенерирует соответствующую ошибку.</p>
+<h2 id="Получить-тело-http-запроса-в-php"><a class="header" href="#Получить-тело-http-запроса-в-php">Получить тело HTTP запроса в PHP</a></h2>
+<p>To access the entity body of a POST or PUT request (or any other HTTP method):</p>
+<pre><code class="language-php">$entityBody = file_get_contents('php://input');
+</code></pre>
+<p>Also, the <code>STDIN</code> constant is an already-open stream to <code>php://input</code>, so you can alternatively do:</p>
+<pre><code class="language-php">$entityBody = stream_get_contents(STDIN);
+</code></pre>
+<p>From the <a href="http://php.net/manual/en/wrappers.php.php">PHP manual entry on I/O streams<em>docs</em></a>:</p>
+<blockquote>
+<p><em>php://input</em> is a read-only stream that allows you to read raw data from the request body. In the case of POST requests, it is preferable to use <em>php://input</em> instead of <code>$HTTP_RAW_POST_DATA</code> as it does not depend on special php.ini directives. Moreover, for those cases where<code>$HTTP_RAW_POST_DATA</code> is not populated by default, it is a potentially less memory intensive alternative to activating always_populate_raw_post_data. <em>php://input</em> is not available with enctype=&quot;multipart/form-data&quot;.</p>
+</blockquote>
+<p>Specifically you'll want to note that the <code>php://input</code> stream, regardless of how you access it in a web SAPI, <em>is not seekable</em>. This means that it can only be read once. If you're working in an environment where large HTTP entity bodies are routinely uploaded you may wish to maintain the input in its stream form (rather than buffering it like the first example above).</p>
+<p>To maintain the stream resource something like this can be helpful:</p>
+<pre><code class="language-php">&lt;?php
+
+function detectRequestBody() {
+    $rawInput = fopen('php://input', 'r');
+    $tempStream = fopen('php://temp', 'r+');
+    stream_copy_to_stream($rawInput, $tempStream);
+    rewind($tempStream);
+
+    return $tempStream;
+}
+</code></pre>
+<p><code>php://temp</code> allows you to manage memory consumption because it will transparently switch to filesystem storage after a certain amount of data is stored (2M by default). This size can be manipulated in the php.ini file or by appending <code>/maxmemory:NN</code>, where <code>NN</code> is the maximum amount of data to keep in memory before using a temporary file, in bytes.</p>
+<h2 id="Трейты"><a class="header" href="#Трейты">Трейты</a></h2>
+<p>Трейт - это механизм обеспечения повторного использования кода в языках с поддержкой только одиночного наследования, таких как PHP. Трейт предназначен для уменьшения некоторых ограничений одиночного наследования, позволяя разработчику повторно использовать наборы методов свободно, в нескольких независимых классах и реализованных с использованием разных архитектур построения классов. Семантика комбинации трейтов и классов определена таким образом, чтобы снизить уровень сложности, а также избежать типичных проблем, связанных с множественным наследованием и смешиванием (mixins).</p>
+<p>Трейт очень похож на класс, но предназначен для группирования функционала хорошо структурированым и последовательным образом. Невозможно создать самостоятельный экземпляр трейта. Это дополнение к обычному наследованию и позволяет сделать горизонтальную композицию поведения, то есть применение членов класса без необходимости наследования.</p>
+<pre><code class="language-php">trait GeneratesDomainEvents
+{
+    private $events = [];
+
+    protected function raise(DomainEvent $event)
+    {
+        $this-&gt;events[] = $event;
+    }
+
+    public function releaseEvents()
+    {
+        $pendingEvents = $this-&gt;events;
+        $this-&gt;events = [];
+        return $pendingEvents;
+    }
+}
+</code></pre>
+<p>Мы можем <a href="https://gist.github.com/rosstuck/09804eed5fb9020a1ff0">сделать рефакторинг и превратить этот код в абстракцию</a>, но это все равно будет хорошим примером того, как трейты могут работать с локальным состоянием объекта в отличие от статических методов. Мы не хотим работать с массивом событий вслепую или перемещать его из объекта. Возможно, мы не хотим добавлять еще одну абстракцию внутрь модели, и нам, конечно же, не хочется копипастить этот шаблонный код везде. И тут опять нам помогут трейты. </p>
+<p>Другими практическими примерами могут служить настраиваемое логирование функций, дамп нескольких свойств сразу или общая итерационная/поисковая логика. Мы могли бы решить все эти задачи родительским классом, но поговорим об этом чуть позже.</p>
+<p>И наконец, следует помнить, что <strong>трейты не предполагают абстракцию и они не являются композицией</strong>, но все равно имеют право занять место среди ваших инструментов. Они полезны для предоставления воздействия по-умолчанию при более мелких реализациях или дублировании кода. Всегда будьте готовы реорганизовать их для лучшей абстракции, как только почувствуете признаки кода «с запашком»</p>
+<p><em>Дополнительно</em>:</p>
+<ul>
+<li><a href="https://habr.com/ru/post/258671/">Как я использую трейты</a></li>
+</ul>
+<h2 id="Генераторы-и-корутины"><a class="header" href="#Генераторы-и-корутины">Генераторы и корутины</a></h2>
+<p>Генераторы предоставляют лёгкий способ реализации простых итераторов без использования дополнительных ресурсов или сложностей, связанных с реализацией класса, реализующего интерфейс Iterator.</p>
+<p>Генератор позволяет вам писать код, использующий foreach для перебора набора данных без необходимости создания массива в памяти, что может привести к превышению лимита памяти, либо потребует довольно много времени для его создания. Вместо этого, вы можете написать функцию-генератор, которая, по сути, является обычной функцией, за исключением того, что вместо возврата единственного значения, генератор может возвращать (yield) столько раз, сколько необходимо для генерации значений, позволяющих перебрать исходный набор данных.</p>
+<p>Преимущества такого подхода должны быть очевидны. Таким образом вы можете работать с очень большими наборами данных, не загружая их всех в память. Вы даже можете работать с <em>бесконечными</em> потоками данных. Все это также может быть сделано без генераторов, создав класс имплементирующий интерфейс <code>Iterator</code>. Генераторы просто делают это (гораздо) более простым занятием, потому что вам не нужно имплементировать пять разных методов для каждого итератора.</p>
+<p>Вся суть генератора заключается в ключевом слове <strong>yield</strong>. В самом простом варианте оператор &quot;yield&quot; можно рассматривать как оператор &quot;return&quot;, за исключением того, что вместо прекращения работы функции, &quot;yield&quot; только приостанавливает ее выполнение и возвращает текущее значение, и при следующем вызове функции она возобновит выполнения с места, на котором прервалась.</p>
+<p>Главное преимущество генераторов - это их простота. Гораздо меньше шаблонного кода надо написать, по сравнению с реализацией объекта класса Iterator, и этот код гораздо более простой и понятный. Однако за эту простоту, впрочем, приходится платить: генераторы могут быть только однонаправленными итераторами. Их нельзя перемотать назад после старта итерации. Это также означает, что один и тот же генератор нельзя использовать несколько раз: генератор необходимо пересоздавать каждый раз, снова вызвав функцию генератора.</p>
+<p>В PHP 5 генераторы не могут возвращать значений и попытка сделать это приведет к ошибке компиляции. В генераторе может присутствовать только пустой оператор <strong>return</strong>, для обозначения конца генерируемой последовательности. Начиная с PHP 7 генераторы могут возвращать значения, которые можно получить с помощью <a href="http://php.net/manual/ru/generator.getreturn.php">Generator::getReturn()</a>.</p>
+<p><em>Дополнительно</em>:</p>
+<ul>
+<li><a href="https://habr.com/post/164173/">Coroutines в PHP и работа с неблокирующими функциями</a></li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../php/frameworks/symfony.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="../goLang/index.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../php/frameworks/symfony.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="../goLang/index.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <script type="text/javascript">
+            window.playground_copyable = true;
+        </script>
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+    </body>
+</html>
