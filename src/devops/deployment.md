@@ -85,4 +85,36 @@
 разработки и тестирования новых функций. При этом Blue и Green окружения остаются стабильными и готовыми к
 использованию, а Red используется для экспериментов и разработки.
 
+## Список стратегий деплоя
+
+* Green-Blue Deployment
+* Canary Deployment
+* Rolling Deployment
+* A/B Testing
+* Blue-Green-Canary Deployment
+* Shadow Deployment
+* Feature Toggles
+* Traffic Splitting
+* Immutable Infrastructure
+* Blue-Green-Red Deployment
+* Rolling Updates
+* Recreate Deployment
+* Traffic Mirroring
+* Dark Launching
+* Forking
+* Phased Rollout
+* Ring Deployment
+* Delta Deployment
+* Staged Rollout
+* Live Migration
+* Binary Delta Deployment
+* Hybrid Deployment
+* Multi-Armed Bandit
+* Traffic Shifting
+* Zero Downtime Deployment
+* Chaos Engineering
+* Parallel Deployment
+* Incremental Deployment
+* Strangler Pattern
+* Hot Patching
 
