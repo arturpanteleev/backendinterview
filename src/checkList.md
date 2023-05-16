@@ -113,8 +113,8 @@
   * KISS
 * Архитектурные паттерны
   * Layer architecture
-  * Onion architecutre
-  * Hexogonal architecture
+  * Onion architecture
+  * Hexagonal architecture
   * CQRS
   * ES
   * Saga
@@ -124,7 +124,7 @@
     * Ubiquitous language
     *  Subdomain
   * Тактические
-    * Agregate root
+    * Aggregate root
     * Entity
     * Value object
 * Api и Микросервисы
@@ -148,7 +148,7 @@
 * Разное
 
 ## GoLang
-* shceduler
+* scheduler
   * 3 сущности - горутина, поток, контекст привязанный к потоку
   * m : n (m задач на n потоках)
   * work stealing
