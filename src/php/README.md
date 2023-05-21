@@ -4,5 +4,6 @@
 
 - [Фичи новых версий](innovations.md)
 - [PHP Internals](internals.md)
+- [realTime взаимодействие с сервером](realTime.md)
 - [Фреймворки](frameworks/README.md)
 - [Разное](uncategorized.md) 
