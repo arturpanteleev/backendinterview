@@ -2,10 +2,10 @@
 
 Базовая информация по сетевому взаимодействию и устройству сетевых протоколов.
 
-- [Взаимодействие приложения с веб-сервером](serverIteractions.md)
+- [OSI](osi.md)
+- [TCP/IP](tcp_ip.md)
 - [HTTP](http.md)
+- [TLS](tls.md)
 - [DNS](dns.md)
-- [Сетевые модели](networkModels.md)
-- [realTime взаимодействие с сервером](realTime.md)
-
-
+- [Что происходит при нажатии на g](whatHappenWhen.md)
+- [Real time с веб-сервером](realTime.md)
