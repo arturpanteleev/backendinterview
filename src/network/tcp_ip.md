@@ -2,7 +2,7 @@
 
 Протокол **TCP/IP** - это набор сетевых протоколов, используемых для обмена данными в компьютерных сетях. **TCP/IP** — сетевая модель выведенная из практического использования(в отличии от OSI). 
 
-![tcp-vs-udp-01](..\..\src\media\network\tcp-vs-udp.png)
+![tcp-vs-udp-01](../media/network/tcp-vs-udp.png)
 
 ## Network Interface Layer(канальные)
 
