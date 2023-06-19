@@ -16,7 +16,7 @@
     * [ClickHouse](column/clickhouse.md)
     * [Vertica](column/vertica.md)
 * [NoSql](noSql/README.md)
-    * [Memcaced](noSql/memcached.md) 
+    * [Memcached](noSql/memcached.md) 
     * [Redis](noSql/redis.md) 
     * [Tarantool](noSql/tarantool.md)
     * [Mongo](noSql/mongo.md) 
