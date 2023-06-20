@@ -13,6 +13,12 @@
     * [Разное](algostruct/unsorted.md)
 * [Базы Данных](db/README.md)
     * [Теория Баз Данных](db/dBTheory/README.md)
+        * [Распределенные БД](db\dBTheory\distrubedDb\README.md)
+            * [Репликация](db\dBTheory\distrubedDb\replication.md)
+            * [Шардинг](db\dBTheory\distrubedDb\sharding.md)
+            * [Разное](db\dBTheory\distrubedDb\unsorted.md)
+        * [Распределенные БД](db\dBTheory\distrubedDb\transactions.md)
+        * [Нормальные формы](db\dBTheory\distrubedDb\normalForms.md)
     * [Реляционные БД](db/relational/README.MD)    
         * [MySql](db/relational/mysql/README.MD)
             * [Архитектура MySql](db/relational/mysql/architecture.md)
@@ -93,4 +99,3 @@
     * [Юникод](unsorted/unicode.md)
 * [Методологии разработки](devmethods.md)
 * [ЧекЛист](checkList.md)
-
