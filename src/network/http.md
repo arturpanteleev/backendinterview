@@ -242,7 +242,7 @@ HTTPS не является отдельным протоколом. Это об
 
 ### HTTP 1.1
 
-Новым в этой версии был режим «постоянного соединения»(keep-alive): TCP-соединение может оставаться открытым после отправки ответа на запрос, что позволяет посылать несколько запросов за одно соединение. Клиент теперь обязан посылать информацию об имени хоста([`Host`](https://developer.mozilla.org/ru/docs/Web/HTTP/Headers/Host) заголовок), к которому он обращается, что сделало возможной более простую организацию виртуального хостинга.
+Новым в этой версии был режим «постоянного соединения»(**keep-alive**): TCP-соединение может оставаться открытым после отправки ответа на запрос, что позволяет посылать несколько запросов за одно соединение. Клиент теперь обязан посылать информацию об имени хоста([`Host`](https://developer.mozilla.org/ru/docs/Web/HTTP/Headers/Host) заголовок), к которому он обращается, что сделало возможной более простую организацию виртуального хостинга.
 
 Достоинства:
 
@@ -257,7 +257,7 @@ HTTPS не является отдельным протоколом. Это об
 ### HTTP  2
 
 - бинарный, сжатие заголовков;
-- мультиплексирование данных;
+- мультиплексирование данных(стримы);
 - приоритизация;
 - возможна отмена загрузки;
 - server push
@@ -268,7 +268,7 @@ HTTPS не является отдельным протоколом. Это об
 
 В HTTP 1.1 браузеры используют множественные подключения к серверу для загрузки веб-страницы, причем количество таких соединений ограничено. Но это не решает проблему с блокированием канала медленными пакетами. Тогда как в HTTP/2 используется мультиплексирование, которое позволяет браузеру использовать одно соединение TCP для всех запросов. Все файлы подгружаются параллельно. Запросы и ответы разделяются по фреймам с мета-данными, которые ассоциируют запросы и ответы. Так что они не перекрывают друг-друга и не вызывают путаницы. При этом ответы получаются по мере их готовности, следовательно, тяжелые запросы не будут блокировать обработку и выдачу более простых объектов.
 
-HTTP 1.1 offers different workarounds for latency issues, including pipelining and the Keep-Alive header. However, pipelining was never widely implemented and the Keep-Alive header suffered from head-of-line blocking: the current request must complete before the next one can be sent.
+HTTP 1.1 offers different workarounds for latency issues, including pipelining and the Keep-Alive header. However, pipelining was never widely implemented and the Keep-Alive header suffered from **head-of-line blocking**: the current request must complete before the next one can be sent.
 
 In HTTP/2, multiple asset requests can reuse a single TCP connection. Unlike HTTP 1.1 requests that use the Keep-Alive header, the requests and response binary frames in HTTP/2 are interleaved and head-of-line blocking does not happen. The cost of establishing a connection (the well-known “three-way handshake”) has to happen only once per host. Multiplexing is especially beneficial for secure connections because of the performance cost involved with multiple TLS negotiations.
 
@@ -313,8 +313,9 @@ In HTTP/2, multiple asset requests can reuse a single TCP connection. Unlike HTT
 - [Простым языком об HTTP](https://habr.com/post/215117/)
 - [HTTP: протокол, который каждый разработчик должен знать (часть 1)](https://ruseller.com/lessons.php?id=1726&rub=28)
 - [HTTP: протокол, который каждый разработчик должен знать (часть 2)](https://ruseller.com/lessons.php?rub=28&id=1777)
+- http://portscan.ru/article-protocol-http.html
 - https://developer.mozilla.org/ru/docs/Web/HTTP/Overview
 - [http2](https://www.8host.com/blog/v-chem-raznica-mezhdu-http1-1-i-http2/)
 - [Оптимизация в HTTP/2](https://ruhighload.com/%D0%9E%D0%BF%D1%82%D0%B8%D0%BC%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F+%D0%B2+http%2F2)
 - [Как HTTP/2 сделает веб быстрее](https://habr.com/company/nixsolutions/blog/304518/)
-- http://portscan.ru/article-protocol-http.html
+- [Head-of-Line Blocking в QUIC и HTTP/3](https://habr.com/ru/companies/selectel/articles/532868/)
