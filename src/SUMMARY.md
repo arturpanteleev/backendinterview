@@ -32,7 +32,7 @@
         * [ClickHouse](db/column/clickhouse.md)
         * [Vertica](db/column/vertica.md)
     * [NoSql](db/noSql/README.md)
-        * [Memcaced](db/noSql/memcached.md) 
+        * [Memcached](db/noSql/memcached.md) 
         * [Redis](db/noSql/redis.md) 
         * [Tarantool](db/noSql/tarantool.md)
         * [Mongo](db/noSql/mongo.md) 
