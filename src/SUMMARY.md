@@ -91,7 +91,7 @@
         * [Docker](devops/virtualization/docker.md)
         * [Kubernetes](devops/virtualization/kubernetes.md)
     * [Deployment](devops/deployment.md)
-    * [Мониторинг](devops/monitoring.md)
+    * [Observability](devops/observability.md)
 * [Тестирование](test.md)
 * [Разное](unsorted/README.md)
     * [Побитовые операции](unsorted/bits.md)
