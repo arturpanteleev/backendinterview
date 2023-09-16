@@ -8,3 +8,4 @@
   * [Kubernetes](virtualization/kubernetes.md)
 * [Deployment](deployment.md)
 * [Observability](observability.md)
+* [Load Balancing](load_balancing.md)

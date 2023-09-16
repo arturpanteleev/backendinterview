@@ -92,6 +92,7 @@
         * [Kubernetes](devops/virtualization/kubernetes.md)
     * [Deployment](devops/deployment.md)
     * [Observability](devops/observability.md)
+    * [Load Balancing](devops/load_balancing.md)
 * [Тестирование](test.md)
 * [Разное](unsorted/README.md)
     * [Побитовые операции](unsorted/bits.md)
