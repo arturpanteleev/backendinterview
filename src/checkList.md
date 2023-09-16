@@ -92,9 +92,18 @@
       * Redis Cluster
       * Репликация и шардинг
     * Tarantool
+    * Mongo
+  * Брокеры сообщений 
     * Rabbit
     * Kafka
-    * Mongo  
+  * Колоночные
+    * ClickHouse
+    * Vertica 
+  * Разное
+    * Time-series
+    * Blob-store
+    * Сетевые 
+    * Графовые
 
 ## Архитектура
 * Основы ООП
@@ -213,4 +222,3 @@
   * Scrum  
   * Kanban  
   * Scrumban
-  
