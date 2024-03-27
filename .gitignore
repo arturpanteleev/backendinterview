@@ -15,4 +15,7 @@ node_modules
 *.mobi
 *.pdf
 
+#.DS_Store
+*.DS_Store
+
 /.idea
