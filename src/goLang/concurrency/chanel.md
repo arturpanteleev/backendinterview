@@ -18,11 +18,16 @@ type hchan struct {
 }
 ```
 
-Канал содержит в себе ссылку на ожидающую горутину, представленную структурой *sudog.* Эта структура помещается в односвязный список *waitq* а горутина переходит в состояние `waiting`. И когда буфер становится доступным для заполнения, происходит следующее:
+Как видно канал содержит в себе очереди(`waitq` горутин(на чтение `recvq` и запись `sendq`)
 
-- очередная структура, представляющая ожидающую горутину *sudog* извлекается из списка *waitq;*
-- данные из поля *elem* добавляются в буфер канала;
-- горутина из sudog переходит из состояния “waiting” в состояние “runnable” (готова к выполнению).
+```
+type waitq struct {
+	first *sudog
+	last  *sudog
+}
+```
+
+ На самом деле не сами горутины, а ссылки на горутины, обёрнутые в структуру `sudog`
 
 ```go
 // sudog представляет заблокированную горутину, ожидающую чтения или записи
@@ -32,6 +37,14 @@ type sudog struct {
     // ...
 }
 ```
+
+Когда буфер становится доступным для заполнения, происходит следующее:
+
+- очередная структура, представляющая ожидающую горутину *sudog* извлекается из списка *waitq;*
+- данные из поля *elem* добавляются в буфер канала;
+- горутина из sudog переходит из состояния `waiting` в состояние `runnable`(готова к выполнению).
+
+
 
 В общем случае, горутина захватывает мьютекс, когда совершает какое-либо действие с каналом, кроме случаев lock-free проверок при неблокирующих вызовах. Closed — это флаг, который устанавливается в 1, если канал закрыт, и в 0, если не закрыт.
 
@@ -96,6 +109,8 @@ func main() {
 
 ### Select
 
+`Select` позволяет вам ждать нескольких операций на каналах
+
 ```go
 select {
     case <-ch:
@@ -152,6 +167,7 @@ for val := range someChan {
 При записи, нужно во первых обернуть в recover. Во вторых рекомендуется сначала "убить", писателей, а потом уже закрывать канал. Также One general principle of using Go channels is **don't close a channel from the receiver side and don't close a channel if the channel has multiple concurrent senders**. In other words, we should only close a channel in a sender goroutine if the sender is the only sender of the channel.
 
 **It is worth collecting the channel axioms in one post:**
+
 - a send on a `nil` channel blocks forever ([Spec: Send statements](https://golang.org/ref/spec#Send_statements))
 - a receive from a `nil` channel blocks forever ([Spec: Receive operator](https://golang.org/ref/spec#Receive_operator))
 - a send to a closed channel panics ([Spec: Send statements](https://golang.org/ref/spec#Send_statements))
@@ -159,6 +175,7 @@ for val := range someChan {
 
 
 *Дополнительно:*
+
 - [Как работают каналы. Часть 1](https://medium.com/@victor_nerd/под-капотом-golang-как-работают-каналы-часть-1-e1da9e3e104d)
 - [Как работают каналы. Часть 2](https://medium.com/@victor_nerd/golang-channel-internal-part2-b4e37ad9a118)
 - [Как устроены каналы в Go](https://habr.com/ru/post/308070/)
