@@ -185,4 +185,11 @@ An example of good use of a Pool is in the fmt package, which maintains a dynami
 
 On the other hand, a free list maintained as part of a short-lived object is not a suitable use for a Pool, since the overhead does not amortize well in that scenario. It is more efficient to have such objects implement their own free list.
 
+##sync.Cond
+Cond implements a condition variable, a rendezvous point for goroutines waiting for or announcing the occurrence of an event. In the terminology of the Go memory model, Cond arranges that a call to Broadcast or Signal “synchronizes before” any Wait call that it unblocks.
+
+For many simple use cases, users will be better off using channels than a Cond (Broadcast corresponds to closing a channel, and Signal corresponds to sending on a channel).
+
+**sync.Cond** позволяет синхронизироваться горутинам по событиям, заменить бесконечный цикл ожидания какого-нибудь определенного условия. Это полезно, например, если мы хотим разблокировать сразу несколько горутин (Broadcast), что не получится сделать с помощью канала
+
 
