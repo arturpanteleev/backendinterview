@@ -192,4 +192,7 @@ For many simple use cases, users will be better off using channels than a Cond (
 
 **sync.Cond** позволяет синхронизироваться горутинам по событиям, заменить бесконечный цикл ожидания какого-нибудь определенного условия. Это полезно, например, если мы хотим разблокировать сразу несколько горутин (Broadcast), что не получится сделать с помощью канала
 
+##sync.Locker
+A Locker represents an object that can be locked and unlocked.
+
 
