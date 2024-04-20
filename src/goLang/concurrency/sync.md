@@ -29,7 +29,6 @@ type Mutex struct {
 }
 ```
 
-### sync.Mutex
 
 На уровне кода мьютекс представляет тип **sync.Mutex**. Для блокирования доступа к общему разделяемому ресурсу у мьютекса вызывается метод **Lock()**, а для разблокировки доступа - метод **Unlock()**.
 
@@ -69,6 +68,30 @@ func BalanceQ int {
 	return balance
 }
 ```
+
+### sync.WaitGroup
+
+Этот тип позволяет определить группу горутин, которые должны выполняться вместе как одна группа. И можно установить блокировку, которая приостановит выполнение функции, пока не завершит выполнение вся группа горутин. 
+
+```go
+func main() { 
+    var wg sync.WaitGroup 
+    wg.Add(2)       // в группе две горутины
+    counter := 5
+    doubleCounter := func() { 
+        defer wg.Done() 
+        counter = counter * 2
+   } 
+  
+   // вызываем горутины
+   go doubleCounter() 
+   go doubleCounter() 
+  
+   wg.Wait()        // ожидаем завершения обоих горутин
+   fmt.Println("Counter:", counter) 
+}
+```
+
 
 ### sync.Once
 
@@ -163,27 +186,4 @@ An example of good use of a Pool is in the fmt package, which maintains a dynami
 
 On the other hand, a free list maintained as part of a short-lived object is not a suitable use for a Pool, since the overhead does not amortize well in that scenario. It is more efficient to have such objects implement their own free list.
 
-### sync.WaitGroup
 
-Этот тип позволяет определить группу горутин, которые должны выполняться вместе как одна группа. И можно установить блокировку, которая приостановит выполнение функции, пока не завершит выполнение вся группа горутин. 
-
-```go
-func main() { 
-    var wg sync.WaitGroup 
-    wg.Add(2)       // в группе две горутины
-    counter := 5
-    doubleCounter := func() { 
-        defer wg.Done() 
-        counter = counter * 2
-   } 
-  
-   // вызываем горутины
-   go doubleCounter() 
-   go doubleCounter() 
-  
-   wg.Wait()        // ожидаем завершения обоих горутин
-   fmt.Println("Counter:", counter) 
-}
-```
-
-## 
