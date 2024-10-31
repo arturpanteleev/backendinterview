@@ -45,7 +45,7 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4
 
 Оба токена содержат обязательные поля в полезной нагрузке — **iat** и **exp**.
 
-![[accessRefreshJwt.png]]
+![](../../media/auth/webAuth/accessRefreshJwt.png)
 
 **iat** (issued at time) — время, когда токен сгенерирован.
 **exp** (expiration time) — время, до которого токен будет считаться валидным.
