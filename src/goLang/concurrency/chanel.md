@@ -108,6 +108,8 @@ func main() {
 
 Сейчас горутина main заблокирована и Go запустил одну анонимную горутину, которая пытается прочесть значение из канала. И вот тут начинается хитрая часть. Go гарантирует, что канал работает по принципу FIFO очереди ([спецификация](https://golang.org/ref/spec#Channel_types)), но горутина не может просто взять значение из буфера и продолжить исполнение. В этом случае горутина main заблокируется навсегда. Для решения этой ситуации, текущая горутина читает данные из буфера, затем добавляет значение из заблокированной горутины в буфер, разблокирует ожидающую горутину и удаляет её из очереди ожидания. (В случае же, если нет ожидающих горутину, она просто читает первое значение из буфера)
 
+![img](https://habrastorage.org/files/279/503/8c4/2795038c432c4ff38041e67086cb4e56.png)
+
 ### Select
 
 `Select` позволяет вам ждать нескольких операций на каналах
@@ -139,6 +141,8 @@ func chanrecv(c *hchan, ep unsafe.Pointer, block bool) (selected, received bool)
 ```
 
 Здесь нас интересует параметр *block*. При наличии секции *default* в операторе выбора *select*, функции *chansend* и *chanrecv* вызываются с параметром *block* равным *false*, в итоге функции осуществляют быстрый возврат в случае, если записать в канал или прочитать из канала без ожидания не удалось
+
+![go_chan](../../media/go/go_chan.png)
 
 ### Закрытие канала
 
@@ -173,7 +177,6 @@ for val := range someChan {
 - a receive from a `nil` channel blocks forever ([Spec: Receive operator](https://golang.org/ref/spec#Receive_operator))
 - a send to a closed channel panics ([Spec: Send statements](https://golang.org/ref/spec#Send_statements))
 - a receive from a closed channel returns the zero value immediately ([Spec: Receive operator](https://golang.org/ref/spec#Receive_operator))
-
 
 *Дополнительно:*
 
