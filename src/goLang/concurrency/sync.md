@@ -121,6 +121,8 @@ func main() {
 
 ### sync.Once
 
+`sync.Once` в Go — это структура из пакета `sync`, которая гарантирует, что определенный код выполнится только один раз, даже если из разных потоков или горутин к нему поступят конкурентные вызовы. Используется для инициализации ресурсов, которые должны быть созданы только один раз за весь жизненный цикл программы. Это удобно для ленивой инициализации, однократной настройки глобальных переменных или загрузки конфигураций.
+
 ```go
 // Once is an object that will perform exactly one action.
 type Once struct {
@@ -172,6 +174,39 @@ func (o *Once) Do(f func()) {
     }
 }
 ```
+
+Пример:
+
+```go
+package main
+
+import (
+	"fmt"
+	"sync"
+)
+
+var once sync.Once
+var config string
+
+func loadConfig() {
+	fmt.Println("Loading config...")
+	config = "App Configuration"
+}
+
+func main() {
+	for i := 0; i < 3; i++ {
+		go func() {
+			once.Do(loadConfig)
+			fmt.Println(config)
+		}()
+	}
+
+	// Небольшая задержка, чтобы горутины успели выполниться
+	fmt.Scanln()
+}
+```
+
+
 
 ### sync.Map
 
