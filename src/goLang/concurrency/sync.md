@@ -18,7 +18,7 @@ for i := 0; i < 50; i++ {
 
 Типичные функции:
 
-*  Add
+* Add
 * Load
 * Store
 * CompareAndSwap
@@ -31,11 +31,10 @@ for i := 0; i < 50; i++ {
 //
 // A Mutex must not be copied after first use.
 type Mutex struct {
-	state int32
-	sema  uint32
+    state int32
+    sema  uint32
 }
 ```
-
 
 На уровне кода мьютекс представляет тип **sync.Mutex**. Для блокирования доступа к общему разделяемому ресурсу у мьютекса вызывается метод **Lock()**, а для разблокировки доступа - метод **Unlock()**.
 
@@ -57,11 +56,11 @@ type Mutex struct {
 // available; a blocked Lock call excludes new readers from acquiring the
 // lock.
 type RWMutex struct {
-	w           Mutex  // held if there are pending writers
-	writerSem   uint32 // semaphore for writers to wait for completing readers
-	readerSem   uint32 // semaphore for readers to wait for completing writers
-	readerCount int32  // number of pending readers
-	readerWait  int32  // number of departing readers
+    w           Mutex  // held if there are pending writers
+    writerSem   uint32 // semaphore for writers to wait for completing readers
+    readerSem   uint32 // semaphore for readers to wait for completing writers
+    readerCount int32  // number of pending readers
+    readerWait  int32  // number of departing readers
 }
 ```
 
@@ -70,15 +69,17 @@ var mu sync.RWMutex
 var balance int
 
 func BalanceQ int { 
-	mu.RLockQ // Блокировка читателя
-	defer mu.RUnlock()
-	return balance
+    mu.RLockQ // Блокировка читателя
+    defer mu.RUnlock()
+    return balance
 }
 ```
 
 ### sync.WaitGroup
 
 Этот тип позволяет определить группу горутин, которые должны выполняться вместе как одна группа. И можно установить блокировку, которая приостановит выполнение функции, пока не завершит выполнение вся группа горутин. 
+
+Обратите внимание, что передавать `WaitGroup` в горутину, необходимо по ссылке. Так как если передать по значению, то она скопируется, и горутины будут выполнять `wg.Done()` для другой `WaitGroup` и "родительский" `WaitGroup` никогда не получит вызовы `wg.Done()` и  программа зависнет на `wg.Wait()
 
 ```go
 func main() { 
@@ -89,15 +90,33 @@ func main() {
         defer wg.Done() 
         counter = counter * 2
    } 
-  
+
    // вызываем горутины
    go doubleCounter() 
    go doubleCounter() 
-  
+
    wg.Wait()        // ожидаем завершения обоих горутин
    fmt.Println("Counter:", counter) 
 }
 ```
+
+Также можно использовать WaitGroup через замыкание, посколько в этом случае, переменная  `wg` будет скопирована по указателю, и работа будет осуществляться с одним и тем же объектом.
+
+```go
+func main() {
+	var wg sync.WaitGroup
+
+	wg.Add(1)
+	go func() {
+		defer wg.Done() // Замыкание захватывает переменную по ссылке
+		fmt.Println("Inside goroutine")
+	}()
+
+	wg.Wait() // Работает как ожидается
+	fmt.Println("Done")
+}
+```
+
 
 
 ### sync.Once
@@ -105,18 +124,18 @@ func main() {
 ```go
 // Once is an object that will perform exactly one action.
 type Once struct {
-	// done indicates whether the action has been performed.
-	// It is first in the struct because it is used in the hot path.
-	// The hot path is inlined at every call site.
-	// Placing done first allows more compact instructions on some architectures (amd64/x86),
-	// and fewer instructions (to calculate offset) on other architectures.
-	done uint32
-	m    Mutex
+    // done indicates whether the action has been performed.
+    // It is first in the struct because it is used in the hot path.
+    // The hot path is inlined at every call site.
+    // Placing done first allows more compact instructions on some architectures (amd64/x86),
+    // and fewer instructions (to calculate offset) on other architectures.
+    done uint32
+    m    Mutex
 } 
 
 // Do calls the function f if and only if Do is being called for the
 // first time for this instance of Once. In other words, given
-// 	var once Once
+//     var once Once
 // if once.Do(f) is called multiple times, only the first call will invoke f,
 // even if f has a different value in each invocation. A new instance of
 // Once is required for each function to execute.
@@ -124,7 +143,7 @@ type Once struct {
 // Do is intended for initialization that must be run exactly once. Since f
 // is niladic, it may be necessary to use a function literal to capture the
 // arguments to a function to be invoked by Do:
-// 	config.once.Do(func() { config.init(filename) })
+//     config.once.Do(func() { config.init(filename) })
 //
 // Because no call to Do returns until the one call to f returns, if f causes
 // Do to be called, it will deadlock.
@@ -133,31 +152,30 @@ type Once struct {
 // without calling f.
 //
 func (o *Once) Do(f func()) {
-	// Note: Here is an incorrect implementation of Do:
-	//
-	//	if atomic.CompareAndSwapUint32(&o.done, 0, 1) {
-	//		f()
-	//	}
-	//
-	// Do guarantees that when it returns, f has finished.
-	// This implementation would not implement that guarantee:
-	// given two simultaneous calls, the winner of the cas would
-	// call f, and the second would return immediately, without
-	// waiting for the first's call to f to complete.
-	// This is why the slow path falls back to a mutex, and why
-	// the atomic.StoreUint32 must be delayed until after f returns.
+    // Note: Here is an incorrect implementation of Do:
+    //
+    //    if atomic.CompareAndSwapUint32(&o.done, 0, 1) {
+    //        f()
+    //    }
+    //
+    // Do guarantees that when it returns, f has finished.
+    // This implementation would not implement that guarantee:
+    // given two simultaneous calls, the winner of the cas would
+    // call f, and the second would return immediately, without
+    // waiting for the first's call to f to complete.
+    // This is why the slow path falls back to a mutex, and why
+    // the atomic.StoreUint32 must be delayed until after f returns.
 
-	if atomic.LoadUint32(&o.done) == 0 {
-		// Outlined slow-path to allow inlining of the fast-path.
-		o.doSlow(f)
-	}
+    if atomic.LoadUint32(&o.done) == 0 {
+        // Outlined slow-path to allow inlining of the fast-path.
+        o.doSlow(f)
+    }
 }
 ```
 
 ### sync.Map
 
 Если у вас **высоконагруженная (и 100нс решают) система с большим количеством ядер процессора (32+) + ключи в map стабильны(обновляются редко) и происходит намного больше чтений, чем записей**, вы можете захотеть использовать sync.Map вместо стандартного map+sync.RWMutex. В остальных случаях, sync.Map особо не нужен
-
 
 Если вы совершенно чётко не идентифицировали в своей программе узкое место из-за **cache contention ** в map+RWMutex, то, вероятнее всего, никакой выгоды от sync.Map вы не получите, и даже потеряете в скорости.
 
@@ -201,5 +219,3 @@ For many simple use cases, users will be better off using channels than a Cond (
 
 ##sync.Locker
 A Locker represents an object that can be locked and unlocked.
-
-
