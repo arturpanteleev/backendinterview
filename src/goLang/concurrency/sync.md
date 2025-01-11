@@ -325,9 +325,30 @@ dataPool.Put(data)
 
 ### sync.Cond
 
-Cond implements a condition variable, a rendezvous point for goroutines waiting for or announcing the occurrence of an event. In the terminology of the Go memory model, Cond arranges that a call to Broadcast or Signal “synchronizes before” any Wait call that it unblocks.
+`sync.Cond` — это синхронизационная примитивная структура из пакета `sync`, предназначенная для реализации условной синхронизации между горутинами. Она позволяет одной или нескольким горутинам **ожидать наступления события** и уведомлять другие горутины, когда это событие произошло.
 
-For many simple use cases, users will be better off using channels than a Cond (Broadcast corresponds to closing a channel, and Signal corresponds to sending on a channel).
+### `sync.Cond` в Go
+
+`sync.Cond` — это синхронизационная примитивная структура из пакета `sync`, предназначенная для реализации условной синхронизации между горутинами. Она позволяет одной или нескольким горутинам **ожидать наступления события** и уведомлять другие горутины, когда это событие произошло.
+
+---
+
+#### Основные методы
+
+1. **`Wait()`**
+   
+   - Блокирует текущую горутину, пока не будет вызван метод `Signal` или `Broadcast`.
+   - Перед вызовом `Wait()` необходимо заблокировать связанный `Locker` (например, `sync.Mutex`), иначе возникнет паника.
+
+2. **`Signal()`**
+   
+   - Уведомляет одну из горутин, ожидающих условия (если такие есть), чтобы она продолжила выполнение.
+
+3. **`Broadcast()`**
+   
+   - Уведомляет **все горутины**, ожидающие условия, чтобы они продолжили выполнение.
+
+Если вы можете реализовать задачу с помощью каналов, это обычно предпочтительнее из-за упрощения кода и меньшей вероятности ошибок.
 
 ### sync.Cond
 
