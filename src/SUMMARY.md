@@ -71,7 +71,7 @@
     * [Интерфейс](goLang/types/interface.md)
   * [Concurrency](goLang/concurrency/README.md)
     * [Каналы](goLang/concurrency/chanel.md)
-    * [Планировщик](goLang/scheduler.md)
+    * [Планировщик](goLang/concurrency/scheduler.md)
     * [Goroutines](goLang/concurrency/gouritine.md)
     * [Context](goLang/concurrency/context.md)
     * [Sync](goLang/concurrency/sync.md)
