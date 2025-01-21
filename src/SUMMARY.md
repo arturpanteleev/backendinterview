@@ -97,7 +97,7 @@
   * [DNS](network/dns.md)
   * [Что происходит при нажатии на g](network/whatHappenWhen.md)
   * [Real time с веб-сервером](network/realTime.md)
-* [Операционные системы](os.md)
+* [Операционные системы и устройство ПК](os.md)
 * [Системное администрирование](devops/README.md)
   * [Linux](devops/linux.md)
   * [Основы виртуализации](devops/virtualization/README.md)
