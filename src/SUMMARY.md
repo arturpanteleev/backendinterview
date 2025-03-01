@@ -86,7 +86,7 @@
     * [Laravel](php/frameworks/laravel.md)
     * [Symfony](php/frameworks/symfony.md)
   * [Разное](php/uncategorized.md)
-* [JavaScript](javascript.md)
+* [JavaScript](javascript/README.md)
 * [Информационная безопасность](ib.md)
 * [Git](git.md)
 * [Основы сетей](network/README.md)
